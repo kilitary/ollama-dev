@@ -9,9 +9,6 @@ logger = logging.getLogger(__name__)
 
 def main():
     try:
-        # Create Salvo instance
-        salvo = salvo.Salvo()
-        # Define arguments
         args = {
             'method': 'GET',
             'concurrency': 4,
