@@ -1,4 +1,4 @@
-![](bg.jpeg)
+![linkage](bg.jpeg)
 
 ### counter red team logic forwarder.
 ### using randomized flows combined by various different english verbs and features.
