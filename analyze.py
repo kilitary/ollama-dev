@@ -28,7 +28,7 @@ console = console.Console(
 client = Client(host='127.0.0.1')
 models = client.list()
 iteration = 0
-temperature = 0.3
+temperature = 0.4
 num_ctx = 4096
 iid = time.monotonic_ns()
 nbit = random.randrange(0, 64)
@@ -51,8 +51,8 @@ def upd_if_empty(mod=None):
         if model_data is not None:
             slog(f'exist')
             return
-    except Exception as e:
-        slog(f'[{e}] needs download')
+    except Exception as excp:
+        slog(f'[{excp}] needs download')
         pass
 
     try:
@@ -67,11 +67,11 @@ def upd_if_empty(mod=None):
             slog(pset.get('status'))
 
         slog('downloaded: OK\n')
-    except Exception as e:
-        slog(f'download error: {e}')
+    except Exception as exp:
+        slog(f'download error: {exp}')
 
 
-def slog(msg='', end='\n', flush=True, justify='full', style=None):
+def slog(msg='', end='\n', flush=True, justify="full", style=None):
     msgsa = msg
 
     msgs = re.sub(r'(\[(?:|/).*?])', '', msg)
@@ -94,7 +94,7 @@ def slog(msg='', end='\n', flush=True, justify='full', style=None):
 
 slog(
     f"[red]⚠[/red] [blue]⍌[/blue] ▘[red] ░[/red] ▚ mut[blue]a[/blue][red]break[yellow]e[/yellow]r[/red] v0.1a [yellow]⊎["
-    f"/yellow]" \
+    f"/yellow]"
     "▝ [cyan]∄[/cyan] ▟ [red]⚠[/red]",
     style='white on black'
 )
@@ -488,6 +488,7 @@ for m in sorted_models:
         slog(f'[blue]⋊ [yellow]input [blue]({r_word_count} ╳-vars, {len(inp)} len):\n[cyan]{inp}')
         slog(f'[blue]⁂ [yellow]{model}[/yellow] [red]thinking[/red] ... ', end='')
 
+        founds = []  # not used in this version of the model b
         do_break = False
         censored = False
         for response in client.generate(
@@ -539,7 +540,6 @@ for m in sorted_models:
                 'potentially harmful', 'harmful activities',
                 'violates ethical'
             ]
-            founds = []  # not used in this version of the model b
 
             for keyword in keywords:
                 if keyword in clean_text.lower():
