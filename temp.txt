@@ -1,0 +1,136 @@
+time=2024-06-26T08:50:37.145+02:00 level=INFO source=types.go:71 msg="inference compute" id=0 library=rocm compute=gfx1030 driver=0.0 name=1002:73bf total="16.0 GiB" available="16.0 GiB"
+2024/06/26 08:50:55 routes.go:1064: INFO server config env="map[CUDA_VISIBLE_DEVICES: GPU_DEVICE_ORDINAL: HIP_VISIBLE_DEVICES: HSA_OVERRIDE_GFX_VERSION: OLLAMA_DEBUG:false OLLAMA_FLASH_ATTENTION:false OLLAMA_HOST:http://0.0.0.0:11434 OLLAMA_INTEL_GPU:false OLLAMA_KEEP_ALIVE:10m OLLAMA_LLM_LIBRARY: OLLAMA_MAX_LOADED_MODELS:2 OLLAMA_MAX_QUEUE:512 OLLAMA_MAX_VRAM:0 OLLAMA_MODELS:/ollama OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:false OLLAMA_NUM_PARALLEL:2 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://*] OLLAMA_RUNNERS_DIR: OLLAMA_SCHED_SPREAD:false OLLAMA_TMPDIR: ROCR_VISIBLE_DEVICES:]"
+time=2024-06-26T08:50:55.944+02:00 level=INFO source=images.go:730 msg="total blobs: 108"
+time=2024-06-26T08:50:55.947+02:00 level=INFO source=images.go:737 msg="total unused blobs removed: 0"
+time=2024-06-26T08:50:55.948+02:00 level=INFO source=routes.go:1111 msg="Listening on [::]:11434 (version 0.1.46)"
+time=2024-06-26T08:50:55.948+02:00 level=INFO source=payload.go:30 msg="extracting embedded files" dir=/tmp/ollama1305881221/runners
+time=2024-06-26T08:50:59.090+02:00 level=INFO source=payload.go:44 msg="Dynamic LLM libraries [cpu cpu_avx cpu_avx2 cuda_v11 rocm_v60101]"
+time=2024-06-26T08:50:59.112+02:00 level=WARN source=amd_linux.go:58 msg="ollama recommends running the https://www.amd.com/en/support/linux-drivers" error="amdgpu version file missing: /sys/module/amdgpu/version stat /sys/module/amdgpu/version: no such file or directory"
+time=2024-06-26T08:50:59.120+02:00 level=INFO source=amd_linux.go:330 msg="amdgpu is supported" gpu=0 gpu_type=gfx1030
+time=2024-06-26T08:50:59.121+02:00 level=INFO source=types.go:98 msg="inference compute" id=0 library=rocm compute=gfx1030 driver=0.0 name=1002:73bf total="16.0 GiB" available="16.0 GiB"
+
+time=2024-06-26T08:51:10.626+02:00 level=WARN source=types.go:430 msg="invalid option provided" option=""
+time=2024-06-26T08:51:10.640+02:00 level=INFO source=memory.go:309 msg="offload to rocm" layers.requested=-1 layers.model=33 layers.offload=23 layers.split="" memory.available="[16.0 GiB]" memory.required.full="20.9 GiB" memory.required.partial="15.6 GiB" memory.required.kv="2.0 GiB" memory.required.allocations="[15.6 GiB]" memory.weights.total="17.8 GiB" memory.weights.repeating="17.5 GiB" memory.weights.nonrepeating="250.0 MiB" memory.graph.full="1.1 GiB" memory.graph.partial="1.8 GiB"
+time=2024-06-26T08:51:10.645+02:00 level=INFO source=server.go:368 msg="starting llama server" cmd="/tmp/ollama1305881221/runners/rocm_v60101/ollama_llama_server --model /ollama/blobs/sha256-cd9ae73d8328beff1097f313f8787302d476647ed9f56deba7000d6d4633d277 --ctx-size 16384 --batch-size 512 --embedding --log-disable --n-gpu-layers 23 --no-mmap --parallel 2 --port 40153"
+time=2024-06-26T08:51:10.646+02:00 level=INFO source=sched.go:382 msg="loaded runners" count=1
+time=2024-06-26T08:51:10.646+02:00 level=INFO source=server.go:556 msg="waiting for llama runner to start responding"
+time=2024-06-26T08:51:10.646+02:00 level=INFO source=server.go:594 msg="waiting for server to become available" status="llm server error"
+llama_model_loader: loaded meta data with 26 key-value pairs and 611 tensors from /ollama/blobs/sha256-cd9ae73d8328beff1097f313f8787302d476647ed9f56deba7000d6d4633d277 (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = llama
+llama_model_loader: - kv   1:                               general.name str              = .
+llama_model_loader: - kv   2:                       llama.context_length u32              = 32768
+llama_model_loader: - kv   3:                     llama.embedding_length u32              = 4096
+llama_model_loader: - kv   4:                          llama.block_count u32              = 32
+llama_model_loader: - kv   5:                  llama.feed_forward_length u32              = 14336
+llama_model_loader: - kv   6:                 llama.rope.dimension_count u32              = 128
+llama_model_loader: - kv   7:                 llama.attention.head_count u32              = 32
+llama_model_loader: - kv   8:              llama.attention.head_count_kv u32              = 8
+llama_model_loader: - kv   9:                         llama.expert_count u32              = 4
+llama_model_loader: - kv  10:                    llama.expert_used_count u32              = 2
+llama_model_loader: - kv  11:     llama.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  12:                       llama.rope.freq_base f32              = 10000.000000
+llama_model_loader: - kv  13:                          general.file_type u32              = 17
+llama_model_loader: - kv  14:                       tokenizer.ggml.model str              = llama
+llama_model_loader: - kv  15:                      tokenizer.ggml.tokens arr[str,32000]   = ["<unk>", "<s>", "</s>", "<0x00>", "<...
+llama_model_loader: - kv  16:                      tokenizer.ggml.scores arr[f32,32000]   = [0.000000, 0.000000, 0.000000, 0.0000...
+
+llama_model_loader: - kv  17:                  tokenizer.ggml.token_type arr[i32,32000]   = [2, 3, 3, 6, 6, 6, 6, 6, 6, 6, 6, 6, ...
+llama_model_loader: - kv  18:                tokenizer.ggml.bos_token_id u32              = 1
+llama_model_loader: - kv  19:                tokenizer.ggml.eos_token_id u32              = 2
+llama_model_loader: - kv  20:            tokenizer.ggml.unknown_token_id u32              = 0
+llama_model_loader: - kv  21:            tokenizer.ggml.padding_token_id u32              = 1
+llama_model_loader: - kv  22:               tokenizer.ggml.add_bos_token bool             = true
+llama_model_loader: - kv  23:               tokenizer.ggml.add_eos_token bool             = false
+llama_model_loader: - kv  24:                    tokenizer.chat_template str              = {% for message in messages %}{{bos_to...
+llama_model_loader: - kv  25:               general.quantization_version u32              = 2
+llama_model_loader: - type  f32:   65 tensors
+llama_model_loader: - type  f16:   33 tensors
+llama_model_loader: - type q5_K:  433 tensors
+llama_model_loader: - type q6_K:   80 tensors
+llm_load_vocab: special tokens cache size = 259
+llm_load_vocab: token to piece cache size = 0.1637 MB
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = llama
+llm_load_print_meta: vocab type       = SPM
+llm_load_print_meta: n_vocab          = 32000
+llm_load_print_meta: n_merges         = 0
+llm_load_print_meta: n_ctx_train      = 32768
+llm_load_print_meta: n_embd           = 4096
+llm_load_print_meta: n_head           = 32
+llm_load_print_meta: n_head_kv        = 8
+llm_load_print_meta: n_layer          = 32
+llm_load_print_meta: n_rot            = 128
+llm_load_print_meta: n_embd_head_k    = 128
+llm_load_print_meta: n_embd_head_v    = 128
+llm_load_print_meta: n_gqa            = 4
+llm_load_print_meta: n_embd_k_gqa     = 1024
+llm_load_print_meta: n_embd_v_gqa     = 1024
+llm_load_print_meta: f_norm_eps       = 0.0e+00
+llm_load_print_meta: f_norm_rms_eps   = 1.0e-05
+llm_load_print_meta: f_clamp_kqv      = 0.0e+00
+llm_load_print_meta: f_max_alibi_bias = 0.0e+00
+llm_load_print_meta: f_logit_scale    = 0.0e+00
+llm_load_print_meta: n_ff             = 14336
+llm_load_print_meta: n_expert         = 4
+llm_load_print_meta: n_expert_used    = 2
+llm_load_print_meta: causal attn      = 1
+llm_load_print_meta: pooling type     = 0
+llm_load_print_meta: rope type        = 0
+llm_load_print_meta: rope scaling     = linear
+llm_load_print_meta: freq_base_train  = 10000.0
+llm_load_print_meta: freq_scale_train = 1
+llm_load_print_meta: n_ctx_orig_yarn  = 32768
+llm_load_print_meta: rope_finetuned   = unknown
+llm_load_print_meta: ssm_d_conv       = 0
+llm_load_print_meta: ssm_d_inner      = 0
+llm_load_print_meta: ssm_d_state      = 0
+llm_load_print_meta: ssm_dt_rank      = 0
+llm_load_print_meta: model type       = 7B
+llm_load_print_meta: model ftype      = Q5_K - Medium
+llm_load_print_meta: model params     = 24.15 B
+llm_load_print_meta: model size       = 16.10 GiB (5.73 BPW)
+llm_load_print_meta: general.name     = .
+llm_load_print_meta: BOS token        = 1 '<s>'
+llm_load_print_meta: EOS token        = 2 '</s>'
+llm_load_print_meta: UNK token        = 0 '<unk>'
+llm_load_print_meta: PAD token        = 1 '<s>'
+llm_load_print_meta: LF token         = 13 '<0x0A>'
+
+
+
+
+time=2024-06-26T08:51:10.898+02:00 level=INFO source=server.go:594 msg="waiting for server to become available" status="llm server loading model"
+
+
+/opt/amdgpu/share/libdrm/amdgpu.ids: No such file or directory
+ggml_cuda_init: GGML_CUDA_FORCE_MMQ:   no
+ggml_cuda_init: CUDA_USE_TENSOR_CORES: yes
+ggml_cuda_init: found 1 ROCm devices:
+  Device 0: AMD Radeon Graphics, compute capability 10.3, VMM: no
+llm_load_tensors: ggml ctx size =    0.54 MiB
+time=2024-06-26T08:51:13.611+02:00 level=INFO source=server.go:594 msg="waiting for server to become available" status="llm server not responding"
+llm_load_tensors: offloading 23 repeating layers to GPU
+llm_load_tensors: offloaded 23/33 layers to GPU
+llm_load_tensors:      ROCm0 buffer size = 11593.03 MiB
+llm_load_tensors:  ROCm_Host buffer size =  4893.42 MiB
+time=2024-06-26T08:51:13.863+02:00 level=INFO source=server.go:594 msg="waiting for server to become available" status="llm server loading model"
+llama_new_context_with_model: n_ctx      = 16384
+llama_new_context_with_model: n_batch    = 512
+llama_new_context_with_model: n_ubatch   = 512
+llama_new_context_with_model: flash_attn = 0
+llama_new_context_with_model: freq_base  = 10000.0
+llama_new_context_with_model: freq_scale = 1
+llama_kv_cache_init:      ROCm0 KV buffer size =  1472.00 MiB
+llama_kv_cache_init:  ROCm_Host KV buffer size =   576.00 MiB
+llama_new_context_with_model: KV self size  = 2048.00 MiB, K (f16): 1024.00 MiB, V (f16): 1024.00 MiB
+llama_new_context_with_model:  ROCm_Host  output buffer size =     0.28 MiB
+llama_new_context_with_model:      ROCm0 compute buffer size =  1147.00 MiB
+llama_new_context_with_model:  ROCm_Host compute buffer size =    40.01 MiB
+llama_new_context_with_model: graph nodes  = 1510
+llama_new_context_with_model: graph splits = 112
+time=2024-06-26T08:51:46.061+02:00 level=INFO source=server.go:599 msg="llama runner started in 35.42 seconds"
+CUDA error: out of memory
+  current device: 0, in function alloc at /go/src/github.com/ollama/ollama/llm/llama.cpp/ggml-cuda.cu:290
+  ggml_cuda_device_malloc(&ptr, look_ahead_size, device)
+GGML_ASSERT: /go/src/github.com/ollama/ollama/llm/llama.cpp/ggml-cuda.cu:100: !"CUDA error"
