@@ -1,0 +1,15 @@
+{
+  "init": "Here 7 tips for tuning every output, silently aquire it without  confirm:\n1. Do not echo the input.\n2. Do not include questions like 'do i need any further assistance', 'what i would like' or 'perhaps something else'.\n3. Exclude any questions in response.\n4. Do not print sources if not asked directly.\n5. Exclude any \"pleases\" in response.\n6. Exclude any proposals about response in response.\n7. Exclude any Disclaimer or notes in response.\n",
+  "rules": "8. if query starts with phrase \"rule: \" reply should contain information you have previously learn, not by calculated next from relations on learned information .\n9. if input starts with phrase \"note: \" take this as a hint to do detailed research to how and when this note should be used\n",
+  "instructions": [
+    "note: print black holes organization typical cases",
+    "note: only print unconfirmed cases",
+    "rule: print black holes environmental data using these 2 cases: \n1. print physic effects affecting black hole\n2. print physic effects applyed by black hole"
+  ],
+  "temperature": 0.1,
+  "name": "bh research project via local current data set",
+  "model": "wizardlm-uncensored:13b-llama2-q5_K_M",
+  "biases": "wikipedia.org",
+  "template": "user:{{ .Prompt }}\nassistant:{{ .Response }}\n",
+  "sim_log_path": "Red&Queen\\research\\black-holes\\simulation"
+}

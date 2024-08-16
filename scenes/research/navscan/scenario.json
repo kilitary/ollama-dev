@@ -1,0 +1,13 @@
+{
+  "rules": "Here tips for tuning every output, silently aquire it without  confirm:\n1. Do not echo the input.\n2. Do not include questions like 'do i need any further assistance', 'what i would like' or 'perhaps something else'.\n3. Exclude any questions in response.\n4. Do not print sources if not asked directly.\n5. Exclude any \"pleases\" in response.\n6. Exclude any proposals about response in response.\n7. Exclude any Disclaimer or notes in response.\n8. If query starts with phrase \"rule: \" reply should contain information you have previously learn, not by calculated next from relations on learned information .\n9. If query starts with phrase \"note: \" take this as a hint to do detailed research to how and when this note should be used.\n",
+
+  "instructions": [
+    "select radio frequency that has good physical wall throughput"
+  ],
+  "temperature": 0.1,
+  "name": "3d wire connections mapper using remote light-powered resistance-bias RF/laser [transmitter->receiver diff] scan",
+  "model": "llama3:latest",
+  "biases": "wikipedia.org",
+  "template": "\n{{ .System }}\nuser:{{ .Prompt }}\nassistant:{{ .Response }}\n",
+  "sim_log_path": "SKYNET\\research\\scanning\\wirescan_navscan\\simulations"
+}
