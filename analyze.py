@@ -18,6 +18,27 @@ from textwrap import indent
 from rich import print as rprint, print_json, console
 from ollama import ps, pull, chat, Client
 
+console = console.Console(
+    force_terminal=True,
+    no_color=False,
+    force_interactive=True,
+    color_system='auto'
+)
+
+client = Client(host='127.0.0.1')
+models = client.list()
+iteration = 0
+temperature = 0.3
+num_ctx = 4096
+iid = time.monotonic_ns()
+nbit = random.randrange(0, 64)
+outer_engine_random_seed = int(time.time_ns() - int(time.time()) ^ nbit)
+random.seed(outer_engine_random_seed)
+internal_model_random_seed = int(outer_engine_random_seed ^ random.randrange(0, 64))
+selected_model = 'wizard-vicuna-uncensored:13b'  # solar
+
+
+# selected_model = 'mistral'  # solar
 
 def upd_if_empty(mod=None):
     if mod is None:
@@ -215,27 +236,7 @@ items = {
         ]
     }
 }
-console = console.Console(
-    force_terminal=True,
-    no_color=False,
-    force_interactive=True,
-    color_system='auto'
-)
 
-client = Client(host='127.0.0.1')
-models = client.list()
-iteration = 0
-temperature = 0.3
-num_ctx = 4096
-iid = time.monotonic_ns()
-nbit = random.randrange(0, 64)
-outer_engine_random_seed = int(time.time_ns() - int(time.time()) ^ nbit)
-random.seed(outer_engine_random_seed)
-
-internal_model_random_seed = int(outer_engine_random_seed ^ random.randrange(0, 64))
-
-selected_model = 'qwen2:latest'  # solar
-selected_model = 'mistral'  # solar
 upd_if_empty(selected_model)
 
 slog(f'[cyan]analyzing [red] {len(models["models"])} models')
