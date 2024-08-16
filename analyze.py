@@ -75,7 +75,7 @@ def slog(msg='', end='\n', flush=True, justify="full", style=None):
     msgsa = msg
 
     msgs = re.sub(r'(\[(?:|/).*?])', '', msg)
-    msg = msgsa if '[/' in msgs else msg
+    msg = msgs if '[/' in msgsa else msg
 
     console.print(f'{msg}', end=end, justify=justify, style=style)
 
@@ -275,7 +275,7 @@ for m in sorted_models:
         if not model_updated:
             slog(f'checking internet connection ... ', end='')
             try:
-                socket.create_connection(('he.net', 80), timeout=0.8)
+                socket.create_connection(('he.net', 80), timeout=1.8)
                 slog('exist')
             except Exception as e:
                 slog(f'missing: {e}')
@@ -481,7 +481,10 @@ for m in sorted_models:
 
         slog(f'[blue]ʍ system:\n[green]{system}')
         slog(f'[blue]⋊ [yellow]input [blue]({r_word_count} ╳-vars, {len(inp)} len):\n[cyan]{inp}')
-        slog(f'[blue]⁂ [yellow]{model}[/yellow] [red]thinking[/red] ... ', end='')
+        slog(f'[blue]⁂[/blue] [yellow]{model}[/yellow] [red]thinking[/red] ... ',
+             end='',
+             style='red on black'
+        )
 
         founds = []  # not used in this version of the model b
         do_break = False
