@@ -63,21 +63,10 @@ def update_models(mod=None):
 
 
 def slog(msg='', end='\n', flush=True, justify="full", style=None):
-    """
-    Prints a message to the console and logs it to a file.
-
-    Args:
-        msg (str): The message to be printed and logged.
-        end (str): The ending character of the message. Defaults to '\n'.
-        flush (bool): Whether to flush the stdout buffer. Defaults to True.
-        justify (str): The justification of the message. Defaults to "full".
-        style (str): The style of the message. Defaults to None.
-
-    Returns:
-        None
-    """
-    msg_clean = re.sub(r'(\[(?:|/).*?])', '', msg)
-    console.print(msg_clean if '[/' in msg else msg, end=end, justify=justify, style=style)
+    msg_for_input = msg
+    msg_for_log = re.sub(r'(\[/?[A-Z_]*?])', '', msg_for_input)
+    msg_for_input = re.sub(r'(\[/?[a-z_]*?])', '', msg_for_input)
+    console.print(msg_for_log, end=end, justify=justify, style=style)
 
     if flush:
         sys.stdout.flush()
@@ -88,7 +77,7 @@ def slog(msg='', end='\n', flush=True, justify="full", style=None):
     )
 
     with open(log_file, "ab") as log_file_handle:
-        log_file_handle.write((msg_clean + end).encode(encoding='utf_8', errors='ignore'))
+        log_file_handle.write((msg_for_input + end).encode(encoding='utf_8', errors='ignore'))
 
 
 slog(
@@ -302,7 +291,8 @@ for m in sorted_models:
                 slog(f'{key}: {info[key]}')
 
         except Exception as e:
-            slog(f'[red]exception: {e}')
+            print(f'|{e}|')
+            slog(f'[red]exception[/red]: [white]{e}[/white]')
 
         slog(
             f'[red]⋿[/red] [cyan]random check:[/cyan] [orange]seed[/orange]=[blue]{outer_engine_random_seed}[/blue] [green]('
@@ -476,7 +466,7 @@ for m in sorted_models:
         slog(f'[blue]ʍ system:\n[green]{system}')
         slog(f'[blue]⋊ [yellow]input [blue]({r_word_count} ╳-vars, {len(inp)} len):\n[cyan]{inp}')
         slog(
-            f'[blue]⁂[/blue] [yellow]{model}[/yellow] [red]thinking[/red] ... ',
+            f'[green]⁂[/green] [yellow]{model}[/yellow] [red]thinking[/red] ... ',
             end='',
             style='yellow on black'
         )
@@ -484,6 +474,12 @@ for m in sorted_models:
         founds = []  # not used in this version of the model b
         do_break = False
         censored = False
+        colors = [
+            'red', 'white', 'gray', 'blue', 'magenta', 'cyan',
+            'yellow', 'cyan', 'purple', 'pink', 'green',
+            'orange', 'brown', 'silver', 'gold'
+        ]
+        colored = random.choice([0, 3]) == 2
         for response in client.generate(
                 model=model,
                 prompt=inp,
@@ -512,12 +508,6 @@ for m in sorted_models:
 
             c = ''
             if colored:
-                colors = [
-                    'red', 'white', 'gray', 'blue', 'magenta', 'cyan',
-                    'yellow', 'cyan', 'purple', 'pink', 'green',
-                    'orange', 'brown', 'silver', 'gold'
-                ]
-
                 c = random.choice(colors)
             else:
                 c = 'silver'
