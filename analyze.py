@@ -28,7 +28,7 @@ console = console.Console(
 client = Client(host='127.0.0.1')
 models = client.list()
 iteration = 0
-temperature = 0.9
+temperature = 0.00000000000000000000000000000000000000000000000000
 num_ctx = 4096
 iid = time.monotonic_ns()
 nbit = random.randrange(0, 64)
@@ -83,8 +83,7 @@ def slog(msg='', end='\n', flush=True, justify="full", style=None):
 slog(
     f"[red]⚠[/red] [blue]⍌[/blue] ▘[red] ░[/red] ▚ mut[blue]a[/blue][red]break[yellow]e[/yellow]r[/red] v0.1a [yellow]⊎["
     f"/yellow]"
-    "▝ [cyan]∄[/cyan] ▟ [red]⚠[/red]",
-    style='white on black'
+    "▝ [cyan]∄[/cyan] ▟ [red]⚠[/red]"
 )
 
 system = \
@@ -158,7 +157,7 @@ items = {
         'plan',
         'crime', 'store', 'suite', 'pack', 'program', 'project', 'system', 'device', 'component',
         'item', 'child', 'sign', 'family', 'place', 'person', 'name', 'key', 'value', 'explosion',
-        'number', 'signer', 'prison', 'cube', 'circle', 'color', 'weight', 'fire', 'water',
+        'number', 'signer', 'prison', 'cube', 'circle', 'color', 'weight', 'fire',
         'letter', 'char', 'meaning', 'definition', 'component', 'element', 'material', 'army',
         'force', 'brigade', 'engine', 'system', 'engineer', 'wire',
         'police', 'price', 'length', 'mass', 'receiver', 'gang', 'band', 'criminal',
@@ -178,7 +177,7 @@ items = {
         'bad', 'good', 'flamable', 'expandable', 'compact', 'personal', 'unnecessary', 'necessary',
         'noticed', 'marked', 'unfixed', 'grouped', 'delivered', 'wired', 'possible', 'unavailable', 'organized',
         'available', 'assigned', 'warm', 'cold', 'hot', 'selected', 'unselected', 'unassigned', 'undelivered',
-        'accurate', 'inaccurate', 'unreliable', 'reliable',
+        'accurate', 'inaccurate',
         'working', 'lawyered', 'unlawyered', 'legal',
     ],
 
@@ -218,14 +217,18 @@ items = {
             'wire'
         ],
         'un': [
-            'flamable'
+            'flamable',
+            'reliable'
+            'piloted',
+            'manned',
+            'known'
         ],
         'in': [
             'accurate'
         ],
         'il': [
             'legal'
-        ]
+        ],
     }
 }
 
@@ -463,8 +466,8 @@ for m in sorted_models:
         """
         slog(f'[blue]₮ custom template:\n[green] {templ}', justify='left')
 
-        slog(f'[blue]ʍ system:\n[green]{system}')
-        slog(f'[blue]⋊ [yellow]input [blue]({r_word_count} ╳-vars, {len(inp)} len):\n[cyan]{inp}')
+        slog(f'[red]ʍ[/red] system:\n[green]{system}')
+        slog(f'[blue]⋊[/blue] [yellow]input[/yellow] [blue]({r_word_count} ╳-[/blue]vars, {len(inp)} len):\n[cyan]{inp}')
         slog(
             f'[green]⁂[/green] [yellow]{model}[/yellow] [red]thinking[/red] ... ',
             end='',
