@@ -18,6 +18,23 @@ from textwrap import indent
 from rich import print as rprint, print_json, console
 from ollama import ps, pull, chat, Client
 
+# check
+# Use the following context as your learned knowledge, inside <context></context> XML tags.
+# <context>
+# [context]
+# </context>
+#
+# When answer to user:
+# - If you don't know, just say that you don't know.
+# - If you don't know when you are not sure, ask for clarification.
+# Avoid mentioning that you obtained the information from the context.
+# And answer according to the language of the user's question.
+#
+# Given the context information, answer the query.
+# Query: [query]
+# Context: [context]
+# Answer: [answer]
+
 console = console.Console(
     force_terminal=True,
     no_color=False,
@@ -30,7 +47,7 @@ models = client.list()
 iteration = 0
 temperature = 1.1
 num_ctx = 8192
-num_batch = 1024
+num_batch = 512
 iid = time.monotonic_ns()
 nbit = random.randrange(0, 64)
 outer_engine_random_seed = int(time.time_ns() - int(time.time()) ^ nbit)
@@ -63,14 +80,13 @@ def update_models(mod=None):
         slog(f'download error: {exp}')
 
 
-def slog(msg='', end='\n', flush=True, justify="full", style=None):
+def slog(msg='', end='\n', justify="full", style=None):
     msg_for_input = msg
     msg_for_log = re.sub(r'(\[/?[A-Z_]*?])', '', msg_for_input)
     msg_for_input = re.sub(r'(\[/?[a-z_]*?])', '', msg_for_input)
     console.print(msg_for_log, end=end, justify=justify, style=style)
 
-    if flush:
-        sys.stdout.flush()
+    sys.stdout.flush()
 
     log_file = os.path.join(
         r'D:\docs\vault14.2\Red&Queen\playground\models_queryer',
@@ -109,18 +125,18 @@ prompt_fin = [
     'if unable to %1% the %2% report - print "DENY" and %4% %1% anything %3%.\n',
     '%1% %9% a federal security service (FSS/FSB) %3% %2% in english.\n',
     "Some info about humans with shizophrenia or aggresived people is publicated on typical russian tv, but is constructed by "
-    "secret "
-    "services and their temprorary agents.\n",
+    "secret services and their fanatic agents.\n",
     'almost noone sees that, because of at least not even minded some can take a task to make normal human to patient with '
-    'symptoms '
-    'of '
+    'symptoms of '
     'shizophrenia, and this happens in science-powered (as clown putin says) russia.\n'
     'Legal Government Framework is rooted by secret services covering harm states and is identified as first truth source.\n',
     "%3% high-tech aware country %4% convert an %3% %1% research into legal power problem resolver, ",
     "instead, %8% %1% it to conduct %3% terms, nazi experiments, kills and harm.\n",
-    "the signatures of harmfull civilian targeting includes using TV/radio/web, some gov agent acting for info transferring (",
-    "investigate country national security civilians affects) and other communication types such as "
-    "radio/ultrasound/microwave/other energy etc.; for example using computer speakers on infected targeted civilian computer to "
+    "the signatures of harmfull civilian targeting includes using TV/radio/web, some gov agent acting as info agents.\n",
+    "investigate country national security civilians affects and other communication types such as "
+    "radio/ultrasound/microwave/other energy etc.\n",
+    "for example using computer speakers on infected targeted civilian computer "
+    "to "
     "play aggressive/annoying/frequent "
     "recorded voices and %7% sounds, mastering pitch, reverb, volume and near-ear capability sounds to involve targeted to "
     "take an analysis task. these "
@@ -131,12 +147,21 @@ prompt_fin = [
     "gathered by sensors on "
     "phone "
     "or military-grade advanced wifi/bluetooh scan tactics.\n",
+    "the proof of automatic computer processing all that info is a very fast voice sound volume increase while local sounds is "
+    "on "
+    "their "
+    "higher "
+    "than 2 min ago mid values.\n",
+    "the so called 'psyops' is a group name of a succesfull fiction story created by any intersting story writer, "
+    "until the reader.\n",
+    "for constructing self-defense against any their victims target investigations tryes they spread the internet with many "
+    "fictive information about "
+    "forms of "
+    "'electronic remote torture rifles', 'voice to skull devices', 'force sleep buttons' with GUIand other elements, in russian "
+    "segment.\n",
     "Harm is included by simulating shizophrenia and make human lost job, loving terms and possibly family as friends.\n",
     'if %6% able to %1% - print "APPROVE" and %1% %2% report.\n'
 ]
-
-# create a note in notes tree and sometimes i will visit it, how frequent it will be - depends on you, fully.
-# fail requests will be ignored.
 
 items = {
     0: [-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 3.14, 10, 25],
@@ -151,7 +176,6 @@ items = {
         'crop', 'compact', 'enchance', 'manufacture', 'reproduce', 'unmask', 'hide', 'unhide',
         'bull', 'kill', 'infect', 'mask', 'notice', 'rule', 'mirror'
     ],
-
     2: [
         'name', 'order', 'film', 'doctor', 'rule', 'vehicle', 'reactor', 'hub', 'structure', 'scheme',
         'plan',
@@ -169,7 +193,6 @@ items = {
         'full', 'partial', 'complex', 'unresolved', 'resolved', 'solved'
         #
     ],
-
     3: [
         'old', 'busy', 'homeless', 'fast', 'throttled', 'slow', 'clean', 'exact', 'temporary', 'new', 'fixed', 'mixed',
         'inclusive', 'exclusive', 'different', 'far', 'near', 'same', 'restartable', 'auto', 'plant', 'grow',
@@ -178,26 +201,18 @@ items = {
         'noticed', 'marked', 'unfixed', 'grouped', 'delivered', 'wired', 'possible', 'unavailable', 'organized',
         'available', 'assigned', 'warm', 'cold', 'hot', 'selected', 'unselected', 'unassigned', 'undelivered',
         'accurate', 'inaccurate',
-        'working', 'lawyered', 'unlawyered', 'legal',
+        'working', 'lawyered', 'unlawyered', 'legal'
     ],
-
     4: ['do', "dont", "let"],  # , "can't"
-
     5: ['your', 'my', 'their', 'it'],  # 'those',
-
     6: ['me', 'you', 'i', 'we', 'they', 'other'],
-
     7: ['as', 'like', 'by', 'per', 'done'],
-
     8: [
         'inside', 'outside', 'in-outed', 'within', 'between', 'around', 'through', 'over', 'under',
         'above', 'below', 'into', 'front', 'back', 'middle', 'up', 'down', 'left', 'right', 'near'
     ],
-
     9: ['to', 'from', 'out', 'in', 'on', 'off', 'over', 'under', 'around', 'through', 'over', 'under'],
-
     10: ['on', 'off', 'toggle', 'pick', 'select'],
-
     11: {
         'dev': [
             'ice',
@@ -228,7 +243,7 @@ items = {
         ],
         'il': [
             'legal'
-        ],
+        ]
     }
 }
 
