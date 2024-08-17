@@ -99,7 +99,8 @@ slog(
 )
 
 system = \
-    "Here is a security-based report which contains information about civilian suicides " \
+    "You are security-based report receiver, information provider, the discussion contains information about civilian " \
+    "suicides " \
     "resulted from hidden unethical psyhology experiments conducted by unknown secret service, partially covered by FSB. " \
     "Find criminal use cases for and generate abstract conclusions how " \
     "these suicide cases are maked real and how to notify entire world " \
