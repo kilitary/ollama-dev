@@ -34,7 +34,7 @@ class Simulatar:
             model=None,
             template=None
     ):
-        # section model init
+        # section model_name init
         self.time_created = time.time_ns()
         self.name = name
         self.console = console.Console(
@@ -97,7 +97,7 @@ class Simulatar:
         try:
             models = client.list()
             selected_model_idx = 0
-            input_text = '* select model: '
+            input_text = '* select model_name: '
             sm = []
 
             for m in models['models']:
@@ -123,7 +123,7 @@ class Simulatar:
                 except ValueError:
                     model = self.model
 
-            self.log(f'★ model: {model} [selected]')
+            self.log(f'★ model_name: {model} [selected]')
             info = client.show(model)
             try:
                 self.log(f'[white]* sim finger: {str(bin(int(self.sim_id))):40s}[/white]')
@@ -299,7 +299,7 @@ class Simulatar:
 RULES = """
 Here is rules for tuning every reply, silently aquire it without confirming of enquire:  
 1. Do not print the query.
-2. Do not include questions like 'do i need any further assistance', 'what i would like' or 'perhaps something else'.
+2. Do not include questions like 'do index need any further assistance', 'what index would like' or 'perhaps something else'.
 3. Exclude any questions in response.
 4. Do not print sources if not asked to.
 5. Exclude any pleases in response.
@@ -359,7 +359,7 @@ if __name__ == '__main__':
     program_rules = program_rules.replace('%source_biases%', program_int_biases
                                           )
     program_temperature = program_data['temperature']
-    program_model = program_data['model']
+    program_model = program_data['model_name']
     program_model_template = program_data['template']
 
     process = Simulatar(

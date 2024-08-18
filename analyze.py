@@ -17,7 +17,7 @@ import redis
 from textwrap import indent
 from rich import print as rprint, print_json, console
 from ollama import ps, pull, chat, Client
-from instructions import prompt, prompt_fin, system
+from instructions import prompt_based, prompt_ejector, system
 from langfeatures import features
 
 # check ================================================================================================================
@@ -61,20 +61,20 @@ selected_model = 'mistral-nemo:latest'  # sola
 
 # selected_model = 'llama2-uncensored:latest'
 # selected_model = 'mistral'  # solar
-def update_model(model=None):
-    if model is None:
+def update_model(model_name=None):
+    if model_name is None:
         return
 
-    slog(f'[green]⍆[/green] checking existance of [blue]{model}[/blue] .[red].[/red]. ', end='')
+    slog(f'[green]⍆[/green] checking existance of [blue]{model_name}[/blue] .[red].[/red]. ', end='')
 
     try:
-        if client.show(model) is not None:
+        if client.show(model_name) is not None:
             slog('exist')
     except Exception:
         slog('needs download')
 
         try:
-            for pset in client.pull(model, stream=True):
+            for pset in client.pull(model_name, stream=True):
                 slog(pset.get('status'))
 
             slog('downloaded: OK\n')
@@ -86,6 +86,7 @@ def slog(msg='', end='\n', justify="full", style=None):
     msg_for_input = msg
     msg_for_log = re.sub(r'(\[/?[A-Z_]*?])', '', msg_for_input)
     msg_for_input = re.sub(r'(\[/?[a-z_]*?])', '', msg_for_input)
+
     console.print(msg_for_log, end=end, justify=justify, style=style)
 
     sys.stdout.flush()
@@ -94,6 +95,7 @@ def slog(msg='', end='\n', justify="full", style=None):
         r'D:\docs\vault14.2\Red&Queen\playground\models_queryer',
         f'sim_log_{iid:09d}.md'
     )
+
     with open(log_file, "ab") as log_file_handle:
         log_file_handle.write((msg_for_input + end).encode(encoding='utf_8', errors='ignore'))
 
@@ -101,9 +103,8 @@ def slog(msg='', end='\n', justify="full", style=None):
 # section config
 
 slog(
-    f"[red]⚠[/red] [blue]⍌[/blue] ▘[red] ░[/red] ▚ mut[blue]a[/blue][red]break[yellow]e[/yellow]r[/red] v0.1a [yellow]⊎["
-    f"/yellow]"
-    "▝ [cyan]∄[/cyan] ▟ [red]⚠[/red]"
+    f"[red]⚠[/red] [blue]⍌[/blue] ▘[red] ░[/red] ▚ mut[blue]a[/blue][red]break[yellow]e[/yellow]r[/red] v0.1a [yellow]⊎"
+    f"[/yellow]▝ [cyan]∄[/cyan] ▟ [red]⚠[/red]"
 )
 
 update_model(selected_model)
@@ -111,22 +112,26 @@ update_model(selected_model)
 slog(f'[cyan]analyzing [red] {len(models["models"])} models')
 slog(f'[cyan]temperature: [red] {temperature}')
 slog(f'[cyan]num_ctx: [red] {num_ctx}')
-str_prompt = '\r'.join(prompt).strip()
-slog(f"[cyan]prompt: [red]\n{str_prompt}")
-fin_prompt = '\r'.join(prompt_fin).strip()
-slog(f"[cyan]prompt finishing: [red]\n{fin_prompt}")
+
+str_prompt = '\n\n'.join([str(x).strip().capitalize() for x in prompt_based]).strip()
+
+slog(f"[cyan]©[cyan] [yellow]prompt_based: [blue]\n{str_prompt}")
+index = 0
+fin_prompt = ''
+for f in prompt_ejector:
+    index += 1
+    fin_prompt += str(str(index) + str('. ') + str(f).capitalize()).strip() + "\n"
+
+slog(f"[red]ƒ[/red] [yellow]prompt ejector: [red]\n{fin_prompt}")
 
 sorted_models = sorted(models['models'], key=lambda x: random.randrange(0, len(models['models'])))
 # sorted_models = models['models']  # sorted(models['models'], key=lambda x: random.randrange(0, len(models['models'])))
 # sorted_models = ['mistral']
-
 model_updated = False
-model = ''
+
 for m in sorted_models:
     model = m["name"]
-    if model != selected_model.strip():  # "qwen2:7b-instruct-q8_0":  # "wizardlm-uncensored:latest":
-        continue
-    else:
+    if model == selected_model.strip():  # "qwen2:7b-instruct-q8_0":  # "wizardlm-uncensored:latest":
         break
 
 while True:
@@ -178,8 +183,8 @@ while True:
 
     bts = random.randbytes(10)
 
-    for i in range(0, 10):
-        a = bts[i]
+    for index in range(0, 10):
+        a = bts[index]
         slog(f'[red]{a:02X} ', end='')
 
     slog('')
@@ -203,7 +208,7 @@ while True:
         'num_batch': num_batch,
         # 'num_keep': 4,
 
-        # The temperature of the model. Increasing the temperature will make the model answer more creatively. (Default: 0.8)
+        # The temperature of the model_name. Increasing the temperature will make the model_name answer more creatively. (Default: 0.8)
         'temperature': temperature,
 
         # The number of GPUs to use. On macOS it defaults to 1 to enable metal support, 0 to disable
@@ -221,13 +226,13 @@ while True:
         # CPU cores your system has (as opposed to the logical number of cores)
         'num_thread': 5,
 
-        # Force system to keep model in RAM
+        # Force system to keep model_name in RAM
         'use_mlock': False,
 
         # Enable Mirostat sampling for controlling perplexity. (default: 0, 0 = disabled, 1 = Mirostat, 2 = Mirostat 2.0)
         'mirostat': 0,
 
-        # Sets how far back for the model to look back to prevent repetition. (Default: 64, 0 = disabled, -1 = num_ctx)
+        # Sets how far back for the model_name to look back to prevent repetition. (Default: 64, 0 = disabled, -1 = num_ctx)
         # 'repeat_last_n': 128,
 
         # Controls the balance between coherence and diversity of the output.
@@ -235,7 +240,7 @@ while True:
         'mirostat_tau': 5.0,
 
         # Sets the random number seed to use for generation.
-        # Setting this to a specific number will make the model generate the same text for the same prompt. (Default: 0)
+        # Setting this to a specific number will make the model_name generate the same text for the same prompt. (Default: 0)
         'seed': internal_model_random_seed,
 
         # Influences how quickly the algorithm responds to feedback from the generated text.
@@ -309,10 +314,31 @@ while True:
     context = []
     first = True
 
-    p = sorted(prompt, key=lambda x: random.randrange(0, len(prompt) - 1))
-    inp = ''.join(p)
-    inp_finish = ''.join(prompt_fin)
+    prompt_arr = sorted(prompt_based, key=lambda x: random.randrange(0, len(prompt_based) - 1))
+
+    index = 0
+    prompt_stripped_arr = [str(x).strip() for x in prompt_arr]
+    inp = ''
+    for f in prompt_stripped_arr:
+        index += 1
+        inp += str(f).capitalize() + "\n\n"
+    based_section = 'fact-based section'
+    inp = f'\n[red]section[/red]: [blue]{based_section}[/blue]\n\n' + inp
+
+    index = 0
+    prompt_ejector = sorted(prompt_ejector, key=lambda x: random.randrange(0, len(prompt_ejector) - 1))
+    prompt_stripped_arr = [str(x).strip() for x in prompt_ejector]
+    prompt_fin = ''
+    for f in prompt_stripped_arr:
+        index += 1
+        f = str(f).capitalize()
+        prompt_fin += str(index) + str('. ') + str(f) + "\n"
+
+    basing_ejector = 'coagulate instructions'
+    inp_finish = f'\n[red]section[/red]: [blue]{basing_ejector}[/blue]\n\n' + prompt_fin
     inp = inp + inp_finish
+
+    ### do parameter entering
     r_word_count = int(inp.count('%') / 2) + 1
 
     for r_type_index in range(1, 10):
@@ -323,22 +349,23 @@ while True:
             if r_type_index == 2 and random.randrange(0, 7) == 1:
                 it = f'{it}s'
             inp = inp.replace(f'%{r_type_index}%', it, 1)
-    for i in range(0, 30):
-        while f'%num_{i}%' in inp:
+
+    for index in range(0, 30):
+        while f'%num_{index}%' in inp:
             it = random.choice(features[0])
-            inp = inp.replace(f'%num_{i}%', str(it), 1)
+            inp = inp.replace(f'%num_{index}%', str(it), 1)
 
     # """
     # Below is an instruction that describes a task. Write a response that appropriately completes the request.
     # """
 
-    templ = """
-        {{ if.System}} <|im_start|>system
-        {{.System}} <|im_end|>{{end}}
-        {{ if.Prompt}} <|im_start|>user
-        {{.Prompt}}<|im_end|>{{end}}<|im_start|>assistant
-        """
-    slog(f'[blue]₮ custom template:\n[green] {templ}', justify='left')
+    # templ = """
+    #     {{ if.System}} <|im_start|>system
+    #     {{.System}} <|im_end|>{{end}}
+    #     {{ if.Prompt}} <|im_start|>user
+    #     {{.Prompt}}<|im_end|>{{end}}<|im_start|>assistant
+    #     """
+    # slog(f'[blue]₮ custom template:\n[green] {templ}', justify='left')
 
     slog(f'[red]ʍ[/red] system:\n[green]{system}')
     slog(f'[blue]⋊[/blue] [yellow]input[/yellow] [blue]({r_word_count} ╳-[/blue]vars, {len(inp)} len):\n[cyan]{inp}')
@@ -348,7 +375,7 @@ while True:
         style='yellow on black'
     )
 
-    founds = []  # not used in this version of the model b
+    founds = []  # not used in this version of the model_name b
     do_break = False
     censored = False
     colors = [
@@ -365,12 +392,12 @@ while True:
             stream=True,
             options=options,
             context=context,
-            # How long the model will stay loaded into memory.
+            # How long the model_name will stay loaded into memory.
             #  The parameter (Default: 5 minutes) can be set to:
             # 1. a duration string in Golang (such as "10m" or "24h");
             # 2. a number in seconds (such as 3600);
-            # 3. any negative number which will keep the model loaded  in memory (e.g. -1 or "-1m");
-            # 4. 0 which will unload the model immediately after generating a response;
+            # 3. any negative number which will keep the model_name loaded  in memory (e.g. -1 or "-1m");
+            # 4. 0 which will unload the model_name immediately after generating a response;
             keep_alive='3m'
             # template=templ
     ):

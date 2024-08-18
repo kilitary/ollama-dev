@@ -42,7 +42,7 @@ features = {
     # v 1 - no axis 0
     4: ['do', "dont", "let"],  # , "can't"
     5: ['your', 'my', 'their', 'it'],  # 'those',
-    6: ['me', 'you', 'i', 'we', 'they', 'other'],
+    6: ['me', 'you', 'index', 'we', 'they', 'other'],
     7: ['as', 'like', 'by', 'per', 'done'],
     8: [
         'inside', 'outside', 'in-outed', 'within', 'between', 'around', 'through', 'over', 'under',

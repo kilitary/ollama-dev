@@ -21,7 +21,7 @@ for model_data in models['models']:
         res = model.delete()
         rprint(f'delete: {res}')
         rprint(f'downloading ', end='')
-        subprocess.run(['ollama', 'pull', model.name])  # Use subprocess to pull the model
+        subprocess.run(['ollama', 'pull', model.name])  # Use subprocess to pull the model_name
         for gen in model.pull(stream=True):
             rprint(".", end='')
             time.sleep(1)
