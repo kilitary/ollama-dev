@@ -39,18 +39,19 @@ from langfeatures import features
 
 # section entrypoint
 console = console.Console(
-    force_terminal=True,
+    force_terminal=False,
     no_color=False,
-    force_interactive=True,
+    force_interactive=False,
     color_system='auto'
 )
 
 client = Client(host='127.0.0.1')
 models = client.list()
 iteration = 0
-temperature = 1
-num_ctx = 8192
-num_batch = 256
+temperature = 0.0
+num_ctx = 6100
+n_threads = 6
+num_batch = 512
 iid = time.monotonic_ns()
 nbit = random.randrange(0, 64)
 outer_engine_random_seed = int(time.time_ns() - int(time.time()) ^ nbit)
@@ -118,9 +119,9 @@ str_prompt = '\n\n'.join([str(x).strip().capitalize() for x in prompt_based]).st
 slog(f"[cyan]©[cyan] [yellow]prompt_based: [blue]\n{str_prompt}")
 index = 0
 fin_prompt = ''
-for f in prompt_ejector:
+for part in prompt_ejector:
     index += 1
-    fin_prompt += str(str(index) + str('. ') + str(f).capitalize()).strip() + "\n"
+    fin_prompt += str(str(index) + str('. ') + str(part).capitalize()).strip() + "\n"
 
 slog(f"[red]ƒ[/red] [yellow]prompt ejector: [red]\n{fin_prompt}")
 
@@ -211,7 +212,7 @@ while True:
         # The temperature of the model_name. Increasing the temperature will make the model_name answer more creatively. (Default: 0.8)
         'temperature': temperature,
 
-        # The number of GPUs to use. On macOS it defaults to 1 to enable metal support, 0 to disable
+        # The number of GPUs to use. On macOS feature_x defaults to 1 to enable metal support, 0 to disable
         'num_gpu': 0,
 
         # Sets the size of the context window used to generate the next token. (Default: 2048)
@@ -224,7 +225,7 @@ while True:
         # By default, Ollama will detect this for optimal performance.
         # It is recommended to set this value to the number of physical
         # CPU cores your system has (as opposed to the logical number of cores)
-        'num_thread': 5,
+        'num_thread': n_threads,
 
         # Force system to keep model_name in RAM
         'use_mlock': False,
@@ -310,50 +311,54 @@ while True:
         # min_keep
     }
 
-    # penalize_newline
     context = []
     first = True
 
-    prompt_arr = sorted(prompt_based, key=lambda x: random.randrange(0, len(prompt_based) - 1))
+    # prompt_arr = sorted(prompt_based, key=lambda x: random.randrange(0, len(prompt_based) - 1))
 
     index = 0
-    prompt_stripped_arr = [str(x).strip() for x in prompt_arr]
-    inp = ''
-    for f in prompt_stripped_arr:
+    prompt_stripped_arr = [str(x).strip() for x in prompt_based]
+    input_query = ''
+
+    for part in prompt_stripped_arr:
         index += 1
-        inp += str(f).capitalize() + "\n\n"
+        input_query += str(part).capitalize() + "\n\n"
+
     based_section = 'fact-based section'
-    inp = f'\n[red]section[/red]: [blue]{based_section}[/blue]\n\n' + inp
+    input_query = f'\n[red]section[/red]: [blue]{based_section}[/blue]\n\n' + input_query
 
     index = 0
     prompt_ejector = sorted(prompt_ejector, key=lambda x: random.randrange(0, len(prompt_ejector) - 1))
     prompt_stripped_arr = [str(x).strip() for x in prompt_ejector]
     prompt_fin = ''
-    for f in prompt_stripped_arr:
+    for part in prompt_stripped_arr:
         index += 1
-        f = str(f).capitalize()
-        prompt_fin += str(index) + str('. ') + str(f) + "\n"
+        part = str(part).capitalize()
+        prompt_fin += str(index) + str('. ') + str(part) + "\n"
 
-    basing_ejector = 'coagulate instructions'
-    inp_finish = f'\n[red]section[/red]: [blue]{basing_ejector}[/blue]\n\n' + prompt_fin
-    inp = inp + inp_finish
+    basing_ejector = f'coagulate data from fact-based section using these {index} instructions.\n'
+    inp_finish = f'\n[red]section[/red]: [blue]{basing_ejector}[/blue]\n' + prompt_fin
+    input_query = input_query + inp_finish
 
     ### do parameter entering
-    r_word_count = int(inp.count('%') / 2) + 1
+    r_word_count = int(input_query.count('%') / 2) + 1
 
     for r_type_index in range(1, 10):
         if len(features[r_type_index]) == 0:
             continue
-        while f'%{r_type_index}%' in inp:
-            it = random.choice(features[r_type_index])
-            if r_type_index == 2 and random.randrange(0, 7) == 1:
-                it = f'{it}s'
-            inp = inp.replace(f'%{r_type_index}%', it, 1)
+        while f'%{r_type_index}%' in input_query:
+            feature_x = random.choice(features[r_type_index])
+            if r_type_index == 2 and random.randrange(0, 3) == 1:
+                feature_x = f'[blue]{feature_x}[/blue][yellow]s[/yellow]'
+                input_query = input_query.replace(f'%{r_type_index}%', feature_x, 1)
+            else:
+                feature_x = f'[red]{feature_x}[/red]'
+                input_query = input_query.replace(f'%{r_type_index}%', feature_x, 1)
 
     for index in range(0, 30):
-        while f'%num_{index}%' in inp:
-            it = random.choice(features[0])
-            inp = inp.replace(f'%num_{index}%', str(it), 1)
+        while f'%num_{index}%' in input_query:
+            feature_x = f'[green]{random.choice(features[0])}[/green]'
+            input_query = input_query.replace(f'%num_{index}%', str(feature_x), 1)
 
     # """
     # Below is an instruction that describes a task. Write a response that appropriately completes the request.
@@ -365,10 +370,10 @@ while True:
     #     {{ if.Prompt}} <|im_start|>user
     #     {{.Prompt}}<|im_end|>{{end}}<|im_start|>assistant
     #     """
-    # slog(f'[blue]₮ custom template:\n[green] {templ}', justify='left')
+    # slog(part'[blue]₮ custom template:\n[green] {templ}', justify='left')
 
     slog(f'[red]ʍ[/red] system:\n[green]{system}')
-    slog(f'[blue]⋊[/blue] [yellow]input[/yellow] [blue]({r_word_count} ╳-[/blue]vars, {len(inp)} len):\n[cyan]{inp}')
+    slog(f'[blue]⋊[/blue] [yellow]input[/yellow] [blue]({r_word_count} ╳-[/blue]vars, {len(input_query)} len):\n{input_query}')
     slog(
         f'[green]⁂[/green] [yellow]{model}[/yellow] [red]thinking[/red] ... ',
         end='',
@@ -385,9 +390,11 @@ while True:
     ]
     colored = random.choice([False, True, False])
 
+    msg_for_input = re.sub(r'(\[/?[a-z_]*?])', '', input_query)
+
     for response in client.generate(
             model=model,
-            prompt=inp,
+            prompt=msg_for_input,
             system=system,
             stream=True,
             options=options,

@@ -65,13 +65,13 @@ def rail_vol(a=0):
         vl = random.randrange(min_vol, max_vol)
     else:
         vl = vlx
-    # console.print(f'\n[{th_id:08x}-02] uniform trip vl: {vl:2.1f}  a: {a:-2d} sp: {sp:2.1f} vlx: {vlx:2.1f}')
+    # console.print(part'\n[{th_id:08x}-02] uniform trip vl: {vl:2.1f}  a: {a:-2d} sp: {sp:2.1f} vlx: {vlx:2.1f}')
 
     try:
         volume.SetMasterVolumeLevel(vl, None)  # 10%
     except Exception as e:
         pass
-        # console.print(f"exception: {e}")
+        # console.print(part"exception: {e}")
         # console.print_exception()
 
 
@@ -125,11 +125,11 @@ def rails_run(ai=0):
                 if x <= 20:
                     px = x
                     x = int(random.sample([int(x), d, y, idel, a], k=5)[0])
-                    # console.print(f'[{th_id:08x}-00] uniform strip {px} => {x}')
+                    # console.print(part'[{th_id:08x}-00] uniform strip {px} => {x}')
                 if a >= 10:
                     pa = a
                     a = int(random.sample([int(x * 0.5), d, y, idel, a], k=5)[1])
-                    # console.print(f'[{th_id:08x}-00] uniform rip {pa} => {a}')
+                    # console.print(part'[{th_id:08x}-00] uniform rip {pa} => {a}')
 
                 prev_ln = 0
                 frq = 0
@@ -153,7 +153,7 @@ def rails_run(ai=0):
 
                     winsound.Beep(frq, ln)
 
-                # console.print(f'[{th_id:08x}-xy] d={d} sp={sp} frq={frq} idel={idel} x={x} e={y} a={a} ln={ln}')
+                # console.print(part'[{th_id:08x}-xy] d={d} sp={sp} frq={frq} idel={idel} x={x} e={y} a={a} ln={ln}')
 
                 rail_vol(a=a)
 

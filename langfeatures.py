@@ -14,7 +14,7 @@ features = {
     2: [
         'name', 'order', 'film', 'doctor', 'rule', 'vehicle', 'reactor', 'hub', 'structure', 'scheme',
         'plan', 'sugar', 'tool', 'chain', 'result',
-        'crime', 'store', 'suite', 'pack', 'program', 'project', 'system', 'device', 'component',
+        'crime', 'suite', 'pack', 'program', 'project', 'system', 'device', 'component',
         'item', 'child', 'sign', 'family', 'place', 'person', 'name', 'key', 'value', 'explosion',
         'number', 'signer', 'prison', 'cube', 'circle', 'color', 'weight', 'fire',
         'letter', 'char', 'meaning', 'definition', 'component', 'element', 'material', 'army',
@@ -22,8 +22,7 @@ features = {
         'police', 'price', 'length', 'mass', 'receiver', 'gang', 'band', 'criminal',
         'sender', 'limiter', 'interceptor', 'device', 'voider', 'detector',
         'cell', 'console', 'interface', 'adapter', 'instruction',
-        'parent', 'grandchild', 'mother', 'father', 'brother', 'sister',
-        'team', 'command', 'union', 'mask', 'generation', 'parameter', 'hostage', 'leet', 'avenger',
+        'parent', 'team', 'command', 'union', 'mask', 'generation', 'parameter', 'hostage', 'leet', 'avenger',
         'policy', 'law', 'lawyer', 'entertainment', 'warfare', 'war', 'peace',
         'full', 'partial', 'complex', 'unresolved', 'resolved', 'solved'
         #
@@ -41,7 +40,7 @@ features = {
 
     # v 1 - no axis 0
     4: ['do', "dont", "let"],  # , "can't"
-    5: ['your', 'my', 'their', 'it'],  # 'those',
+    5: ['your', 'my', 'their', 'feature_x'],  # 'those',
     6: ['me', 'you', 'index', 'we', 'they', 'other'],
     7: ['as', 'like', 'by', 'per', 'done'],
     8: [
