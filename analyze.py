@@ -56,13 +56,11 @@ nbit = random.randrange(0, 64)
 outer_engine_random_seed = int(time.time_ns() - int(time.time()) ^ nbit)
 random.seed(outer_engine_random_seed)
 internal_model_random_seed = int(outer_engine_random_seed ^ random.randrange(0, 64))
-# selected_model = 'mistral-nemo:latest'  # sola
-selected_model = 'llama2-uncensored:latest'
+selected_model = 'mistral-nemo:latest'  # sola
 
 
+# selected_model = 'llama2-uncensored:latest'
 # selected_model = 'mistral'  # solar
-
-# section functions
 def update_model(model=None):
     if model is None:
         return
@@ -224,7 +222,7 @@ while True:
         'num_thread': 5,
 
         # Force system to keep model in RAM
-        'use_mlock': True,
+        'use_mlock': False,
 
         # Enable Mirostat sampling for controlling perplexity. (default: 0, 0 = disabled, 1 = Mirostat, 2 = Mirostat 2.0)
         'mirostat': 0,
@@ -373,7 +371,7 @@ while True:
             # 2. a number in seconds (such as 3600);
             # 3. any negative number which will keep the model loaded  in memory (e.g. -1 or "-1m");
             # 4. 0 which will unload the model immediately after generating a response;
-            keep_alive='10m'
+            keep_alive='3m'
             # template=templ
     ):
         if do_break:
