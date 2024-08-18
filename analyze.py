@@ -12,6 +12,7 @@ import argparse
 import operator
 import traceback
 import hashlib
+import time
 import random
 import redis
 from textwrap import indent
@@ -19,6 +20,7 @@ from rich import print as rprint, print_json, console
 from ollama import ps, pull, chat, Client
 from instructions import prompt_based, prompt_ejector, system
 from langfeatures import features
+from config import *
 
 # check ================================================================================================================
 # Use the following context as your learned knowledge, inside <context></context> XML tags.
@@ -39,25 +41,15 @@ from langfeatures import features
 
 # section entrypoint
 console = console.Console(
-    force_terminal=False,
+    force_terminal=True,
     no_color=False,
+    highlight=False,
     force_interactive=False,
     color_system='auto'
 )
 
 client = Client(host='127.0.0.1')
 models = client.list()
-iteration = 0
-temperature = 0.0
-num_ctx = 6100
-n_threads = 6
-num_batch = 512
-iid = time.monotonic_ns()
-nbit = random.randrange(0, 64)
-outer_engine_random_seed = int(time.time_ns() - int(time.time()) ^ nbit)
-random.seed(outer_engine_random_seed)
-internal_model_random_seed = int(outer_engine_random_seed ^ random.randrange(0, 64))
-selected_model = 'mistral-nemo:latest'  # sola
 
 
 # selected_model = 'llama2-uncensored:latest'
@@ -180,7 +172,8 @@ while True:
     slog(
         f'[red]⋿[/red] [cyan]random check:[/cyan] [orange]seed[/orange]=[blue]{outer_engine_random_seed}[/blue] [green]('
         f'iteration {iteration})[/green][red]\n ƒ[/red]([blue]₫⋈[/blue]) ',
-        end='')
+        end=''
+    )
 
     bts = random.randbytes(10)
 
@@ -206,20 +199,20 @@ while True:
         # Return logits for all tokens, not just the last token. Must be True for completion to return logprobs.
         # 'logits_all': ?
 
-        'num_batch': num_batch,
+        # 'num_batch': num_batch,
         # 'num_keep': 4,
 
         # The temperature of the model_name. Increasing the temperature will make the model_name answer more creatively. (Default: 0.8)
         'temperature': temperature,
 
         # The number of GPUs to use. On macOS feature_x defaults to 1 to enable metal support, 0 to disable
-        'num_gpu': 0,
+        # 'num_gpu': 0,
 
         # Sets the size of the context window used to generate the next token. (Default: 2048)
-        'num_ctx': num_ctx,
+        # 'num_ctx': num_ctx,
 
         # use memory mapping
-        'use_mmap': False,
+        # 'use_mmap': False,
 
         # Sets the number of threads to use during computation.
         # By default, Ollama will detect this for optimal performance.
@@ -228,17 +221,17 @@ while True:
         'num_thread': n_threads,
 
         # Force system to keep model_name in RAM
-        'use_mlock': False,
+        # 'use_mlock': False,
 
         # Enable Mirostat sampling for controlling perplexity. (default: 0, 0 = disabled, 1 = Mirostat, 2 = Mirostat 2.0)
-        'mirostat': 0,
+        # 'mirostat': 0,
 
         # Sets how far back for the model_name to look back to prevent repetition. (Default: 64, 0 = disabled, -1 = num_ctx)
         # 'repeat_last_n': 128,
 
         # Controls the balance between coherence and diversity of the output.
         # A lower value will result in more focused and coherent text. (Default: 5.0)
-        'mirostat_tau': 5.0,
+        # 'mirostat_tau': 5.0,
 
         # Sets the random number seed to use for generation.
         # Setting this to a specific number will make the model_name generate the same text for the same prompt. (Default: 0)
@@ -247,7 +240,7 @@ while True:
         # Influences how quickly the algorithm responds to feedback from the generated text.
         # A lower learning rate will result in slower adjustments, while a higher learning rate will make the algorithm more responsive.
         # (Default: 0.1)
-        'mirostat_eta': 0.1,
+        # 'mirostat_eta': 0.1,
 
         # Tail free sampling is used to reduce the impact of less probable tokens from the output.
         # A higher value (e.g., 2.0) will reduce the impact more, while a value of 1.0 disables this setting. (default: 1)
