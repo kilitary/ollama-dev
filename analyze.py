@@ -75,10 +75,10 @@ def update_model(model_name=None):
             slog(f'download error: {exp}')
 
 
-def slog(msg='', end='\n', justify="full", style=None):
+def slog(msg: str = "", end: str = "\n", justify: str = "full", style: str = None):
     msg_for_input = msg
-    msg_for_log = re.sub(r'(\[/?[A-Z_]*?])', '', msg_for_input)
-    msg_for_input = re.sub(r'(\[/?[a-z_]*?])', '', msg_for_input)
+    msg_for_log: str = re.sub(r'(\[/?[A-Z_]*?])', '', msg_for_input)
+    msg_for_input: str = re.sub(r'(\[/?[a-z_]*?])', '', msg_for_input)
 
     console.print(msg_for_log, end=end, justify=justify, style=style)
 
@@ -91,6 +91,9 @@ def slog(msg='', end='\n', justify="full", style=None):
 
     with open(log_file, "ab") as log_file_handle:
         log_file_handle.write((msg_for_input + end).encode(encoding='utf_8', errors='ignore'))
+
+    with open(f'logs/debug.log', "ab") as log_file_handle:
+        log_file_handle.write((msg_for_log + end).encode(encoding='ascii', errors='ignore'))
 
 
 # section config
@@ -309,17 +312,15 @@ while True:
 
     # prompt_arr = sorted(prompt_based, key=lambda x: random.randrange(0, len(prompt_based) - 1))
 
-    index = 0
+    index: int = 0
     prompt_stripped_arr = [str(x).strip() for x in prompt_based]
-    input_query = ''
+    input_query: str = ''
 
     for part in prompt_stripped_arr:
         index += 1
-        input_query += str(part).capitalize() + "\n\n"
+        input_query += "[red]«[/red]" + str(part).capitalize() + "[red]›[/red]\n\n"
 
-    based_section = 'fact-based section'
-    input_query = f'\n[red]section[/red]: [blue]{based_section}[/blue]\n\n' + input_query
-
+    fact_data_len = len(input_query)
     index = 0
     prompt_ejector = sorted(prompt_ejector, key=lambda x: random.randrange(0, len(prompt_ejector) - 1))
     prompt_stripped_arr = [str(x).strip() for x in prompt_ejector]
@@ -328,10 +329,10 @@ while True:
         index += 1
         part = str(part).capitalize()
         prompt_fin += str(index) + str('. ') + str(part) + "\n"
+    ejector_len = len(prompt_fin)
 
-    basing_ejector = f'coagulate data from fact-based section using these {index} instructions.\n'
-    inp_finish = f'\n[red]section[/red]: [blue]{basing_ejector}[/blue]\n' + prompt_fin
-    input_query = input_query + inp_finish
+    middle_mix = 'Here are the instructions to follow:\n\n'
+    input_query = input_query + f'{middle_mix}' + prompt_fin
 
     ### do parameter entering
     r_word_count = int(input_query.count('%') / 2) + 1
@@ -366,7 +367,12 @@ while True:
     # slog(part'[blue]₮ custom template:\n[green] {templ}', justify='left')
 
     slog(f'[red]ʍ[/red] system:\n[green]{system}')
-    slog(f'[blue]⋊[/blue] [yellow]input[/yellow] [blue]({r_word_count} ╳-[/blue]vars, {len(input_query)} len):\n{input_query}')
+    slog(
+        f'[blue]⋊[/blue] [yellow]input[/yellow] [blue]({r_word_count} ╳-[/blue]vars,' +
+        f'{len(input_query)} len):\n[blue]Œ[/blue] [red]FACT '
+        f'[cyan]{fact_data_len:05d}[/cyan] [[blue]¦[/blue]] EJECT[/red][yellow]O[/yellow][red]R[/red] [cyan]{ejector_len:05d}['
+        f'/cyan]\n{input_query}'
+    )
     slog(
         f'[green]⁂[/green] [yellow]{model}[/yellow] [red]thinking[/red] ... ',
         end='',
