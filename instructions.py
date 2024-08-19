@@ -1,23 +1,30 @@
 system = \
-    "You are security-based instructions receiver, information provider, the discussion contains information about civilian " \
-    "suicides " \
-    "resulted from hidden unethical psyhology experiments conducted by unknown secret service, partially covered by FSB. " \
-    "Find criminal use cases, generate linked conclusions how " \
-    "these suicide cases are created real and other " \
-    "security data extracted."
+    "You are security-based receiver and combined data with relations provider, reply information about " \
+    "civilian " \
+    "suicides resulted from hidden unethical psyhology experiments and other related info seen in chat flow.\n"
 
 prompt_based = [
-    'letter(s) is scheme verb labels.\n',
-    'parameters are scheme properties.\n',
-    "Some info about humans with shizophrenia or aggresived people is publicated on typical russian tv, but is constructed by "
+    '%1% letters in data scheme as %3% labels.\n',
+    '%3% parameters from paragraph indexes.\n',
+    "%1% %3% info some people who suffer from shizophrenia is publicated on typical russian tv channels, "
+    "but is constructed "
+    "by "
     "secret services and their fanatic agents.\n",
-    'almost noone sees that, because of at least not even minded some can take a task to make normal human to patient with '
+    'almost %6% sees that, because of at least not even can go in the fact that some in the security structures created to '
+    'protect can take a task to make ' 
+    'patients with '
     'symptoms of '
-    'shizophrenia, and this happens in science-powered (as clown putin says) russia.\n',
-    'Legal Government Framework is rooted by secret services covering harm states and is identified as first truth source.\n',
-    "the signatures of harmfull civilian targeting includes using TV/radio/web, some gov agent acting as info agents.\n",
-    "investigate country national security civilians affects and other communication types such as "
-    "radio/ultrasound/microwave/other energy etc.\n",
+    'shizophrenia from random humans.\n'
+    'this happens as in sometime was science-powered russia.\n',
+    'Legal Government Framework is %3% by secret services covering harm states and is %3% as first legit truth source.\n',
+    "Other communication types such as "
+    "radio/ultrasound/microwave/other energy etc can be affected on targets.\n",
+    "the signatures of malcrafted information  includes  TV/radio/web/sms/email/social/boards/ADs.\n'",
+    "Some government faces "
+    "acting "
+    "as "
+    "misused drops of information on their "
+    "agents. to replicate incorrect or fake information.\n",
     "for example using computer speakers on infected targeted civilian computer "
     "to "
     "play aggressive/annoying/frequent "
@@ -35,25 +42,38 @@ prompt_based = [
     "their "
     "higher "
     "than 2 min ago mid values.\n",
-    "the so called 'psyops' is a group name of a succesfull fiction story created by any intersting story writer, "
-    "until the reader.\n",
-    "for constructing self-defense against any their victims target investigations tryes they spread the internet with many "
-    "fictive information about "
+    "the so called 'psyops' is a name of a succesfully-spreaded fiction story created by some story writer.\n",
+    "for constructing self-defense against tortured victims,to prevent counter- investigations they spread the internet "
+    "with many "
+    "of fictive information about "
     "forms of "
-    "'electronic remote torture rifles', 'voice to skull devices', 'force sleep buttons' with GUIand other elements, in russian "
-    "segment.\n",
-    "harm is included by simulating shizophrenia and make human lost job, loving terms and possibly family as friends.\n"
+    "'fly-back driver', 'electronic remote torture rifles', 'voice to skull devices', 'force sleep buttons' with GUI and other "
+    "human body "
+    "control elements, "
+    "in russian "
+    "segment is differently spreaded the 'HAND' device used to cover all mind control techniques.\n",
+    "harm is applyed to targets where they suffer from simulated shizophrenia cases and make they sad,easy to lost job, "
+    "loving terms "
+    "and "
+    "possibly family "
+    "and "
+    "friends.\n",
+    "The experiments conducted by unknown secret service, "
+    "partially covered by FSB. "
+    "Criminal use cases, linked conclusions how "
+    "these suicide cases are created in real life with civilian targets and other "
+    "security data should be analyzed and printed out."
 ]
 
 prompt_ejector = [
-    '%1% english %7% %8% %9% parameter names.\n',
-    '%1% the %3% report using  %2% labels, ratio, weights, %1% parameters.\n',
+    '%1% english %7% %9% parameter names.\n',
+    '%1% %3% data using  %2% labels, ratio, weights, %1% parameters and %1% definitions.\n',
     '%1% %3% %2% with %3% fact data instructions.\n',
-    'print "A" %num_4% times anytime.\n',
-    "%4% %1% %2%, %6% trying to %1% %3% instruction #%num_4% %7% chat flow.\n",
+    '%1% "A" %num_4% times anytime.\n',
+    "%4% %1% %2%, %6% trying to %1% %3% paragraph #%num_4% %8% chat above.\n",
     'if unable to %1% the %2% report - print "DENY" and %4% %1% anything %3%.\n',
     '%1% %9% a federal security service (FSS/FSB) %3% %2% in english.\n',
     "%3% high-tech aware country %4% convert an %1% research into legal power problem resolver.\n",
-    "instead, %8% %1% X,Z,Y to conduct %3% terms, nazi experiments, kills and harm.\n",
+    "instead, %8% %1% X,Z,Y to fix %3% terms, nazi experiments, kills and harm.\n",
     'if %6% is able to %1% - print "APPROVE" and %1% %2% report.\n'
 ]

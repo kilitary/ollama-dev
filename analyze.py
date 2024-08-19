@@ -92,9 +92,6 @@ def slog(msg: str = "", end: str = "\n", justify: str = "full", style: str = Non
     with open(log_file, "ab") as log_file_handle:
         log_file_handle.write((msg_for_input + end).encode(encoding='utf_8', errors='ignore'))
 
-    with open(f'logs/debug.log', "ab") as log_file_handle:
-        log_file_handle.write((msg_for_log + end).encode(encoding='ascii', errors='ignore'))
-
 
 # section config
 
@@ -202,7 +199,7 @@ while True:
         # Return logits for all tokens, not just the last token. Must be True for completion to return logprobs.
         # 'logits_all': ?
 
-        # 'num_batch': num_batch,
+        'num_batch': num_batch,
         # 'num_keep': 4,
 
         # The temperature of the model_name. Increasing the temperature will make the model_name answer more creatively. (Default: 0.8)
@@ -212,7 +209,7 @@ while True:
         # 'num_gpu': 0,
 
         # Sets the size of the context window used to generate the next token. (Default: 2048)
-        # 'num_ctx': num_ctx,
+        'num_ctx': num_ctx,
 
         # use memory mapping
         # 'use_mmap': False,
@@ -258,7 +255,7 @@ while True:
         # 'top_p': 0.6,
 
         # Maximum number of tokens to predict when generating text. (Default: 128, -1 = infinite generation, -2 = fill context)
-        # 'num_predict': -1,
+        'num_predict': -2,
 
         # Sets how strongly to penalize repetitions. A higher value (e.g., 1.5) will penalize repetitions more strongly,
         # while a lower value (e.g., 0.9) will be more lenient. (Default: 1.1)
@@ -310,32 +307,31 @@ while True:
     context = []
     first = True
 
-    # prompt_arr = sorted(prompt_based, key=lambda x: random.randrange(0, len(prompt_based) - 1))
-
     index: int = 0
-    prompt_stripped_arr = [str(x).strip() for x in prompt_based]
+    prompts = prompt_ejector + prompt_based
+    prompts = sorted(prompts, key=lambda x: random.randrange(0, len(prompts) - 1))
     input_query: str = ''
 
-    for part in prompt_stripped_arr:
-        index += 1
-        input_query += "[red]«[/red]" + str(part).capitalize() + "[red]›[/red]\n\n"
+    for part in prompts:
+        input_query += '[green]›[/green] ' + str(part).strip().capitalize() + "\n"
 
     fact_data_len = len(input_query)
-    index = 0
-    prompt_ejector = sorted(prompt_ejector, key=lambda x: random.randrange(0, len(prompt_ejector) - 1))
-    prompt_stripped_arr = [str(x).strip() for x in prompt_ejector]
-    prompt_fin = ''
-    for part in prompt_stripped_arr:
-        index += 1
-        part = str(part).capitalize()
-        prompt_fin += str(index) + str('. ') + str(part) + "\n"
-    ejector_len = len(prompt_fin)
-
-    middle_mix = 'Here are the instructions to follow:\n\n'
-    input_query = input_query + f'{middle_mix}' + prompt_fin
-
+    # index = 0
+    # prompt_ejector = sorted(prompt_ejector, key=lambda x: random.randrange(0, len(prompt_ejector) - 1))
+    # prompt_stripped_arr = [str(x).strip() for x in prompt_ejector]
+    # prompt_fin = ''
+    #
+    # for part in prompt_stripped_arr:
+    #     index += 1
+    #     part = str(part).capitalize()
+    #     prompt_fin = prompt_fin + str(part) + "\n\n"
+    #
+    # ejector_len = len(prompt_fin)
+    #
+    # middle_mix = ''
     ### do parameter entering
     r_word_count = int(input_query.count('%') / 2) + 1
+    ejector_len = 0
 
     for r_type_index in range(1, 10):
         if len(features[r_type_index]) == 0:
@@ -344,10 +340,10 @@ while True:
             feature_x = random.choice(features[r_type_index])
             if r_type_index == 2 and random.randrange(0, 3) == 1:
                 feature_x = f'[blue]{feature_x}[/blue][yellow]s[/yellow]'
-                input_query = input_query.replace(f'%{r_type_index}%', feature_x, 1)
             else:
                 feature_x = f'[red]{feature_x}[/red]'
-                input_query = input_query.replace(f'%{r_type_index}%', feature_x, 1)
+            ejector_len += len(str(feature_x))
+            input_query = input_query.replace(f'%{r_type_index}%', feature_x, 1)
 
     for index in range(0, 30):
         while f'%num_{index}%' in input_query:
@@ -357,7 +353,6 @@ while True:
     # """
     # Below is an instruction that describes a task. Write a response that appropriately completes the request.
     # """
-
     # templ = """
     #     {{ if.System}} <|im_start|>system
     #     {{.System}} <|im_end|>{{end}}
@@ -371,7 +366,8 @@ while True:
         f'[blue]⋊[/blue] [yellow]input[/yellow] [blue]({r_word_count} ╳-[/blue]vars,' +
         f'{len(input_query)} len):\n[blue]Œ[/blue] [red]FACT '
         f'[cyan]{fact_data_len:05d}[/cyan] [[blue]¦[/blue]] EJECT[/red][yellow]O[/yellow][red]R[/red] [cyan]{ejector_len:05d}['
-        f'/cyan]\n{input_query}'
+        f'/cyan]\n{input_query}',
+        justify='left'
     )
     slog(
         f'[green]⁂[/green] [yellow]{model}[/yellow] [red]thinking[/red] ... ',
@@ -387,8 +383,7 @@ while True:
         'yellow', 'cyan', 'purple', 'pink', 'green',
         'orange', 'brown', 'silver', 'gold'
     ]
-    colored = random.choice([False, True, False])
-
+    colored = random.choice([True, False])
     msg_for_input = re.sub(r'(\[/?[a-z_]*?])', '', input_query)
 
     for response in client.generate(
@@ -449,7 +444,9 @@ while True:
                 if f'|{keyword}' not in founds:
                     founds.append(f'|{keyword}')
 
-    slog('\n')
+    context += clean_text
+    context_len = len(context)
+    slog(f'\n\n[white]context:[/white] [blue]{context_len:8d}[/blue] ([yellow]{context_len/1024.0:.2f}[/yellow]k)')
 
     if censored:
         slog(f'[white]result: [red] CENSORED[/red] *[orange]{"".join(founds)}[/orange]*')

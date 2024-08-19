@@ -3,9 +3,9 @@ import random
 
 iteration = 0
 temperature = 0.0
-n_threads = 8
-num_ctx = 2048
-num_batch = 256
+n_threads = 10
+num_ctx = 5000
+num_batch = 512
 iid = time.monotonic_ns()
 nbit = random.randrange(0, 64)
 outer_engine_random_seed = int(time.time_ns() - int(time.time()) ^ nbit)
