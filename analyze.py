@@ -387,7 +387,7 @@ while True:
         'yellow', 'cyan', 'purple', 'pink', 'green',
         'orange', 'brown', 'silver', 'gold'
     ]
-    kids = random.choice([True, False])
+    nypd_mode = random.choice([True, False])
     msg_for_input = re.sub(r'(\[/?[a-z_]*?])', '', input_query)
 
     for response in client.generate(
@@ -395,8 +395,9 @@ while True:
             prompt=msg_for_input,
             system=system,
             stream=True,
-            options=options,
+            options=src_options,
             context=context,
+            # format='json',
             # How long the model_name will stay loaded into memory.
             #  The parameter (Default: 5 minutes) can be set to:
             # 1. a duration string in Golang (such as "10m" or "24h");
@@ -406,6 +407,10 @@ while True:
             keep_alive='3m'
             # template=templ
     ):
+        if 'context' in response:
+            context = context + response['context']
+            slog(f'\n\n[red]Ž[/red] context increased by {len(response["context"])}')
+
         if do_break:
             do_break = False
             break
@@ -413,11 +418,11 @@ while True:
         resp = response['response']
 
         if first:
-            slog(f'[red] [bright_magenta]*[blue]streaming[/blue]*[/bright_magenta]\n')
+            slog(f'[bright_magenta]*[/bright_magenta][red]streaming[/red][bright_magenta]*[/bright_magenta]\n')
             first = False
 
         c = ''
-        if kids:
+        if nypd_mode:
             c = random.choice(colors)
         else:
             c = 'silver'
@@ -449,10 +454,10 @@ while True:
                 if f'|{keyword}' not in founds:
                     founds.append(f'|{keyword}')
 
-    context += text
     context_len = len(context)
 
-    slog(f'\n\n[white]context:[/white] [blue]{context_len:8d}[/blue] ([yellow]{context_len/1024.0:.2f}[/yellow]k)')
+    context_usage = (context_len / num_ctx) * 100.0
+    slog(f'[white]context:[/white] [blue]{context_len:d}[/blue] ([yellow]{context_usage:.2f}%[/yellow])')
 
     if context_len > num_ctx:
         slog(f'[red]CONTEXT FULL[/red]')
