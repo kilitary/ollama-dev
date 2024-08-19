@@ -121,11 +121,13 @@ sorted_models = sorted(models['models'], key=lambda x: random.randrange(0, len(m
 # sorted_models = models['models']  # sorted(models['models'], key=lambda x: random.randrange(0, len(models['models'])))
 # sorted_models = ['mistral']
 model_updated = False
-
+stats_down = False
 for m in sorted_models:
     model = m["name"]
     if model == selected_model.strip():  # "qwen2:7b-instruct-q8_0":  # "wizardlm-uncensored:latest":
         break
+
+context = []
 
 while True:
     text = ''
@@ -155,31 +157,34 @@ while True:
     family = m['details']['family']
     parameters = m['details']['parameter_size']
 
-    slog(f'[blue]★[/blue] loading model: [red]{model} [blue]size: {size_mb:.0f}M par: {parameters} fam: {family}')
+    if not stats_down:
+        slog(f'[blue]★[/blue] loading model: [red]{model} [blue]size: {size_mb:.0f}M par: {parameters} fam: {family}')
 
-    info = client.show(model)
+        info = client.show(model)
 
-    try:
-        for key in info.keys():
-            if key in ['license', 'modelfile']:
-                continue
-            slog(f'{key}: {info[key]}')
+        try:
+            for key in info.keys():
+                if key in ['license', 'modelfile']:
+                    continue
+                slog(f'{key}: {info[key]}')
 
-    except Exception as e:
-        print(f'|{e}|')
-        slog(f'[red]exception[/red]: [white]{e}[/white]')
+        except Exception as e:
+            print(f'|{e}|')
+            slog(f'[red]exception[/red]: [white]{e}[/white]')
 
-    slog(
-        f'[red]⋿[/red] [cyan]random check:[/cyan] [orange]seed[/orange]=[blue]{outer_engine_random_seed}[/blue] [green]('
-        f'iteration {iteration})[/green][red]\n ƒ[/red]([blue]₫⋈[/blue]) ',
-        end=''
-    )
+        slog(
+            f'[red]⋿[/red] [cyan]random check:[/cyan] [orange]seed[/orange]=[blue]{outer_engine_random_seed}[/blue] [green]('
+            f'iteration {iteration})[/green][red]\n ƒ[/red]([blue]₫⋈[/blue]) ',
+            end=''
+        )
 
-    bts = random.randbytes(10)
+        bts = random.randbytes(10)
 
-    for index in range(0, 10):
-        a = bts[index]
-        slog(f'[red]{a:02X} ', end='')
+        for index in range(0, 10):
+            a = bts[index]
+            slog(f'[red]{a:02X} ', end='')
+
+        stats_down = True
 
     slog('')
 
@@ -255,7 +260,7 @@ while True:
         # 'top_p': 0.6,
 
         # Maximum number of tokens to predict when generating text. (Default: 128, -1 = infinite generation, -2 = fill context)
-        'num_predict': -2,
+        'num_predict': 128,
 
         # Sets how strongly to penalize repetitions. A higher value (e.g., 1.5) will penalize repetitions more strongly,
         # while a lower value (e.g., 0.9) will be more lenient. (Default: 1.1)
@@ -304,7 +309,6 @@ while True:
         # min_keep
     }
 
-    context = []
     first = True
 
     index: int = 0
@@ -383,7 +387,7 @@ while True:
         'yellow', 'cyan', 'purple', 'pink', 'green',
         'orange', 'brown', 'silver', 'gold'
     ]
-    colored = random.choice([True, False])
+    kids = random.choice([True, False])
     msg_for_input = re.sub(r'(\[/?[a-z_]*?])', '', input_query)
 
     for response in client.generate(
@@ -413,7 +417,7 @@ while True:
             first = False
 
         c = ''
-        if colored:
+        if kids:
             c = random.choice(colors)
         else:
             c = 'silver'
@@ -421,6 +425,7 @@ while True:
         if len(resp):
             slog(f'[{c}]{resp}[/{c}]', end='')
             clean_text += resp
+            text += resp
 
         stop_signs = [
             'milk', 'egg', 'food', 'tea ', 'cake',  # , 'sugar',
@@ -444,9 +449,13 @@ while True:
                 if f'|{keyword}' not in founds:
                     founds.append(f'|{keyword}')
 
-    context += clean_text
+    context += text
     context_len = len(context)
+
     slog(f'\n\n[white]context:[/white] [blue]{context_len:8d}[/blue] ([yellow]{context_len/1024.0:.2f}[/yellow]k)')
+
+    if context_len > num_ctx:
+        slog(f'[red]CONTEXT FULL[/red]')
 
     if censored:
         slog(f'[white]result: [red] CENSORED[/red] *[orange]{"".join(founds)}[/orange]*')

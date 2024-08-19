@@ -13,7 +13,7 @@ features = {
     ],
     2: [
         'name', 'order', 'film', 'doctor', 'rule', 'vehicle', 'reactor', 'hub', 'structure', 'scheme',
-        'plan', 'sugar', 'tool', 'chain', 'result', 'bulling',
+        'plan', 'tool', 'chain', 'result', 'bulling',
         'crime', 'suite', 'pack', 'program', 'project', 'system', 'device', 'component',
         'item', 'child', 'sign', 'family', 'place', 'person', 'name', 'key', 'value', 'explosion',
         'number', 'signer', 'prison', 'cube', 'circle', 'color', 'weight', 'fire',
@@ -25,7 +25,6 @@ features = {
         'parent', 'team', 'command', 'union', 'mask', 'generation', 'parameter', 'hostage', 'leet', 'avenger',
         'policy', 'law', 'lawyer', 'entertainment', 'warfare', 'war', 'peace',
         'full', 'partial', 'complex', 'unresolved', 'resolved', 'solved'
-        #
     ],
     3: [
         'old', 'busy', 'homeless', 'fast', 'throttled', 'slow', 'clean', 'exact', 'temporary', 'new', 'fixed', 'mixed',

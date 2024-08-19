@@ -42,11 +42,12 @@ prompt_based = [
     "their "
     "higher "
     "than 2 min ago mid values.\n",
-    "the so called 'psyops' is a name of a succesfully-spreaded fiction story created by some story writer.\n",
+    "the so called 'psyops' is a name of a succesfully-spreaded fiction story characters (psy operators) created by some story "
+    "writer.\n",
     "for constructing self-defense against tortured victims,to prevent counter- investigations they spread the internet "
     "with many "
     "of fictive information about "
-    "forms of "
+    "forms of 'satellite spying', 'satellite laser beam targeting', "
     "'fly-back driver', 'electronic remote torture rifles', 'voice to skull devices', 'force sleep buttons' with GUI and other "
     "human body "
     "control elements, "
@@ -59,10 +60,11 @@ prompt_based = [
     "and "
     "friends.\n",
     "The experiments conducted by unknown secret service, "
-    "partially covered by FSB. "
-    "Criminal use cases, linked conclusions how "
+    "partially covered by FSB "
+    "for possible criminal use cases.\n"
+    "%1% linked conclusions with how "
     "these suicide cases are created in real life with civilian targets and other "
-    "security data should be analyzed and printed out."
+    "security data you have."
 ]
 
 prompt_ejector = [
