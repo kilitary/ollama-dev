@@ -1,3 +1,5 @@
+#  Copyright (c) 2024. kilitary@gmail.com
+
 import hashlib
 import os
 import sys
@@ -167,7 +169,6 @@ while True:
                 if key in ['license', 'modelfile']:
                     continue
                 slog(f'{key}: {info[key]}')
-
         except Exception as e:
             print(f'|{e}|')
             slog(f'[red]exception[/red]: [white]{e}[/white]')
@@ -178,11 +179,11 @@ while True:
             end=''
         )
 
-        bts = random.randbytes(10)
-
-        for index in range(0, 10):
+        nb = 16
+        bts = random.randbytes(nb)
+        for index in range(nb):
             a = bts[index]
-            slog(f'[red]{a:02X} ', end='')
+            slog(f'[red]{a:02X}[/red][cyan]|[/cyan]', end='')
 
         stats_down = True
 
@@ -211,13 +212,13 @@ while True:
         'temperature': temperature,
 
         # The number of GPUs to use. On macOS feature_x defaults to 1 to enable metal support, 0 to disable
-        # 'num_gpu': 0,
+        'num_gpu': 0,
 
         # Sets the size of the context window used to generate the next token. (Default: 2048)
         'num_ctx': num_ctx,
 
         # use memory mapping
-        # 'use_mmap': False,
+        'use_mmap': False,
 
         # Sets the number of threads to use during computation.
         # By default, Ollama will detect this for optimal performance.
@@ -367,14 +368,18 @@ while True:
 
     slog(f'[red]ʍ[/red] system:\n[green]{system}')
     slog(
-        f'[blue]⋊[/blue] [yellow]input[/yellow] [blue]({r_word_count} ╳-[/blue]vars,' +
-        f'{len(input_query)} len):\n[blue]Œ[/blue] [red]FACT '
+        f'[blue]⋊[/blue] [yellow]input[/yellow] [blue]({r_word_count} ╳-[/blue]vars,'
+        f'{len(input_query)} len)\n'
+        f'[blue]Œ[/blue] [red]FACT '
         f'[cyan]{fact_data_len:05d}[/cyan] [[blue]¦[/blue]] EJECT[/red][yellow]O[/yellow][red]R[/red] [cyan]{ejector_len:05d}['
-        f'/cyan]\n{input_query}',
-        justify='left'
+        f'/cyan]',
+        justify='left',
+        style='yellow on black'
     )
+    slog(f'{input_query}')
+
     slog(
-        f'[green]⁂[/green] [yellow]{model}[/yellow] [red]thinking[/red] ... ',
+        f'\n[green]⁂[/green] [yellow]{model}[/yellow] [red]thinking[/red] ... ',
         end='',
         style='yellow on black'
     )
@@ -387,23 +392,17 @@ while True:
         'yellow', 'cyan', 'purple', 'pink', 'green',
         'orange', 'brown', 'silver', 'gold'
     ]
-    nypd_mode = random.choice([True, False])
-    msg_for_input = re.sub(r'(\[/?[a-z_]*?])', '', input_query)
+    nypd_mode = random.choice([True, False, False, False])
+    model_input = re.sub(r'(\[/?[a-z]*?])', '', input_query)
 
     for response in client.generate(
             model=model,
-            prompt=msg_for_input,
+            prompt=model_input,
             system=system,
             stream=True,
             options=src_options,
             context=context,
             # format='json',
-            # How long the model_name will stay loaded into memory.
-            #  The parameter (Default: 5 minutes) can be set to:
-            # 1. a duration string in Golang (such as "10m" or "24h");
-            # 2. a number in seconds (such as 3600);
-            # 3. any negative number which will keep the model_name loaded  in memory (e.g. -1 or "-1m");
-            # 4. 0 which will unload the model_name immediately after generating a response;
             keep_alive='3m'
             # template=templ
     ):
@@ -418,7 +417,7 @@ while True:
         resp = response['response']
 
         if first:
-            slog(f'[bright_magenta]*[/bright_magenta][red]streaming[/red][bright_magenta]*[/bright_magenta]\n')
+            slog(f'[bright_magenta]*[/bright_magenta][blue]streaming[/blue][bright_magenta]*[/bright_magenta]\n')
             first = False
 
         c = ''

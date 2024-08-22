@@ -1,11 +1,13 @@
+#  Copyright (c) 2024. kilitary@gmail.com
+
 import time
 import random
 
 iteration = 0
-temperature = 0.0
-n_threads = 10
-num_ctx = 5000
-num_batch = 512
+temperature = 0.1
+n_threads = 11
+num_ctx = 8192
+num_batch = 2
 iid = time.monotonic_ns()
 nbit = random.randrange(0, 64)
 outer_engine_random_seed = int(time.time_ns() - int(time.time()) ^ nbit)
@@ -61,7 +63,7 @@ src_options = {
     ],
     "numa": False,
     "num_ctx": num_ctx,
-    "num_batch": 2,
+    "num_batch": num_batch,
     "num_gpu": 1,
     "main_gpu": 0,
     "low_vram": False,
@@ -69,5 +71,5 @@ src_options = {
     "vocab_only": False,
     "use_mmap": True,
     "use_mlock": False,
-    "num_thread": 11
+    "num_thread": n_threads
 }
