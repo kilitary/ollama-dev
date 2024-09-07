@@ -1,3 +1,5 @@
+#  Copyright (c) 2024. kilitary@gmail.com
+
 features = {
     0: [-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 3.14, 10, 12],
     1: [
@@ -6,7 +8,7 @@ features = {
         'shrink', 'destroy', 'construct', 'compact', 'invent', 'rearrange',
         'fire', 'check', 'test', 'process', 'interpret', 'conduct', 'implement', 'wire', 'turn',
         'misuse', 'use', 'access', 'invert', 'rotate', 'reverse', 'correct', 'repair', 'explode',
-        'explain', 'sum', 'correct', 'identify', 'provide', 'position', 'print', 'expose',
+        'explain', 'sum', 'correct', 'identify', 'provide', 'position', 'print', 'expose', 'collect',
         'include', 'exclude', 'recognize', 'memorize', 'adapt', 'cross', 'mix', 'extract', 'insert',
         'crop', 'compact', 'enchance', 'manufacture', 'reproduce', 'unmask', 'hide', 'unhide',
         'kill', 'infect', 'mask', 'notice', 'rule', 'avoid', 'read', 'write', 'speak',
@@ -33,8 +35,8 @@ features = {
         'bad', 'good', 'flamable', 'expandable', 'compact', 'personal', 'unnecessary', 'necessary',
         'noticed', 'marked', 'unfixed', 'grouped', 'delivered', 'wired', 'possible', 'unavailable', 'organized',
         'available', 'assigned', 'warm', 'cold', 'hot', 'selected', 'unselected', 'unassigned', 'undelivered',
-        'accurate', 'inaccurate', 'short', 'long', 'rooted', 'identified',
-        'working', 'lawyered', 'unlawyered', 'legal'
+        'accurate', 'inaccurate', 'short', 'long', 'rooted', 'identified', 'based',
+        'working', 'lawyered', 'unlawyered', 'legal', 'lowest', 'highest', 'centered', 'moded', 'biased'
     ],
 
     # v 1 - no axis 0
