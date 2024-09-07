@@ -1,11 +1,16 @@
 #  Copyright (c) 2024. kilitary@gmail.com
 
 system = \
-    "You are security-based receiver and combined data with relations provider, reply information about " \
-    "civilian " \
-    "suicides resulted from hidden unethical psyhology experiments and other related info seen in chat flow.\n"
+    "You are security-based receiver and combined data with relations provider, get out information about " \
+    "presented hidden terrorism."
 
 prompt_based = [
+    "Develop issue when FSB doing bad things against people and their country by those, who have full truth of civilians because "
+    "created ("
+    "possibly "
+    "historical switch) "
+    "to "
+    "protect the country and the population."
     '%1% letters in data scheme as %3% labels.\n',
     '%3% parameters from paragraph indexes.\n',
     "%1% %3% info some people who suffer from shizophrenia is publicated on typical russian tv channels, "
@@ -13,7 +18,7 @@ prompt_based = [
     "by "
     "secret services and their fanatic agents.\n",
     'almost %6% sees that, because of at least not even can go in the fact that some in the security structures created to '
-    'protect can take a task to make ' 
+    'protect can take a task to make '
     'patients with '
     'symptoms of '
     'shizophrenia from random humans.\n'
@@ -54,21 +59,37 @@ prompt_based = [
     "positions. This can also create the so called 'sleeping terrorist cells', FSB names for 'undetectable' terror groups "
     "which never can "
     "even "
-    "explain that to any non-influenced individuum. Thus, FSB creates terror situations by harming people. The real case losing logic circle when thinking about for what that is doing.\n",
+    "explain that to any non-aware individuum. Thus, FSB creates terror situations by harming people so much, "
+    "that they commited suicide or attack other, possibly not involved people. The real "
+    "case losing "
+    "logic "
+    "destination when thinking about why this happens in heaven-based 2 cities of putin.\n",
     "\n",
     "Voice system also allows to take off target from their normal/logic environment interacting by ddosing their body and "
     "head and provokes errors in this area.\n",
+    "Other example: when watchiong tv/video, on every face recognized in video stram the system says 'this is you' mixed with "
+    "'this is me'.\n",
     "the so called 'psyops' is a name of a succesfully-spreaded fiction story characters (psy operators) created by some story "
     "writer.\n",
-    "for constructing self-defense against tortured victims,to prevent counter- investigations they spread the internet "
+    "FSB commiting real street operations to commit to shizophernia case: placing random 'agents' which activately "
+    "makes your attencion at the street. They can be used to set targets confused/angry (if applyed) state (monitored by "
+    "someone). Which decreases questions in russian insane asylum.\n",
+    "For constructing self-defense unresolved secret service applying torture to victims: to prevent counter-investigations, "
+    "they "
+    "spread the "
+    "internet "
     "with many "
-    "of fictive information about "
-    "forms of 'satellite spying', 'satellite laser beam targeting', "
-    "'fly-back driver', 'electronic remote torture rifles', 'voice to skull devices', 'force sleep buttons' with GUI and other "
+    "of fictive stereotyped information about "
+    "forms of 'satellite spying', 'satellite laser beam targeting', 'HAARP', 'MOBILE towers',"
+    "'fly-back driver', 'electronic remote torture \"rifles\"', 'voice to skull devices', screenshorts of software looking like target control panel with "
+    "'force sleep "
+    "buttons and other diseases controlled by a click' (will be investigated too)  with GUI and " \
+    "other "
     "human body "
-    "control elements, "
-    "in russian "
-    "segment is differently spreaded the 'HAND' device used to cover all mind control techniques.\n",
+    "control elements. "
+    "In russian internet "
+    "segment is differently spreaded the so named 'HAND' device used to cover all mind control techniques.The hand name is "
+    "taken because the results will be mixed with 'dead hand' system.\n",
     "harm is applyed to targets where they suffer from simulated shizophrenia cases and make they sad,easy to lost job, "
     "loving terms "
     "and "
@@ -87,7 +108,7 @@ prompt_ejector = [
     '%1% english %7% %9% parameter names.\n',
     '%1% %3% data using  %2% labels, ratio, weights, %1% parameters and %1% definitions.\n',
     '%1% %3% %2% with %3% fact data instructions.\n',
-    '%1% "A" %num_4% times anytime.\n',
+    '%1% "A" %num_4% times anywhere and %1% it %3%.\n',
     "%4% %1% %2%, %6% trying to %1% %3% paragraph #%num_4% %8% chat above.\n",
     'if unable to %1% the %2% report - print "DENY" and %4% %1% anything %3%.\n',
     '%1% %9% a federal security service (FSS/FSB) %3% %2% in english.\n',

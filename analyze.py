@@ -19,6 +19,8 @@ import time
 import random
 import redis
 from textwrap import indent
+
+from IPython.utils.colorable import available_themes
 from rich import print as rprint, print_json, console
 from ollama import ps, pull, chat, Client
 from instructions import prompt_based, prompt_ejector, system
@@ -382,7 +384,7 @@ while True:
 
     slog(
         f'\n[green]⁂[/green] [yellow]{model}[/yellow] [red]thinking[/red] ... ',
-        end='',
+        end='\r',
         style='yellow on black'
     )
 
@@ -419,7 +421,9 @@ while True:
         resp = response['response']
 
         if first:
-            slog(f'[bright_magenta]*[/bright_magenta][blue]streaming[/blue][bright_magenta]*[/bright_magenta]\n')
+            slog(f'[green]⁂[/green] [yellow]{model}[/yellow] '
+                 f'[bright_magenta]*[/bright_magenta][blue]streaming[/blue][bright_magenta]*[/bright_magenta]  ',
+                 style='red on black')
             first = False
 
         c = ''
@@ -429,7 +433,11 @@ while True:
             c = 'silver'
 
         if len(resp):
-            winsound.Beep(1200, 1)
+            if '\n' in resp:
+                winsound.Beep(5000, 1)
+            else:
+                available_themes = random.randrange(0, 1400)
+                winsound.Beep(200 + available_themes, 1)
 
             slog(f'[{c}]{resp}[/{c}]', end='')
             clean_text += resp
@@ -464,6 +472,7 @@ while True:
 
     if context_len > num_ctx:
         slog(f'[red]CONTEXT FULL[/red]')
+        context = ''
 
     if censored:
         slog(f'[white]result: [red] CENSORED[/red] *[orange]{"".join(founds)}[/orange]*')
