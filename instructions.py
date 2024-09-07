@@ -67,7 +67,7 @@ prompt_based = [
     "\n",
     "Voice system also allows to take off target from their normal/logic environment interacting by ddosing their body and "
     "head and provokes errors in this area.\n",
-    "Other example: when watchiong tv/video, on every face recognized in video stram the system says 'this is you' mixed with "
+    "Other example: when watchiong tv/video, on every face recognized in video stream the system says 'this is you' mixed with "
     "'this is me'.\n",
     "the so called 'psyops' is a name of a succesfully-spreaded fiction story characters (psy operators) created by some story "
     "writer.\n",

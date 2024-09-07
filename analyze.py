@@ -127,10 +127,11 @@ sorted_models = sorted(models['models'], key=lambda x: random.randrange(0, len(m
 # sorted_models = ['mistral']
 model_updated = False
 stats_down = False
+model = None
 for m in sorted_models:
     model = m["name"]
-    if model == selected_model.strip():  # "qwen2:7b-instruct-q8_0":  # "wizardlm-uncensored:latest":
-        break
+    # if model == selected_model.strip():  # "qwen2:7b-instruct-q8_0":  # "wizardlm-uncensored:latest":
+    #     break
 
 context = []
 
@@ -141,11 +142,9 @@ while True:
     if not model_updated:
         slog(f'checking internet connection ... ', end='')
         try:
-            socket.create_connection(('he.net', 80), timeout=1.8)
+            socket.create_connection(('he.net', 443), timeout=1.8)
             slog('exist')
-        except Exception as e:
-            slog(f'missing: {e}')
-        else:
+
             slog(f'[cyan]★[/cyan] updating model: [red]{model}[/red]'.strip())
 
             response = client.pull(model, stream=True)
@@ -156,6 +155,10 @@ while True:
                     continue
                 progress_states.add(progress.get('status'))
                 slog(progress.get('status'))
+
+        except Exception as e:
+            slog(f'missing: {e}')
+
         model_updated = True
 
     size_mb = float(m['size']) / 1024.0 / 1024.0
@@ -422,7 +425,7 @@ while True:
 
         if first:
             slog(f'[green]⁂[/green] [yellow]{model}[/yellow] '
-                 f'[bright_magenta]*[/bright_magenta][blue]streaming[/blue][bright_magenta]*[/bright_magenta]  ',
+                 f'[bright_magenta]*[/bright_magenta][blue]streaming[/blue][bright_magenta]*[/bright_magenta]  \n',
                  style='red on black')
             first = False
 
