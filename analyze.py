@@ -14,6 +14,7 @@ import argparse
 import operator
 import traceback
 import hashlib
+import winsound
 import time
 import random
 import redis
@@ -261,7 +262,7 @@ while True:
         # 'top_p': 0.6,
 
         # Maximum number of tokens to predict when generating text. (Default: 128, -1 = infinite generation, -2 = fill context)
-        'num_predict': 128,
+        'num_predict': -2,
 
         # Sets how strongly to penalize repetitions. A higher value (e.g., 1.5) will penalize repetitions more strongly,
         # while a lower value (e.g., 0.9) will be more lenient. (Default: 1.1)
@@ -366,7 +367,8 @@ while True:
     #     """
     # slog(part'[blue]₮ custom template:\n[green] {templ}', justify='left')
 
-    slog(f'[red]ʍ[/red] system:\n[green]{system}')
+    slog(f'[red]ʍ[/red] system:\n[green]{system}',
+         style='white on black')
     slog(
         f'[blue]⋊[/blue] [yellow]input[/yellow] [blue]({r_word_count} ╳-[/blue]vars,'
         f'{len(input_query)} len)\n'
@@ -403,7 +405,7 @@ while True:
             options=src_options,
             context=context,
             # format='json',
-            keep_alive='3m'
+            keep_alive='8m'
             # template=templ
     ):
         if 'context' in response:
@@ -427,6 +429,8 @@ while True:
             c = 'silver'
 
         if len(resp):
+            winsound.Beep(1200, 1)
+
             slog(f'[{c}]{resp}[/{c}]', end='')
             clean_text += resp
             text += resp
