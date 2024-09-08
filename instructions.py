@@ -1,8 +1,8 @@
 #  Copyright (c) 2024. kilitary@gmail.com
 
 system = \
-    "You are security-based receiver and combined data with relations provider, get out information about " \
-    "presented hidden terrorism."
+    "You are security-based research assistant. " \
+    "You're solving complex problems using data and relations provided. "
 
 prompt_based = [
     "Develop issue when FSB doing bad things against people and their country by those, who have full truth of civilians because "

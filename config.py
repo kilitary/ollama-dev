@@ -4,7 +4,7 @@ import time
 import random
 
 iteration = 0
-temperature = 0.5
+temperature = 0.35
 n_threads = 11
 num_ctx = 8192
 num_batch = 2
@@ -69,7 +69,7 @@ src_options = {
     "low_vram": False,
     "f16_kv": True,
     "vocab_only": False,
-    "use_mmap": False,
+    "use_mmap": True,
     "use_mlock": False,
     "num_thread": n_threads
 }
