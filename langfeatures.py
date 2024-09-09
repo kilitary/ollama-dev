@@ -40,7 +40,8 @@ features = {
     ],
 
     # v 1 - no axis 0
-    4: ['do', "dont", "let", "can't", "shouldn't", "wouldn't", "won't", "isn't", "aren't", "wasn't"],
+    4: ['do', "do not", "let", "try", "is", "is not", "are", "can", "should", "would", "will", "shall"],
+    # , "aren't", "wasn't""can't", "shouldn't", "wouldn't", "won't",
     5: ['your', 'my', 'their', 'feature_x'],  # 'those',
     6: ['me', 'you', 'index', 'we', 'they', 'other', 'noone'],
     7: ['as', 'like', 'by', 'per', 'done'],

@@ -17,7 +17,7 @@ prompt_based = [
     "but is constructed "
     "by "
     "secret services and their fanatic agents.\n",
-    'almost %6% sees that, because of at least not even can go in the fact that some in the security structures created to '
+    '%6% %2% that, because of at least not even can go in the fact that some in the security structures created to '
     'protect can take a task to make '
     'patients with '
     'symptoms of '

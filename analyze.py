@@ -63,7 +63,6 @@ models = client.list()
 def slog(msg: str = "", end: str = "\n", justify: str = "full", style: str = None):
     msg_for_input = msg
     msg_for_log: str = re.sub(r'(\[/?[A-Z_]*?])', '', msg_for_input)
-    msg_for_input: str = re.sub(r'(\[/?[a-z_]*?])', '', msg_for_input)
 
     console.print(msg_for_log, end=end, justify=justify, style=style)
 
@@ -75,7 +74,7 @@ def slog(msg: str = "", end: str = "\n", justify: str = "full", style: str = Non
     )
 
     with open(log_file, "ab") as log_file_handle:
-        log_file_handle.write((msg_for_input + end).encode(encoding='utf_8', errors='ignore'))
+        log_file_handle.write((msg_for_log + end).encode(encoding='utf_8', errors='ignore'))
 
 
 # section config
@@ -108,7 +107,7 @@ stats_down = False
 model = None
 for m in sorted_models:
     model = m["name"]
-    if model == 'everythinglm:latest':
+    if model == 'phi:latest':
         break
     # if model == selected_model.strip():  # "qwen2:7b-instruct-q8_0":  # "wizardlm-uncensored:latest":
     #     break
@@ -116,13 +115,13 @@ for m in sorted_models:
 context = []
 
 while True:
-    clean_text = None
+    clean_text = ''
 
     if not model_updated:
         slog(f'checking internet connection ... ', end='')
         try:
             socket.create_connection(('he.net', 443), timeout=1.8)
-            slog('EXIST')
+            slog('ON LINE')
 
             slog(f'[cyan]★[/cyan] updating model: [red]{model}[/red]'.strip())
 
@@ -432,7 +431,7 @@ while True:
         ]
 
         for s in stop_signs:
-            if f'{s}' in clean_text.lower():
+            if s in clean_text.tolower():
                 slog(f'\n[yellow]-[red]reset[/red]:[white]{s}[/white][yellow]-[/yellow]')
                 do_break = True
 
