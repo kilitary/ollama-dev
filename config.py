@@ -4,7 +4,7 @@ import time
 import random
 
 iteration = 0
-temperature = 0.35
+temperature = 0.55
 n_threads = 11
 num_ctx = 8192
 num_batch = 2

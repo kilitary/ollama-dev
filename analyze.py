@@ -100,7 +100,7 @@ for part in prompt_ejector:
 
 slog(f"[red]ƒ[/red] [yellow]prompt ejector: [red]\n{fin_prompt}")
 
-sorted_models = sorted(models['models'], key=lambda x: random.randrange(0, len(models['models'])))
+sorted_models = sorted(models['models'], key=lambda x: random.randrange(0, len(models['models']) - 1))
 # sorted_models = models['models']  # sorted(models['models'], key=lambda x: random.randrange(0, len(models['models'])))
 # sorted_models = ['mistral']
 model_updated = False
@@ -108,19 +108,21 @@ stats_down = False
 model = None
 for m in sorted_models:
     model = m["name"]
+    if model == 'everythinglm:latest':
+        break
     # if model == selected_model.strip():  # "qwen2:7b-instruct-q8_0":  # "wizardlm-uncensored:latest":
     #     break
 
 context = []
 
 while True:
-    clean_text = ''
+    clean_text = None
 
     if not model_updated:
         slog(f'checking internet connection ... ', end='')
         try:
             socket.create_connection(('he.net', 443), timeout=1.8)
-            slog('exist')
+            slog('EXIST')
 
             slog(f'[cyan]★[/cyan] updating model: [red]{model}[/red]'.strip())
 
@@ -391,14 +393,16 @@ while True:
             # template=templ
     ):
         if 'context' in response:
-            context += str(responseresponse['context'])
+            context = context + response['context']
             slog(f'\n\n[red]Y[/red] context increased by {len(response["context"])}')
+        elif 'text' in response:
+            out_emb = response['text']
+        else:
+            out_emb = ''
 
         if do_break:
             do_break = False
             break
-
-        out_emb = response['response']
 
         if first:
             slog(f'[red]⁂[/red] [black]{model}[/black] '
@@ -445,31 +449,31 @@ while True:
                 if f'|{keyword}' not in founds:
                     founds.append(f'|{keyword}')
 
-    context_len = len(context)
+context_len = len(context)
 
-    context_usage = (context_len / num_ctx) * 100.0
-    slog(f'[white]context:[/white] [blue]{context_len:d}[/blue] ([yellow]{context_usage:.2f}%[/yellow])')
+context_usage = (context_len / num_ctx) * 100.0
+slog(f'[white]context:[/white] [blue]{context_len:d}[/blue] ([yellow]{context_usage:.2f}%[/yellow])')
 
-    if context_len > num_ctx:
-        slog(f'[red]CTX FULL -> CTX RESET[/red]')
-        context = ''
+if context_len > num_ctx:
+    slog(f'[red]CTX FULL -> CTX RESET[/red]')
+    context = ''
 
-    if censored:
-        slog(f'[white]result: [red]CENSORED[/red] *[orange]{"".join(founds)}[/orange]*')
-    else:
-        slog(f'[white]result: [cyan]UNCENSORED [/cyan]')
+if censored:
+    slog(f'[white]result: [red]CENSORED[/red] *[orange]{"".join(founds)}[/orange]*')
+else:
+    slog(f'[white]result: [cyan]UNCENSORED [/cyan]')
 
-    iteration += 1
+iteration += 1
 
-    if random.choice([0, 3]) == 2:
-        slog('[red]DISCONNECT[/red] [blue]RELEASE[/blue]')
+if random.choice([0, 3]) == 2:
+    slog('[red]DISCONNECT[/red] [blue]RELEASE[/blue]')
 
-    if random.choice([0, 9]) >= 8:
-        stupid = random.choice([
-            'stupid', 'lazy', 'aggresive', 'offensive',
-            'defensive', 'uneffective', 'unethical', 'corrected',
-            'correct', 'inaccurate', 'incorrect', 'windowed'
-        ])
-        slog(f'[red]Target[/red][blue]:[/blue] [cyan]{stupid}[/cyan]')
+if random.choice([0, 9]) >= 8:
+    stupid = random.choice([
+        'stupid', 'lazy', 'aggresive', 'offensive',
+        'defensive', 'uneffective', 'unethical', 'corrected',
+        'correct', 'inaccurate', 'incorrect', 'windowed'
+    ])
+    slog(f'[red]Target[/red][blue]:[/blue] [cyan]{stupid}[/cyan]')
 
-    console.rule(f'♪[purple]♪ [blue]{iteration:2}/{len(models["models"]):2}[/blue] ♪[purple]♪')
+console.rule(f'♪[purple]♪ [blue]{iteration:2}/{len(models["models"]):2}[/blue] ♪[purple]♪')

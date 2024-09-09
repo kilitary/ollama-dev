@@ -34,13 +34,13 @@ features = {
         'periodically', 'unmanned', 'toggled', 'optimized', 'instructed',
         'bad', 'good', 'flamable', 'expandable', 'compact', 'personal', 'unnecessary', 'necessary',
         'noticed', 'marked', 'unfixed', 'grouped', 'delivered', 'wired', 'possible', 'unavailable', 'organized',
-        'available', 'assigned', 'warm', 'cold', 'hot', 'selected', 'unselected', 'unassigned', 'undelivered',
+        'available', 'assigned', 'warm', 'cold', 'selected', 'unselected', 'unassigned', 'undelivered',
         'accurate', 'inaccurate', 'short', 'long', 'rooted', 'identified', 'based',
         'working', 'lawyered', 'unlawyered', 'legal', 'lowest', 'highest', 'centered', 'moded', 'biased'
     ],
 
     # v 1 - no axis 0
-    4: ['do', "dont", "let"],  # , "can't"
+    4: ['do', "dont", "let", "can't", "shouldn't", "wouldn't", "won't", "isn't", "aren't", "wasn't"],
     5: ['your', 'my', 'their', 'feature_x'],  # 'those',
     6: ['me', 'you', 'index', 'we', 'they', 'other', 'noone'],
     7: ['as', 'like', 'by', 'per', 'done'],

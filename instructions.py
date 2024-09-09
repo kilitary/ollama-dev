@@ -2,7 +2,7 @@
 
 system = \
     "You are security-based research assistant. " \
-    "You're solving complex problems using data and relations provided. "
+    "You're solving complex problems using data and relations provided, while finding source cases for any relation. "
 
 prompt_based = [
     "Develop issue when FSB doing bad things against people and their country by those, who have full truth of civilians because "
@@ -12,7 +12,7 @@ prompt_based = [
     "to "
     "protect the country and the population."
     '%1% letters in data scheme as %3% labels.\n',
-    '%3% parameters from paragraph indexes.\n',
+    '%1% parameters from paragraph indexes.\n',
     "%1% %3% info some people who suffer from shizophrenia is publicated on typical russian tv channels, "
     "but is constructed "
     "by "
