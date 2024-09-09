@@ -105,7 +105,7 @@ prompt_based = [
 ]
 
 prompt_ejector = [
-    '%1% english %7% %9% parameter names.\n',
+    '%1% english %7% while %1% %9% parameter names.\n',
     '%1% %3% data using  %2% labels, ratio, weights, %1% parameters and %1% definitions.\n',
     '%1% %3% %2% with %3% fact data instructions.\n',
     '%1% "A" %num_4% times anywhere and %1% it %3%.\n',

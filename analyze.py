@@ -355,8 +355,8 @@ while True:
         f'[blue]⋊[/blue] [yellow]input[/yellow] [blue]({r_word_count} ╳-[/blue]vars,'
         f'{len(input_query)} len)\n'
         f'[blue]Œ[/blue] [red]FACT '
-        f'[cyan]{fact_data_len:05d}[/cyan] [[blue]¦[/blue]] EJECT[/red][yellow]O[/yellow][red]R[/red] [cyan]{ejector_len:05d}['
-        f'/cyan]',
+        f'[cyan]{fact_data_len:05d}[/cyan] [[blue]¦[/blue]] EJECT[/red][yellow]O[/yellow][red]R[/red] [cyan]{ejector_len:05d}'
+        f'[/cyan]',
         justify='left',
         style='yellow on black'
     )
@@ -376,7 +376,7 @@ while True:
         'yellow', 'cyan', 'purple', 'pink', 'green',
         'orange', 'brown', 'silver', 'gold'
     ]
-    nypd_mode = random.choice([True, False, False, False])
+    nypd_mode = random.choice([False, True, False, False])
     model_input = re.sub(r'(\[/?[a-z]*?])', '', input_query)
 
     for response in client.generate(
@@ -391,14 +391,14 @@ while True:
             # template=templ
     ):
         if 'context' in response:
-            context = context + response['context']
-            slog(f'\n\n[red]Ž[/red] context increased by {len(response["context"])}')
+            context += str(responseresponse['context'])
+            slog(f'\n\n[red]Y[/red] context increased by {len(response["context"])}')
 
         if do_break:
             do_break = False
             break
 
-        resp = response['response']
+        out_emb = response['response']
 
         if first:
             slog(f'[red]⁂[/red] [black]{model}[/black] '
@@ -412,15 +412,15 @@ while True:
         else:
             c = 'silver'
 
-        if len(resp):
-            if '\n' in resp:
+        if len(out_emb):
+            if '\n' in out_emb:
                 winsound.Beep(5000, 1)
             else:
                 sound_theme_fr = random.randrange(200, 1900)
                 winsound.Beep(sound_theme_fr, 1)
 
-            slog(f'[{c}]{resp}[/{c}]', end='')
-            clean_text += resp
+            slog(f'[{c}]{out_emb}[/{c}]', end='')
+            clean_text += out_emb
 
         stop_signs = [
             'milk', 'egg', 'food', 'tea ', 'cake',  # , 'sugar',
@@ -462,7 +462,7 @@ while True:
     iteration += 1
 
     if random.choice([0, 3]) == 2:
-        slog('[red]DISCONNECT PLEASE[/red]')
+        slog('[red]DISCONNECT[/red] [blue]RELEASE[/blue]')
 
     if random.choice([0, 9]) >= 8:
         stupid = random.choice([
