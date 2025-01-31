@@ -1,3 +1,5 @@
+#  Copyright (c) 2025. kilitary@gmail.com
+
 # location: russia
 # date: 2020-03-01
 # so liar
@@ -95,7 +97,7 @@ def rail_freq_len(d=0, x=0, y=0, a=0, xx=0):
     rnl = random.randrange(min(x, a) + 1, min(x, a) + 1 + (max(d, xx) + 100))
     ln_i = random.randrange(min_len, max(1 + abs(int(idel + (a * x) - d + rnl) % max_len), max_len))
 
-    return frq_i, ln_i
+    return frq_i % 3, ln_i % 10 + 20
 
 
 # rail #.... (upto: 4)
@@ -136,7 +138,8 @@ def rails_run(ai=0):
                 ln = 0
 
                 for d in range(1, a % max_string_len):
-                    frq, ln = rail_freq_len(a=a, x=x, y=y, d=d, xx=xx)
+                    ln = 37 + (random.randint(15, 30) % 30)
+
 
                     r = random.randrange(1, 3)
 
@@ -151,11 +154,13 @@ def rails_run(ai=0):
 
                     prev_ln = ln
 
+                    console.print(f'[{th_id:08x}-xy] d={d} sp={sp} frq={frq} idel={idel} x={x} e={y} a={a} ln={ln}')
+
+                    frq = random.randint(100, 1699);
                     winsound.Beep(frq, ln)
 
-                # console.print(part'[{th_id:08x}-xy] d={d} sp={sp} frq={frq} idel={idel} x={x} e={y} a={a} ln={ln}')
 
-                rail_vol(a=a)
+                    rail_vol(a=a)
 
     return 0
 

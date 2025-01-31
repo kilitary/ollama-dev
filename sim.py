@@ -1,3 +1,5 @@
+#  Copyright (c) 2025. kilitary@gmail.com
+
 import os
 import sys
 import time
@@ -290,7 +292,7 @@ class Simulatar:
                 if self.programmed:
                     self.programm_current_instruction += 1
 
-        except Exception as e:
+        except Exception as (e):
             self.console.rule(f'EXCEPTION')
             self.log(f"[red]{e}[/red]")
             self.console.print_exception()
