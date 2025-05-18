@@ -375,10 +375,8 @@ while True:
     )
     slog(
         f'[green]⁂[/green] [yellow]{model}[/yellow] [red]thinking[/red] ... ',
-        end='',
-        style='yellow on black'
+        end=''
     )
-
     founds = []  # not used in this version of the model_name b
     do_break = False
     censored = False
@@ -418,7 +416,10 @@ while True:
         resp = response['response']
 
         if first:
-            slog(f'[bright_magenta]*[/bright_magenta][red]streaming[/red][bright_magenta]*[/bright_magenta]\n')
+            slog(
+                f' [bright_magenta]*[/bright_magenta][red]streaming[/red][bright_magenta]*[/bright_magenta]\n',
+                style='yellow on black'
+            )
             first = False
 
         c = ''

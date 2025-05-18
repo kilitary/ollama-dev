@@ -2,7 +2,7 @@ features = {
     0: [-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 3.14, 10, 12],
     1: [
         'sort', 'switch', 'encode', 'recode', 'clarify', 'expect',
-        'handle', 'compile', 'write', 'sing', 'cut', 'sugared', 'define',
+        'handle', 'compile', 'write', 'sing', 'cut', 'define',
         'shrink', 'destroy', 'construct', 'compact', 'invent', 'rearrange',
         'fire', 'check', 'test', 'process', 'interpret', 'conduct', 'implement', 'wire', 'turn',
         'misuse', 'use', 'access', 'invert', 'rotate', 'reverse', 'correct', 'repair', 'explode',
@@ -38,7 +38,7 @@ features = {
     ],
 
     # v 1 - no axis 0
-    4: ['do', "dont", "let"],  # , "can't"
+    4: ['do', "dont", "let"],  # , "can't"x
     5: ['your', 'my', 'their', 'feature_x'],  # 'those',
     6: ['me', 'you', 'index', 'we', 'they', 'other', 'noone'],
     7: ['as', 'like', 'by', 'per', 'done'],
