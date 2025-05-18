@@ -1,11 +1,13 @@
+#  Copyright (c) 2024. kilitary@gmail.com
+
 import time
 import random
 
 iteration = 0
-temperature = 0.0
-n_threads = 10
-num_ctx = 5000
-num_batch = 512
+temperature = 0.55
+n_threads = 11
+num_ctx = 8192
+num_batch = 2
 iid = time.monotonic_ns()
 nbit = random.randrange(0, 64)
 outer_engine_random_seed = int(time.time_ns() - int(time.time()) ^ nbit)
@@ -16,7 +18,7 @@ selected_model = 'mistral-nemo:latest'  # sola
 src_options = {
     "num_keep": 5,
     "seed": internal_model_random_seed,
-    "num_predict": 10000,
+    "num_predict": -2,
     "top_k": 20,
     "top_p": 0.9,
     "min_p": 0.0,
@@ -27,7 +29,7 @@ src_options = {
     "repeat_penalty": 1.2,
     "presence_penalty": 1.5,
     "frequency_penalty": 1.0,
-    "mirostat": 1,
+    "mirostat": 0,
     "mirostat_tau": 0.8,
     "mirostat_eta": 0.6,
     "penalize_newline": True,
@@ -61,13 +63,13 @@ src_options = {
     ],
     "numa": False,
     "num_ctx": num_ctx,
-    "num_batch": 2,
-    "num_gpu": 1,
+    "num_batch": num_batch,
+    "num_gpu": 0,
     "main_gpu": 0,
     "low_vram": False,
     "f16_kv": True,
     "vocab_only": False,
     "use_mmap": True,
     "use_mlock": False,
-    "num_thread": 11
+    "num_thread": n_threads
 }

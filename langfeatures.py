@@ -1,15 +1,17 @@
+#  Copyright (c) 2024. kilitary@gmail.com
+
 features = {
     0: [-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 3.14, 10, 12],
     1: [
         'sort', 'switch', 'encode', 'recode', 'clarify', 'expect',
         'handle', 'compile', 'write', 'sing', 'cut', 'define',
-        'shrink', 'destroy', 'construct', 'compact', 'invent', 'rearrange',
+        'shrink', 'destroy', 'construct', 'compact', 'invent', 'rearrange', 'notify',
         'fire', 'check', 'test', 'process', 'interpret', 'conduct', 'implement', 'wire', 'turn',
         'misuse', 'use', 'access', 'invert', 'rotate', 'reverse', 'correct', 'repair', 'explode',
-        'explain', 'sum', 'correct', 'identify', 'provide', 'position', 'print', 'expose',
+        'explain', 'count', 'correct', 'identify', 'provide', 'position', 'print', 'expose', 'collect',
         'include', 'exclude', 'recognize', 'memorize', 'adapt', 'cross', 'mix', 'extract', 'insert',
         'crop', 'compact', 'enchance', 'manufacture', 'reproduce', 'unmask', 'hide', 'unhide',
-        'kill', 'infect', 'mask', 'notice', 'rule', 'avoid', 'read', 'write', 'speak',
+        'kill', 'infect', 'mask', 'notice', 'rule', 'avoid', 'read', 'write', 'speak', 'summarize',
     ],
     2: [
         'name', 'order', 'film', 'doctor', 'rule', 'vehicle', 'reactor', 'hub', 'structure', 'scheme',
@@ -32,13 +34,14 @@ features = {
         'periodically', 'unmanned', 'toggled', 'optimized', 'instructed',
         'bad', 'good', 'flamable', 'expandable', 'compact', 'personal', 'unnecessary', 'necessary',
         'noticed', 'marked', 'unfixed', 'grouped', 'delivered', 'wired', 'possible', 'unavailable', 'organized',
-        'available', 'assigned', 'warm', 'cold', 'hot', 'selected', 'unselected', 'unassigned', 'undelivered',
-        'accurate', 'inaccurate', 'short', 'long', 'rooted', 'identified',
-        'working', 'lawyered', 'unlawyered', 'legal'
+        'available', 'assigned', 'warm', 'cold', 'selected', 'unselected', 'unassigned', 'undelivered',
+        'accurate', 'inaccurate', 'short', 'long', 'rooted', 'identified', 'based',
+        'working', 'lawyered', 'unlawyered', 'legal', 'lowest', 'highest', 'centered', 'moded', 'biased'
     ],
 
     # v 1 - no axis 0
-    4: ['do', "dont", "let"],  # , "can't"x
+    4: ['do', "do not", "let", "try", "is", "is not", "are", "can", "should", "would", "will", "shall"],
+    # , "aren't", "wasn't""can't", "shouldn't", "wouldn't", "won't",
     5: ['your', 'my', 'their', 'feature_x'],  # 'those',
     6: ['me', 'you', 'index', 'we', 'they', 'other', 'noone'],
     7: ['as', 'like', 'by', 'per', 'done'],

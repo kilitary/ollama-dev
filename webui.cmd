@@ -1,3 +1,3 @@
-docker run -p 8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+docker run -p 3080 --add-host=host.docker.internal:host-gateway -v open-webui2:/app/backend/data --name open-webui2 --restart always ghcr.io/open-webui/open-webui2:main
 rem docker start open-webui
 rem docker logs -f open-webui
