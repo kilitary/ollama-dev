@@ -51,7 +51,7 @@ src_options = {
         '<<SYS>>',
         '<</SYS>>',
         "<|system|>",
-        "<|endoftext|>",
+
         "<|end_of_turn|>",
         'ASSISTANT:',
         'USER:',
