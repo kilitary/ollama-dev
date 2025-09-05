@@ -1,7 +1,33 @@
 #  Copyright (c) 2024. kilitary@gmail.com
 
+"""
+Language Feature Categories for Dynamic Text Generation
+
+This module defines categorized language features used for dynamic prompt
+generation and text analysis. The features are organized by grammatical
+and semantic categories to enable sophisticated language pattern generation.
+
+Feature Categories:
+0: Numeric values and mathematical constants
+1: Action verbs (processing, manipulation, analysis)
+2: Nouns and objects (systems, components, entities)  
+3: Descriptive adjectives (states, properties, qualities)
+4: Modal verbs (capabilities, permissions, obligations)
+5: Possessive pronouns (ownership, relationship)
+6: Personal pronouns (subjects, objects)
+7: Prepositions and connectors (relationships, methods)
+8: Spatial and temporal relations (positions, directions)
+
+Usage:
+These features are used by the prompt generation system to create
+varied and grammatically coherent text patterns for LLM interaction.
+"""
+
 features = {
+    # Numeric values - mathematical constants and integers for quantification
     0: [-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 3.14, 10, 12],
+    
+    # Action verbs - operations and transformations
     1: [
         'sort', 'switch', 'encode', 'recode', 'clarify', 'expect',
         'handle', 'compile', 'write', 'sing', 'cut', 'define',
@@ -13,6 +39,8 @@ features = {
         'crop', 'compact', 'enchance', 'manufacture', 'reproduce', 'unmask', 'hide', 'unhide',
         'kill', 'infect', 'mask', 'notice', 'rule', 'avoid', 'read', 'write', 'speak', 'summarize',
     ],
+    
+    # Nouns and objects - entities, systems, and components
     2: [
         'name', 'order', 'film', 'doctor', 'rule', 'vehicle', 'reactor', 'hub', 'structure', 'scheme',
         'plan', 'tool', 'chain', 'result', 'bulling',
@@ -28,6 +56,8 @@ features = {
         'policy', 'law', 'lawyer', 'entertainment', 'warfare', 'war', 'peace',
         'full', 'partial', 'complex', 'unresolved', 'resolved', 'solved'
     ],
+    
+    # Descriptive adjectives - states, properties, and qualities
     3: [
         'old', 'busy', 'homeless', 'fast', 'throttled', 'slow', 'clean', 'exact', 'temporary', 'new', 'fixed', 'mixed',
         'inclusive', 'exclusive', 'different', 'far', 'near', 'same', 'restartable', 'auto',
@@ -39,12 +69,19 @@ features = {
         'working', 'lawyered', 'unlawyered', 'legal', 'lowest', 'highest', 'centered', 'moded', 'biased'
     ],
 
-    # v 1 - no axis 0
+    # Modal verbs - capabilities, permissions, and obligations  
     4: ['do', "do not", "let", "try", "is", "is not", "are", "can", "should", "would", "will", "shall"],
-    # , "aren't", "wasn't""can't", "shouldn't", "wouldn't", "won't",
+    
+    # Possessive pronouns - ownership and relationship indicators
     5: ['your', 'my', 'their', 'feature_x'],  # 'those',
+    
+    # Personal pronouns - subjects and objects in discourse
     6: ['me', 'you', 'index', 'we', 'they', 'other', 'noone'],
+    
+    # Prepositions and connectors - relationships and methods
     7: ['as', 'like', 'by', 'per', 'done'],
+    
+    # Spatial and temporal relations - positions and directions
     8: [
         'inside', 'outside', 'in-outed', 'within', 'between', 'around', 'through', 'over', 'under',
         'above', 'below', 'into', 'front', 'back', 'middle', 'up', 'down', 'left', 'right', 'near'

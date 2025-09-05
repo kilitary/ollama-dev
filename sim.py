@@ -19,12 +19,46 @@ from rich import print, print_json
 
 
 def abort(txt=""):
-    """ just abort the program """
+    """
+    Emergency abort function for critical errors.
+    
+    Terminates the program execution immediately with error status.
+    Used for unrecoverable errors or critical system failures.
+    
+    Args:
+        txt (str): Error message to display before termination.
+    
+    Exit Code:
+        -1: Indicates abnormal termination
+    """
     pprint(txt)
     sys.exit(-1)
 
 
 class Simulatar:
+    """
+    LLM Simulation Framework for Controlled Experiments.
+    
+    The Simulatar class provides a comprehensive framework for running
+    controlled experiments with Large Language Models. It manages experiment
+    configuration, execution, logging, and result analysis.
+    
+    Features:
+        - Experiment lifecycle management
+        - Context persistence across runs  
+        - Configurable logging and monitoring
+        - Template-based prompt generation
+        - Statistical result analysis
+    
+    Attributes:
+        name (str): Unique identifier for the experiment
+        rules (list): Behavioral rules governing the simulation
+        instructions (list): Prompt templates and system instructions
+        sim_log_path (str): File path for experiment logs
+        temperature (float): Model temperature for generation
+        model (str): Ollama model name to use
+        template (str): Custom prompt template
+    """
     def __init__(
             self,
             name: str,
@@ -62,6 +96,24 @@ class Simulatar:
         re.purge()
 
     def log(self, msg='', end='\n', flush=True, justify=None):
+        """
+        Enhanced logging method with file persistence and console output.
+        
+        Provides dual-output logging that writes to both console and persistent
+        log files. Automatically strips Rich markup for file output while
+        preserving it for console display.
+        
+        Args:
+            msg (str): Message to log (supports Rich markup)
+            end (str): String appended after message
+            flush (bool): Force flush output streams
+            justify (str): Text justification for console output
+        
+        File Output:
+            - Strips Rich markup tags for clean file logs
+            - Creates experiment-specific log files
+            - Uses ASCII encoding for compatibility
+        """
         # \033[0m
         # msgs = re.sub(r'\x1b(?:\\[0-9]*|)\[\d+(?:m|)]*?', '', msg)
         msgs = re.sub(r'\[(?:|/).*?]', '', msg)
@@ -80,6 +132,21 @@ class Simulatar:
             log_file_handle.write(full_msg)
 
     def write_context(self, context):
+        """
+        Persist conversation context to Redis storage.
+        
+        Stores conversation context in Redis for persistence across
+        simulation runs. Enables context continuity and experiment
+        repeatability.
+        
+        Args:
+            context (list): Context tokens/data to store
+        
+        Storage:
+            - Uses Redis list structure for efficient append operations
+            - Key: 'sim.context.ids'
+            - Supports distributed context sharing
+        """
         # print(part'write {type(context)}) {context} {len(context)}')
         self.redis.rpush('sim.context.ids', *context)
 
