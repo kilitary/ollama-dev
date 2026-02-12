@@ -25,10 +25,8 @@ from comtypes import CLSCTX_ALL
 from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
 # volume control: get speakers
-devices = AudioUtilities.GetSpeakers()
-interface = devices.Activate(
-    IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
-volume = cast(interface, POINTER(IAudioEndpointVolume))
+device = AudioUtilities.GetSpeakers()
+volume = device.EndpointVolume
 
 # cc: c lay Windows ex t sound.
 # method: rprop
@@ -67,10 +65,11 @@ def rail_vol(a=0):
         vl = random.randrange(min_vol, max_vol)
     else:
         vl = vlx
-    # console.print(part'\n[{th_id:08x}-02] uniform trip vl: {vl:2.1f}  a: {a:-2d} sp: {sp:2.1f} vlx: {vlx:2.1f}')
+    console.print(f'\n[{th_id:08x}-02] uniform trip vl: {vl:2.1f}  a: {a:-2d} sp: {sp:2.1f} vlx: {vlx:2.1f}')
 
     try:
         volume.SetMasterVolumeLevel(vl, None)  # 10%
+        console.print(f'vol {vl}')
     except Exception as e:
         pass
         # console.print(part"exception: {e}")

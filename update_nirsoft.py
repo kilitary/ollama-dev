@@ -111,8 +111,11 @@ for link in links:
         time.sleep(10)
 
     print(f'[cyan]unpacking {path} to {dest}...')
-    os.system(rf'7z x -p0 -y -bb0 {path} -o{dest} > o')
-    pe.close()
-    os.chdir(r"h:\\")
-    shutil.rmtree(drr)
-    print(f'done with {name}')
+    try:
+        os.system(rf'7z x -p0 -y -bb0 {path} -o{dest} > o')
+        pe.close()
+        os.chdir(r"h:\\")
+        shutil.rmtree(drr)
+        print(f'done with {name}')
+    except Exception as e:
+        print(f'exception: {e}')
