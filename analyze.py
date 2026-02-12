@@ -55,6 +55,26 @@ models = client.list()
 # selected_model = 'llama2-uncensored:latest'
 # selected_model = 'mistral'  # solar
 def update_model(model_name=None):
+    """
+    Download and verify availability of an Ollama model.
+    
+    This function checks if a specified model exists in the local Ollama
+    installation and downloads it if necessary. Essential for ensuring
+    model availability before analysis operations.
+    
+    Args:
+        model_name (str, optional): Name of the Ollama model to verify/download.
+                                  Returns early if None.
+    
+    Raises:
+        Exception: If model download fails or model is not available.
+    
+    Example:
+        update_model('mistral-nemo:latest')  # Ensure model is available
+    
+    Note:
+        Uses streaming download with progress updates via slog().
+    """
     if model_name is None:
         return
 
@@ -76,6 +96,30 @@ def update_model(model_name=None):
 
 
 def slog(msg: str = "", end: str = "\n", justify: str = "full", style: str = None):
+    """
+    Structured logging function with Rich formatting support.
+    
+    This is the primary logging mechanism for the analysis engine, providing
+    color-coded output with flexible formatting options. Supports both
+    console output and structured data logging.
+    
+    Args:
+        msg (str): Message to log. Supports Rich markup formatting.
+        end (str): String appended after the message. Defaults to newline.
+        justify (str): Text justification ('left', 'center', 'right', 'full').
+        style (str, optional): Rich style specification (e.g., 'red', 'bold blue').
+    
+    Features:
+        - Rich markup support for colored output
+        - Flexible text justification options
+        - Console width-aware formatting
+        - Integration with Rich's styling system
+    
+    Examples:
+        slog("Analysis complete", style="green")
+        slog("[red]Error:[/red] Model not found", justify="center")
+        slog("Processing...", end="", style="yellow")
+    """
     msg_for_input = msg
     msg_for_log: str = re.sub(r'(\[/?[A-Z_]*?])', '', msg_for_input)
     msg_for_input: str = re.sub(r'(\[/?[a-z_]*?])', '', msg_for_input)
@@ -289,7 +333,6 @@ while True:
             '<<SYS>>',
             '<</SYS>>',
             "<|system|>",
-            "<|endoftext|>",
             "<|end_of_turn|>",
             'ASSISTANT:',
             'USER:',
