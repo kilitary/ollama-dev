@@ -46,7 +46,7 @@ device = AudioUtilities.GetSpeakers()
 volumer = device.EndpointVolume
 get_mute = volumer.GetMute
 set_mute = volumer.SetMute
-volume_stated = abs(volumer.GetMasterVolumeLevelScalar())
+volume_stated = max(0.4, abs(int(volumer.GetMasterVolumeLevelScalar())) + 0.01)
 
 # Shared playback/volume state
 volume_thread_running = threading.Event()
@@ -94,29 +94,87 @@ def log_message(message, icon=""):
     resolved_icon = icon or _infer_icon(message)
     icon_prefix = f"{resolved_icon} " if resolved_icon else ""
     with console_lock:
-        console.print(f"[dim][{absolute_delta:8.3f}s][/dim] [cyan]+{relative_delta:7.3f}s[/cyan] {icon_prefix}{message}")
+        console.print(f"[dim][{absolute_delta:8.3f}s[/dim] [cyan]*{relative_delta:7.3f}s[/cyan]] {icon_prefix}{message}")
         last_message_time = current_time
+
+
+def log_exception(e, context=""):
+    """Log exception with line number and traceback information."""
+    tb = traceback.extract_tb(e.__traceback__)
+
+    # Print main error message
+    log_message(f"[red]{context}{type(e).__name__}: {e}[/red]")
+
+    # Print formatted stack trace
+    if tb:
+        log_message("[red]Stack trace:[/red]")
+
+        # Get the actual traceback object for frame inspection
+        tb_obj = e.__traceback__
+        frame_locals_list = []
+
+        # Collect locals from each frame
+        current_tb = tb_obj
+        while current_tb is not None:
+            frame_locals_list.append(current_tb.tb_frame.f_locals.copy())
+            current_tb = current_tb.tb_next
+
+        # Format each frame
+        for idx, frame in enumerate(tb):
+            filename = os.path.basename(frame.filename)
+            line_no = frame.lineno
+            func_name = frame.name
+
+            # Get function parameters from locals if available
+            params_str = ""
+            return_str = ""
+
+            if idx < len(frame_locals_list):
+                locals_dict = frame_locals_list[idx]
+
+                # Extract function parameters (exclude special variables)
+                params = []
+                for key, value in locals_dict.items():
+                    if not key.startswith('_') and key not in ['self', 'cls']:
+                        # Shorten the value representation
+                        value_str = str(value)
+                        if len(value_str) > 30:
+                            value_str = value_str[:27] + "..."
+                        params.append(f"{key}={value_str}")
+
+                if params:
+                    params_str = ", ".join(params[:3])  # Limit to first 3 params
+                    if len(locals_dict) > 3:
+                        params_str += ", ..."
+
+            # Format: line_number:func_name(params)-> return_value
+            trace_line = f"  {filename}:{line_no}:{func_name}({params_str})"
+            log_message(f"[red]{trace_line}[/red]")
+
+            # Show the actual code line if available
+            if frame.line:
+                log_message(f"[dim red]    > {frame.line.strip()}[/dim red]")
+
+    if random.randint(1, 6) <= 2:
+        log_message("[red]вще похуй[/red]")
 
 
 def volume_control_loop():
     global volume_stated
     """Thread function for continuous volume changes"""
-    log_message(f"[yellow]Volume control thread started: maxvol={volume_stated}[/yellow]")
+    log_message(f"[cyan]Volume control thread started: maxvol={volume_stated}[/cyan]")
     try:
         while volume_thread_running.is_set():
             # Random volume level (0.0 to 0.6)
-            new_volume = random.randrange(1, volume_stated, 1) * 0.01
-            log_message(f"[cyan]Setting volume: {new_volume:.2f}[/cyan]")
+            new_volume = random.randrange(int(volume_stated * 100)) * 0.01
+            log_message(f"[yellow]Setting volume: {new_volume:.2f}[/yellow]")
             volumer.SetMasterVolumeLevelScalar(new_volume, None)
 
             # Random sleep time between 0.01 and 0.1 seconds
             sleep_time = random.uniform(0.01, 0.1)
             time.sleep(sleep_time)
     except Exception as e:
-        log_message(f"[red]Volume control error: {type(e).__name__}: {e}[/red]")
-        log_message(f"[red]{traceback.format_exc()}[/red]")
-        if random.randint(1, 6) <= 2:
-            log_message("[red]вще похуй[/red]")
+        log_exception(e, "Volume control error: ")
         os.abort()
 
 
@@ -139,10 +197,7 @@ def periodic_sample_loop():
             sleep_time = random.uniform(0.1, 0.2)
             time.sleep(sleep_time)
     except Exception as e:
-        log_message(f"[red]Periodic sample error: {type(e).__name__}: {e}[/red]")
-        log_message(f"[red]{traceback.format_exc()}[/red]")
-        if random.randint(1, 6) <= 2:
-            log_message("[red]вще похуй[/red]")
+        log_exception(e, "Periodic sample error: ")
 
 
 def get_mp3_files():
@@ -168,10 +223,7 @@ def safe_time_stretch(audio, rate):
 
         return stretched
     except Exception as e:
-        log_message(f"[red]Time stretch error: {type(e).__name__}: {e}[/red]")
-        log_message(f"[red]{traceback.format_exc()}[/red]")
-        if random.randint(1, 6) <= 2:
-            log_message("[red]вще похуй[/red]")
+        log_exception(e, "Time stretch error: ")
         return audio
 
 
@@ -192,10 +244,7 @@ def safe_pitch_shift(audio, sr, n_steps):
 
         return shifted
     except Exception as e:
-        log_message(f"[red]Pitch shift error: {type(e).__name__}: {e}[/red]")
-        log_message(f"[red]{traceback.format_exc()}[/red]")
-        if random.randint(1, 6) <= 2:
-            log_message("[red]вще похуй[/red]")
+        log_exception(e, "Pitch shift error: ")
         return audio
 
 
@@ -223,10 +272,7 @@ def check_initial_volume(audio, sr, duration_seconds=0.1, threshold=0.01):
         return True
 
     except Exception as e:
-        log_message(f"[red]Volume check error: {type(e).__name__}: {e}[/red]")
-        log_message(f"[red]{traceback.format_exc()}[/red]")
-        if random.randint(1, 6) <= 2:
-            log_message("[red]вще похуй[/red]")
+        log_exception(e, "Volume check error: ")
         return True  # Allow on error
 
 
@@ -271,10 +317,7 @@ def trim_silence_end(audio, sr, threshold=0.01, min_duration=0.1):
         return np.ascontiguousarray(audio[:min_samples], dtype=np.float32)
 
     except Exception as e:
-        log_message(f"[red]Trim silence error: {type(e).__name__}: {e}[/red]")
-        log_message(f"[red]{traceback.format_exc()}[/red]")
-        if random.randint(1, 6) <= 2:
-            log_message("[red]вще похуй[/red]")
+        log_exception(e, "Trim silence error: ")
         return audio
 
 
@@ -299,10 +342,10 @@ def prepare_random_sample():
             audio, sr = librosa.load(str(sample), sr=None, mono=True, offset=audio_offset)
 
             # Check file size
-            if audio.size >= 1024 * 1024 * 4:
+            if audio.size >= 1024 * 1024 * 2:
                 log_message(f"[yellow]Skipping {sample.name} - file too large[/yellow]")
                 continue
-            if audio.size < 1024 * 8:
+            if audio.size < 1024 * 4:
                 log_message(f"[yellow]Skipping {sample.name} - file too small[/yellow]")
                 continue
 
@@ -342,8 +385,8 @@ def prepare_random_sample():
             #gc.collect()
 
             # Trim silence from the end
-            log_message(f"[magenta]Trimming silence from end[/magenta]")
-            audio_final = trim_silence_end(audio_final, sr, threshold=0.01, min_duration=0.1)
+            # log_message(f"[magenta]Trimming silence from end[/magenta]")
+            # audio_final = trim_silence_end(audio_final, sr, threshold=0.01, min_duration=0.1)
 
             return {
                 'audio': audio_final,
@@ -353,10 +396,7 @@ def prepare_random_sample():
             }
 
         except Exception as e:
-            log_message(f"[red]Error processing {sample.name}: {type(e).__name__}: {e}[/red]")
-            log_message(f"[red]{traceback.format_exc()}[/red]")
-            if random.randint(1, 6) <= 2:
-                log_message("[red]вще похуй[/red]")
+            log_exception(e, f"Error processing {sample.name}: ")
 
     if not done:
         log_message("[yellow]Failed to prepare sample after max attempts[/yellow]")
@@ -417,10 +457,7 @@ def playback_thread(audio_data, sample_rate, rate, sample_name):
                     position = end_position
 
         except Exception as e:
-            log_message(f"[red]Playback error: {type(e).__name__}: {e}[/red]")
-            log_message(f"[red]{traceback.format_exc()}[/red]")
-            if random.randint(1, 6) <= 2:
-                log_message("[red]вще похуй[/red]")
+            log_exception(e, "Playback error: ")
         finally:
             # Clean up audio data
             try:
