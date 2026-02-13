@@ -530,9 +530,10 @@ for link in links:
 # Final stats report
 console.print(f"\n{get_timestamp()} [bold cyan]📊 FINAL STATS[/bold cyan]")
 console.print(f"{get_timestamp()} [cyan]⬇️ Total Downloaded:[/cyan] {stats.bytes_downloaded / 1024.0 / 1024.0:.2f} MB")
-console.print(f"{get_timestamp()} [cyan]⬆️ Total Uploaded:[/cyan] {stats.bytes_uploaded / 1024.0 / 1024.0:.2f} MB")
-console.print(f"{get_timestamp()} [cyan]📦 Files Packed:[/cyan] {stats.files_packed}")
-console.print(f"{get_timestamp()} [cyan]📂 Files Unpacked:[/cyan] {stats.files_unpacked}")
-console.print(f"{get_timestamp()} [cyan]🖥️ x86 Files:[/cyan] {stats.files_x86}")
-console.print(f"{get_timestamp()} [cyan]💻 x64 Files:[/cyan] {stats.files_amd64}")
+console.print(f"{get_timestamp()} [cyan]⬆️ Total Uploaded (lol (but still)):[/cyan]"
+              f" {stats.bytes_uploaded / 1024.0 / 1024.0:.2f} MB")
+console.print(f"{get_timestamp()} [cyan]📦 Files Packed (lol):[/cyan] {stats.files_packed}")
+console.print(f"{get_timestamp()} [cyan]📂 Files Унпячкэд:[/cyan] {stats.files_unpacked}")
+console.print(f"{get_timestamp()} [cyan]x86© Files:[/cyan] {stats.files_x86}")
+console.print(f"{get_timestamp()} [cyan]x64© Files:[/cyan] {stats.files_amd64}")
 console.print(f"{get_timestamp()} [bold green]✅ ALL DONE![/bold green]")
