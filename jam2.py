@@ -35,7 +35,7 @@ import librosa
 import sounddevice as sd
 import numpy as np
 
-only_volume_mut = False  # Set to True to only run volume control without playback
+only_volume_mut = True  # Set to True False to only run volume control without playback
 
 console = Console()
 start_time = time.time()
@@ -185,11 +185,12 @@ def volume_control_loop():
                 max_vol = new_volume
             if new_volume < min_vol:
                 min_vol = new_volume
+
             log_message(f"[yellow]Setting volume: {new_volume:.2f} (min: {min_vol:.2f}, max: {max_vol:.2f})[/yellow]")
             volumer.SetMasterVolumeLevelScalar(new_volume, None)
 
             # Random sleep time between 0.01 and 0.1 seconds
-            sleep_time = random.uniform(0.1, 0.4)
+            sleep_time = random.uniform(0.1, 0.5)
             time.sleep(sleep_time)
     except Exception as e:
         log_exception(e, "Volume control error: ")
@@ -649,13 +650,13 @@ def jam_loop():
     # periodic_thread.start()
 
     try:
-        # Kick off initial playback
-        play_random_sample()
-
         while True:
             if only_volume_mut:
                 time.sleep(1)
                 continue
+
+            # Kick off initial playback
+            play_random_sample()
 
             # Check if we need to queue more samples
             with playback_count_lock:
