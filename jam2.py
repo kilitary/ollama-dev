@@ -23,6 +23,7 @@ import os
 import glob
 import gc
 from pathlib import Path
+import psutil
 
 from rich import print as rprint
 from rich.console import Console
@@ -33,6 +34,8 @@ from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 import librosa
 import sounddevice as sd
 import numpy as np
+
+only_volume_mut = False  # Set to True to only run volume control without playback
 
 console = Console()
 start_time = time.time()
@@ -46,30 +49,37 @@ device = AudioUtilities.GetSpeakers()
 volumer = device.EndpointVolume
 get_mute = volumer.GetMute
 set_mute = volumer.SetMute
-volume_stated = max(0.4, abs(int(volumer.GetMasterVolumeLevelScalar())) + 0.01)
+min_vol = 1110
+max_vol = 0
+volume_stated = max(0.6, int(volumer.GetMasterVolumeLevelScalar()) + 0.1)
 
 # Shared playback/volume state
 volume_thread_running = threading.Event()
 periodic_sample_thread_running = threading.Event()
+monitoring_thread_running = threading.Event()
+thread_cleanup_running = threading.Event()
 playback_count = 0
 playback_count_lock = threading.Lock()
-playback_semaphore = threading.Semaphore(5)
+MAX_CONCURRENT_PLAYBACK = 5  # Maximum number of concurrent playback threads
+playback_semaphore = threading.Semaphore(MAX_CONCURRENT_PLAYBACK)
 console_lock = threading.Lock()
 elapsed_trigger_event = threading.Event()  # Signal to queue new sample when 2/3 of current sample elapsed
+playback_threads = []  # Track active playback threads
+playback_threads_lock = threading.Lock()
 
 # Emoji banner for startup logs
 ASCII_ART_BANNER = "🎵 🎧 JAM2 🎸 🎹"
 
 # Icon rules inferred from rich color tags in log messages
 ICON_RULES = [
-    ("[bold red]", "❌"),
+    ("[bold red]", "🚑"),
     ("[red]", "❌"),
-    ("[bold yellow]", "⚠️"),
-    ("[yellow]", "⚠️"),
+    ("[bold yellow]", "🪱"),
+    ("[yellow]", "🐍"),
     ("[bold green]", "✅"),
-    ("[green]", "✅"),
-    ("[cyan]", "ℹ️"),
-    ("[magenta]", "🔄"),
+    ("[green]", "🐩"),
+    ("[cyan]", "🪶"),
+    ("[magenta]", "🐀"),
 ]
 
 
@@ -155,27 +165,181 @@ def log_exception(e, context=""):
             if frame.line:
                 log_message(f"[dim red]    > {frame.line.strip()}[/dim red]")
 
-    if random.randint(1, 6) <= 2:
+    if random.randint(1, 5) <= 2:
         log_message("[red]вще похуй[/red]")
 
 
 def volume_control_loop():
-    global volume_stated
+    global volume_stated, min_vol, max_vol
+
     """Thread function for continuous volume changes"""
     log_message(f"[cyan]Volume control thread started: maxvol={volume_stated}[/cyan]")
     try:
         while volume_thread_running.is_set():
             # Random volume level (0.0 to 0.6)
             new_volume = random.randrange(int(volume_stated * 100)) * 0.01
-            log_message(f"[yellow]Setting volume: {new_volume:.2f}[/yellow]")
+
+            if new_volume <= 0:
+                new_volume = 0.01
+
+            if new_volume > max_vol:
+                max_vol = new_volume
+            if new_volume < min_vol:
+                min_vol = new_volume
+            log_message(f"[yellow]Setting volume: {new_volume:.2f} (min: {min_vol:.2f}, max: {max_vol:.2f})[/yellow]")
             volumer.SetMasterVolumeLevelScalar(new_volume, None)
 
             # Random sleep time between 0.01 and 0.1 seconds
-            sleep_time = random.uniform(0.01, 0.1)
+            sleep_time = random.uniform(0.1, 0.4)
             time.sleep(sleep_time)
     except Exception as e:
         log_exception(e, "Volume control error: ")
         os.abort()
+
+
+def monitoring_loop():
+    """Thread function for monitoring memory and CPU usage every 5 seconds"""
+    log_message(f"[cyan]Monitoring thread started[/cyan]")
+    process = psutil.Process(os.getpid())
+
+    try:
+        while monitoring_thread_running.is_set():
+            # Get memory info
+            mem_info = process.memory_info()
+            mem_mb = mem_info.rss / 1024 / 1024  # Convert to MB
+
+            # Get CPU usage (cumulative)
+            cpu_percent = process.cpu_percent(interval=0.1)
+
+            # Get thread count
+            thread_count = threading.active_count()
+
+            # Enumerate all threads and check termination flags
+            all_threads = threading.enumerate()
+            thread_status = []
+            threads_to_terminate = []
+
+            for t in all_threads:
+                thread_name = t.name if t.name else f"Thread-{t.ident}"
+                is_alive = "alive" if t.is_alive() else "dead"
+                is_daemon = "daemon" if t.daemon else "main"
+                thread_status.append(f"{thread_name}({is_daemon},{is_alive})")
+
+                # Check if this thread is signed to terminate
+                should_terminate = False
+                if "volume" in thread_name.lower() and not volume_thread_running.is_set():
+                    should_terminate = True
+                elif "periodic" in thread_name.lower() and not periodic_sample_thread_running.is_set():
+                    should_terminate = True
+                elif "monitoring" in thread_name.lower() and not monitoring_thread_running.is_set():
+                    should_terminate = True
+                elif "cleanup" in thread_name.lower() and not thread_cleanup_running.is_set():
+                    should_terminate = True
+
+                if should_terminate and t.is_alive():
+                    # Get frame information for this thread
+                    try:
+                        frame = sys._current_frames().get(t.ident)
+                        if frame:
+                            func_name = frame.f_code.co_name
+                            line_no = frame.f_lineno
+                            filename = os.path.basename(frame.f_code.co_filename)
+                            ip_pointer = id(frame.f_code)  # Instruction pointer approximation
+                            threads_to_terminate.append(
+                                f"{thread_name} @ {filename}:{line_no} in {func_name}() [IP:0x{ip_pointer:X}]"
+                            )
+                        else:
+                            threads_to_terminate.append(f"{thread_name} [no frame info]")
+                    except Exception as e:
+                        threads_to_terminate.append(f"{thread_name} [error: {e}]")
+
+            # Check which thread control flags are set to terminate
+            termination_flags = []
+            if not volume_thread_running.is_set():
+                termination_flags.append("volume")
+            if not periodic_sample_thread_running.is_set():
+                termination_flags.append("periodic")
+            if not monitoring_thread_running.is_set():
+                termination_flags.append("monitoring")
+            if not thread_cleanup_running.is_set():
+                termination_flags.append("cleanup")
+
+            termination_status = f" | Terminating: {', '.join(termination_flags)}" if termination_flags else ""
+
+            # Log the monitoring data
+            log_message(
+                f"[bold green]Memory: {mem_mb:.2f} MB | CPU: {cpu_percent:.1f}% | Threads: {thread_count}{termination_status}[/bold green]",
+                icon="📊"
+            )
+
+            # Log thread details
+            log_message(f"[dim green]🩳 Thread details: " + f'{f"\n\t 🥣".join(thread_status)}' + "[/dim green]")
+
+            # Log threads signed to terminate with their current execution position
+            if threads_to_terminate:
+                log_message(f"[bold red]Threads signed to terminate:[/bold red]")
+                for term_info in threads_to_terminate:
+                    log_message(f"[red]  └─ {term_info}[/red]")
+
+            # Sleep for 5 seconds
+            time.sleep(2.0)
+
+    except Exception as e:
+        log_exception(e, "Monitoring error: ")
+
+
+def thread_cleanup_loop():
+    """Thread function to cleanup excess playback threads every second"""
+    log_message(f"[cyan]Thread cleanup loop started[/cyan]")
+    import ctypes
+
+    try:
+        while thread_cleanup_running.is_set():
+            time.sleep(1.0)
+
+            with playback_threads_lock:
+                # Remove dead threads from the list
+                alive_threads = [t for t in playback_threads if t.is_alive()]
+                dead_count = len(playback_threads) - len(alive_threads)
+
+                if dead_count > 0:
+                    log_message(f"[dim yellow]Cleaned up {dead_count} finished thread(s)[/dim yellow]")
+
+                playback_threads[:] = alive_threads
+                active_count = len(playback_threads)
+
+                if active_count > MAX_CONCURRENT_PLAYBACK:
+                    # Kill oldest threads (first in list) to bring count down to MAX_CONCURRENT_PLAYBACK
+                    threads_to_kill = active_count - MAX_CONCURRENT_PLAYBACK
+                    log_message(
+                        f"[bold red]🔪 Killing {threads_to_kill} excess playback thread(s) ({active_count} -> {MAX_CONCURRENT_PLAYBACK})[/bold red]")
+
+                    killed_threads = []
+                    for i in range(threads_to_kill):
+                        thread_to_kill = playback_threads[i]
+                        try:
+                            thread_id = thread_to_kill.ident
+                            if thread_id:
+                                # Terminate thread forcefully
+                                res = ctypes.pythonapi.PyThreadState_SetAsyncExc(
+                                    ctypes.c_long(thread_id),
+                                    ctypes.py_object(SystemExit)
+                                )
+                                if res > 1:
+                                    # If it returns a number greater than one, you're in trouble
+                                    ctypes.pythonapi.PyThreadState_SetAsyncExc(thread_id, None)
+                                    log_message(f"[red]Failed to kill thread {thread_id}[/red]")
+                                else:
+                                    log_message(f"[yellow]Killed thread {thread_id}[/yellow]")
+                                    killed_threads.append(thread_to_kill)
+                        except Exception as e:
+                            log_exception(e, "Thread kill error: ")
+
+                    # Remove killed threads from list
+                    playback_threads[:] = [t for t in playback_threads if t not in killed_threads]
+
+    except Exception as e:
+        log_exception(e, "Thread cleanup error: ")
 
 
 def periodic_sample_loop():
@@ -185,7 +349,7 @@ def periodic_sample_loop():
         while periodic_sample_thread_running.is_set():
             # Check if we can add another sample (max 5)
             with playback_count_lock:
-                can_play = playback_count < 5
+                can_play = playback_count <= 3
 
             if can_play:
                 log_message(f"[cyan]Periodic trigger - queueing new sample[/cyan]")
@@ -194,7 +358,7 @@ def periodic_sample_loop():
                 log_message(f"[yellow]Periodic trigger skipped - max samples reached ({playback_count}/5)[/yellow]")
 
             # Random sleep time between 0.1 and 0.2 seconds
-            sleep_time = random.uniform(0.1, 0.2)
+            sleep_time = random.uniform(0.01, 0.4)
             time.sleep(sleep_time)
     except Exception as e:
         log_exception(e, "Periodic sample error: ")
@@ -248,79 +412,6 @@ def safe_pitch_shift(audio, sr, n_steps):
         return audio
 
 
-def check_initial_volume(audio, sr, duration_seconds=0.1, threshold=0.01):
-    """Check if audio has sufficient volume in the first duration_seconds"""
-    try:
-        # Calculate number of samples for the specified duration
-        num_samples = int(sr * duration_seconds)
-
-        # Get the first chunk of audio
-        initial_chunk = audio[:num_samples]
-        if initial_chunk.size == 0:
-            log_message("[yellow]Empty audio buffer during volume check[/yellow]")
-            return False
-
-        # Calculate RMS (root mean square) energy
-        rms_energy = np.sqrt(np.mean(initial_chunk ** 2))
-
-        # Check if volume is above threshold
-        if rms_energy < threshold:
-            log_message(f"[yellow]Low initial volume detected (RMS: {rms_energy:.4f})[/yellow]")
-            return False
-
-        log_message(f"[green]Good initial volume (RMS: {rms_energy:.4f})[/green]")
-        return True
-
-    except Exception as e:
-        log_exception(e, "Volume check error: ")
-        return True  # Allow on error
-
-
-def trim_silence_end(audio, sr, threshold=0.01, min_duration=0.1):
-    """Trim silent audio data from the end of the sample"""
-    try:
-        # Calculate RMS energy for the entire audio
-        if audio.size == 0:
-            log_message("[yellow]Empty audio buffer during trim[/yellow]")
-            return audio
-
-        rms_energy = np.sqrt(np.mean(audio ** 2))
-
-        # Calculate silence threshold (percentage of max RMS)
-        silence_threshold = rms_energy * threshold
-
-        # Find the last sample above the silence threshold
-        # Work backwards from the end
-        for i in range(len(audio) - 1, -1, -1):
-            if abs(audio[i]) > silence_threshold:
-                # Found last audible sample, add a small buffer
-                buffer_samples = int(sr * 0.05)  # 50ms buffer
-                end_index = min(i + buffer_samples, len(audio))
-
-                trimmed_audio = audio[:end_index]
-                trimmed_duration = len(trimmed_audio) / sr
-                min_duration_samples = int(sr * min_duration)
-
-                # Ensure minimum duration
-                if len(trimmed_audio) < min_duration_samples:
-                    trimmed_audio = audio[:min_duration_samples]
-                    trimmed_duration = len(trimmed_audio) / sr
-
-                original_duration = len(audio) / sr
-                removed_duration = original_duration - trimmed_duration
-
-                log_message(f"[cyan]Trimmed silence: {removed_duration:.3f}s (original: {original_duration:.3f}s, trimmed: {trimmed_duration:.3f}s)[/cyan]")
-                return np.ascontiguousarray(trimmed_audio, dtype=np.float32)
-
-        # If no audible samples found, return first min_duration
-        min_samples = int(sr * min_duration)
-        return np.ascontiguousarray(audio[:min_samples], dtype=np.float32)
-
-    except Exception as e:
-        log_exception(e, "Trim silence error: ")
-        return audio
-
-
 def prepare_random_sample():
     """Prepare a random MP3 sample with random pitch and speed"""
     mp3_files = get_mp3_files()
@@ -342,7 +433,7 @@ def prepare_random_sample():
             audio, sr = librosa.load(str(sample), sr=None, mono=True, offset=audio_offset)
 
             # Check file size
-            if audio.size >= 1024 * 1024 * 2:
+            if audio.size >= 1024 * 1024 * 6:
                 log_message(f"[yellow]Skipping {sample.name} - file too large[/yellow]")
                 continue
             if audio.size < 1024 * 4:
@@ -362,7 +453,8 @@ def prepare_random_sample():
             pitch_shift_semitones = random.uniform(-8, 8)
             time_stretch_rate = random.uniform(0.7, 1.5)
             playback_rate = random.uniform(0.6, 1.4)
-            log_message(f'[green]Pitch shift: {pitch_shift_semitones:+.1f} semitones | Time stretch: {time_stretch_rate:.2f}x | Playback rate: {playback_rate:.2f}x[/green]')
+            log_message(
+                f'[green]Pitch shift: {pitch_shift_semitones:+.1f} semitones | Time stretch: {time_stretch_rate:.2f}x | Playback rate: {playback_rate:.2f}x[/green]')
 
             # Ensure audio is contiguous float32
             audio = np.ascontiguousarray(audio, dtype=np.float32)
@@ -374,7 +466,7 @@ def prepare_random_sample():
 
             # Clean up original audio
             del audio
-            #gc.collect()
+            # gc.collect()
 
             # Apply pitch shifting
             log_message(f"[magenta]Applying pitch shift: {pitch_shift_semitones:+.1f}st[/magenta]")
@@ -382,7 +474,7 @@ def prepare_random_sample():
 
             # Clean up intermediate
             del audio_stretched
-            #gc.collect()
+            # gc.collect()
 
             # Trim silence from the end
             # log_message(f"[magenta]Trimming silence from end[/magenta]")
@@ -411,11 +503,20 @@ def playback_thread(audio_data, sample_rate, rate, sample_name):
     """Thread function for audio playback with 2/3 elapsed trigger for new samples"""
     global playback_count
 
-    # Acquire semaphore to limit concurrent playback threads (max 5)
-    with playback_semaphore:
+    # Try to acquire semaphore to limit concurrent playback threads
+    semaphore_acquired = playback_semaphore.acquire(blocking=True, timeout=5.0)
+
+    if not semaphore_acquired:
+        log_message(f"[red]Failed to acquire semaphore for {sample_name} - skipping playback[/red]")
+        return
+
+    try:
         with playback_count_lock:
             playback_count += 1
-            log_message(f"[bold green]▶ Playback started | Active: {playback_count}/5[/bold green]")
+            current_active = playback_count
+
+        log_message(
+            f"[bold green]▶ Playback started: {sample_name} | Active: {current_active}/{MAX_CONCURRENT_PLAYBACK}[/bold green]")
 
         try:
             # Make a copy of audio data to avoid cross-thread corruption
@@ -450,7 +551,13 @@ def playback_thread(audio_data, sample_rate, rate, sample_name):
                         elapsed_pct = (position / len(audio_copy)) * 100
                         log_message(f"[cyan]2/3 elapsed in {sample_name} ({elapsed_pct:.1f}%) - triggering next sample[/cyan]")
                         triggered = True
-                        elapsed_trigger_event.set()  # Signal to queue new sample
+                        # Signal to queue new sample (don't call the function directly - that's a bug!)
+                        elapsed_trigger_event.set()
+                        # Queue a new sample if we're below the limit
+                        with playback_count_lock:
+                            if playback_count < MAX_CONCURRENT_PLAYBACK:
+                                # Use threading to avoid blocking this playback
+                                threading.Thread(target=play_random_sample, daemon=True).start()
 
                     # Write chunk to output stream
                     stream.write(chunk.reshape(-1, 1))
@@ -462,14 +569,21 @@ def playback_thread(audio_data, sample_rate, rate, sample_name):
             # Clean up audio data
             try:
                 del audio_copy
-                gc.collect()
+                if random.randint(1, 5) < 3:
+                    gc.collect()
             except:
                 pass
 
-            with playback_count_lock:
-                playback_count -= 1
-                log_message(f"[bold yellow]■ Playback finished | Active: {playback_count}/5[/bold yellow]")
+    finally:
+        # CRITICAL: Always release semaphore and decrement count, even on error
+        playback_semaphore.release()
 
+        with playback_count_lock:
+            playback_count -= 1
+            current_active = playback_count
+
+        log_message(
+            f"[bold yellow]■ Playback finished: {sample_name} | Active: {current_active}/{MAX_CONCURRENT_PLAYBACK}[/bold yellow]")
 
 
 def play_random_sample():
@@ -484,12 +598,16 @@ def play_random_sample():
                 args=(sample_data['audio'].copy(), sample_data['sr'], sample_data['playback_rate'], sample_data['name']),
                 daemon=True
             )
-            thread.start()
 
+            # Track this thread
+            with playback_threads_lock:
+                playback_threads.append(thread)
+
+            thread.start()
 
             # Clean up sample data
             del sample_data
-            gc.collect()
+            # gc.collect()
     else:
         # Fallback to beep
         freq = random.randint(200, 2000)
@@ -499,7 +617,7 @@ def play_random_sample():
 
 
 def jam_loop():
-    """Infinite loop that plays samples continuously (max 5 at a time)"""
+    """Infinite loop that plays samples continuously (max concurrent based on MAX_CONCURRENT_PLAYBACK)"""
     log_message("[bold red]Starting JAM mode...[/bold red]")
     log_message(f'audioDevice->{device.FriendlyName}')
     log_message("[yellow]Press Ctrl+C to stop[/yellow]")
@@ -516,42 +634,61 @@ def jam_loop():
     volume_thread = threading.Thread(target=volume_control_loop, daemon=True)
     volume_thread.start()
 
+    # Start monitoring thread
+    monitoring_thread_running.set()
+    monitoring_thread = threading.Thread(target=monitoring_loop, daemon=True)
+    monitoring_thread.start()
+
+    # Start thread cleanup thread
+    thread_cleanup_running.set()
+    cleanup_thread = threading.Thread(target=thread_cleanup_loop, daemon=True)
+    cleanup_thread.start()
+
     # Start periodic sample thread
     # periodic_sample_thread_running.set()
     # periodic_thread = threading.Thread(target=periodic_sample_loop, daemon=True)
     # periodic_thread.start()
 
     try:
+        # Kick off initial playback
+        play_random_sample()
+
         while True:
-            # Check if we can add another sample (max 5) - atomic check and call
+            if only_volume_mut:
+                time.sleep(1)
+                continue
+
+            # Check if we need to queue more samples
             with playback_count_lock:
-                can_play = playback_count < 5
-                current_count = playback_count
+                current_active = playback_count
 
-            # Check if 2/3 elapsed trigger was fired by any playing sample
-            elapsed_triggered = elapsed_trigger_event.is_set()
-            if elapsed_triggered:
-                elapsed_trigger_event.clear()
-                if can_play:
-                    log_message(f"[cyan]Queueing new sample (2/3 elapsed trigger)[/cyan]")
-                    play_random_sample()
-
-            # Start first sample if nothing is playing
-            elif current_count == 0:
+            # If no samples are playing, start one
+            if current_active == 0:
+                log_message("[yellow]No samples playing - starting new sample[/yellow]")
                 play_random_sample()
 
             # Small delay to prevent busy-waiting
             time.sleep(0.05)
 
     except KeyboardInterrupt:
+        log_message("\n[bold red]Shutting down...[/bold red]")
+
         # Stop volume control thread
         volume_thread_running.clear()
+        # Stop monitoring thread
+        monitoring_thread_running.clear()
+        # Stop thread cleanup thread
+        thread_cleanup_running.clear()
         # Stop periodic sample thread
         # periodic_sample_thread_running.clear()
-        # log_message("\n[bold green]JAM mode stopped.[/bold green]")
+
+        # Wait a bit for threads to finish
+        time.sleep(0.5)
+
         # Reset volume to 50%
         volumer.SetMasterVolumeLevelScalar(0.5, None)
         log_message("[green]Volume reset to 50%[/green]")
+        log_message("[bold green]JAM mode stopped.[/bold green]")
 
 
 if __name__ == "__main__":
