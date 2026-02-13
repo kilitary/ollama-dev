@@ -137,7 +137,6 @@ def log_exception(e, context=""):
 
             # Get function parameters from locals if available
             params_str = ""
-            return_str = ""
 
             if idx < len(frame_locals_list):
                 locals_dict = frame_locals_list[idx]
@@ -165,7 +164,7 @@ def log_exception(e, context=""):
             if frame.line:
                 log_message(f"[dim red]    > {frame.line.strip()}[/dim red]")
 
-    if random.randint(1, 5) <= 2:
+    if random.randint(1, 4) < 2:
         log_message("[red]вще похуй[/red]")
 
 
@@ -273,7 +272,7 @@ def monitoring_loop():
             )
 
             # Log thread details
-            log_message(f"[dim green]🩳 Thread details: " + f'{f"\n\t 🥣".join(thread_status)}' + "[/dim green]")
+            log_message(f"[dim green]🩳 Thread details: " + f'{"\n\t 🥣".join(thread_status)}' + "[/dim green]")
 
             # Log threads signed to terminate with their current execution position
             if threads_to_terminate:
