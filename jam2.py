@@ -38,7 +38,7 @@ import sounddevice as sd
 import numpy as np
 
 only_volume_mut = True  # Set to True False to only run volume control without playback
-verbose_threads = True
+verbose_threads = False
 
 console = Console()
 start_time = time.time()
@@ -188,12 +188,12 @@ def volume_control_loop():
                 trym += 1
 
                 if new_volume <= 0.15 and new_volume >= -10:
-                    print('🫏', end='')
+                    print('🐀 ', end='')
                     continue
 
                 ab = abs(new_volume - prev_volume)
                 if ab <= 0.15:
-                    print('🫎', end='')
+                    print('🫎 ', end='')
                     continue
 
                 break
@@ -681,7 +681,6 @@ def jam_loop():
     try:
         while True:
             if only_volume_mut:
-                time.sleep(0.01)
                 continue
 
             # Kick off initial playback
