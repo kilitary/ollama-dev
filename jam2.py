@@ -20,10 +20,12 @@ import time
 import math
 import threading
 import os
+import rich
 import glob
 import gc
 from pathlib import Path
 import psutil
+from numba.core.datamodel.models import ListModel
 
 from rich import print as rprint
 from rich.console import Console
@@ -36,6 +38,7 @@ import sounddevice as sd
 import numpy as np
 
 only_volume_mut = True  # Set to True False to only run volume control without playback
+verbose_threads = True
 
 console = Console()
 start_time = time.time()
@@ -50,8 +53,9 @@ volumer = device.EndpointVolume
 get_mute = volumer.GetMute
 set_mute = volumer.SetMute
 min_vol = 1110
-max_vol = 0
-volume_stated = max(0.6, int(volumer.GetMasterVolumeLevelScalar()) + 0.1)
+max_vol = -10
+prev_volume = 199999
+volume_stated = max(0.6, int(volumer.GetMasterVolumeLevelScalar()) + 0.15)
 
 # Shared playback/volume state
 volume_thread_running = threading.Event()
@@ -75,7 +79,7 @@ ICON_RULES = [
     ("[bold red]", "🚑"),
     ("[red]", "❌"),
     ("[bold yellow]", "🪱"),
-    ("[yellow]", "🐍"),
+    ("[yellow]", "✂️"),
     ("[bold green]", "✅"),
     ("[green]", "🐩"),
     ("[cyan]", "🪶"),
@@ -169,28 +173,46 @@ def log_exception(e, context=""):
 
 
 def volume_control_loop():
-    global volume_stated, min_vol, max_vol
+    global volume_stated, min_vol, max_vol, prev_volume
 
     """Thread function for continuous volume changes"""
     log_message(f"[cyan]Volume control thread started: maxvol={volume_stated}[/cyan]")
+    new_volume = 0
     try:
         while volume_thread_running.is_set():
             # Random volume level (0.0 to 0.6)
-            new_volume = random.randrange(int(volume_stated * 100)) * 0.01
+            trym = 0
+            # log_message(f"try #{trym} {new_volume:.2f}\r\n\t\t")
+            while True:
+                new_volume = random.randrange(int(volume_stated * 100.0)) * 0.01
+                trym += 1
 
-            if new_volume <= 0:
-                new_volume = 0.01
+                if new_volume <= 0.15 and new_volume >= -10:
+                    print('🫏', end='')
+                    continue
 
+                ab = abs(new_volume - prev_volume)
+                if ab <= 0.15:
+                    print('🫎', end='')
+                    continue
+
+                break
+
+            rich.print("")
+
+            prev_volume = new_volume
             if new_volume > max_vol:
                 max_vol = new_volume
             if new_volume < min_vol:
                 min_vol = new_volume
 
-            log_message(f"[yellow]Setting volume: {new_volume:.2f} (min: {min_vol:.2f}, max: {max_vol:.2f})[/yellow]")
+            sleep_time = random.uniform(0.1, 0.25)
+
+            log_message(f"[yellow]Setting volume: {new_volume:.2f} (min: {min_vol:.2f}, max: {max_vol:.2f}) slp: " +
+                        f"{sleep_time:.2f} [/yellow]")
             volumer.SetMasterVolumeLevelScalar(new_volume, None)
 
             # Random sleep time between 0.01 and 0.1 seconds
-            sleep_time = random.uniform(0.1, 0.5)
             time.sleep(sleep_time)
     except Exception as e:
         log_exception(e, "Volume control error: ")
@@ -218,6 +240,7 @@ def monitoring_loop():
             all_threads = threading.enumerate()
             thread_status = []
             threads_to_terminate = []
+            terminate_count = 0
 
             for t in all_threads:
                 thread_name = t.name if t.name else f"Thread-{t.ident}"
@@ -229,12 +252,16 @@ def monitoring_loop():
                 should_terminate = False
                 if "volume" in thread_name.lower() and not volume_thread_running.is_set():
                     should_terminate = True
+                    terminate_count += 1
                 elif "periodic" in thread_name.lower() and not periodic_sample_thread_running.is_set():
                     should_terminate = True
+                    terminate_count += 1
                 elif "monitoring" in thread_name.lower() and not monitoring_thread_running.is_set():
                     should_terminate = True
+                    terminate_count += 1
                 elif "cleanup" in thread_name.lower() and not thread_cleanup_running.is_set():
                     should_terminate = True
+                    terminate_count += 1
 
                 if should_terminate and t.is_alive():
                     # Get frame information for this thread
@@ -253,36 +280,38 @@ def monitoring_loop():
                     except Exception as e:
                         threads_to_terminate.append(f"{thread_name} [error: {e}]")
 
-            # Check which thread control flags are set to terminate
-            termination_flags = []
-            if not volume_thread_running.is_set():
-                termination_flags.append("volume")
-            if not periodic_sample_thread_running.is_set():
-                termination_flags.append("periodic")
-            if not monitoring_thread_running.is_set():
-                termination_flags.append("monitoring")
-            if not thread_cleanup_running.is_set():
-                termination_flags.append("cleanup")
+            if terminate_count or verbose_threads:
+                # Check which thread control flags are set to terminate
+                termination_flags = []
+                if not volume_thread_running.is_set():
+                    termination_flags.append("volume")
+                if not periodic_sample_thread_running.is_set():
+                    termination_flags.append("periodic")
+                if not monitoring_thread_running.is_set():
+                    termination_flags.append("monitoring")
+                if not thread_cleanup_running.is_set():
+                    termination_flags.append("cleanup")
 
-            termination_status = f" | Terminating: {', '.join(termination_flags)}" if termination_flags else ""
+                termination_status = '-'.join(termination_flags) if termination_flags else ""
 
-            # Log the monitoring data
-            log_message(
-                f"[bold green]Memory: {mem_mb:.2f} MB | CPU: {cpu_percent:.1f}% | Threads: {thread_count}{termination_status}[/bold green]",
-                icon="📊"
-            )
+                # Log the monitoring data
+                log_message(
+                    f"[green] Memory: {mem_mb:.2f} MB | CPU: {cpu_percent:.1f}% ⨋ "
+                    f"Threads: {thread_count}[/green]"
+                )
 
-            # Log thread details
-            log_message(f"[dim green]🩳 Thread details: " + f'{"\n\t 🥣".join(thread_status)}' + "[/dim green]")
+                log_message(f"[red] {termination_status}[/red]");
 
-            # Log threads signed to terminate with their current execution position
-            if threads_to_terminate:
-                log_message(f"[bold red]Threads signed to terminate:[/bold red]")
-                for term_info in threads_to_terminate:
-                    log_message(f"[red]  └─ {term_info}[/red]")
+                # Log thread details
+                log_message(f"\n\t ⨋ Thread details: " + "\n\t ♾️".join(thread_status) + "")
 
-            # Sleep for 5 seconds
-            time.sleep(2.0)
+                # Log threads signed to terminate with their current execution position
+                if terminate_count:
+                    log_message(f"[bold red]Threads signed to terminate:[/bold red]")
+                    for term_info in threads_to_terminate:
+                        log_message(f"[red]  └─ {term_info}[/red]")
+
+            time.sleep(0.7)
 
     except Exception as e:
         log_exception(e, "Monitoring error: ")
@@ -652,7 +681,7 @@ def jam_loop():
     try:
         while True:
             if only_volume_mut:
-                time.sleep(1)
+                time.sleep(0.01)
                 continue
 
             # Kick off initial playback
@@ -668,7 +697,7 @@ def jam_loop():
                 play_random_sample()
 
             # Small delay to prevent busy-waiting
-            time.sleep(0.05)
+            time.sleep(0.01)
 
     except KeyboardInterrupt:
         log_message("\n[bold red]Shutting down...[/bold red]")

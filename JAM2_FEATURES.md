@@ -28,7 +28,7 @@ periodic_sample_loop()
 - Logs when max samples reached
 
 #### B. 2/3 Elapsed Trigger
-```python
+```
 playback_thread() - line 354-359
 ```
 - Each playing sample monitors its playback position
@@ -113,7 +113,7 @@ volume_control_loop()
 - Uses Windows Audio API (pycaw)
 
 ### 7. Chunked Playback
-```python
+```
 sd.OutputStream() - 100ms chunks
 ```
 - Allows mid-playback triggers (2/3 elapsed)
@@ -163,15 +163,14 @@ Main Loop:
 - **Format**: MP3, mono converted automatically
 
 ## Log Messages
-
-| Color | Meaning | Example |
-|-------|---------|---------|
+| Color i  Meaning         | Example |
+|-------|------------------|---------|
 | **[bold green]** | Playback started | `▶ Playback started \| Active: 3/5` |
 | **[bold yellow]** | Playback finished | `■ Playback finished \| Active: 2/5` |
-| **[cyan]** | Info/Trigger | `Periodic trigger - queueing new sample` |
-| **[magenta]** | Processing | `Playing: sample.mp3 \| Rate: 1.23x` |
-| **[yellow]** | Warning | `Periodic trigger skipped - max samples reached` |
-| **[red]** | Error | `Playback error: ...` |
+| **[cyan]** | Info/Trigger     | `Periodic trigger - queueing new sample` |
+| **[magenta]** | Processing       | `Playing: sample.mp3 \| Rate: 1.23x` |
+| **[yellow]** | Warning          | `Periodic trigger skipped - max samples reached` |
+| **[red]** | Error            | `Playback error: ...` |
 
 ## Performance Characteristics
 - **Sample preparation**: ~100-500ms (includes librosa processing)

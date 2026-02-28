@@ -58,6 +58,10 @@ class Stats:
         self.pe_analyzed = 0
         self.operation_start_time = time.time()
         self.operations_history = []  # Store recent operations with timing
+        # TTFB (Time To First Byte) tracking
+        self.ttfb_times = []  # Store TTFB measurements in milliseconds
+        self.max_ttfb_samples = 15
+        self.current_ttfb = 0.0  # Current operation's TTFB
 
     def add_download(self, bytes_count):
         with self.lock:
@@ -164,6 +168,35 @@ class Stats:
             if len(self.download_speeds) > self.max_speed_samples:
                 self.download_speeds.pop(0)
 
+    def add_ttfb(self, ttfb_ms):
+        """Record time to first byte in milliseconds"""
+        with self.lock:
+            self.ttfb_times.append(ttfb_ms)
+            self.current_ttfb = ttfb_ms
+            if len(self.ttfb_times) > self.max_ttfb_samples:
+                self.ttfb_times.pop(0)
+
+    def get_average_ttfb(self):
+        """Get average TTFB from recent samples"""
+        with self.lock:
+            if len(self.ttfb_times) > 0:
+                return sum(self.ttfb_times) / len(self.ttfb_times)
+            return 0.0
+
+    def get_min_ttfb(self):
+        """Get minimum TTFB recorded"""
+        with self.lock:
+            if len(self.ttfb_times) > 0:
+                return min(self.ttfb_times)
+            return 0.0
+
+    def get_max_ttfb(self):
+        """Get maximum TTFB recorded"""
+        with self.lock:
+            if len(self.ttfb_times) > 0:
+                return max(self.ttfb_times)
+            return 0.0
+
     def get_eta(self, total_files, current_file):
         """Estimate time remaining based on average speed and progress"""
         with self.lock:
@@ -226,6 +259,16 @@ class Stats:
         table.add_row("⏳ ETA:", eta_str)
         table.add_row("📊 Progress:", f"{current_idx}/{total_files} ({(current_idx / total_files) * 100:.1f}%)")
 
+        # Add TTFB metrics
+        avg_ttfb = self.get_average_ttfb()
+        min_ttfb = self.get_min_ttfb()
+        max_ttfb = self.get_max_ttfb()
+        table.add_row("", "[bold magenta]═══ NETWORK LATENCY ═══[/bold magenta]")
+        table.add_row("⏱️ Current TTFB:", f"{self.current_ttfb:.1f} ms")
+        table.add_row("📊 Avg TTFB:", f"{avg_ttfb:.1f} ms")
+        table.add_row("🔻 Min TTFB:", f"{min_ttfb:.1f} ms")
+        table.add_row("🔺 Max TTFB:", f"{max_ttfb:.1f} ms")
+
         table.add_row("", "[bold green]═══ FILE COUNTS ═══[/bold green]")
         table.add_row("📦 Packed:", f"{self.files_packed}")
         table.add_row("📂 Unpacked:", f"{self.files_unpacked}")
@@ -278,6 +321,16 @@ class Stats:
             status_table.add_row("🖥️ x86:", f"{self.files_x86}")
             status_table.add_row("💻 x64:", f"{self.files_amd64}")
 
+            # Add TTFB metrics to report
+            avg_ttfb = self.get_average_ttfb()
+            min_ttfb = self.get_min_ttfb()
+            max_ttfb = self.get_max_ttfb()
+            status_table.add_row("", "[bold magenta]═══ NETWORK LATENCY ═══[/bold magenta]")
+            status_table.add_row("⏱️ Current TTFB:", f"{self.current_ttfb:.1f} ms")
+            status_table.add_row("📊 Avg TTFB:", f"{avg_ttfb:.1f} ms")
+            status_table.add_row("🔻 Min TTFB:", f"{min_ttfb:.1f} ms")
+            status_table.add_row("🔺 Max TTFB:", f"{max_ttfb:.1f} ms")
+
             status_table.add_row("", "[bold magenta]═══ OPERATIONS ═══[/bold magenta]")
             status_table.add_row("🌐 HTTP Requests:", f"{self.http_requests}")
             status_table.add_row("📋 Metadata:", f"{self.metadata_fetched}")
@@ -302,6 +355,74 @@ stats = Stats()
 
 def get_timestamp():
     return datetime.now().strftime("%H:%M:%S")
+
+
+def measure_ttfb_request(url, headers=None):
+    """Make a GET request and measure time to first byte (TTFB)"""
+    start_time = time.time()
+    try:
+        response = requests.get(url, headers=headers, stream=True, timeout=16)
+        # Measure TTFB by reading first byte
+        first_byte_time = time.time()
+        ttfb_ms = (first_byte_time - start_time) * 1000
+        stats.add_ttfb(ttfb_ms)
+        console.print(f"{get_timestamp()} [bold magenta]⏱️ TTFB[/bold magenta] {url[:60]}... → {ttfb_ms:.1f} ms")
+        return response, ttfb_ms
+    except Exception as e:
+        console.print(f"{get_timestamp()} [red]❌ TTFB ERROR[/red] Failed to measure TTFB for {url}: {e}")
+        stats.add_error()
+        raise
+
+
+def download_with_progress(url, headers=None):
+    """Download a file with a progress bar"""
+    try:
+        # Measure TTFB at connection start
+        start_time = time.time()
+        response = requests.get(url, headers=headers, stream=True, timeout=16)
+        first_byte_time = time.time()
+        ttfb_ms = (first_byte_time - start_time) * 1000
+        stats.add_ttfb(ttfb_ms)
+        console.print(f"{get_timestamp()} [bold magenta]⏱️ TTFB[/bold magenta] {url.split('/')[-1]} → {ttfb_ms:.1f} ms")
+
+        total_size = int(response.headers.get('content-length', 0))
+
+        if total_size == 0:
+            # Fallback to non-streaming download
+            response = requests.get(url, headers=headers)
+            stats.add_download(len(response.content))
+            return response
+
+        content = bytearray()
+
+        with Progress(
+                SpinnerColumn(),
+                TextColumn("[bold blue]{task.description}"),
+                BarColumn(bar_width=40),
+                DownloadColumn(),
+                TransferSpeedColumn(),
+                TimeRemainingColumn(),
+                console=console
+        ) as progress:
+            task = progress.add_task(f"[cyan]Downloading...", total=total_size)
+
+            for chunk in response.iter_content(chunk_size=8192):
+                if chunk:
+                    content.extend(chunk)
+                    stats.add_download(len(chunk))
+                    progress.update(task, advance=len(chunk))
+
+        # Create a mock response object
+        class MockResponse:
+            def __init__(self, content, status_code):
+                self.content = bytes(content)
+                self.status_code = status_code
+                self.text = self.content.decode('utf-8', errors='ignore')
+
+        return MockResponse(content, response.status_code)
+
+    except Exception as e:
+        raise e
 
 
 def download_with_progress(url, headers=None):
@@ -350,10 +471,10 @@ def download_with_progress(url, headers=None):
 
 console.print(f"{get_timestamp()} [bold green]🌐 NETWORK[/bold green] Fetching pad links list...")
 stats.set_operation("Fetching PAD links list", "", "https://www.nirsoft.net/pad/pad-links.txt")
-links = requests.get('https://www.nirsoft.net/pad/pad-links.txt')
+links_response, pad_ttfb = measure_ttfb_request('https://www.nirsoft.net/pad/pad-links.txt')
 stats.add_http_request()
-stats.add_download(len(links.content))
-links = links.text.split('\n')
+stats.add_download(len(links_response.content))
+links = links_response.text.split('\n')
 stats.complete_operation("Fetch PAD links")
 updated = 0
 total = len(links)
@@ -389,16 +510,23 @@ for link in links:
     updated += 1
 
     console.print(f"{get_timestamp()} [bold green]🌐 NETWORK[/bold green] [{updated}/{total}] Fetching metadata: {link}")
-    stats.set_operation("Fetching metadata", f"Package {updated}/{total}", link)
-    xm = requests.get(link)
-    stats.add_http_request()
-    stats.add_download(len(xm.content))
-    stats.add_metadata_fetch()
-    xm = xm.text
-    xm = json.dumps(xm)
-    url = re.findall(r'Primary_Download_URL>(.*?)</Prim', xm)
-    console.print(f"{get_timestamp()} [bold blue]ℹ️ INFO[/bold blue] Primary download URL: {url[0]}")
-    stats.complete_operation("Fetch metadata")
+    stats.set_operation("Requesting metadata", f"Package {updated}/{total}", link)
+    try:
+        xm_response, metadata_ttfb = measure_ttfb_request(link)
+        stats.set_operation("Setting stats metadata")
+        stats.add_http_request()
+        stats.add_download(len(xm_response.content))
+        stats.add_metadata_fetch()
+        xm = xm_response.text
+        xm = json.dumps(xm)
+        url = re.findall(r'Primary_Download_URL>(.*?)</Prim', xm)
+        console.print(f"{get_timestamp()} [bold blue]ℹ️ INFO[/bold blue] Primary download URL: {url[0]}")
+        stats.complete_operation("Fetch metadata")
+    except Exception as e:
+        console.print(f"{get_timestamp()} [red]❌ ERROR[/red] Failed to get meta[data] for {link}: {e}")
+        stats.add_error()
+        stats.add_failed()
+        continue
 
     while True:
         try:
@@ -467,7 +595,7 @@ for link in links:
         exes = glob.glob(f'*.exe')
 
         epath = os.path.join(drr, exes[0])
-        console.print(f"{get_timestamp()} [bold green]✅ FOUND[/bold green] Executable: {epath}")
+        console.print(f"{get_timestamp()} ✅ [bold green] FOUND[/bold green] Executable: {epath}")
         stats.complete_operation("Search executable")
     except Exception as e:
         console.print(f"{get_timestamp()} [red]❌ ERROR[/red] EXE is broken or infected: {e}")
@@ -536,4 +664,14 @@ console.print(f"{get_timestamp()} [cyan]📦 Files Packed (lol):[/cyan] {stats.f
 console.print(f"{get_timestamp()} [cyan]📂 Files Унпячкэд:[/cyan] {stats.files_unpacked}")
 console.print(f"{get_timestamp()} [cyan]x86© Files:[/cyan] {stats.files_x86}")
 console.print(f"{get_timestamp()} [cyan]x64© Files:[/cyan] {stats.files_amd64}")
+
+# TTFB summary
+avg_ttfb = stats.get_average_ttfb()
+min_ttfb = stats.get_min_ttfb()
+max_ttfb = stats.get_max_ttfb()
+console.print(f"\n{get_timestamp()} [bold magenta]⏱️  NETWORK LATENCY SUMMARY[/bold magenta]")
+console.print(f"{get_timestamp()} [magenta]📊 Avg TTFB:[/magenta] {avg_ttfb:.1f} ms ({len(stats.ttfb_times)} measurements)")
+console.print(f"{get_timestamp()} [magenta]🔻 Min TTFB:[/magenta] {min_ttfb:.1f} ms")
+console.print(f"{get_timestamp()} [magenta]🔺 Max TTFB:[/magenta] {max_ttfb:.1f} ms")
+
 console.print(f"{get_timestamp()} [bold green]✅ ALL DONE![/bold green]")
