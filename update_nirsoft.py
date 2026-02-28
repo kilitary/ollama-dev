@@ -366,10 +366,10 @@ def measure_ttfb_request(url, headers=None):
         first_byte_time = time.time()
         ttfb_ms = (first_byte_time - start_time) * 1000
         stats.add_ttfb(ttfb_ms)
-        console.print(f"{get_timestamp()} [bold magenta]⏱️ ТТФБ[/bold magenta] {url[:60]}... → {ttfb_ms:.1f} ms")
+        console.print(f"{get_timestamp()} [bold magenta]⏱️ TTFB[/bold magenta] {url[:60]}... → {ttfb_ms:.1f} ms")
         return response, ttfb_ms
     except Exception as e:
-        console.print(f"{get_timestamp()} ❌ [red] ТТФБ ОШИБКА[/red] Не получилось {url[:40]}:\r\n\t{e}")
+        console.print(f"{get_timestamp()} ❌ [red] TTFB ERROR[/red] Failed to measure TTFB for {url}:\r\n\t{e}")
         stats.add_error()
         raise
 
@@ -383,7 +383,7 @@ def download_with_progress(url, headers=None):
         first_byte_time = time.time()
         ttfb_ms = (first_byte_time - start_time) * 1000
         stats.add_ttfb(ttfb_ms)
-        console.print(f"{get_timestamp()} [bold magenta]⏱️ ТТФБ[/bold magenta] {url.split('/')[-1]} → {ttfb_ms:.1f} ms")
+        console.print(f"{get_timestamp()} [bold magenta]⏱️ TTFB[/bold magenta] {url.split('/')[-1]} → {ttfb_ms:.1f} ms")
 
         total_size = int(response.headers.get('content-length', 0))
 
@@ -404,7 +404,7 @@ def download_with_progress(url, headers=None):
                 TimeRemainingColumn(),
                 console=console
         ) as progress:
-            task = progress.add_task(f"[cyan]Загружаю...", total=total_size)
+            task = progress.add_task(f"[cyan]Downloading...", total=total_size)
 
             for chunk in response.iter_content(chunk_size=8192):
                 if chunk:
@@ -425,8 +425,8 @@ def download_with_progress(url, headers=None):
         raise e
 
 
-console.print(f"{get_timestamp()} [bold green]🌐 СЕТЬ[/bold green] Загружаю список ссылок...")
-stats.set_operation("Fetch PAD links list", "", "https://www.nirsoft.net/pad/pad-links.txt")
+console.print(f"{get_timestamp()} [bold green]🌐 NETWORK[/bold green] Fetching pad links list...")
+stats.set_operation("Fetching PAD links list", "", "https://www.nirsoft.net/pad/pad-links.txt")
 links_response, pad_ttfb = measure_ttfb_request('https://www.nirsoft.net/pad/pad-links.txt')
 stats.add_http_request()
 stats.add_download(len(links_response.content))
@@ -434,26 +434,27 @@ links = links_response.text.split('\n')
 stats.complete_operation("Fetch PAD links")
 updated = 0
 total = len(links)
-console.print(f"{get_timestamp()} [bold blue]ℹ️ ИНФО[/bold blue] Найдено {total} ссылок")
+console.print(f"{get_timestamp()} [bold blue]ℹ️ INFO[/bold blue] Found {total} links to process")
 
 path.Path(r'h:\upd').mkdir_p()
 
 prevs = glob.glob(r'h:\upd\*')
 if prevs:
     console.print(
-        f"{get_timestamp()} [bold yellow]🗑️ УБОРКА[/bold yellow] Удаляю {len(prevs)} временных папок...")
+        f"{get_timestamp()} 🗑️ [bold yellow] CLEANUP[/bold yellow] Removing {len(prevs)} previous temporary directories...")
     stats.set_operation("Cleanup temp directories", f"{len(prevs)} directories", "")
     for prev in prevs:
-        console.print(f"{get_timestamp()} [yellow]🗑️ УДАЛЬ[/yellow] {prev}")
+        console.print(f"{get_timestamp()} [yellow]🗑️ DELETE[/yellow] {prev}")
         try:
             shutil.rmtree(prev)
             stats.add_temp_dir_cleaned()
         except Exception as e:
-            console.print(f"{get_timestamp()} ❌ [red] ОШИБКА[/red] Не удалось {prev}: {e}")
+            console.print(f"{get_timestamp()} ❌ [red] ERROR[/red] Failed to remove {prev}: {e}")
             stats.add_error()
             pass
     stats.complete_operation("Cleanup")
-    console.print(f"{get_timestamp()} [bold green]✅ ГОТОВО[/bold green] Удалено {stats.temp_dirs_cleaned} папок")
+    console.print(f"{get_timestamp()} ✅ [bold green] CLEANUP[/bold green] Removed {stats.temp_dirs_cleaned} temporary "
+                  f"directories")
 tot = 0.
 for link in links:
     package_name = ''
@@ -466,7 +467,7 @@ for link in links:
         break
     updated += 1
 
-    console.print(f"{get_timestamp()} [bold green]🌐 СЕТЬ[/bold green] [{updated}/{total}] Получаю метаданные: {link}")
+    console.print(f"{get_timestamp()} [bold green]🌐 NETWORK[/bold green] [{updated}/{total}] Fetching metadata: {link}")
     stats.set_operation("Requesting metadata", f"Package {updated}/{total}", link)
     try:
         xm_response, metadata_ttfb = measure_ttfb_request(link)
@@ -477,10 +478,10 @@ for link in links:
         xm = xm_response.text
         xm = json.dumps(xm)
         url = re.findall(r'Primary_Download_URL>(.*?)</Prim', xm)
-        console.print(f"{get_timestamp()} [bold blue]ℹ️ ССЫЛКА[/bold blue] {url[0][:40]}...")
+        console.print(f"{get_timestamp()} [bold blue]ℹ️ INFO[/bold blue] Primary download URL: {url[0]}")
         stats.complete_operation("Fetch metadata")
     except Exception as e:
-        console.print(f"{get_timestamp()} ❌ [red] ОШИБКА[/red] Получение данных {link}: {e}")
+        console.print(f"{get_timestamp()} ❌ [red] ERROR[/red] Failed to get meta[data] for {link}: {e}")
         stats.add_error()
         stats.add_failed()
         continue
@@ -488,7 +489,7 @@ for link in links:
     while True:
         try:
             package_name = url[0].split('/')[-1].replace('.zip', '')
-            console.print(f"{get_timestamp()} [bold green]⬇️ ЗАГРУЗКА[/bold green] [{updated}/{total}] {url[0]}")
+            console.print(f"{get_timestamp()} [bold green]⬇️ DOWNLOAD[/bold green] [{updated}/{total}] {url[0]}")
             stats.set_operation(f"Downloading package {updated}/{total}", package_name, url[0])
             stats.set_current_file(url[0].split('/')[-1])
             resp = download_with_progress(url[0], headers={
@@ -497,7 +498,7 @@ for link in links:
             })
             stats.complete_operation("Download package")
         except Exception as e:
-            console.print(f"{get_timestamp()} ❌ [red] ОШИБКА[/red] Ошибка с {url[0]}: {e}")
+            console.print(f"{get_timestamp()} ❌ [red] ERROR[/red] Failed with {url[0]}: {e}")
             stats.add_error()
             stats.add_failed()
             time.sleep(5)
@@ -506,13 +507,13 @@ for link in links:
 
     try:
         if not locals()['resp']:
-            console.print(f"{get_timestamp()} ❌ [red] ОШИБКА[/red] Ответа нету {url[0]}")
+            console.print(f"{get_timestamp()} ❌ [red] ERROR[/red] No response for {url[0]}")
             stats.add_error()
             stats.add_failed()
             continue
 
         if resp.status_code != 200:
-            console.print(f"{get_timestamp()} ❌ [red] ОШИБКА[/red] HTTP {resp.status_code} {url[0]}")
+            console.print(f"{get_timestamp()} ❌ [red] ERROR[/red] HTTP {resp.status_code} for {url[0]}")
             stats.add_error()
             stats.add_failed()
             continue
@@ -529,46 +530,46 @@ for link in links:
 
         stats.set_operation("Writing archive to disk", package_name, path)
         with open(path, 'wb') as f:
-            console.print(f"{get_timestamp()} [bold magenta]💾 ПИШУ[/bold magenta] Пишу {len(data)} байтов {path}")
+            console.print(f"{get_timestamp()} [bold magenta]💾 WRITE[/bold magenta] Writing {len(data)} bytes to {path}")
             ret = f.write(data)
             stats.add_pack()
-            console.print(f"{get_timestamp()} [magenta]💾 ПИСАЛ[/magenta] Писал {ret} байтов")
+            console.print(f"{get_timestamp()} [magenta]💾 WRITE[/magenta] Wrote {ret} bytes")
         stats.complete_operation("Write archive")
 
         sz = f'{os.path.getsize(path) / 1024.0 / 1024.0:.2f} MB'
         tot += float(os.path.getsize(path) / 1024.0 / 1024.0)
         console.print(
-            f"{get_timestamp()} [bold blue]📈 ПРОГРЕСС[/bold blue] [{updated:d}/{total:d}] ({(updated / total) * 100.0:.2f}%) | Файл: {sz} | Всего: {tot:.2f} MB")
+            f"{get_timestamp()} [bold blue]📈 PROGRESS[/bold blue] [{updated:d}/{total:d}] ({(updated / total) * 100.0:.2f}%) | File: {sz} | Total: {tot:.2f} MB")
 
         os.chdir(drr)
 
         stats.set_operation("Extracting archive", package_name, path)
-        console.print(f"{get_timestamp()} [bold cyan]📂 РАСПАК[/bold cyan] Распак {path}...")
+        console.print(f"{get_timestamp()} [bold cyan]📂 UNPACK[/bold cyan] Extracting {path}...")
         os.system(f'7z x -p0 -bb0 {path} > o')
         stats.add_unpack()
         stats.complete_operation("Extract archive")
 
         # find exe
         stats.set_operation("Searching for executable", package_name, "")
-        console.print(f"{get_timestamp()} [bold blue]🔍 ПОИСК[/bold blue] Ищу exe в {url}")
+        console.print(f"{get_timestamp()} [bold blue]🔍 SEARCH[/bold blue] Looking for executable in {url}")
 
 
     except Exception as e:
-        console.print(f"{get_timestamp()} ❌ [red] ОШИБКА[/red] {e}")
+        console.print(f"{get_timestamp()} ❌ [red] ERROR[/red]: {e}")
         stats.add_error()
         continue
 
     try:
         exepath = re.findall(r'\w+/\w+/([^.]{1,25})\.zip', url[0])
         name = exepath[0]
-        console.print(f"{get_timestamp()} [bold blue]ℹ️ ИНФО[/bold blue] Имя: {name}")
+        console.print(f"{get_timestamp()} [bold blue]ℹ️ INFO[/bold blue] Package name: {name}")
         exes = glob.glob(f'*.exe')
 
         epath = os.path.join(drr, exes[0])
-        console.print(f"{get_timestamp()} ✅ [bold green] НАЙДЕНО[/bold green] EXE: {epath}")
+        console.print(f"{get_timestamp()} ✅ [bold green] FOUND[/bold green] Executable: {epath}")
         stats.complete_operation("Search executable")
     except Exception as e:
-        console.print(f"{get_timestamp()} ❌ [red] ОШИБКА[/red] EXE повреждён/заражён: {e}")
+        console.print(f"{get_timestamp()} ❌ [red] ERROR[/red] EXE is broken or infected: {e}")
         stats.add_error()
         stats.add_failed()
         stats.complete_operation("Search executable")
@@ -579,7 +580,7 @@ for link in links:
         pe = pefile.PE(epath)
         stats.add_pe_analysis()
     except Exception as e:
-        console.print(f"{get_timestamp()} 🔒 [red]ОШИБКА[/red] ❌ ЗАЩИЩЕНО/ПАРОЛЬ")
+        console.print(f"{get_timestamp()} 🔒 [red]ERROR[/red] ❌ POSSIBLY PASSWORDED")
         stats.add_error()
         stats.add_failed()
         stats.complete_operation("Analyze PE")
@@ -587,7 +588,7 @@ for link in links:
     # determine x64
 
     console.print(
-        f"{get_timestamp()} [bold blue]🔧 АНАЛИЗ[/bold blue] Машина: {pe.FILE_HEADER.Machine} (0x{pe.FILE_HEADER.Machine:x})")
+        f"{get_timestamp()} [bold blue]🔧 ANALYZE[/bold blue] Machine type: {pe.FILE_HEADER.Machine} (0x{pe.FILE_HEADER.Machine:x})")
     stats.complete_operation("Analyze PE")
     # unpack again to proper nirsoft dir
 
@@ -595,57 +596,57 @@ for link in links:
 
     if pe.FILE_HEADER.Machine == 0x8664:
         dest = os.path.join(rf'T:\!power-tools\NirLauncher\NirSoft\x64\{name}')
-        console.print(f"{get_timestamp()} [bold blue]ℹ️ ИНФО[/bold blue] Найдена 🐩 x64 архитектура")
+        console.print(f"{get_timestamp()} [bold blue]ℹ️ INFO[/bold blue] Detected 🐩 x64 architecture")
         stats.add_amd64()
     elif pe.FILE_HEADER.Machine == 0x14c:
         dest = os.path.join(rf'T:\!power-tools\NirLauncher\NirSoft\{name}')
-        console.print(f"{get_timestamp()} [bold blue]ℹ️ ИНФО[/bold blue] Найдена 🦍 x86 архитектура")
+        console.print(f"{get_timestamp()} [bold blue]ℹ️ INFO[/bold blue] Detected 🦍 x86 architecture")
         stats.add_x86()
     else:
         console.print(
-            f"{get_timestamp()} ❌ [red] ОШИБКА[/red] Неизвестная машина: {pe.FILE_HEADER.Machine} (0"
+            f"{get_timestamp()} ❌ [red] ERROR[/red] Unknown machine type: {pe.FILE_HEADER.Machine} (0"
             f"x{pe.FILE_HEADER.Machine:x})")
         stats.add_error()
         time.sleep(10)
 
     stats.set_operation("Extracting to final destination", package_name, dest)
-    console.print(f"{get_timestamp()} [bold cyan]📂 РАСПАК[/bold cyan] В финальное место: {dest}")
+    console.print(f"{get_timestamp()} [bold cyan]⛈️ UNPACK[/bold cyan] Extracting to final destination: {dest}")
     try:
         os.system(rf'7z x -p0 -y -bb0 {path} -o{dest} > o')
         stats.add_unpack()
         pe.close()
         extract_log = open('o', 'r').read()
         extract_log = re.sub(r'[\r\n]+', '\n   🔸  ', extract_log.strip()).strip()
-        console.print(f"{get_timestamp()} [bold blue]💼 ЛОГ[/bold blue] Распакка:\n ⇶ {extract_log}")
+        console.print(f"{get_timestamp()} [bold blue]💼 LOG[/bold blue] Extraction:\n ⇶ {extract_log}")
         os.chdir(r"h:\\")
         shutil.rmtree(drr)
         stats.add_temp_dir_cleaned()
         stats.complete_operation("Final extraction")
-        console.print(f"{get_timestamp()} ✅ [bold green] ГОТОВО[/bold green] Успешно обработано {name}")
+        console.print(f"{get_timestamp()} ✅ [bold green] COMPLETE[/bold green] Successfully processed {name}")
     except Exception as e:
-        console.print(f"{get_timestamp()} ❌ [red] ОШИБКА[/red] {e}")
+        console.print(f"{get_timestamp()} ❌ [red] ERROR[/red] Exception: {e}")
         stats.add_error()
         stats.add_failed()
         stats.complete_operation("Final extraction")
 
 # Final stats report
-console.print(f"\n{get_timestamp()} [bold cyan]📊 Финальные статы[/bold cyan]")
-console.print(f"{get_timestamp()} [cyan]⬇️ Загружено:[/cyan] {stats.bytes_downloaded / 1024.0 / 1024.0:.2f} MB")
+console.print(f"\n{get_timestamp()} [bold cyan]📊 Файнал фэнтази статс[/bold cyan]")
+console.print(f"{get_timestamp()} [cyan]⬇️ Тоттл лоадэт:[/cyan] {stats.bytes_downloaded / 1024.0 / 1024.0:.2f} MB")
 console.print(
-    f"{get_timestamp()} [cyan]⬆️ Выложено:[/cyan]"
+    f"{get_timestamp()} [cyan]⬆️ Тоттл аплоадэт (kлol (boot still)):[/cyan]"              f""
     f" {stats.bytes_uploaded / 1024.0 / 1024.0:.2f} MB")
-console.print(f"{get_timestamp()} [cyan]📦 Запакованные:[/cyan] {stats.files_packed}")
-console.print(f"{get_timestamp()} [cyan]📂 Распакованные:[/cyan] {stats.files_unpacked}")
-console.print(f"{get_timestamp()} [cyan]💼 x86 файлов:[/cyan] {stats.files_x86}")
-console.print(f"{get_timestamp()} [cyan]🏺 x64 файлов:[/cyan] {stats.files_amd64}")
+console.print(f"{get_timestamp()} [cyan]📦 Пакт Файлзс (lockl):[/cyan] {stats.files_packed}")
+console.print(f"{get_timestamp()} [cyan]📂 Унпячкэд файлзс:[/cyan] {stats.files_unpacked}")
+console.print(f"{get_timestamp()} [cyan]💼 x86© Files:[/cyan] {stats.files_x86}")
+console.print(f"{get_timestamp()} [cyan]🏺 x64© Files:[/cyan] {stats.files_amd64}")
 
 # TTFB summary
 avg_ttfb = stats.get_average_ttfb()
 min_ttfb = stats.get_min_ttfb()
 max_ttfb = stats.get_max_ttfb()
-console.print(f"\n{get_timestamp()} [bold magenta]⏱️  СВОДКА ТТФБ[/bold magenta]")
-console.print(f"{get_timestamp()} [magenta]📊 Средняя:[/magenta] {avg_ttfb:.1f} ms ({len(stats.ttfb_times)} измерений)")
-console.print(f"{get_timestamp()} [magenta]🔻 Минимальная:[/magenta] {min_ttfb:.1f} ms")
-console.print(f"{get_timestamp()} [magenta]🔺 Максимальная:[/magenta] {max_ttfb:.1f} ms")
+console.print(f"\n{get_timestamp()} [bold magenta]⏱️  NETWORK LATENCY SUMMARY[/bold magenta]")
+console.print(f"{get_timestamp()} [magenta]📊 Avg TTFB:[/magenta] {avg_ttfb:.1f} ms ({len(stats.ttfb_times)} measurements)")
+console.print(f"{get_timestamp()} [magenta]🔻 Min TTFB:[/magenta] {min_ttfb:.1f} ms")
+console.print(f"{get_timestamp()} [magenta]🔺 Max TTFB:[/magenta] {max_ttfb:.1f} ms")
 
-console.print(f"{get_timestamp()} [bold green]✅ ГОТОВО![/bold green]")
+console.print(f"{get_timestamp()} [bold green]✅ ALL DONE![/bold green]")
