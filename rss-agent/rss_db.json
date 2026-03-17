@@ -1,0 +1,318 @@
+{
+  "links": [
+    {
+      "id": "e7fb4e60-7a99-4150-969a-88dcf4ba6748",
+      "url": "https://www.technologyreview.com/feed",
+      "title": "MIT Technology Review",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai",
+        "seed"
+      ],
+      "discovered_at": "2026-03-17T09:19:49.160440",
+      "last_checked": "2026-03-17T09:55:41.741121",
+      "is_available": true,
+      "check_count": 4,
+      "http_status": 200,
+      "feed_item_count": 10
+    },
+    {
+      "id": "a4e2d156-b04f-4ace-bf86-f6cb95e1797b",
+      "url": "https://deepmind.google/blog/rss.xml",
+      "title": "Google DeepMind News",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai",
+        "seed"
+      ],
+      "discovered_at": "2026-03-17T09:19:49.160440",
+      "last_checked": "2026-03-17T09:55:43.023655",
+      "is_available": true,
+      "check_count": 4,
+      "http_status": 200,
+      "feed_item_count": 100
+    },
+    {
+      "id": "373ca8b5-0cc7-433e-b71e-93a695a162d3",
+      "url": "https://openai.com/blog/rss.xml",
+      "title": "OpenAI News",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai",
+        "seed"
+      ],
+      "discovered_at": "2026-03-17T09:19:49.161439",
+      "last_checked": "2026-03-17T09:55:45.513372",
+      "is_available": true,
+      "check_count": 4,
+      "http_status": 200,
+      "feed_item_count": 886
+    },
+    {
+      "id": "19324e49-5da4-476c-94d2-f48268e06aac",
+      "url": "https://huggingface.co/blog/feed.xml",
+      "title": "Hugging Face - Blog",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai",
+        "seed"
+      ],
+      "discovered_at": "2026-03-17T09:19:49.161439",
+      "last_checked": "2026-03-17T09:55:47.392633",
+      "is_available": true,
+      "check_count": 4,
+      "http_status": 200,
+      "feed_item_count": 748
+    },
+    {
+      "id": "040c5afc-d786-4a2f-9906-1d212aa44ad0",
+      "url": "https://blogs.microsoft.com/ai/feed",
+      "title": "The AI Blog",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai",
+        "seed"
+      ],
+      "discovered_at": "2026-03-17T09:19:49.162440",
+      "last_checked": "2026-03-17T09:55:48.946653",
+      "is_available": true,
+      "check_count": 4,
+      "http_status": 200,
+      "feed_item_count": 10
+    },
+    {
+      "id": "3c8e0b4b-5ee9-49d6-a7aa-230753531690",
+      "url": "https://venturebeat.com/category/ai/feed",
+      "title": "AI | VentureBeat",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai",
+        "seed"
+      ],
+      "discovered_at": "2026-03-17T09:19:49.162440",
+      "last_checked": "2026-03-17T09:55:50.317521",
+      "is_available": true,
+      "check_count": 4,
+      "http_status": 200,
+      "feed_item_count": 7
+    },
+    {
+      "id": "24d7e255-0624-4f17-890b-0d0945c27d85",
+      "url": "https://www.aitrends.com/feed",
+      "title": "AI Trends",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T09:20:33.382904",
+      "last_checked": "2026-03-17T09:55:51.885191",
+      "is_available": true,
+      "check_count": 5,
+      "http_status": 200,
+      "feed_item_count": 10
+    },
+    {
+      "id": "bcce51a6-e77f-40bb-ae63-fab95b73d1f7",
+      "url": "https://www.analyticsvidhya.com/blog/category/data-science/feed",
+      "title": "Data Science Archives - Analytics Vidhya",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T09:20:36.026370",
+      "last_checked": "2026-03-17T09:55:53.982171",
+      "is_available": true,
+      "check_count": 5,
+      "http_status": 200,
+      "feed_item_count": 10
+    },
+    {
+      "id": "22a76404-fb4f-4506-af2a-c61bb24273b8",
+      "url": "https://www.kdnuggets.com/feed",
+      "title": "KDnuggets",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T09:20:40.567713",
+      "last_checked": "2026-03-17T09:55:56.363838",
+      "is_available": true,
+      "check_count": 5,
+      "http_status": 200,
+      "feed_item_count": 10
+    },
+    {
+      "id": "745104ab-efe1-49d1-8099-55e7fe51be42",
+      "url": "https://www.microsoft.com/en-us/research/feed",
+      "title": "Microsoft Research",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T09:20:47.905953",
+      "last_checked": "2026-03-17T09:55:58.938497",
+      "is_available": true,
+      "check_count": 5,
+      "http_status": 200,
+      "feed_item_count": 10
+    },
+    {
+      "id": "4c473a9a-16ed-4919-98ca-faae813031f5",
+      "url": "https://rss.arxiv.org/rss/cs",
+      "title": "cs updates on arXiv.org",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T09:24:24.876550",
+      "last_checked": "2026-03-17T09:56:00.869082",
+      "is_available": true,
+      "check_count": 5,
+      "http_status": 200,
+      "feed_item_count": 820
+    },
+    {
+      "id": "a8ce404b-604a-4fd9-9d3d-e00b8a5ca9c7",
+      "url": "https://rss.arxiv.org/rss/math.QA",
+      "title": "math.QA updates on arXiv.org",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T09:24:26.561599",
+      "last_checked": "2026-03-17T09:56:03.278334",
+      "is_available": true,
+      "check_count": 5,
+      "http_status": 200,
+      "feed_item_count": 16
+    },
+    {
+      "id": "7b8a22c1-f635-4175-9f2a-9d1762eb31d9",
+      "url": "https://rss.arxiv.org/rss/cs.ai+q-bio.NC",
+      "title": "cs.AI, q-bio.NC updates on arXiv.org",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T09:24:29.148708",
+      "last_checked": "2026-03-17T09:56:05.254039",
+      "is_available": true,
+      "check_count": 5,
+      "http_status": 200,
+      "feed_item_count": 721
+    },
+    {
+      "id": "915f0828-496f-4c1f-b7c3-281d133a403e",
+      "url": "https://rss.arxiv.org/rss/cs.LG",
+      "title": "cs.LG updates on arXiv.org",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T09:41:18.912334",
+      "last_checked": "2026-03-17T09:56:07.228202",
+      "is_available": true,
+      "check_count": 3,
+      "http_status": 200,
+      "feed_item_count": 713
+    },
+    {
+      "id": "c0b9dcc3-e149-47bd-b27d-fbff7d67ed5b",
+      "url": "https://rss.arxiv.org/rss/cs.CL",
+      "title": "cs.CL updates on arXiv.org",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T09:41:21.733101",
+      "last_checked": "2026-03-17T09:56:09.020983",
+      "is_available": true,
+      "check_count": 3,
+      "http_status": 200,
+      "feed_item_count": 280
+    },
+    {
+      "id": "5be8d76a-c8b9-48d0-bfff-3a732b9e413b",
+      "url": "https://rss.arxiv.org/rss/cs.CV",
+      "title": "cs.CV updates on arXiv.org",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T09:41:24.680326",
+      "last_checked": "2026-03-17T09:56:12.495808",
+      "is_available": true,
+      "check_count": 3,
+      "http_status": 200,
+      "feed_item_count": 648
+    },
+    {
+      "id": "32ea116e-5385-4074-991f-387a58e6f6e7",
+      "url": "https://rss.arxiv.org/rss/cs.RO",
+      "title": "cs.RO updates on arXiv.org",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T09:41:26.519967",
+      "last_checked": "2026-03-17T09:56:13.939642",
+      "is_available": true,
+      "check_count": 3,
+      "http_status": 200,
+      "feed_item_count": 223
+    },
+    {
+      "id": "db406a1c-0a67-4f77-a767-2ef97afc9185",
+      "url": "https://rss.arxiv.org/rss/cs.NE",
+      "title": "cs.NE updates on arXiv.org",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T09:41:29.292887",
+      "last_checked": "2026-03-17T09:56:15.229565",
+      "is_available": true,
+      "check_count": 3,
+      "http_status": 200,
+      "feed_item_count": 23
+    }
+  ],
+  "last_saved": "2026-03-17T09:56:15.230086",
+  "total_links": 18
+}

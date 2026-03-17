@@ -55,7 +55,7 @@ set_mute = volumer.SetMute
 min_vol = 1110
 max_vol = -10
 prev_volume = 199999
-volume_stated = max(0.6, int(volumer.GetMasterVolumeLevelScalar()) + 0.15)
+volume_stated = max(0.23, int(volumer.GetMasterVolumeLevelScalar()))
 
 # Shared playback/volume state
 volume_thread_running = threading.Event()
@@ -187,12 +187,12 @@ def volume_control_loop():
                 new_volume = random.randrange(int(volume_stated * 100.0)) * 0.01
                 trym += 1
 
-                if new_volume <= 0.15 and new_volume >= -10:
+                if 0.01 >= new_volume >= -10:
                     print('🐀 ', end='')
                     continue
 
                 ab = abs(new_volume - prev_volume)
-                if ab <= 0.15:
+                if ab <= 0.01:
                     print('🫎 ', end='')
                     continue
 
@@ -206,10 +206,10 @@ def volume_control_loop():
             if new_volume < min_vol:
                 min_vol = new_volume
 
-            sleep_time = random.uniform(0.1, 0.25)
+            sleep_time = random.uniform(0.01, 0.30)
 
-            log_message(f"[yellow]Setting volume: {new_volume:.2f} (min: {min_vol:.2f}, max: {max_vol:.2f}) slp: " +
-                        f"{sleep_time:.2f} [/yellow]")
+            log_message(f"[yellow]=>{new_volume:.2f} (min:{min_vol:.2f} max:{max_vol:.2f}) slp:" +
+                        f"{sleep_time:.2f}[/yellow]")
             volumer.SetMasterVolumeLevelScalar(new_volume, None)
 
             # Random sleep time between 0.01 and 0.1 seconds

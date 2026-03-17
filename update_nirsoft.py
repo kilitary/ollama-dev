@@ -1,28 +1,24 @@
 #  Copyright (c) 2025. kilitary@gmail.com
 
-import os
 import glob
-import requests
-import time
-import rich
-from rich import print
-from rich import print_json
-from rich.console import Console
-from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn, DownloadColumn, TransferSpeedColumn, TimeRemainingColumn
-from rich.live import Live
-from rich.table import Table
-from rich.panel import Panel
-import sys
 import json
-import xml.dom.minidom
-import xml
-import re
+import os
 import random
-import pefile
+import re
 import shutil
-from datetime import datetime
+import sys
 import threading
+import time
+from datetime import datetime
+
 import path
+import pefile
+import requests
+from requests import get
+from rich.console import Console
+from rich.panel import Panel
+from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn, DownloadColumn, TransferSpeedColumn, TimeRemainingColumn
+from rich.table import Table
 
 console = Console()
 
@@ -264,7 +260,7 @@ class Stats:
         min_ttfb = self.get_min_ttfb()
         max_ttfb = self.get_max_ttfb()
         table.add_row("", "[bold magenta]═══ NETWORK LATENCY ═══[/bold magenta]")
-        table.add_row("⏱️ Current TTFB:", f"{self.current_ttfb:.1f} ms")
+        table.add_row("♾️ Current TTFB:", f"{self.current_ttfb:.1f} ms")
         table.add_row("📊 Avg TTFB:", f"{avg_ttfb:.1f} ms")
         table.add_row("🔻 Min TTFB:", f"{min_ttfb:.1f} ms")
         table.add_row("🔺 Max TTFB:", f"{max_ttfb:.1f} ms")
@@ -326,7 +322,7 @@ class Stats:
             min_ttfb = self.get_min_ttfb()
             max_ttfb = self.get_max_ttfb()
             status_table.add_row("", "[bold magenta]═══ NETWORK LATENCY ═══[/bold magenta]")
-            status_table.add_row("⏱️ Current TTFB:", f"{self.current_ttfb:.1f} ms")
+            status_table.add_row("♾️️ Current TTFB:", f"{self.current_ttfb:.1f} ms")
             status_table.add_row("📊 Avg TTFB:", f"{avg_ttfb:.1f} ms")
             status_table.add_row("🔻 Min TTFB:", f"{min_ttfb:.1f} ms")
             status_table.add_row("🔺 Max TTFB:", f"{max_ttfb:.1f} ms")
@@ -354,24 +350,25 @@ stats = Stats()
 
 
 def get_timestamp():
-    return datetime.now().strftime("%H:%M:%S")
+    return datetime.now().strftime("%H:%M:%S.%m")
 
 
 def measure_ttfb_request(url, headers=None):
     """Make a GET request and measure time to first byte (TTFB)"""
     start_time = time.time()
     try:
-        response = requests.get(url, headers=headers, stream=True, timeout=32)
+        response = get(url, headers=headers, stream=True, timeout=11)
         # Measure TTFB by reading first byte
         first_byte_time = time.time()
         ttfb_ms = (first_byte_time - start_time) * 1000
         stats.add_ttfb(ttfb_ms)
-        console.print(f"{get_timestamp()} [bold magenta]⏱️ TTFB[/bold magenta] {url[:60]}... → {ttfb_ms:.1f} ms")
+        console.print(f"{get_timestamp()} ♾️[bold magenta] TTFB[/bold magenta] {url[:60]}... → {ttfb_ms:.1f} ms")
         return response, ttfb_ms
     except Exception as e:
-        console.print(f"{get_timestamp()} ❌ [red] TTFB ERROR[/red] Failed to measure TTFB for {url}:\r\n\t{e}")
+        console.print(
+            f"{get_timestamp()} ❌ [red] TTFB ERROR: Failed to measure TTFB for {url}:[/red]\r\n\t{e}")
         stats.add_error()
-        raise
+        sys.exit(-3)
 
 
 def download_with_progress(url, headers=None):
@@ -383,7 +380,7 @@ def download_with_progress(url, headers=None):
         first_byte_time = time.time()
         ttfb_ms = (first_byte_time - start_time) * 1000
         stats.add_ttfb(ttfb_ms)
-        console.print(f"{get_timestamp()} [bold magenta]⏱️ TTFB[/bold magenta] {url.split('/')[-1]} → {ttfb_ms:.1f} ms")
+        console.print(f"{get_timestamp()} [bold magenta]♾️️ TTFB[/bold magenta] {url.split('/')[-1]} → {ttfb_ms:.1f} ms")
 
         total_size = int(response.headers.get('content-length', 0))
 
@@ -425,9 +422,12 @@ def download_with_progress(url, headers=None):
         raise e
 
 
-console.print(f"{get_timestamp()} [bold green]🌐 NETWORK[/bold green] Fetching pad links list...")
-stats.set_operation("Fetching PAD links list", "", "https://www.nirsoft.net/pad/pad-links.txt")
-links_response, pad_ttfb = measure_ttfb_request('https://www.nirsoft.net/pad/pad-links.txt')
+pad = "https://www.nirsoft.net/pad/pad-links.txt"
+#pad = "http://skynet.ru/internet/"
+console.print(f"{get_timestamp()} [bold green]🌐 NETWORK[/bold green] Fetching pad links list from {pad}...")
+stats.set_operation(f"Fetching PAD links list from {pad}", "", pad)
+links_response, pad_ttfb = measure_ttfb_request(pad)
+
 stats.add_http_request()
 stats.add_download(len(links_response.content))
 links = links_response.text.split('\n')
@@ -457,13 +457,16 @@ if prevs:
                   f"directories")
 tot = 0.
 for link in links:
+    if not link.startswith('http'):
+        console.print(f"{get_timestamp()} skip {link}")
+        continue
     package_name = ''
     # Report stats every 2 seconds
     # if stats.should_report():
     #     stats.report_and_reset()
 
     if link == '':
-        console.print(f"{get_timestamp()} ✅ [bold green] COMPLETE[/bold green] Done with all links, updated={updated}")
+        console.print(f"{get_timestamp()} ✅ [bold green]COMPLETE[/bold green] Done with all links, updated={updated}")
         break
     updated += 1
 
@@ -485,6 +488,8 @@ for link in links:
         stats.add_error()
         stats.add_failed()
         continue
+
+    resp = None
 
     while True:
         try:
@@ -512,7 +517,7 @@ for link in links:
             stats.add_failed()
             continue
 
-        if resp.status_code != 200:
+        if not resp or resp.status_code != 200:
             console.print(f"{get_timestamp()} ❌ [red] ERROR[/red] HTTP {resp.status_code} for {url[0]}")
             stats.add_error()
             stats.add_failed()
@@ -553,7 +558,6 @@ for link in links:
         stats.set_operation("Searching for executable", package_name, "")
         console.print(f"{get_timestamp()} [bold blue]🔍 SEARCH[/bold blue] Looking for executable in {url}")
 
-
     except Exception as e:
         console.print(f"{get_timestamp()} ❌ [red] ERROR[/red]: {e}")
         stats.add_error()
@@ -585,10 +589,11 @@ for link in links:
         stats.add_failed()
         stats.complete_operation("Analyze PE")
         continue
+
     # determine x64
 
     console.print(
-        f"{get_timestamp()} [bold blue]🔧 ANALYZE[/bold blue] Machine type: {pe.FILE_HEADER.Machine} (0x{pe.FILE_HEADER.Machine:x})")
+        f"{get_timestamp()} [bold blue]🦴 ANALYZE[/bold blue] Machine type: {pe.FILE_HEADER.Machine} (0x{pe.FILE_HEADER.Machine:x})")
     stats.complete_operation("Analyze PE")
     # unpack again to proper nirsoft dir
 
@@ -604,13 +609,13 @@ for link in links:
         stats.add_x86()
     else:
         console.print(
-            f"{get_timestamp()} ❌ [red] ERROR[/red] Unknown machine type: {pe.FILE_HEADER.Machine} (0"
+            f"{get_timestamp()} ❌ [red] ERROR[/red] Анкноунн ммэшин ттайп: {pe.FILE_HEADER.Machine} (0"
             f"x{pe.FILE_HEADER.Machine:x})")
         stats.add_error()
         time.sleep(10)
 
     stats.set_operation("Extracting to final destination", package_name, dest)
-    console.print(f"{get_timestamp()} [bold cyan]⛈️ UNPACK[/bold cyan] Extracting to final destination: {dest}")
+    console.print(f"{get_timestamp()} [bold cyan]⛈️ Унпако [/bold cyan] Extracting to final destination: {dest}")
     try:
         os.system(rf'7z x -p0 -y -bb0 {path} -o{dest} > o')
         stats.add_unpack()
@@ -622,7 +627,7 @@ for link in links:
         shutil.rmtree(drr)
         stats.add_temp_dir_cleaned()
         stats.complete_operation("Final extraction")
-        console.print(f"{get_timestamp()} ✅ [bold green] COMPLETE[/bold green] Successfully processed {name}")
+        console.print(f"{get_timestamp()} ✅ [bold green]COMPLETE[/bold green] Successfully processed {name}")
     except Exception as e:
         console.print(f"{get_timestamp()} ❌ [red] ERROR[/red] Exception: {e}")
         stats.add_error()
@@ -633,7 +638,7 @@ for link in links:
 console.print(f"\n{get_timestamp()} [bold cyan]📊 Файнал фэнтази статс[/bold cyan]")
 console.print(f"{get_timestamp()} [cyan]⬇️ Тоттл лоадэт:[/cyan] {stats.bytes_downloaded / 1024.0 / 1024.0:.2f} MB")
 console.print(
-    f"{get_timestamp()} [cyan]⬆️ Тоттл аплоадэт (kлol (boot still)):[/cyan]"              f""
+    f"{get_timestamp()} [cyan]⬆️ Тоттл аплоадэт (kлol (boot sti11)):[/cyan]"              f""
     f" {stats.bytes_uploaded / 1024.0 / 1024.0:.2f} MB")
 console.print(f"{get_timestamp()} [cyan]📦 Пакт Файлзс (lockl):[/cyan] {stats.files_packed}")
 console.print(f"{get_timestamp()} [cyan]📂 Унпячкэд файлзс:[/cyan] {stats.files_unpacked}")
@@ -644,9 +649,9 @@ console.print(f"{get_timestamp()} [cyan]🏺 x64© Files:[/cyan] {stats.files_am
 avg_ttfb = stats.get_average_ttfb()
 min_ttfb = stats.get_min_ttfb()
 max_ttfb = stats.get_max_ttfb()
-console.print(f"\n{get_timestamp()} [bold magenta]⏱️  NETWORK LATENCY SUMMARY[/bold magenta]")
+console.print(f"\n{get_timestamp()} [bold magenta]♾️️ NETWORK LATENCY SUMMARY[/bold magenta]")
 console.print(f"{get_timestamp()} [magenta]📊 Avg TTFB:[/magenta] {avg_ttfb:.1f} ms ({len(stats.ttfb_times)} measurements)")
 console.print(f"{get_timestamp()} [magenta]🔻 Min TTFB:[/magenta] {min_ttfb:.1f} ms")
 console.print(f"{get_timestamp()} [magenta]🔺 Max TTFB:[/magenta] {max_ttfb:.1f} ms")
 
-console.print(f"{get_timestamp()} [bold green]✅ ALL DONE![/bold green]")
+console.print(f"{get_timestamp()} [bold green]✅ Все файлцы отскачированы.[/bold green]")
