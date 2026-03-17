@@ -1,24 +1,6 @@
 {
   "links": [
     {
-      "id": "e7fb4e60-7a99-4150-969a-88dcf4ba6748",
-      "url": "https://www.technologyreview.com/feed",
-      "title": "MIT Technology Review",
-      "description": null,
-      "language": null,
-      "category": "ai",
-      "tags": [
-        "ai",
-        "seed"
-      ],
-      "discovered_at": "2026-03-17T09:19:49.160440",
-      "last_checked": "2026-03-17T09:55:41.741121",
-      "is_available": true,
-      "check_count": 4,
-      "http_status": 200,
-      "feed_item_count": 10
-    },
-    {
       "id": "a4e2d156-b04f-4ace-bf86-f6cb95e1797b",
       "url": "https://deepmind.google/blog/rss.xml",
       "title": "Google DeepMind News",
@@ -30,29 +12,11 @@
         "seed"
       ],
       "discovered_at": "2026-03-17T09:19:49.160440",
-      "last_checked": "2026-03-17T09:55:43.023655",
+      "last_checked": "2026-03-17T21:06:24.962568",
       "is_available": true,
-      "check_count": 4,
+      "check_count": 30,
       "http_status": 200,
       "feed_item_count": 100
-    },
-    {
-      "id": "373ca8b5-0cc7-433e-b71e-93a695a162d3",
-      "url": "https://openai.com/blog/rss.xml",
-      "title": "OpenAI News",
-      "description": null,
-      "language": null,
-      "category": "ai",
-      "tags": [
-        "ai",
-        "seed"
-      ],
-      "discovered_at": "2026-03-17T09:19:49.161439",
-      "last_checked": "2026-03-17T09:55:45.513372",
-      "is_available": true,
-      "check_count": 4,
-      "http_status": 200,
-      "feed_item_count": 886
     },
     {
       "id": "19324e49-5da4-476c-94d2-f48268e06aac",
@@ -66,11 +30,11 @@
         "seed"
       ],
       "discovered_at": "2026-03-17T09:19:49.161439",
-      "last_checked": "2026-03-17T09:55:47.392633",
+      "last_checked": "2026-03-17T21:06:27.028998",
       "is_available": true,
-      "check_count": 4,
+      "check_count": 29,
       "http_status": 200,
-      "feed_item_count": 748
+      "feed_item_count": 750
     },
     {
       "id": "040c5afc-d786-4a2f-9906-1d212aa44ad0",
@@ -84,29 +48,11 @@
         "seed"
       ],
       "discovered_at": "2026-03-17T09:19:49.162440",
-      "last_checked": "2026-03-17T09:55:48.946653",
+      "last_checked": "2026-03-17T21:06:29.378369",
       "is_available": true,
-      "check_count": 4,
+      "check_count": 26,
       "http_status": 200,
       "feed_item_count": 10
-    },
-    {
-      "id": "3c8e0b4b-5ee9-49d6-a7aa-230753531690",
-      "url": "https://venturebeat.com/category/ai/feed",
-      "title": "AI | VentureBeat",
-      "description": null,
-      "language": null,
-      "category": "ai",
-      "tags": [
-        "ai",
-        "seed"
-      ],
-      "discovered_at": "2026-03-17T09:19:49.162440",
-      "last_checked": "2026-03-17T09:55:50.317521",
-      "is_available": true,
-      "check_count": 4,
-      "http_status": 200,
-      "feed_item_count": 7
     },
     {
       "id": "24d7e255-0624-4f17-890b-0d0945c27d85",
@@ -119,43 +65,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:20:33.382904",
-      "last_checked": "2026-03-17T09:55:51.885191",
+      "last_checked": "2026-03-17T21:06:31.155583",
       "is_available": true,
-      "check_count": 5,
-      "http_status": 200,
-      "feed_item_count": 10
-    },
-    {
-      "id": "bcce51a6-e77f-40bb-ae63-fab95b73d1f7",
-      "url": "https://www.analyticsvidhya.com/blog/category/data-science/feed",
-      "title": "Data Science Archives - Analytics Vidhya",
-      "description": null,
-      "language": null,
-      "category": "ai",
-      "tags": [
-        "ai"
-      ],
-      "discovered_at": "2026-03-17T09:20:36.026370",
-      "last_checked": "2026-03-17T09:55:53.982171",
-      "is_available": true,
-      "check_count": 5,
-      "http_status": 200,
-      "feed_item_count": 10
-    },
-    {
-      "id": "22a76404-fb4f-4506-af2a-c61bb24273b8",
-      "url": "https://www.kdnuggets.com/feed",
-      "title": "KDnuggets",
-      "description": null,
-      "language": null,
-      "category": "ai",
-      "tags": [
-        "ai"
-      ],
-      "discovered_at": "2026-03-17T09:20:40.567713",
-      "last_checked": "2026-03-17T09:55:56.363838",
-      "is_available": true,
-      "check_count": 5,
+      "check_count": 25,
       "http_status": 200,
       "feed_item_count": 10
     },
@@ -170,9 +82,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:20:47.905953",
-      "last_checked": "2026-03-17T09:55:58.938497",
+      "last_checked": "2026-03-17T21:06:33.523654",
       "is_available": true,
-      "check_count": 5,
+      "check_count": 23,
       "http_status": 200,
       "feed_item_count": 10
     },
@@ -187,9 +99,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:24:24.876550",
-      "last_checked": "2026-03-17T09:56:00.869082",
+      "last_checked": "2026-03-17T21:06:36.480167",
       "is_available": true,
-      "check_count": 5,
+      "check_count": 23,
       "http_status": 200,
       "feed_item_count": 820
     },
@@ -204,9 +116,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:24:26.561599",
-      "last_checked": "2026-03-17T09:56:03.278334",
+      "last_checked": "2026-03-17T21:06:37.828424",
       "is_available": true,
-      "check_count": 5,
+      "check_count": 19,
       "http_status": 200,
       "feed_item_count": 16
     },
@@ -221,9 +133,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:24:29.148708",
-      "last_checked": "2026-03-17T09:56:05.254039",
+      "last_checked": "2026-03-17T21:06:40.032448",
       "is_available": true,
-      "check_count": 5,
+      "check_count": 18,
       "http_status": 200,
       "feed_item_count": 721
     },
@@ -238,9 +150,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:41:18.912334",
-      "last_checked": "2026-03-17T09:56:07.228202",
+      "last_checked": "2026-03-17T21:06:42.156225",
       "is_available": true,
-      "check_count": 3,
+      "check_count": 18,
       "http_status": 200,
       "feed_item_count": 713
     },
@@ -255,9 +167,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:41:21.733101",
-      "last_checked": "2026-03-17T09:56:09.020983",
+      "last_checked": "2026-03-17T21:06:45.059952",
       "is_available": true,
-      "check_count": 3,
+      "check_count": 16,
       "http_status": 200,
       "feed_item_count": 280
     },
@@ -272,9 +184,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:41:24.680326",
-      "last_checked": "2026-03-17T09:56:12.495808",
+      "last_checked": "2026-03-17T21:06:47.813113",
       "is_available": true,
-      "check_count": 3,
+      "check_count": 16,
       "http_status": 200,
       "feed_item_count": 648
     },
@@ -289,9 +201,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:41:26.519967",
-      "last_checked": "2026-03-17T09:56:13.939642",
+      "last_checked": "2026-03-17T21:06:49.439482",
       "is_available": true,
-      "check_count": 3,
+      "check_count": 15,
       "http_status": 200,
       "feed_item_count": 223
     },
@@ -306,13 +218,234 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:41:29.292887",
-      "last_checked": "2026-03-17T09:56:15.229565",
+      "last_checked": "2026-03-17T21:06:50.742997",
       "is_available": true,
-      "check_count": 3,
+      "check_count": 15,
       "http_status": 200,
       "feed_item_count": 23
+    },
+    {
+      "id": "cfeff998-0e77-4031-bc67-edd26b5c86f9",
+      "url": "https://bair.berkeley.edu/blog/feed.xml",
+      "title": "The Berkeley Artificial Intelligence Research Blog",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T15:05:28.198590",
+      "last_checked": "2026-03-17T21:01:23.298382",
+      "is_available": true,
+      "check_count": 13,
+      "http_status": 200,
+      "feed_item_count": 10
+    },
+    {
+      "id": "7df1f70b-151f-4c20-a80f-b3ac18f84306",
+      "url": "https://www.zdnet.com/topic/ai/rss.xml",
+      "title": "Latest news",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T15:16:10.648034",
+      "last_checked": "2026-03-17T21:01:25.545094",
+      "is_available": true,
+      "check_count": 10,
+      "http_status": 200,
+      "feed_item_count": 20
+    },
+    {
+      "id": "c297a6a9-ab1c-40cd-abf8-e419252cfbd3",
+      "url": "https://thegradient.pub/rss",
+      "title": "The Gradient",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T15:18:29.047939",
+      "last_checked": "2026-03-17T21:01:28.722699",
+      "is_available": true,
+      "check_count": 13,
+      "http_status": 200,
+      "feed_item_count": 15
+    },
+    {
+      "id": "483515f9-d5d9-4e51-ae8f-acf287a43f52",
+      "url": "https://promptengineering.substack.com/feed",
+      "title": "Elaiya’s Substack",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T15:19:05.601939",
+      "last_checked": "2026-03-17T21:01:32.647315",
+      "is_available": true,
+      "check_count": 11,
+      "http_status": 200,
+      "feed_item_count": 1
+    },
+    {
+      "id": "fcdb844b-5f19-41d4-a3fe-b204b2d093e7",
+      "url": "https://pytorch.org/blog/rss",
+      "title": "Blog – PyTorch",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T16:15:39.966165",
+      "last_checked": "2026-03-17T21:01:34.929726",
+      "is_available": true,
+      "check_count": 8,
+      "http_status": 200,
+      "feed_item_count": 10
+    },
+    {
+      "id": "6c238945-2997-44b9-8970-d3c4a7ba9865",
+      "url": "https://www.forbes.com/technology/ai/feed",
+      "title": "Forbes - Channel Feed",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T16:15:47.562670",
+      "last_checked": "2026-03-17T21:01:36.686303",
+      "is_available": true,
+      "check_count": 9,
+      "http_status": 200,
+      "feed_item_count": 0
+    },
+    {
+      "id": "fa949179-cdfd-402e-89d7-e54957986005",
+      "url": "https://aiweekly.co/issues.rss",
+      "title": "AI News Weekly",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T16:20:04.117989",
+      "last_checked": "2026-03-17T21:01:38.338121",
+      "is_available": true,
+      "check_count": 7,
+      "http_status": 200,
+      "feed_item_count": 10
+    },
+    {
+      "id": "8af8edcf-45eb-4439-9c1d-d0bd1c54ab66",
+      "url": "https://thebatch.substack.com/feed",
+      "title": "the/batch",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T19:59:36.911408",
+      "last_checked": "2026-03-17T21:01:41.575613",
+      "is_available": true,
+      "check_count": 8,
+      "http_status": 200,
+      "feed_item_count": 6
+    },
+    {
+      "id": "72463f07-bf41-496c-958f-3167a0b04047",
+      "url": "https://import.substack.com/feed",
+      "title": "La Columna",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T19:59:41.429042",
+      "last_checked": "2026-03-17T21:01:43.310541",
+      "is_available": true,
+      "check_count": 8,
+      "http_status": 200,
+      "feed_item_count": 1
+    },
+    {
+      "id": "d16fcaf8-6c9e-44b4-8cde-d44417b2165c",
+      "url": "https://export.arxiv.org/rss/cs.AI",
+      "title": "cs.AI updates on arXiv.org",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T20:29:08.157154",
+      "last_checked": "2026-03-17T21:01:46.229733",
+      "is_available": true,
+      "check_count": 6,
+      "http_status": 200,
+      "feed_item_count": 711
+    },
+    {
+      "id": "9d69ea2d-5ae3-40ca-8520-71b05961cc22",
+      "url": "https://export.arxiv.org/rss/cs.CL",
+      "title": "cs.CL updates on arXiv.org",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T20:29:12.750447",
+      "last_checked": "2026-03-17T21:01:50.348795",
+      "is_available": true,
+      "check_count": 6,
+      "http_status": 200,
+      "feed_item_count": 280
+    },
+    {
+      "id": "767f3eaf-44d3-4512-8595-53a184a7df31",
+      "url": "https://export.arxiv.org/rss/cs.LG",
+      "title": "cs.LG updates on arXiv.org",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T20:29:17.313452",
+      "last_checked": "2026-03-17T21:01:52.548679",
+      "is_available": true,
+      "check_count": 6,
+      "http_status": 200,
+      "feed_item_count": 713
+    },
+    {
+      "id": "14e3da4c-3abf-4e80-90ee-f2aa868549ff",
+      "url": "https://export.arxiv.org/rss/cs.CV",
+      "title": "cs.CV updates on arXiv.org",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-03-17T20:29:19.626548",
+      "last_checked": "2026-03-17T21:01:54.938593",
+      "is_available": true,
+      "check_count": 5,
+      "http_status": 200,
+      "feed_item_count": 648
     }
   ],
-  "last_saved": "2026-03-17T09:56:15.230086",
-  "total_links": 18
+  "last_saved": "2026-03-17T21:06:50.744044",
+  "total_links": 26
 }

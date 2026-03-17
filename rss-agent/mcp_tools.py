@@ -10,22 +10,22 @@ or called from the standalone MCP server (mcp_server.py).
 """
 from __future__ import annotations
 
+import logging
 import re
 import time
+import random
 from datetime import datetime
 from typing import List, Optional
 
 import feedparser
 import requests
 from rich.console import Console
+from rich.logging import RichHandler
 
-from models import RSSAvailabilityResult, RSSSearchResult
 import config
+from models import RSSAvailabilityResult, RSSSearchResult
 
 # ── Logging Setup ─────────────────────────────────────────────────────────────
-
-import logging
-from rich.logging import RichHandler
 
 FORMAT = "%(message)s"
 logging.basicConfig(
@@ -50,11 +50,105 @@ def _ts() -> str:
     return f"[dim]{datetime.now().strftime('%H:%M:%S')}[/dim]"
 
 
+# ── Random browser impersonation ──────────────────────────────────────────────
+
+_USER_AGENTS: List[str] = [
+    # Windows 11 – Chrome 124
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    # Windows 11 – Chrome 122
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.6261.112 Safari/537.36",
+    # Windows 11 – Edge 124
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0",
+    # Windows 10 – Firefox 125
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0",
+    # Windows 10 – Firefox 122
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0",
+    # macOS 14 Sonoma – Chrome 124
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    # macOS 14 – Safari 17
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3 Safari/605.1.15",
+    # macOS 13 – Firefox 124
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 13.6; rv:124.0) Gecko/20100101 Firefox/124.0",
+    # Linux Ubuntu – Chrome 124
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    # Linux – Firefox 123
+    "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/123.0",
+    # Linux Fedora – Chrome 122
+    "Mozilla/5.0 (X11; Fedora; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+]
+
+_ACCEPT_LANGUAGES: List[str] = [
+    "en-US,en;q=0.9",
+    "en-GB,en;q=0.9",
+    "en-US,en;q=0.8,de;q=0.6",
+    "en-US,en;q=0.9,fr;q=0.7",
+    "en-CA,en;q=0.9",
+    "en-AU,en;q=0.9",
+]
+
+_CACHE_CONTROLS: List[str] = [
+    "no-cache",
+    "max-age=0",
+    "no-cache, no-store",
+]
+
+
+def _random_headers() -> Dict[str, str]:
+    """Return a dict of HTTP headers that impersonate a random real browser."""
+    ua = random.choice(_USER_AGENTS)
+    is_firefox = "Firefox" in ua
+    is_safari = "Safari" in ua and "Chrome" not in ua
+
+    accept_rss = (
+        "application/rss+xml, application/atom+xml, "
+        "text/xml, application/xml, */*;q=0.8"
+    )
+    accept_html = (
+        "text/html,application/xhtml+xml,application/xml;q=0.9,"
+        "image/avif,image/webp,*/*;q=0.8"
+        if is_firefox
+        else "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+    )
+
+    headers: Dict[str, str] = {
+        "User-Agent": ua,
+        "Accept": accept_rss if random.random() < 0.6 else accept_html,
+        "Accept-Language": random.choice(_ACCEPT_LANGUAGES),
+        "Accept-Encoding": "gzip, deflate, br",
+        "Cache-Control": random.choice(_CACHE_CONTROLS),
+        "Connection": "keep-alive",
+    }
+
+    # DNT header – not every browser sends it
+    if random.random() < 0.4:
+        headers["DNT"] = "1"
+
+    # Upgrade-Insecure-Requests (Chromium / Firefox)
+    if not is_safari:
+        headers["Upgrade-Insecure-Requests"] = "1"
+
+    # Sec-Fetch-* headers – only Chromium-family sends these
+    if not is_firefox and not is_safari:
+        headers["Sec-Fetch-Dest"] = "document"
+        headers["Sec-Fetch-Mode"] = "navigate"
+        headers["Sec-Fetch-Site"] = random.choice(["none", "cross-site"])
+        headers["Sec-Fetch-User"] = "?1"
+        headers["Sec-CH-UA"] = '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"'
+        headers["Sec-CH-UA-Mobile"] = "?0"
+        headers["Sec-CH-UA-Platform"] = (
+            '"Windows"' if "Windows" in ua else
+            '"macOS"' if "Macintosh" in ua else '"Linux"'
+        )
+
+    logger.debug(f"Using UA: {ua}")
+    return headers
+
+
 # ── Tool 1: Web search for RSS links ──────────────────────────────────────────
 
 def web_search_rss_links(
-    query: str,
-    max_results: int = config.MAX_SEARCH_RESULTS,
+        query: str,
+        max_results: int = config.MAX_SEARCH_RESULTS,
 ) -> RSSSearchResult:
     """
     MCP Tool – Search the web for AI-related RSS feed URLs.
@@ -86,7 +180,7 @@ def web_search_rss_links(
 
                 # Collect direct-match URLs
                 if href and any(
-                    kw in href.lower() for kw in ("rss", "feed", "atom", "xml")
+                        kw in href.lower() for kw in ("rss", "feed", "atom", "xml")
                 ):
                     raw.append(href)
 
@@ -143,8 +237,8 @@ def web_search_rss_links(
 # ── Tool 2: Check RSS link availability ──────────────────────────────────────
 
 def check_rss_availability(
-    url: str,
-    timeout: int = config.REQUEST_TIMEOUT,
+        url: str,
+        timeout: int = config.REQUEST_TIMEOUT,
 ) -> RSSAvailabilityResult:
     """
     MCP Tool – Verify that an RSS feed URL is reachable and parseable.
@@ -155,23 +249,19 @@ def check_rss_availability(
       3. Returns metadata: feed title, item count, HTTP status.
     """
     start = time.time()
-    console.print(f"{_ts()} [bold magenta]🔧 MCP:check_rss_availability[/bold magenta] {url}")
+    headers = _random_headers()
+    ua_short = headers["User-Agent"].split(")")[0].split("(")[-1]  # e.g. "Windows NT 10.0; Win64; x64"
+    console.print(
+        f"{_ts()} [bold magenta]🔧 MCP:check_rss_availability[/bold magenta] "
+        f"{url} [dim]({ua_short})[/dim]"
+    )
     logger.debug(f"Checking URL: {url} with timeout {timeout}")
 
     try:
         resp = requests.get(
             url,
             timeout=timeout,
-            headers={
-                "User-Agent": (
-                    "Mozilla/5.0 (compatible; RSSBot/1.0; "
-                    "+https://github.com/ollama-dev)"
-                ),
-                "Accept": (
-                    "application/rss+xml, application/atom+xml, "
-                    "text/xml, application/xml, */*"
-                ),
-            },
+            headers=headers,
             allow_redirects=True,
         )
 
@@ -197,7 +287,7 @@ def check_rss_availability(
         feed = feedparser.parse(resp.content)
 
         if feed.bozo:
-             logger.warning(f"Feedparser 'bozo' bit set for {url}: {feed.bozo_exception}")
+            logger.warning(f"Feedparser 'bozo' bit set for {url}: {feed.bozo_exception}")
 
         is_valid = bool(feed.feed.get("title") or feed.entries)
         feed_title: Optional[str] = feed.feed.get("title") or None

@@ -45,7 +45,7 @@ TOOLS: list[dict] = [
         "inputSchema": {
             "type": "object",
             "properties": {
-                "query": {"type": "string", "description": "Search query for RSS feeds"},
+                "query": {"type": "string", "description": "Search query for RSS feeds with optionable ai_rule instructions"},
                 "max_results": {"type": "integer", "default": 25},
             },
             "required": ["query"],
@@ -159,7 +159,7 @@ def build_server(db: RSSDatabase):
 
         if name == "get_rss_links":
             limit = int(arguments.get("limit", 50))
-            links = db.get_links()[:limit]
+            links = db.get_all_links()[:limit]
             if not links:
                 text = "No RSS links in database."
             else:

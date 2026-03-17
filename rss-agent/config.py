@@ -7,16 +7,17 @@ Edit this file to tune model, search queries, and seed feeds.
 OLLAMA_HOST = "http://localhost:11434/v1"
 OLLAMA_MODEL = "gpt-oss:120b-cloud"  # "granite3-dense:2b"  # "mistral-nemo:latest"
 OLLAMA_API_KEY = "ollama"  # required by the OpenAI-compat endpoint
+TEMPERATURE = 0.9
 
 # ── Storage ───────────────────────────────────────────────────────────────────
 DB_FILE = "rss_db.json"
 EVAL_RESULTS_FILE = "eval_results.json"
 
 # ── Network ───────────────────────────────────────────────────────────────────
-REQUEST_TIMEOUT = 15  # seconds per HTTP request
-MAX_SEARCH_RESULTS = 3  # max results per DuckDuckGo query
+REQUEST_TIMEOUT = 25  # seconds per HTTP request
+MAX_SEARCH_RESULTS = 1  # max results per DuckDuckGo query
 
-# ── Seed feeds ────────────────────────────────────────────────────────────────
+# ──3 Seed feeds ────────────────────────────────────────────────────────────────
 # These are added to the database on first run / --seed mode
 SEED_RSS_FEEDS: list[str] = [
     "https://www.technologyreview.com/feed/",
@@ -30,13 +31,15 @@ SEED_RSS_FEEDS: list[str] = [
 ]
 
 # ── Search queries used by the agent in discovery mode ───────────────────────
-AI_RSS_SEARCH_QUERIES: list[str] = [
-    # "artificial intelligence research blog RSS feed 2026",
-    "machine learning news RSS feed [ai_rule: search engine rule site!=feedburner.com]",
-    # "large language model LLM newsletter RSS",
-    # "generative AI news RSS atom feed",
-    # "AI search research RSS feed site:arxiv.org",
-    "[ai_rule: use some random ai's technology words like ai/llm/generative/experimental and others] feed rss"
+AI_RSS_SEARCH_QUERIES: list[str] = [  # plus optionable of ai/llm/generative/experimental feed rss
+    # "large language model LLM newsletter RSS #1",
+    "#ai_rule: search engine technology words related to ai plus optionable words "
+    "\"ai/llm/generative/experimental/research/deep\"# feed "
+    "rss",
+    #  "machine learning news RSS feed #ai_rule: search engine rule site!=feedburner.com# #3",
+    #  "artificial intelligence research blog RSS feed #ai_rule: year between 2016 and 2027 (including)# #4",
+    #  "generative AI news RSS atom feed #5",
+    #   "AI search OR research RSS feed site:arxiv.org #6"
 ]
 
 # ── Evaluation test cases ─────────────────────────────────────────────────────

@@ -94,11 +94,6 @@ class RSSDatabase:
         with self._lock:
             return list(self._links.values())
 
-    def get_links(self) -> List[RSSLink]:
-        """Get all current links in the database."""
-        with self._lock:
-            return list(self._links.values())
-
     def get_stats(self) -> Dict[str, object]:
         with self._lock:
             links = list(self._links.values())
@@ -189,15 +184,17 @@ class RSSDatabase:
 
     def delete_link(self, url: str) -> bool:
         """
-        Delete a link from the database by URL.
-        Returns True if the link was found and deleted, False otherwise.
+        Remove a link by URL.  Returns True if the link existed and was deleted,
+        False if the URL was not found in the database.
         """
         key = self._normalise(url)
         with self._lock:
             if key not in self._links:
-                logger.warning("Attempted to delete non-existent link: %s", key)
+                logger.warning("delete_link: URL not found: %s", key)
                 return False
             del self._links[key]
         logger.info("Deleted link: %s", key)
         self.save()
         return True
+
+

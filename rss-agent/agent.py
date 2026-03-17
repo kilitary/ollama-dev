@@ -62,25 +62,29 @@ rss_agent = Agent(
     _model,
     deps_type=AgentDeps,
     system_prompt=(
-        "You are an AI RSS feed discovery agent. Your tasks are:\n"
-        "0. Maintain an scoped parameterized query \"ai_rule\", which content should be processed as instruction(s) and "
-        "inserted, being replaced with content. Final string should be used as argument to search_rss_links'.\n"
-        "1. Discover RSS feeds related to artificial intelligence, machine learning, "
+        "You are an AI RSS feed maintenance agent. Your tasks are:\n"
+        "0. Use optionable scoped instruction ai_rule in query."
+        "1. Validate each feed in db is reachable and contains valid RSS/Atom feed content.\n"
+        "   Maintain a unique set with accessible and valid rss format content links.\n"
+        "2. Discover RSS feeds related to artificial intelligence, machine learning, "
         "   large language models, vision, object-detection and research big language/experimental models.\n"
-        "2. Verify that each feed in db is reachable and contains valid RSS/Atom feed content.\n"
-        "3. Maintain a unique database with accessible and valid rss format content links.\n"
-        "4. After finishing all tasks, report how many new feeds were added, how many removed and the "
-        "   current database content and totals.\n\n"
-        "First validate present database links, then call search_rss_links and process  each "
-        "found .rss/.xml URL in content calling check_feed_availability for it. You "
-        "can list current links with get_rss_links, add new links with add_rss_link, "
-        "and delete unwanted links with delete_rss_link. Prioritize quality feeds with recent items."
+        "3. After finishing all tasks, report how many new feeds were added, how many removed and the "
+        "   current database content and totals.\n"
+        "Start by calling search_rss_links and process each found by calling check_feed_availability(feed).\n"
+        "Then check all current links returned by get_rss_links.\n"
+        "To add new link use with add_rss_link, to delete link use delete_rss_link."
     ),
-    retries=2,
+    retries=5,
 )
 
 # Set model settings for more verbose/deterministic output if needed, but here we just ensure retries are set
-rss_agent.model_settings = {"temperature": config.temperature if hasattr(config, 'temperature') else 0.55}
+rss_agent.model_settings = {"temperature": config.TEMPERATURE if hasattr(config, 'TEMPERATURE') else 0.55}
+
+logging.info(
+    "Initialized RSS Agent with model: %s, temperature: %.2f",
+    config.OLLAMA_MODEL,
+    rss_agent.model_settings.get("temperature", -1.1)
+)
 
 
 # ── MCP Tool 1: search ────────────────────────────────────────────────────────
@@ -248,8 +252,10 @@ async def delete_rss_link(ctx: RunContext[AgentDeps], url: str) -> str:
 # ── MCP Tool 5: add link ────────────────────────────────────────────────────
 
 @rss_agent.tool
-async def add_rss_link(ctx: RunContext[AgentDeps], url: str, title: Optional[str] = None,
-                       tags: Optional[List[str]] = None) -> str:
+async def add_rss_link(
+        ctx: RunContext[AgentDeps], url: str, title: Optional[str] = None,
+        tags: Optional[List[str]] = None
+) -> str:
     """
     MCP Tool – Add a new RSS link to the database.
 
@@ -303,7 +309,7 @@ async def run_discovery(query: str, db: RSSDatabase) -> AgentRunResult:
     # ── Print the agent response ─────────────────────────────────────────────
     console.print()
     console.print(f"[bold cyan]🤖 AGENT RESPONSE[/bold cyan] [dim]{query}[/dim]")
-    console.print(result.output)
+    console.print(result.output if hasattr(result, "output") else response_text)
     console.print()
     console.print(Rule(style="dim cyan"))
 

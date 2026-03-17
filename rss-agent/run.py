@@ -28,6 +28,7 @@ from pathlib import Path
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
+from sklearn.utils import shuffle
 
 # Ensure the rss-agent package dir is on sys.path when run directly
 sys.path.insert(0, str(Path(__file__).parent))
@@ -103,7 +104,7 @@ async def _seed(db: RSSDatabase) -> None:
 
 
 async def _discover(db: RSSDatabase, query: str | None) -> None:
-    queries = [query] if query else config.AI_RSS_SEARCH_QUERIES
+    queries = [query] if query else shuffle(config.AI_RSS_SEARCH_QUERIES)
     for q in queries:
         await run_discovery(q, db)
     print_db_status(db)
