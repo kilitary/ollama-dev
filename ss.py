@@ -49,25 +49,16 @@ C_SCORE_MID = 26  # score mid     – yellow on black
 C_SCORE_HI = 27  # score high    – green on black
 
 STATUS_COLORS: Dict[str, int] = {
-    "Unallocated"  : C_UNAL,
-    "Underutilized": C_UNDER,
-    "Optimal"      : C_OPTIMAL,
-    "Overutilized" : C_OVER,
+    "Unallocated": C_UNAL, "Underutilized": C_UNDER, "Optimal": C_OPTIMAL, "Overutilized": C_OVER,
 }
 
 STATUS_ICONS: Dict[str, str] = {
-    "Unallocated"  : "[ ]",
-    "Underutilized": "[v]",
-    "Optimal"      : "[*]",
-    "Overutilized" : "[^]",
+    "Unallocated": "[ ]", "Underutilized": "[v]", "Optimal": "[*]", "Overutilized": "[^]",
 }
 
 # mini overview chars
 OVERVIEW_CHARS: Dict[str, str] = {
-    "Unallocated"  : "U",
-    "Underutilized": "v",
-    "Optimal"      : "*",
-    "Overutilized" : "^",
+    "Unallocated": "U", "Underutilized": "v", "Optimal": "*", "Overutilized": "^",
 }
 
 # sparkline levels (5 tiers)
@@ -76,85 +67,45 @@ SPARK_CHARS = " ._-^"
 # ── Scenario templates ─────────────────────────────────────────────────────────
 SCENARIO_TEMPLATES = [
     {
-        "name"   : "CRISIS ZONE",
-        "desc"   : "High stress · multiple overutilized units",
-        "bias"   : +1.8, "volatility": 1.4,
-        "theme_c": C_THEME_R,
-        "units"  : [
-            ("Alpha", 95.0), ("Beta", 88.0), ("Gamma", 12.0),
-            ("Delta", 0.0), ("Epsilon", 75.0), ("Zeta", 92.0)
+        "name"   : "CRISIS ZONE", "desc": "High stress · multiple overutilized units", "bias": +1.8, "volatility": 1.4,
+        "theme_c": C_THEME_R, "units": [
+        ("Alpha", 95.0), ("Beta", 88.0), ("Gamma", 12.0), ("Delta", 0.0), ("Epsilon", 75.0), ("Zeta", 92.0)
+    ],
+    }, {
+        "name"   : "IDLE SYSTEM", "desc": "Most resources unused · underutilization crisis", "bias": -1.6, "volatility": 0.8,
+        "theme_c": C_THEME_Y, "units": [
+            ("Node-1", 5.0), ("Node-2", 0.0), ("Node-3", 8.0), ("Node-4", 0.0), ("Node-5", 55.0), ("Node-6", 0.0), ("Node-7", 3.0)
         ],
-    },
-    {
-        "name"   : "IDLE SYSTEM",
-        "desc"   : "Most resources unused · underutilization crisis",
-        "bias"   : -1.6, "volatility": 0.8,
-        "theme_c": C_THEME_Y,
-        "units"  : [
-            ("Node-1", 5.0), ("Node-2", 0.0), ("Node-3", 8.0),
-            ("Node-4", 0.0), ("Node-5", 55.0), ("Node-6", 0.0), ("Node-7", 3.0)
+    }, {
+        "name"   : "BALANCED STATE", "desc": "Near-optimal distribution across all units", "bias": 0.0, "volatility": 0.5,
+        "theme_c": C_THEME_G, "units": [
+            ("Sector-A", 65.0), ("Sector-B", 70.0), ("Sector-C", 60.0), ("Sector-D", 55.0), ("Sector-E", 72.0)
         ],
-    },
-    {
-        "name"   : "BALANCED STATE",
-        "desc"   : "Near-optimal distribution across all units",
-        "bias"   : 0.0, "volatility": 0.5,
-        "theme_c": C_THEME_G,
-        "units"  : [
-            ("Sector-A", 65.0), ("Sector-B", 70.0), ("Sector-C", 60.0),
-            ("Sector-D", 55.0), ("Sector-E", 72.0)
-        ],
-    },
-    {
-        "name"   : "MIXED WARFARE",
-        "desc"   : "Chaotic allocation · partial defuse active",
-        "bias"   : +0.4, "volatility": 2.0,
-        "theme_c": C_THEME_M,
-        "units"  : [
-            ("Unit-X1", 90.0), ("Unit-X2", 15.0), ("Unit-X3", 0.0),
-            ("Unit-X4", 68.0), ("Unit-X5", 85.0), ("Unit-X6", 20.0),
+    }, {
+        "name"   : "MIXED WARFARE", "desc": "Chaotic allocation · partial defuse active", "bias": +0.4, "volatility": 2.0,
+        "theme_c": C_THEME_M, "units": [
+            ("Unit-X1", 90.0), ("Unit-X2", 15.0), ("Unit-X3", 0.0), ("Unit-X4", 68.0), ("Unit-X5", 85.0), ("Unit-X6", 20.0),
             ("Unit-X7", 0.0), ("Unit-X8", 72.0)
         ],
-    },
-    {
-        "name"   : "CASCADE FAILURE",
-        "desc"   : "Resources cascading · imminent total collapse",
-        "bias"   : +2.8, "volatility": 1.2,
-        "theme_c": C_THEME_R,
-        "units"  : [
-            ("Core-1", 99.0), ("Core-2", 95.0), ("Core-3", 40.0),
-            ("Core-4", 10.0), ("Core-5", 0.0)
+    }, {
+        "name"   : "CASCADE FAILURE", "desc": "Resources cascading · imminent total collapse", "bias": +2.8, "volatility": 1.2,
+        "theme_c": C_THEME_R, "units": [
+            ("Core-1", 99.0), ("Core-2", 95.0), ("Core-3", 40.0), ("Core-4", 10.0), ("Core-5", 0.0)
         ],
-    },
-    {
-        "name"       : "RESOURCE STORM",
-        "desc"       : "Volatile state · all metrics unpredictable",
-        "bias"       : 0.0, "volatility": 3.5,
-        "theme_c"    : C_THEME_C,
-        "random_init": True,
-        "units"      : [
-            ("Storm-A", 50.0), ("Storm-B", 50.0), ("Storm-C", 50.0),
-            ("Storm-D", 50.0), ("Storm-E", 50.0), ("Storm-F", 50.0)
+    }, {
+        "name"   : "RESOURCE STORM", "desc": "Volatile state · all metrics unpredictable", "bias": 0.0, "volatility": 3.5,
+        "theme_c": C_THEME_C, "random_init": True, "units": [
+            ("Storm-A", 50.0), ("Storm-B", 50.0), ("Storm-C", 50.0), ("Storm-D", 50.0), ("Storm-E", 50.0), ("Storm-F", 50.0)
         ],
-    },
-    {
-        "name"   : "RECOVERY PHASE",
-        "desc"   : "Post-crisis redistribution in progress",
-        "bias"   : -0.9, "volatility": 1.1,
-        "theme_c": C_THEME_C,
-        "units"  : [
-            ("Recov-A", 82.0), ("Recov-B", 78.0), ("Recov-C", 35.0),
-            ("Recov-D", 10.0), ("Recov-E", 65.0), ("Recov-F", 0.0)
+    }, {
+        "name"   : "RECOVERY PHASE", "desc": "Post-crisis redistribution in progress", "bias": -0.9, "volatility": 1.1,
+        "theme_c": C_THEME_C, "units": [
+            ("Recov-A", 82.0), ("Recov-B", 78.0), ("Recov-C", 35.0), ("Recov-D", 10.0), ("Recov-E", 65.0), ("Recov-F", 0.0)
         ],
-    },
-    {
-        "name"   : "SURGE EVENT",
-        "desc"   : "Sudden demand spike · rapid reallocation needed",
-        "bias"   : +3.0, "volatility": 2.5,
-        "theme_c": C_THEME_M,
-        "units"  : [
-            ("Hub-1", 30.0), ("Hub-2", 25.0), ("Hub-3", 15.0),
-            ("Hub-4", 40.0), ("Hub-5", 20.0)
+    }, {
+        "name"   : "SURGE EVENT", "desc": "Sudden demand spike · rapid reallocation needed", "bias": +3.0, "volatility": 2.5,
+        "theme_c": C_THEME_M, "units": [
+            ("Hub-1", 30.0), ("Hub-2", 25.0), ("Hub-3", 15.0), ("Hub-4", 40.0), ("Hub-5", 20.0)
         ],
     },
 ]
@@ -261,23 +212,16 @@ def compute_metrics(units: List[Unit]) -> dict:
     eta = (non_opt * avg / (defuse_rate + 1e-6)) if defuse_rate > 0 else 999.9
     eta = min(eta, 999.9)
 
-    risk = ("LOW" if score >= 70 else
-            "MODERATE" if score >= 40 else
-            "HIGH" if score >= 15 else
-            "CRITICAL")
+    risk = ("LOW" if score >= 70 else "MODERATE" if score >= 40 else "HIGH" if score >= 15 else "CRITICAL")
 
     return {
-        "n"          : n, "total": total, "avg": avg,
-        "counts"     : counts, "score": score,
-        "defuse_rate": defuse_rate, "eta": eta, "risk": risk
+        "n": n, "total": total, "avg": avg, "counts": counts, "score": score, "defuse_rate": defuse_rate, "eta": eta, "risk": risk
     }
 
 
 def build_defuse_plan(units: List[Unit]) -> List[Tuple[str, str]]:
     overloaded = sorted(
-        [u for u in units if u.status == "Overutilized"],
-        key=lambda u: u.resource, reverse=True,
-    )
+        [u for u in units if u.status == "Overutilized"], key=lambda u: u.resource, reverse=True, )
     unallocated = [u for u in units if u.status == "Unallocated"]
     underutilized = [u for u in units if u.status == "Underutilized"]
 
@@ -372,9 +316,7 @@ def _gradient_bar(win, y: int, x: int, value: float, width: int) -> None:
     mid_end = int(0.79 * width)
 
     zones = [
-        (0, low_end, C_UNDER, "="),
-        (low_end, mid_end, C_OPTIMAL, "#"),
-        (mid_end, width, C_OVER, "!"),
+        (0, low_end, C_UNDER, "="), (low_end, mid_end, C_OPTIMAL, "#"), (mid_end, width, C_OVER, "!"),
     ]
     col = x
     for zs, ze, cid, ch in zones:
@@ -384,15 +326,11 @@ def _gradient_bar(win, y: int, x: int, value: float, width: int) -> None:
         zf = max(0, min(zw, filled - zs))
         if zf > 0:
             _put(
-                win, y, col, ch * zf,
-                             curses.color_pair(cid) | curses.A_BOLD,
-            )
+                win, y, col, ch * zf, curses.color_pair(cid) | curses.A_BOLD, )
         rem = zw - zf
         if rem > 0:
             _put(
-                win, y, col + zf, "." * rem,
-                curses.color_pair(C_BORDER),
-            )
+                win, y, col + zf, "." * rem, curses.color_pair(C_BORDER), )
         col += zw
 
 
@@ -403,9 +341,7 @@ def _score_bar(win, y: int, x: int, score: int, width: int) -> None:
     mid_end = int(0.60 * width)
 
     zones = [
-        (0, low_end, C_SCORE_LO, "#"),
-        (low_end, mid_end, C_SCORE_MID, "#"),
-        (mid_end, width, C_SCORE_HI, "#"),
+        (0, low_end, C_SCORE_LO, "#"), (low_end, mid_end, C_SCORE_MID, "#"), (mid_end, width, C_SCORE_HI, "#"),
     ]
     col = x
     for zs, ze, cid, ch in zones:
@@ -415,24 +351,16 @@ def _score_bar(win, y: int, x: int, score: int, width: int) -> None:
         zf = max(0, min(zw, filled - zs))
         if zf > 0:
             _put(
-                win, y, col, ch * zf,
-                             curses.color_pair(cid) | curses.A_BOLD,
-            )
+                win, y, col, ch * zf, curses.color_pair(cid) | curses.A_BOLD, )
         rem = zw - zf
         if rem > 0:
             _put(
-                win, y, col + zf, "-" * rem,
-                curses.color_pair(C_BORDER),
-            )
+                win, y, col + zf, "-" * rem, curses.color_pair(C_BORDER), )
         col += zw
 
 
 PLAN_COLORS: Dict[str, int] = {
-    "SHED"    : C_SHED,
-    "THROTTLE": C_THROTTLE,
-    "ACTIVATE": C_ACTIVATE,
-    "BOOST"   : C_BOOST,
-    "OK"      : C_OPTIMAL,
+    "SHED": C_SHED, "THROTTLE": C_THROTTLE, "ACTIVATE": C_ACTIVATE, "BOOST": C_BOOST, "OK": C_OPTIMAL,
 }
 
 # ── Genetic Algorithm ──────────────────────────────────────────────────────────
@@ -454,9 +382,7 @@ class GAState:
     history: deque = field(default_factory=lambda: deque(maxlen=32))
     converged: bool = False
     lock: threading.Lock = field(
-        default_factory=threading.Lock,
-        repr=False, compare=False,
-    )
+        default_factory=threading.Lock, repr=False, compare=False, )
 
 
 def _ga_fitness(genes: list) -> float:
@@ -474,9 +400,7 @@ def _ga_fitness(genes: list) -> float:
     raw = opt_frac - over_penalty - under_penalty - unal_penalty
     # Bonus: distance from center of optimal band (60 %)
     center = sum(
-        (1.0 - abs(v - 60.0) / 60.0
-         for v in genes if 41 <= v <= 79),
-    )
+        (1.0 - abs(v - 60.0) / 60.0 for v in genes if 41 <= v <= 79), )
     return max(0.0, min(1.0, raw + (center / n) * 0.15))
 
 
@@ -514,10 +438,7 @@ class GeneticAlgorithm:
             if random.random() < GA_MUTATION_RATE:
                 result[i] = max(
                     0.0, min(
-                        100.0,
-                        result[i] + random.gauss(0, GA_MUTATION_STD),
-                    ),
-                )
+                        100.0, result[i] + random.gauss(0, GA_MUTATION_STD), ), )
         return result
 
     def step(self) -> None:
@@ -647,36 +568,29 @@ def _evt_total_collapse(units: List["Unit"]) -> None:
 
 CATASTROPHIC_EVENTS = [
     {
-        "name" : "!! BLACKOUT !!", "desc": "Power failure — units collapsing to zero",
-        "color": C_OVER, "duration": (3.0, 4.5), "effect": _evt_blackout
-    },
-    {
-        "name" : "!! MELTDOWN !!", "desc": "Critical overload radiating to adjacent units",
-        "color": C_WARN, "duration": (2.5, 4.0), "effect": _evt_meltdown
-    },
-    {
-        "name" : "!! EMP PULSE !!", "desc": "Electromagnetic surge — all values randomized",
-        "color": C_THEME_M, "duration": (2.0, 3.0), "effect": _evt_emp_pulse
-    },
-    {
-        "name" : "!! CASCADE FAIL !!", "desc": "Sequential failure — drain spreading unit by unit",
-        "color": C_OVER, "duration": (3.5, 5.0), "effect": _evt_cascade
-    },
-    {
-        "name" : "!! DEMAND SURGE !!", "desc": "Sudden spike — all units pushed toward overload",
-        "color": C_THEME_R, "duration": (2.0, 3.5), "effect": _evt_demand_surge
-    },
-    {
-        "name" : "!! FAILOVER !!", "desc": "Emergency dump — load transferred to cold standby",
-        "color": C_THEME_Y, "duration": (2.0, 3.0), "effect": _evt_failover
-    },
-    {
-        "name" : "!! FRAGMENTATION !!", "desc": "Split failure — alternating overload and void",
-        "color": C_THEME_M, "duration": (2.5, 4.0), "effect": _evt_fragmentation
-    },
-    {
-        "name" : "!! TOTAL COLLAPSE !!", "desc": "Everything fails simultaneously — restart imminent",
-        "color": C_WARN, "duration": (4.0, 6.0), "effect": _evt_total_collapse
+        "name"  : "!! BLACKOUT !!", "desc": "Power failure — units collapsing to zero", "color": C_OVER, "duration": (3.0, 4.5),
+        "effect": _evt_blackout
+    }, {
+        "name"    : "!! MELTDOWN !!", "desc": "Critical overload radiating to adjacent units", "color": C_WARN,
+        "duration": (2.5, 4.0), "effect": _evt_meltdown
+    }, {
+        "name"    : "!! EMP PULSE !!", "desc": "Electromagnetic surge — all values randomized", "color": C_THEME_M,
+        "duration": (2.0, 3.0), "effect": _evt_emp_pulse
+    }, {
+        "name"    : "!! CASCADE FAIL !!", "desc": "Sequential failure — drain spreading unit by unit", "color": C_OVER,
+        "duration": (3.5, 5.0), "effect": _evt_cascade
+    }, {
+        "name"    : "!! DEMAND SURGE !!", "desc": "Sudden spike — all units pushed toward overload", "color": C_THEME_R,
+        "duration": (2.0, 3.5), "effect": _evt_demand_surge
+    }, {
+        "name"    : "!! FAILOVER !!", "desc": "Emergency dump — load transferred to cold standby", "color": C_THEME_Y,
+        "duration": (2.0, 3.0), "effect": _evt_failover
+    }, {
+        "name"    : "!! FRAGMENTATION !!", "desc": "Split failure — alternating overload and void", "color": C_THEME_M,
+        "duration": (2.5, 4.0), "effect": _evt_fragmentation
+    }, {
+        "name"    : "!! TOTAL COLLAPSE !!", "desc": "Everything fails simultaneously — restart imminent", "color": C_WARN,
+        "duration": (4.0, 6.0), "effect": _evt_total_collapse
     },
 ]
 
@@ -725,22 +639,18 @@ def _flash_ga_result(win, state: GAState, template: dict, theme_c: int) -> None:
                  f"Gen: {state.generation}  "
                  f"{'CONVERGED' if state.converged else 'BEST SO FAR'}] ")
         _put(
-            win, 0, max(0, (w - len(title)) // 2),
-            title, curses.color_pair(theme_c) | curses.A_BOLD | curses.A_REVERSE,
-        )
+            win, 0, max(0, (w - len(title)) // 2), title, curses.color_pair(theme_c) | curses.A_BOLD | curses.A_REVERSE, )
 
         row = 2
         _put(
-            win, row, 2,
-            "RECOMMENDED ALLOCATION  (Genetic Algorithm Best Fit)",
-            curses.color_pair(C_DEFUSE) | curses.A_BOLD,
-        )
+            win, row, 2, "RECOMMENDED ALLOCATION  (Genetic Algorithm Best Fit)", curses.color_pair(C_DEFUSE) | curses.A_BOLD, )
         row += 1
         _put(
-            win, row, 2,
+            win,
+            row,
+            2,
             f"  {'UNIT':<12}  {'GA TARGET':>9}   {'DELTA':>8}   {'STATUS':<14}  BAR",
-            curses.color_pair(C_LABEL) | curses.A_BOLD,
-        )
+            curses.color_pair(C_LABEL) | curses.A_BOLD, )
         row += 1
 
         for i, (name, orig) in enumerate(units_def):
@@ -759,11 +669,12 @@ def _flash_ga_result(win, state: GAState, template: dict, theme_c: int) -> None:
 
         pulse = "(*)" if (f // 4) % 2 == 0 else "( )"
         _put(
-            win, h - 1, 2,
+            win,
+            h - 1,
+            2,
             f" {pulse}  NEXT SCENARIO LOADING...  "
             f"  Diversity: {state.diversity:.1f}  Avg: {state.avg_score:.1f}/100 ",
-                 curses.color_pair(C_TIMER) | curses.A_BOLD,
-        )
+            curses.color_pair(C_TIMER) | curses.A_BOLD, )
         win.refresh()
         f += 1
         time.sleep(0.05)
@@ -804,8 +715,7 @@ def draw_frame(
     elapsed: float,
     frame: int,
     ga_state: Optional[GAState] = None,
-    event_state: Optional[EventState] = None,
-) -> None:
+    event_state: Optional[EventState] = None, ) -> None:
     win.erase()
     h, w = win.getmaxyx()
     remaining = max(0.0, SCENARIO_DURATION - elapsed)
@@ -814,25 +724,18 @@ def draw_frame(
     risk = metrics["risk"]
     theme_c = template.get("theme_c", C_HEADER)
     # Flash theme color to event color while catastrophe active
-    eff_theme = (event_state.color
-                 if event_state is not None and event_state.active
-                 else theme_c)
+    eff_theme = (event_state.color if event_state is not None and event_state.active else theme_c)
     row = 0
 
     # ── Themed title bar ──────────────────────────────────────────────────────
     title = f" RESOURCE ALLOCATION MONITOR  [ {scen_idx + 1}/{total_scen} ] "
     _hline(win, row, "=", eff_theme)
     _put(
-        win, row, max(0, (w - len(title)) // 2),
-        title, curses.color_pair(eff_theme) | curses.A_BOLD | curses.A_REVERSE,
-    )
+        win, row, max(0, (w - len(title)) // 2), title, curses.color_pair(eff_theme) | curses.A_BOLD | curses.A_REVERSE, )
     row += 1
 
     _put(
-        win, row, 2,
-        f"{template['name']}  |  {template['desc']}",
-        curses.color_pair(eff_theme) | curses.A_BOLD,
-    )
+        win, row, 2, f"{template['name']}  |  {template['desc']}", curses.color_pair(eff_theme) | curses.A_BOLD, )
 
     # System overview: one colored char per unit on same row, right-aligned
     overview_x = w - len(units) - 4
@@ -868,10 +771,11 @@ def draw_frame(
 
     # ── Unit table ────────────────────────────────────────────────────────────
     _put(
-        win, row, 0,
+        win,
+        row,
+        0,
         f"  {'UNIT':<12}  {'RES':>6}   {'STATUS':<15}  {'ALLOCATION BAR':<{BAR_WIDTH}}  {'TRD'}  {'HISTORY'}",
-        curses.color_pair(C_LABEL) | curses.A_BOLD,
-    )
+        curses.color_pair(C_LABEL) | curses.A_BOLD, )
     row += 1
 
     for u in units:
@@ -888,16 +792,12 @@ def draw_frame(
 
         # Trend
         _put(
-            win, row, col + 1, u.trend,
-                      curses.color_pair(u.trend_c) | curses.A_BOLD,
-        )
+            win, row, col + 1, u.trend, curses.color_pair(u.trend_c) | curses.A_BOLD, )
         col += 6
 
         # Sparkline
         _put(
-            win, row, col, u.spark,
-            curses.color_pair(C_SPARK) | curses.A_BOLD,
-        )
+            win, row, col, u.spark, curses.color_pair(C_SPARK) | curses.A_BOLD, )
         row += 1
 
     row += 1
@@ -906,8 +806,7 @@ def draw_frame(
 
     # ── Metrics row ───────────────────────────────────────────────────────────
     risk_color = {
-        "LOW" : C_OPTIMAL, "MODERATE": C_UNDER,
-        "HIGH": C_OVER, "CRITICAL": C_WARN,
+        "LOW": C_OPTIMAL, "MODERATE": C_UNDER, "HIGH": C_OVER, "CRITICAL": C_WARN,
     }.get(risk, C_LABEL)
     risk_attr = curses.color_pair(risk_color) | curses.A_BOLD
     if risk == "CRITICAL" and (frame // 5) % 2 == 0:
@@ -930,9 +829,7 @@ def draw_frame(
     _put(win, row, 2, "Score [", curses.color_pair(C_LABEL) | curses.A_BOLD)
     _score_bar(win, row, 9, score, sbw)
     _put(
-        win, row, 9 + sbw, f"] {score:3d}/100",
-                  curses.color_pair(C_LABEL) | curses.A_BOLD,
-    )
+        win, row, 9 + sbw, f"] {score:3d}/100", curses.color_pair(C_LABEL) | curses.A_BOLD, )
     row += 1
 
     # ── Status distribution colored mini-bar ──────────────────────────────────
@@ -940,10 +837,7 @@ def draw_frame(
     _put(win, row, 2, "Dist  ", curses.color_pair(C_LABEL))
     dx = 8
     for status, cid, ch in [
-        ("Unallocated", C_UNAL, "U"),
-        ("Underutilized", C_UNDER, "v"),
-        ("Optimal", C_OPTIMAL, "*"),
-        ("Overutilized", C_OVER, "^"),
+        ("Unallocated", C_UNAL, "U"), ("Underutilized", C_UNDER, "v"), ("Optimal", C_OPTIMAL, "*"), ("Overutilized", C_OVER, "^"),
     ]:
         cnt = counts[status]
         label = f"{ch}x{cnt}"
@@ -952,9 +846,7 @@ def draw_frame(
         # mini block bar
         blocks = "#" * cnt
         _put(
-            win, row, dx, f"[{blocks:<{total_u}}]",
-            curses.color_pair(cid),
-        )
+            win, row, dx, f"[{blocks:<{total_u}}]", curses.color_pair(cid), )
         dx += total_u + 4
 
     row += 1
@@ -963,9 +855,7 @@ def draw_frame(
 
     # ── Defuse plan (colored by action type) ──────────────────────────────────
     _put(
-        win, row, 2, "DEFUSE PLAN",
-        curses.color_pair(C_DEFUSE) | curses.A_BOLD,
-    )
+        win, row, 2, "DEFUSE PLAN", curses.color_pair(C_DEFUSE) | curses.A_BOLD, )
     row += 1
 
     for action, line in plan:
@@ -973,9 +863,7 @@ def draw_frame(
             break
         plan_color = PLAN_COLORS.get(action, C_DEFUSE)
         _put(
-            win, row, 2, line,
-            curses.color_pair(plan_color) | curses.A_BOLD,
-        )
+            win, row, 2, line, curses.color_pair(plan_color) | curses.A_BOLD, )
         row += 1
 
     # ── GA Optimizer panel ────────────────────────────────────────────────────
@@ -1008,34 +896,24 @@ def draw_frame(
 
         if row < h - 4:
             spark_hist = "".join(
-                (SPARK_CHARS[min(4, int(v / 20))] for v in hist[-22:]),
-            ) if hist else ""
+                (SPARK_CHARS[min(4, int(v / 20))] for v in hist[-22:]), ) if hist else ""
             _put(win, row, 2, "Fit  [", curses.color_pair(C_LABEL))
             _score_bar(win, row, 8, int(best_s), 24)
             _put(win, row, 33, f"] {best_s:5.1f}%  Evol:", curses.color_pair(C_LABEL))
             _put(
-                win, row, 50, spark_hist.ljust(22),
-                curses.color_pair(C_SPARK) | curses.A_BOLD,
-            )
+                win, row, 50, spark_hist.ljust(22), curses.color_pair(C_SPARK) | curses.A_BOLD, )
             row += 1
 
         if row < h - 4 and best_g:
-            parts = [f"{name}:{best_g[i]:4.1f}"
-                     for i, (name, _) in enumerate(template["units"])
-                     if i < len(best_g)]
+            parts = [f"{name}:{best_g[i]:4.1f}" for i, (name, _) in enumerate(template["units"]) if i < len(best_g)]
             _put(
-                win, row, 2, "Best: " + "  ".join(parts),
-                             curses.color_pair(C_OPTIMAL) | curses.A_BOLD,
-            )
+                win, row, 2, "Best: " + "  ".join(parts), curses.color_pair(C_OPTIMAL) | curses.A_BOLD, )
             row += 1
 
     # ── Themed footer ─────────────────────────────────────────────────────────
     _hline(win, h - 2, "=", eff_theme)
     _put(
-        win, h - 2, w - 30,
-        "  Q/ESC=quit  SPACE=skip  ",
-        curses.color_pair(C_LABEL),
-    )
+        win, h - 2, w - 30, "  Q/ESC=quit  SPACE=skip  ", curses.color_pair(C_LABEL), )
 
     prog_w = max(4, w - 34)
     prog_fill = int((elapsed / SCENARIO_DURATION) * prog_w)
@@ -1043,32 +921,21 @@ def draw_frame(
     pulse = "(*)" if (frame // 6) % 2 == 0 else "( )"
     timer_str = f" {pulse} {remaining:4.1f}s left "
     _put(
-        win, h - 1, 0, timer_str,
-             curses.color_pair(C_TIMER) | curses.A_BOLD,
-    )
+        win, h - 1, 0, timer_str, curses.color_pair(C_TIMER) | curses.A_BOLD, )
     tx = len(timer_str)
     _put(
-        win, h - 1, tx, "[",
-        curses.color_pair(C_BORDER),
-    )
+        win, h - 1, tx, "[", curses.color_pair(C_BORDER), )
     _put(
-        win, h - 1, tx + 1, "|" * prog_fill,
-         curses.color_pair(eff_theme) | curses.A_BOLD)
+        win, h - 1, tx + 1, "|" * prog_fill, curses.color_pair(eff_theme) | curses.A_BOLD, )
     _put(
-        win, h - 1, tx + 1 + prog_fill, "." * (prog_w - prog_fill),
-        curses.color_pair(C_BORDER),
-    )
+        win, h - 1, tx + 1 + prog_fill, "." * (prog_w - prog_fill), curses.color_pair(C_BORDER), )
     _put(
-        win, h - 1, tx + 1 + prog_w, "]",
-        curses.color_pair(C_BORDER),
-    )
+        win, h - 1, tx + 1 + prog_w, "]", curses.color_pair(C_BORDER), )
 
     next_name = SCENARIO_TEMPLATES[(scen_idx + 1) % total_scen]["name"]
     next_str = f" Next: {next_name} "
     _put(
-        win, h - 1, w - len(next_str) - 1,
-        next_str, curses.color_pair(C_LABEL),
-    )
+        win, h - 1, w - len(next_str) - 1, next_str, curses.color_pair(C_LABEL), )
 
     win.refresh()
 
@@ -1098,13 +965,12 @@ def main(stdscr) -> None:
         ga = GeneticAlgorithm(len(units), ga_state)
         ga_stop = threading.Event()
         ga_thread = threading.Thread(
-            target=_ga_worker, args=(ga, ga_stop), daemon=True, name="ga-worker",
-        )
+            target=_ga_worker, args=(ga, ga_stop), daemon=True, name="ga-worker", )
         ga_thread.start()
 
         # ── Catastrophic event scheduling ───────────────────────────────────
-        event_state      = EventState()
-        next_event_time  = time.time() + random.uniform(2.5, 5.0)
+        event_state = EventState()
+        next_event_time = time.time() + random.uniform(2.5, 5.0)
 
         while True:
             elapsed = time.time() - scen_start
@@ -1114,16 +980,12 @@ def main(stdscr) -> None:
             # Trigger a new catastrophic event?
             now = time.time()
             if now >= next_event_time and not event_state.active:
-                if random.random() < 0.70:   # 70 % chance to fire
+                if random.random() < 0.70:  # 70 % chance to fire
                     evt = random.choice(CATASTROPHIC_EVENTS)
                     evt["effect"](units)
                     dur = random.uniform(*evt["duration"])
                     event_state = EventState(
-                        name=evt["name"],
-                        desc=evt["desc"],
-                        color=evt["color"],
-                        end_time=now + dur,
-                    )
+                        name=evt["name"], desc=evt["desc"], color=evt["color"], end_time=now + dur, )
                     _flash_event_alert(stdscr, evt)
                 next_event_time = now + random.uniform(3.0, 6.5)
 
@@ -1131,13 +993,10 @@ def main(stdscr) -> None:
                 u.tick(bias, vol)
 
             metrics = compute_metrics(units)
-            plan    = build_defuse_plan(units)
+            plan = build_defuse_plan(units)
 
             draw_frame(
-                stdscr, scen_idx, total,
-                template, units, metrics, plan,
-                elapsed, frame, ga_state, event_state,
-            )
+                stdscr, scen_idx, total, template, units, metrics, plan, elapsed, frame, ga_state, event_state, )
             frame += 1
 
             key = stdscr.getch()
@@ -1157,9 +1016,7 @@ def main(stdscr) -> None:
         next_idx = (scen_idx + 1) % total
         next_tmpl = SCENARIO_TEMPLATES[next_idx]
         _flash_transition(
-            stdscr, next_tmpl["name"],
-            next_tmpl.get("theme_c", C_HEADER),
-        )
+            stdscr, next_tmpl["name"], next_tmpl.get("theme_c", C_HEADER), )
         scen_idx = next_idx
 
 

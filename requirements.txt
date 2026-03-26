@@ -139,3 +139,4 @@ feedparser
 mcp
 scikit-learn
 pandas
+pydantic-ai

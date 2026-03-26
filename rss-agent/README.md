@@ -23,10 +23,10 @@ rss-agent/
 
 ## MCP Tools
 
-| Tool | Description |
-|------|-------------|
-| `search_rss_links` | Web search (DuckDuckGo) for AI-related RSS feed URLs. Falls back to the seed list when offline or rate-limited. |
-| `check_feed_availability` | HTTP GET + feedparser validation. Persists valid feeds to the JSON database. |
+| Tool                      | Description                                                                                                     |
+|---------------------------|-----------------------------------------------------------------------------------------------------------------|
+| `search_rss_links`        | Web search (DuckDuckGo) for AI-related RSS feed URLs. Falls back to the seed list when offline or rate-limited. |
+| `check_feed_availability` | HTTP GET + feedparser validation. Persists valid feeds to the JSON database.                                    |
 
 Both tools are registered on the PydanticAI agent **and** exposed via the standalone `mcp_server.py` (stdio transport) so any MCP-compatible client (Claude Desktop, Cursor …) can call them.
 
@@ -36,13 +36,13 @@ Both tools are registered on the PydanticAI agent **and** exposed via the standa
 
 Five built-in eval cases live in `config.EVAL_CASES`:
 
-| Case | What it tests |
-|------|---------------|
-| `major_ai_labs` | Finds RSS feeds from OpenAI, DeepMind, Google, Hugging Face |
-| `ml_news_feeds` | Finds VentureBeat, TechCrunch, MIT Technology Review feeds |
-| `arxiv_research_feeds` | Finds arXiv AI/ML/CL category feeds |
-| `uniqueness_check` | Verifies no duplicate URLs after a discovery run |
-| `availability_check` | Agent verifies feeds are actually reachable |
+| Case                   | What it tests                                               |
+|------------------------|-------------------------------------------------------------|
+| `major_ai_labs`        | Finds RSS feeds from OpenAI, DeepMind, Google, Hugging Face |
+| `ml_news_feeds`        | Finds VentureBeat, TechCrunch, MIT Technology Review feeds  |
+| `arxiv_research_feeds` | Finds arXiv AI/ML/CL category feeds                         |
+| `uniqueness_check`     | Verifies no duplicate URLs after a discovery run            |
+| `availability_check`   | Agent verifies feeds are actually reachable                 |
 
 **Scoring formula** (per case):
 ```
@@ -103,15 +103,15 @@ Add to your MCP client config:
 
 Edit `config.py` to change:
 
-| Setting | Default | Purpose |
-|---------|---------|---------|
-| `OLLAMA_MODEL` | `mistral-nemo:latest` | LLM used by the agent |
-| `OLLAMA_HOST` | `http://127.0.0.1:11434` | Ollama server URL |
-| `REQUEST_TIMEOUT` | `12` | HTTP timeout (seconds) |
-| `MAX_SEARCH_RESULTS` | `25` | DuckDuckGo max results |
-| `SEED_RSS_FEEDS` | 26 feeds | Pre-loaded AI RSS feeds |
-| `AI_RSS_SEARCH_QUERIES` | 5 queries | Discovery-mode search queries |
-| `EVAL_CASES` | 5 cases | Evaluation test suite |
+| Setting                 | Default                  | Purpose                       |
+|-------------------------|--------------------------|-------------------------------|
+| `OLLAMA_MODEL`          | `mistral-nemo:latest`    | LLM used by the agent         |
+| `OLLAMA_HOST`           | `http://127.0.0.1:11434` | Ollama server URL             |
+| `REQUEST_TIMEOUT`       | `12`                     | HTTP timeout (seconds)        |
+| `MAX_SEARCH_RESULTS`    | `25`                     | DuckDuckGo max results        |
+| `SEED_RSS_FEEDS`        | 26 feeds                 | Pre-loaded AI RSS feeds       |
+| `AI_RSS_SEARCH_QUERIES` | 5 queries                | Discovery-mode search queries |
+| `EVAL_CASES`            | 5 cases                  | Evaluation test suite         |
 
 ---
 

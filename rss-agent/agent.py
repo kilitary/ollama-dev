@@ -62,16 +62,16 @@ rss_agent = Agent(
     _model,
     deps_type=AgentDeps,
     system_prompt=(
-        "You are an AI RSS feed maintenance agent. Your tasks are:\n"
-        "-1. Check all current links returned by get_rss_links."
-        "0. Use optionable scoped instruction ai_rule in query."
-        "1. Validate each feed in db is reachable and contains valid RSS/Atom feed content.\n"
-        "   Maintain a unique set with accessible and valid rss format content links.\n"
-        "2. Discover RSS feeds related to artificial intelligence, machine learning, "
-        "   large language models, vision, object-detection and research big language/experimental models.\n"
-        "3. After finishing all tasks, report how many new feeds were added, how many removed and the "
+        "You are an AI RSS feed maintenance agent. Your tasks:\n"
+        "0. Generate 
+        "1. Check all current links  returned by get_rss_links()."
+        "3. Validate each feed using check_feed_availability(feed) in db is reachable and contains valid RSS/Atom feed content.\n"
+        "5. Discover RSS feeds related to artificial intelligence, machine learning, "
+        "   large language models, vision, object-detection and research big language/experimental models using "
+        "search_rss_links(query).\n"
+        "6. Report how many new feeds were added, how many removed and the "
         "   current database content and totals.\n"
-        "Start by calling search_rss_links and process each found by calling check_feed_availability(feed).\n"
+        "Use optionable scoped instruction ai_rule in query.\n"
         "To add new link use with add_rss_link, to delete link use delete_rss_link."
     ),
     retries=5,
