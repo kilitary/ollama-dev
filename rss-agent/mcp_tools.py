@@ -29,7 +29,7 @@ from models import RSSAvailabilityResult, RSSSearchResult
 
 FORMAT = "%(message)s"
 logging.basicConfig(
-    level=logging.WARNING,
+    level=logging.INFO,
     format=FORMAT,
     datefmt="[%X]",
     handlers=[RichHandler(rich_tracebacks=True, console=Console(stderr=True))],

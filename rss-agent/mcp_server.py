@@ -147,10 +147,13 @@ def build_server(db: RSSDatabase):
             result = check_rss_availability(url, timeout=timeout)
             if result.is_available:
                 db.add_link(url=url, title=result.feed_title, tags=["ai"])
-                db.update_availability(url=url, is_available=True,
-                                       http_status=result.http_status,
-                                       feed_title=result.feed_title,
-                                       item_count=result.feed_item_count)
+                db.update_availability(
+                    url=url, is_available=True,
+                    http_status=result.http_status,
+                    feed_title=result.feed_title,
+                    item_count=result.feed_item_count
+
+                )
                 status = f"✅ available | '{result.feed_title}' | {result.feed_item_count} items"
             else:
                 status = f"❌ unavailable | {result.error}"

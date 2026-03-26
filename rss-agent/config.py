@@ -33,9 +33,8 @@ SEED_RSS_FEEDS: list[str] = [
 # ── Search queries used by the agent in discovery mode ───────────────────────
 AI_RSS_SEARCH_QUERIES: list[str] = [  # plus optionable of ai/llm/generative/experimental feed rss
     # "large language model LLM newsletter RSS #1",
-    "#ai_rule: search engine technology words related to ai plus optionable words "
-    "\"ai/llm/generative/experimental/research/deep\"# feed "
-    "rss",
+    "#ai_rule: search engine technology words related to ai and some random word(s) from this list:"
+    "[ai|llm|generative|experimental|research|deep] feed rss",
     #  "machine learning news RSS feed #ai_rule: search engine rule site!=feedburner.com# #3",
     #  "artificial intelligence research blog RSS feed #ai_rule: year between 2016 and 2027 (including)# #4",
     #  "generative AI news RSS atom feed #5",
