@@ -15,7 +15,7 @@ from dataclasses import dataclass, field
 from typing import List, Dict, Tuple, Optional
 
 # ── Timing ─────────────────────────────────────────────────────────────────────
-SCENARIO_DURATION = 10.0
+SCENARIO_DURATION = 40.0
 TICK_MS = 50
 BAR_WIDTH = 28
 
@@ -385,7 +385,7 @@ def _gradient_bar(win, y: int, x: int, value: float, width: int) -> None:
         if zf > 0:
             _put(
                 win, y, col, ch * zf,
-                curses.color_pair(cid) | curses.A_BOLD,
+                             curses.color_pair(cid) | curses.A_BOLD,
             )
         rem = zw - zf
         if rem > 0:
@@ -416,7 +416,7 @@ def _score_bar(win, y: int, x: int, score: int, width: int) -> None:
         if zf > 0:
             _put(
                 win, y, col, ch * zf,
-                curses.color_pair(cid) | curses.A_BOLD,
+                             curses.color_pair(cid) | curses.A_BOLD,
             )
         rem = zw - zf
         if rem > 0:
@@ -475,7 +475,7 @@ def _ga_fitness(genes: list) -> float:
     # Bonus: distance from center of optimal band (60 %)
     center = sum(
         (1.0 - abs(v - 60.0) / 60.0
-        for v in genes if 41 <= v <= 79),
+         for v in genes if 41 <= v <= 79),
     )
     return max(0.0, min(1.0, raw + (center / n) * 0.15))
 
@@ -556,6 +556,158 @@ def _ga_worker(ga: GeneticAlgorithm, stop: threading.Event) -> None:
         time.sleep(0.005 if not ga.state.converged else 0.04)
 
 
+# ── Catastrophic Events ────────────────────────────────────────────────────────
+
+@dataclass
+class EventState:
+    name: str = ""
+    desc: str = ""
+    color: int = C_OVER
+    end_time: float = 0.0
+
+    @property
+    def active(self) -> bool:
+        return bool(self.name) and time.time() < self.end_time
+
+    @property
+    def remaining(self) -> float:
+        return max(0.0, self.end_time - time.time())
+
+
+# ── Event effect functions ─────────────────────────────────────────────────────
+
+def _evt_blackout(units: List["Unit"]) -> None:
+    """Half the units suddenly lose all power."""
+    victims = random.sample(units, max(1, len(units) // 2))
+    for u in victims:
+        u.resource = random.uniform(0.0, 6.0)
+        u._drift = -12.0
+
+
+def _evt_meltdown(units: List["Unit"]) -> None:
+    """Most-loaded unit goes critical, radiating heat to neighbours."""
+    if not units:
+        return
+    victim = max(units, key=lambda u: u.resource)
+    victim.resource = 100.0
+    victim._drift = +14.0
+    for u in units:
+        if u is not victim:
+            u.resource = min(100.0, u.resource + random.uniform(8.0, 24.0))
+            u._drift = max(u._drift, +5.0)
+
+
+def _evt_emp_pulse(units: List["Unit"]) -> None:
+    """Electromagnetic surge — every unit resets to chaos."""
+    for u in units:
+        u.resource = random.uniform(0.0, 100.0)
+        u._drift = random.gauss(0.0, 10.0)
+
+
+def _evt_cascade(units: List["Unit"]) -> None:
+    """Sequential collapse — units drain in order from highest to lowest."""
+    for i, u in enumerate(sorted(units, key=lambda u: u.resource, reverse=True)):
+        u.resource = max(0.0, u.resource - (i + 1) * 18.0)
+        u._drift = -10.0
+
+
+def _evt_demand_surge(units: List["Unit"]) -> None:
+    """Sudden demand spike — all units pushed toward overload."""
+    for u in units:
+        u.resource = min(100.0, u.resource + random.uniform(28.0, 48.0))
+        u._drift = +8.0
+
+
+def _evt_failover(units: List["Unit"]) -> None:
+    """Emergency failover — highest unit dumps load to the coldest standby."""
+    if len(units) < 2:
+        return
+    src = max(units, key=lambda u: u.resource)
+    dst = min(units, key=lambda u: u.resource)
+    combined = src.resource + dst.resource
+    src.resource = combined * 0.08
+    dst.resource = min(100.0, combined * 0.92)
+    src._drift = -14.0
+    dst._drift = +14.0
+
+
+def _evt_fragmentation(units: List["Unit"]) -> None:
+    """Split failure — alternating units go critical / dead."""
+    for i, u in enumerate(units):
+        u.resource = 97.0 if i % 2 == 0 else 1.0
+        u._drift = +8.0 if i % 2 == 0 else -8.0
+
+
+def _evt_total_collapse(units: List["Unit"]) -> None:
+    """Everything fails simultaneously."""
+    for u in units:
+        u.resource = random.uniform(0.0, 4.0)
+        u._drift = -15.0
+
+
+CATASTROPHIC_EVENTS = [
+    {
+        "name" : "!! BLACKOUT !!", "desc": "Power failure — units collapsing to zero",
+        "color": C_OVER, "duration": (3.0, 4.5), "effect": _evt_blackout
+    },
+    {
+        "name" : "!! MELTDOWN !!", "desc": "Critical overload radiating to adjacent units",
+        "color": C_WARN, "duration": (2.5, 4.0), "effect": _evt_meltdown
+    },
+    {
+        "name" : "!! EMP PULSE !!", "desc": "Electromagnetic surge — all values randomized",
+        "color": C_THEME_M, "duration": (2.0, 3.0), "effect": _evt_emp_pulse
+    },
+    {
+        "name" : "!! CASCADE FAIL !!", "desc": "Sequential failure — drain spreading unit by unit",
+        "color": C_OVER, "duration": (3.5, 5.0), "effect": _evt_cascade
+    },
+    {
+        "name" : "!! DEMAND SURGE !!", "desc": "Sudden spike — all units pushed toward overload",
+        "color": C_THEME_R, "duration": (2.0, 3.5), "effect": _evt_demand_surge
+    },
+    {
+        "name" : "!! FAILOVER !!", "desc": "Emergency dump — load transferred to cold standby",
+        "color": C_THEME_Y, "duration": (2.0, 3.0), "effect": _evt_failover
+    },
+    {
+        "name" : "!! FRAGMENTATION !!", "desc": "Split failure — alternating overload and void",
+        "color": C_THEME_M, "duration": (2.5, 4.0), "effect": _evt_fragmentation
+    },
+    {
+        "name" : "!! TOTAL COLLAPSE !!", "desc": "Everything fails simultaneously — restart imminent",
+        "color": C_WARN, "duration": (4.0, 6.0), "effect": _evt_total_collapse
+    },
+]
+
+
+def _flash_event_alert(win, event: dict) -> None:
+    """Full-screen 4-flash dramatic alert when a catastrophic event fires."""
+    h, w = win.getmaxyx()
+    color = event.get("color", C_OVER)
+    name = event["name"]
+    desc = event["desc"]
+    fill = curses.color_pair(color) | curses.A_REVERSE
+    title_attr = curses.color_pair(color) | curses.A_BOLD | curses.A_REVERSE
+    desc_attr = curses.color_pair(color) | curses.A_BOLD
+
+    for _ in range(4):
+        win.erase()
+        for y in range(h):
+            try:
+                win.addstr(y, 0, " " * (w - 1), fill)
+            except curses.error:
+                pass
+        _put(win, h // 2 - 1, max(0, (w - len(name)) // 2), name, title_attr)
+        _put(win, h // 2, max(0, (w - len(desc)) // 2), desc, desc_attr)
+        _put(win, h // 2 + 1, max(0, (w - 18) // 2), ">>> ALERT ACTIVE <<<", title_attr)
+        win.refresh()
+        time.sleep(0.11)
+        win.erase()
+        win.refresh()
+        time.sleep(0.07)
+
+
 # ── GA result flash ───────────────────────────────────────────────────────────
 
 def _flash_ga_result(win, state: GAState, template: dict, theme_c: int) -> None:
@@ -610,7 +762,7 @@ def _flash_ga_result(win, state: GAState, template: dict, theme_c: int) -> None:
             win, h - 1, 2,
             f" {pulse}  NEXT SCENARIO LOADING...  "
             f"  Diversity: {state.diversity:.1f}  Avg: {state.avg_score:.1f}/100 ",
-            curses.color_pair(C_TIMER) | curses.A_BOLD,
+                 curses.color_pair(C_TIMER) | curses.A_BOLD,
         )
         win.refresh()
         f += 1
@@ -652,6 +804,7 @@ def draw_frame(
     elapsed: float,
     frame: int,
     ga_state: Optional[GAState] = None,
+    event_state: Optional[EventState] = None,
 ) -> None:
     win.erase()
     h, w = win.getmaxyx()
@@ -660,21 +813,25 @@ def draw_frame(
     counts = metrics["counts"]
     risk = metrics["risk"]
     theme_c = template.get("theme_c", C_HEADER)
+    # Flash theme color to event color while catastrophe active
+    eff_theme = (event_state.color
+                 if event_state is not None and event_state.active
+                 else theme_c)
     row = 0
 
     # ── Themed title bar ──────────────────────────────────────────────────────
     title = f" RESOURCE ALLOCATION MONITOR  [ {scen_idx + 1}/{total_scen} ] "
-    _hline(win, row, "=", theme_c)
+    _hline(win, row, "=", eff_theme)
     _put(
         win, row, max(0, (w - len(title)) // 2),
-        title, curses.color_pair(theme_c) | curses.A_BOLD | curses.A_REVERSE,
+        title, curses.color_pair(eff_theme) | curses.A_BOLD | curses.A_REVERSE,
     )
     row += 1
 
     _put(
         win, row, 2,
         f"{template['name']}  |  {template['desc']}",
-        curses.color_pair(theme_c) | curses.A_BOLD,
+        curses.color_pair(eff_theme) | curses.A_BOLD,
     )
 
     # System overview: one colored char per unit on same row, right-aligned
@@ -687,8 +844,27 @@ def draw_frame(
     _put(win, row, overview_x + 1 + len(units), "]", curses.color_pair(C_LABEL))
     row += 1
 
-    _hline(win, row, "-", theme_c)
+    _hline(win, row, "-", eff_theme)
     row += 1
+
+    # ── Catastrophic Event banner ─────────────────────────────────────────────
+    if event_state is not None and event_state.active:
+        rem_e = event_state.remaining
+        blink = (frame // 3) % 2 == 0
+        ev_fill = curses.color_pair(event_state.color) | curses.A_REVERSE
+        ev_attr = curses.color_pair(event_state.color) | curses.A_BOLD
+        if blink:
+            ev_attr |= curses.A_REVERSE
+        banner = (f"  {event_state.name}  —  {event_state.desc}"
+                  f"  [{rem_e:.1f}s]  ")
+        try:
+            win.addstr(row, 0, " " * (w - 1), ev_fill)
+        except curses.error:
+            pass
+        _put(win, row, max(0, (w - len(banner)) // 2), banner, ev_attr)
+        row += 1
+        _hline(win, row, "-", event_state.color)
+        row += 1
 
     # ── Unit table ────────────────────────────────────────────────────────────
     _put(
@@ -713,7 +889,7 @@ def draw_frame(
         # Trend
         _put(
             win, row, col + 1, u.trend,
-            curses.color_pair(u.trend_c) | curses.A_BOLD,
+                      curses.color_pair(u.trend_c) | curses.A_BOLD,
         )
         col += 6
 
@@ -725,7 +901,7 @@ def draw_frame(
         row += 1
 
     row += 1
-    _hline(win, row, "-", theme_c)
+    _hline(win, row, "-", eff_theme)
     row += 1
 
     # ── Metrics row ───────────────────────────────────────────────────────────
@@ -755,7 +931,7 @@ def draw_frame(
     _score_bar(win, row, 9, score, sbw)
     _put(
         win, row, 9 + sbw, f"] {score:3d}/100",
-        curses.color_pair(C_LABEL) | curses.A_BOLD,
+                  curses.color_pair(C_LABEL) | curses.A_BOLD,
     )
     row += 1
 
@@ -782,7 +958,7 @@ def draw_frame(
         dx += total_u + 4
 
     row += 1
-    _hline(win, row, "-", theme_c)
+    _hline(win, row, "-", eff_theme)
     row += 1
 
     # ── Defuse plan (colored by action type) ──────────────────────────────────
@@ -849,12 +1025,12 @@ def draw_frame(
                      if i < len(best_g)]
             _put(
                 win, row, 2, "Best: " + "  ".join(parts),
-                curses.color_pair(C_OPTIMAL) | curses.A_BOLD,
+                             curses.color_pair(C_OPTIMAL) | curses.A_BOLD,
             )
             row += 1
 
     # ── Themed footer ─────────────────────────────────────────────────────────
-    _hline(win, h - 2, "=", theme_c)
+    _hline(win, h - 2, "=", eff_theme)
     _put(
         win, h - 2, w - 30,
         "  Q/ESC=quit  SPACE=skip  ",
@@ -868,7 +1044,7 @@ def draw_frame(
     timer_str = f" {pulse} {remaining:4.1f}s left "
     _put(
         win, h - 1, 0, timer_str,
-        curses.color_pair(C_TIMER) | curses.A_BOLD,
+             curses.color_pair(C_TIMER) | curses.A_BOLD,
     )
     tx = len(timer_str)
     _put(
@@ -877,8 +1053,7 @@ def draw_frame(
     )
     _put(
         win, h - 1, tx + 1, "|" * prog_fill,
-        curses.color_pair(theme_c) | curses.A_BOLD,
-    )
+         curses.color_pair(eff_theme) | curses.A_BOLD)
     _put(
         win, h - 1, tx + 1 + prog_fill, "." * (prog_w - prog_fill),
         curses.color_pair(C_BORDER),
@@ -927,21 +1102,41 @@ def main(stdscr) -> None:
         )
         ga_thread.start()
 
+        # ── Catastrophic event scheduling ───────────────────────────────────
+        event_state      = EventState()
+        next_event_time  = time.time() + random.uniform(2.5, 5.0)
+
         while True:
             elapsed = time.time() - scen_start
             if elapsed >= SCENARIO_DURATION:
                 break
 
+            # Trigger a new catastrophic event?
+            now = time.time()
+            if now >= next_event_time and not event_state.active:
+                if random.random() < 0.70:   # 70 % chance to fire
+                    evt = random.choice(CATASTROPHIC_EVENTS)
+                    evt["effect"](units)
+                    dur = random.uniform(*evt["duration"])
+                    event_state = EventState(
+                        name=evt["name"],
+                        desc=evt["desc"],
+                        color=evt["color"],
+                        end_time=now + dur,
+                    )
+                    _flash_event_alert(stdscr, evt)
+                next_event_time = now + random.uniform(3.0, 6.5)
+
             for u in units:
                 u.tick(bias, vol)
 
             metrics = compute_metrics(units)
-            plan = build_defuse_plan(units)
+            plan    = build_defuse_plan(units)
 
             draw_frame(
                 stdscr, scen_idx, total,
                 template, units, metrics, plan,
-                elapsed, frame, ga_state,
+                elapsed, frame, ga_state, event_state,
             )
             frame += 1
 
