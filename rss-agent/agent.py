@@ -63,7 +63,6 @@ rss_agent = Agent(
     deps_type=AgentDeps,
     system_prompt=(
         "You are an AI RSS feed maintenance agent. Your tasks:\n"
-        "0. Generate 
         "1. Check all current links  returned by get_rss_links()."
         "3. Validate each feed using check_feed_availability(feed) in db is reachable and contains valid RSS/Atom feed content.\n"
         "5. Discover RSS feeds related to artificial intelligence, machine learning, "

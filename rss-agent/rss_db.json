@@ -12,9 +12,9 @@
         "seed"
       ],
       "discovered_at": "2026-03-17T09:19:49.160440",
-      "last_checked": "2026-03-26T19:56:39.761009",
+      "last_checked": "2026-03-28T07:46:22.645673",
       "is_available": true,
-      "check_count": 39,
+      "check_count": 41,
       "http_status": 200,
       "feed_item_count": 100
     },
@@ -30,29 +30,11 @@
         "seed"
       ],
       "discovered_at": "2026-03-17T09:19:49.161439",
-      "last_checked": "2026-03-26T19:56:41.759550",
+      "last_checked": "2026-03-28T07:46:24.105856",
       "is_available": true,
-      "check_count": 37,
+      "check_count": 39,
       "http_status": 200,
       "feed_item_count": 751
-    },
-    {
-      "id": "040c5afc-d786-4a2f-9906-1d212aa44ad0",
-      "url": "https://blogs.microsoft.com/ai/feed",
-      "title": "The AI Blog",
-      "description": null,
-      "language": null,
-      "category": "ai",
-      "tags": [
-        "ai",
-        "seed"
-      ],
-      "discovered_at": "2026-03-17T09:19:49.162440",
-      "last_checked": "2026-03-26T19:56:45.661945",
-      "is_available": true,
-      "check_count": 34,
-      "http_status": 200,
-      "feed_item_count": 10
     },
     {
       "id": "24d7e255-0624-4f17-890b-0d0945c27d85",
@@ -65,9 +47,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:20:33.382904",
-      "last_checked": "2026-03-26T19:56:48.081510",
+      "last_checked": "2026-03-28T07:46:49.755940",
       "is_available": true,
-      "check_count": 33,
+      "check_count": 35,
       "http_status": 200,
       "feed_item_count": 10
     },
@@ -82,9 +64,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:20:47.905953",
-      "last_checked": "2026-03-26T19:56:51.122564",
+      "last_checked": "2026-03-28T07:46:51.764163",
       "is_available": true,
-      "check_count": 31,
+      "check_count": 33,
       "http_status": 200,
       "feed_item_count": 10
     },
@@ -99,11 +81,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:24:24.876550",
-      "last_checked": "2026-03-26T19:56:53.541877",
+      "last_checked": "2026-03-28T07:46:52.850294",
       "is_available": true,
-      "check_count": 31,
+      "check_count": 33,
       "http_status": 200,
-      "feed_item_count": 928
+      "feed_item_count": 0
     },
     {
       "id": "a8ce404b-604a-4fd9-9d3d-e00b8a5ca9c7",
@@ -116,11 +98,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:24:26.561599",
-      "last_checked": "2026-03-26T19:56:55.001785",
+      "last_checked": "2026-03-28T07:46:53.972797",
       "is_available": true,
-      "check_count": 27,
+      "check_count": 29,
       "http_status": 200,
-      "feed_item_count": 4
+      "feed_item_count": 0
     },
     {
       "id": "7b8a22c1-f635-4175-9f2a-9d1762eb31d9",
@@ -133,11 +115,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:24:29.148708",
-      "last_checked": "2026-03-26T19:56:57.382586",
+      "last_checked": "2026-03-28T07:46:55.162967",
       "is_available": true,
-      "check_count": 26,
+      "check_count": 28,
       "http_status": 200,
-      "feed_item_count": 270
+      "feed_item_count": 0
     },
     {
       "id": "915f0828-496f-4c1f-b7c3-281d133a403e",
@@ -150,11 +132,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:41:18.912334",
-      "last_checked": "2026-03-26T19:56:59.270806",
+      "last_checked": "2026-03-28T07:46:56.436040",
       "is_available": true,
-      "check_count": 25,
+      "check_count": 27,
       "http_status": 200,
-      "feed_item_count": 274
+      "feed_item_count": 0
     },
     {
       "id": "c0b9dcc3-e149-47bd-b27d-fbff7d67ed5b",
@@ -167,11 +149,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:41:21.733101",
-      "last_checked": "2026-03-26T19:57:00.928355",
+      "last_checked": "2026-03-28T07:46:57.550399",
       "is_available": true,
-      "check_count": 23,
+      "check_count": 25,
       "http_status": 200,
-      "feed_item_count": 138
+      "feed_item_count": 0
     },
     {
       "id": "5be8d76a-c8b9-48d0-bfff-3a732b9e413b",
@@ -184,11 +166,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:41:24.680326",
-      "last_checked": "2026-03-26T19:57:02.716969",
+      "last_checked": "2026-03-28T07:46:58.823996",
       "is_available": true,
-      "check_count": 22,
+      "check_count": 24,
       "http_status": 200,
-      "feed_item_count": 224
+      "feed_item_count": 0
     },
     {
       "id": "32ea116e-5385-4074-991f-387a58e6f6e7",
@@ -201,11 +183,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:41:26.519967",
-      "last_checked": "2026-03-26T19:57:04.224885",
+      "last_checked": "2026-03-28T07:47:00.736789",
       "is_available": true,
-      "check_count": 21,
+      "check_count": 23,
       "http_status": 200,
-      "feed_item_count": 72
+      "feed_item_count": 0
     },
     {
       "id": "db406a1c-0a67-4f77-a767-2ef97afc9185",
@@ -218,11 +200,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:41:29.292887",
-      "last_checked": "2026-03-26T19:57:05.590173",
+      "last_checked": "2026-03-28T07:47:02.110716",
       "is_available": true,
-      "check_count": 21,
+      "check_count": 23,
       "http_status": 200,
-      "feed_item_count": 5
+      "feed_item_count": 0
     },
     {
       "id": "cfeff998-0e77-4031-bc67-edd26b5c86f9",
@@ -235,9 +217,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T15:05:28.198590",
-      "last_checked": "2026-03-26T19:57:07.797713",
+      "last_checked": "2026-03-28T07:47:04.058228",
       "is_available": true,
-      "check_count": 19,
+      "check_count": 21,
       "http_status": 200,
       "feed_item_count": 10
     },
@@ -252,28 +234,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T15:16:10.648034",
-      "last_checked": "2026-03-26T19:57:10.172204",
+      "last_checked": "2026-03-28T07:47:05.587794",
       "is_available": true,
-      "check_count": 16,
+      "check_count": 18,
       "http_status": 200,
       "feed_item_count": 20
-    },
-    {
-      "id": "c297a6a9-ab1c-40cd-abf8-e419252cfbd3",
-      "url": "https://thegradient.pub/rss",
-      "title": "The Gradient",
-      "description": null,
-      "language": null,
-      "category": "ai",
-      "tags": [
-        "ai"
-      ],
-      "discovered_at": "2026-03-17T15:18:29.047939",
-      "last_checked": "2026-03-26T19:57:13.515725",
-      "is_available": true,
-      "check_count": 19,
-      "http_status": 200,
-      "feed_item_count": 15
     },
     {
       "id": "483515f9-d5d9-4e51-ae8f-acf287a43f52",
@@ -286,9 +251,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T15:19:05.601939",
-      "last_checked": "2026-03-26T19:57:15.007355",
+      "last_checked": "2026-03-28T07:47:34.852864",
       "is_available": true,
-      "check_count": 17,
+      "check_count": 19,
       "http_status": 200,
       "feed_item_count": 1
     },
@@ -303,9 +268,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T16:15:39.966165",
-      "last_checked": "2026-03-26T19:57:17.347807",
+      "last_checked": "2026-03-28T07:47:36.831106",
       "is_available": true,
-      "check_count": 14,
+      "check_count": 16,
       "http_status": 200,
       "feed_item_count": 10
     },
@@ -320,9 +285,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T16:15:47.562670",
-      "last_checked": "2026-03-26T19:57:18.906549",
+      "last_checked": "2026-03-28T07:47:39.750910",
       "is_available": true,
-      "check_count": 17,
+      "check_count": 19,
       "http_status": 200,
       "feed_item_count": 0
     },
@@ -337,9 +302,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T16:20:04.117989",
-      "last_checked": "2026-03-26T19:57:20.446094",
+      "last_checked": "2026-03-28T07:47:41.288872",
       "is_available": true,
-      "check_count": 13,
+      "check_count": 15,
       "http_status": 200,
       "feed_item_count": 10
     },
@@ -354,9 +319,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T19:59:36.911408",
-      "last_checked": "2026-03-26T19:57:22.206733",
+      "last_checked": "2026-03-28T07:47:42.870636",
       "is_available": true,
-      "check_count": 15,
+      "check_count": 17,
       "http_status": 200,
       "feed_item_count": 6
     },
@@ -371,9 +336,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T19:59:41.429042",
-      "last_checked": "2026-03-26T19:57:23.997211",
+      "last_checked": "2026-03-28T07:47:44.466376",
       "is_available": true,
-      "check_count": 14,
+      "check_count": 16,
       "http_status": 200,
       "feed_item_count": 1
     },
@@ -388,11 +353,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T20:29:08.157154",
-      "last_checked": "2026-03-26T19:57:25.832100",
+      "last_checked": "2026-03-28T07:47:45.652829",
       "is_available": true,
-      "check_count": 11,
+      "check_count": 13,
       "http_status": 200,
-      "feed_item_count": 266
+      "feed_item_count": 0
     },
     {
       "id": "9d69ea2d-5ae3-40ca-8520-71b05961cc22",
@@ -405,11 +370,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T20:29:12.750447",
-      "last_checked": "2026-03-26T19:57:27.564794",
+      "last_checked": "2026-03-28T07:47:46.999649",
       "is_available": true,
-      "check_count": 11,
+      "check_count": 13,
       "http_status": 200,
-      "feed_item_count": 138
+      "feed_item_count": 0
     },
     {
       "id": "767f3eaf-44d3-4512-8595-53a184a7df31",
@@ -422,11 +387,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T20:29:17.313452",
-      "last_checked": "2026-03-26T19:57:29.376533",
+      "last_checked": "2026-03-28T07:47:48.129283",
       "is_available": true,
-      "check_count": 11,
+      "check_count": 13,
       "http_status": 200,
-      "feed_item_count": 274
+      "feed_item_count": 0
     },
     {
       "id": "14e3da4c-3abf-4e80-90ee-f2aa868549ff",
@@ -439,11 +404,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T20:29:19.626548",
-      "last_checked": "2026-03-26T19:57:31.163483",
+      "last_checked": "2026-03-28T07:47:49.282636",
       "is_available": true,
-      "check_count": 9,
+      "check_count": 11,
       "http_status": 200,
-      "feed_item_count": 224
+      "feed_item_count": 0
     },
     {
       "id": "7a53af10-6d3c-4d8d-97d7-abf362ea191f",
@@ -457,11 +422,11 @@
         "research"
       ],
       "discovered_at": "2026-03-26T19:32:57.928884",
-      "last_checked": "2026-03-26T19:57:34.022838",
+      "last_checked": "2026-03-28T07:47:50.934219",
       "is_available": true,
-      "check_count": 2,
+      "check_count": 4,
       "http_status": 200,
-      "feed_item_count": 266
+      "feed_item_count": 0
     },
     {
       "id": "196de80c-bee5-4bb1-9bb8-19382e9521e0",
@@ -475,11 +440,11 @@
         "machine-learning"
       ],
       "discovered_at": "2026-03-26T19:32:59.643766",
-      "last_checked": "2026-03-26T19:57:36.421210",
+      "last_checked": "2026-03-28T07:47:52.639182",
       "is_available": true,
-      "check_count": 2,
+      "check_count": 4,
       "http_status": 200,
-      "feed_item_count": 274
+      "feed_item_count": 0
     },
     {
       "id": "e0c608a2-9cf6-4078-8c4e-0ca591c696f7",
@@ -493,13 +458,13 @@
         "nlp"
       ],
       "discovered_at": "2026-03-26T19:33:00.707471",
-      "last_checked": "2026-03-26T19:57:38.611611",
+      "last_checked": "2026-03-28T07:47:53.938023",
       "is_available": true,
-      "check_count": 2,
+      "check_count": 4,
       "http_status": 200,
-      "feed_item_count": 138
+      "feed_item_count": 0
     }
   ],
-  "last_saved": "2026-03-26T19:57:38.612904",
-  "total_links": 29
+  "last_saved": "2026-03-28T07:47:55.462499",
+  "total_links": 27
 }
