@@ -1,0 +1,37 @@
+// Example output script for CNC3 Mod SDK style AI hooks.
+// Source: ai_profile.json
+
+function ShadowStrikerOnAIThink(unit):
+    hp_ratio = GetUnitProperty(unit, "Health") / GetUnitProperty(unit, "MaxHealth")
+    my_power = GetAIUnitCount(GetUnitOwner(unit)) * 10
+    enemy_power = GetEnemyUnitCount(GetUnitOwner(unit)) * 10
+
+    if hp_ratio < 0.35:
+        IssueCommand(unit, "Move", null, GetSafeRetreatPoint(unit))
+        return "RETREAT"
+    end
+
+    if enemy_power > 0 and (my_power / enemy_power) >= 1.2:
+        target = GetHighestValueEnemyTarget(unit)
+        IssueCommand(unit, "Attack", target)
+        return "RUSH"
+    end
+
+    target = GetNearestHarassTarget(unit)
+    IssueCommand(unit, "Attack", target)
+    return "HARASS"
+end
+
+function OnEnemySpotted(unit, enemy):
+    if GetUnitType(unit) == "ShadowStriker":
+        ShadowStrikerOnAIThink(unit)
+    end
+end
+
+function OnAIThink():
+    units = GetUnitsByType("ShadowStriker")
+    foreach unit in units:
+        ShadowStrikerOnAIThink(unit)
+    end
+end
+

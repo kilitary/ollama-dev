@@ -1,0 +1,26 @@
+{
+  "scenarios": [
+    {
+      "name": "advantage_push",
+      "health_ratio": 0.92,
+      "our_power": 240,
+      "enemy_power": 150,
+      "expected_action": "RUSH"
+    },
+    {
+      "name": "critical_health",
+      "health_ratio": 0.22,
+      "our_power": 260,
+      "enemy_power": 120,
+      "expected_action": "RETREAT"
+    },
+    {
+      "name": "neutral_skirmish",
+      "health_ratio": 0.78,
+      "our_power": 150,
+      "enemy_power": 150,
+      "expected_action": "HARASS"
+    }
+  ]
+}
+

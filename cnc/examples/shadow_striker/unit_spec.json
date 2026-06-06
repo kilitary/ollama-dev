@@ -1,0 +1,20 @@
+{
+  "unit_name": "ShadowStriker",
+  "faction": "Nod",
+  "base_unit": "AttackBike",
+  "properties": {
+    "Health": 280,
+    "MaxHealth": 280,
+    "Speed": 68.0,
+    "Armor": 0.22,
+    "CostToBuild": 900,
+    "BuildTime": 11,
+    "Vision": 190,
+    "Stealth": true,
+    "Weapon": "ShadowRocket",
+    "WeaponDamage": 54.0,
+    "WeaponRange": 215.0,
+    "FireRate": 18
+  }
+}
+

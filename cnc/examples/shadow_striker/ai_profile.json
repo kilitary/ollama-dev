@@ -1,0 +1,33 @@
+{
+  "unit": "ShadowStriker",
+  "hooks": [
+    "OnAIThink",
+    "OnEnemySpotted"
+  ],
+  "rules": [
+    {
+      "name": "retreat_if_low_health",
+      "condition": {
+        "kind": "health_below",
+        "threshold": 0.35
+      },
+      "action": "RETREAT"
+    },
+    {
+      "name": "rush_if_advantage",
+      "condition": {
+        "kind": "power_ratio_at_least",
+        "ratio": 1.2
+      },
+      "action": "RUSH"
+    },
+    {
+      "name": "default_harass",
+      "condition": {
+        "kind": "always"
+      },
+      "action": "HARASS"
+    }
+  ]
+}
+
