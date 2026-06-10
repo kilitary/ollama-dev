@@ -1,0 +1,675 @@
+================================================================================
+C&C3 TIBERIUM WARS — SAGE ENGINE REAL-TIME ENTRY POINT REPORT
+Target: DLL injection / IAT hooking / hot-patching for real-time game modification
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+SECTION 1: cnc3game.dat — SAGE Engine Exported Symbols (494 total)
+These can be called directly after injecting a DLL and resolving via GetProcAddress.
+────────────────────────────────────────────────────────────────────────────────
+
+  🎮 Game Logic / Units (80 symbols)
+    ord=  13  rva=0x4f0453      ??1AptGlobalExtensionObject@@MAE@XZ
+    ord=  35  rva=0x4ef855      AptAnimationTarget::AddActionBack(...)
+    ord=  36  rva=0x4ef87b      AptAnimationTarget::AddActionFront(...)
+    ord=  37  rva=0x4ef8a1      AptAnimationTarget::AddFunctionBack(...)
+    ord=  38  rva=0x4ef8ca      AptAnimationTarget::AddFunctionFront(...)
+    ord=  58  rva=0x4f0ffc      AptExtObject::CreateNewAptFunction(...)
+    ord=  59  rva=0x4f0fc6      AptExtObject::CreateNewAptObject(...)
+    ord=  60  rva=0x4f0f1c      AptExtObject::CreateNewAptObject(...)
+    ord=  62  rva=0x4ef9a1      AptAnimationTarget::DecIntervalTimersSize(...)
+    ord=  63  rva=0x4ef90f      AptAnimationTarget::DecNewInstSize(...)
+    ord=  66  rva=0x509520      AptAnimationTarget::DragMovieClip(...)
+    ord=  73  rva=0x4efa41      AptAnimationTarget::GetAStickLeft(...)
+    ord=  74  rva=0x4efa57      AptAnimationTarget::GetAStickRight(...)
+    ord=  75  rva=0x4ef846      AptAnimationTarget::GetActionPool(...)
+    ord=  80  rva=0x545536      AptTarget::GetAnimationTarget(...)
+    ord=  94  rva=0x4efaac      AptAnimationTarget::GetButtonSet(...)
+    ord=  96  rva=0x4ef943      AptAnimationTarget::GetCIHMatrixHelper(...)
+    ord= 116  rva=0x4ef92f      AptAnimationTarget::GetDelayedReleaseList(...)
+    ord= 117  rva=0x4ef939      AptAnimationTarget::GetDelayedReleaseListSize(...)
+    ord= 122  rva=0x4ef96f      AptAnimationTarget::GetDisplayList(...)
+    ord= 126  rva=0x4ef9ec      AptAnimationTarget::GetDragMC(...)
+    ord= 127  rva=0x4ef9fb      AptAnimationTarget::GetDragPos(...)
+    ord= 139  rva=0x4efa9d      AptAnimationTarget::GetFocusButton(...)
+    ord= 148  rva=0x4ef960      AptAnimationTarget::GetInputSet(...)
+    ord= 156  rva=0x4f1121      AptAnimationTarget::GetIntervalTimers(...)
+    ord= 157  rva=0x4ef0d2      AptAnimationTarget::GetIntervalTimersSize(...)
+    ord= 167  rva=0x4f1112      AptTarget::GetLinker(...)
+    ord= 168  rva=0x4ef951      AptAnimationTarget::GetListenerSet(...)
+    ord= 169  rva=0x4eead0      AptTarget::GetLoader(...)
+    ord= 171  rva=0x4f167c      AptRenderItem::GetMaskPositionMatrixConst(...)
+    ord= 172  rva=0x4f167c      AptRenderItem::GetMaskPositionMatrixWritable(...)
+    ord= 173  rva=0x4f1167      AptAnimationTarget::GetMaxIntervalTimers(...)
+    ord= 174  rva=0x4ef838      AptAnimationTarget::GetMaxNewMovieClips(...)
+    ord= 180  rva=0x4efabb      AptAnimationTarget::GetMouseListenerSet(...)
+    ord= 183  rva=0x4ef901      AptAnimationTarget::GetNewInstSize(...)
+    ord= 184  rva=0x4ef8f3      AptAnimationTarget::GetNewInsts(...)
+    ord= 185  rva=0x4f1121      AptTarget::GetNext(...)
+    ord= 188  rva=0x5048b8      AptAnimationTarget::GetOnPressObject(...)
+    ord= 189  rva=0x50489a      AptAnimationTarget::GetOnRollOverObject(...)
+    ord= 190  rva=0x4f0eca      AptExtObject::GetParam(...)
+    ord= 192  rva=0x4f1f68      AptCIH::GetPositionMatrixConst(...)
+    ord= 193  rva=0x4f119d      AptCharacterInst::GetPositionMatrixConst(...)
+    ord= 194  rva=0x4f1f46      AptCIH::GetPositionMatrixWritable(...)
+    ord= 195  rva=0x4f11ed      AptCharacterInst::GetPositionMatrixWritable(...)
+    ord= 196  rva=0x4ef0d2      AptTarget::GetPrevious(...)
+    ord= 198  rva=0x4f1158      AptAnimationTarget::GetQueuedInputsSize(...)
+    ord= 218  rva=0x4f1158      AptTarget::GetRenderManager(...)
+    ord= 238  rva=0x4f201e      ?GetTargetRender@@YAPAVAptTarget@@XZ
+    ord= 239  rva=0x4f2014      ?GetTargetSim@@YAPAVAptTarget@@XZ
+    ord= 240  rva=0x4eebd3      AptRenderItemCustomControl::GetTargetStr(...)
+    ord= 248  rva=0x4efa32      AptAnimationTarget::GetTopMostSprite(...)
+    ord= 250  rva=0x4f0f12      AptExtObject::GetUndefinedValue(...)
+    ord= 253  rva=0x4f109c      AptExtObject::GetVariable(...)
+    ord= 254  rva=0x4efa6d      AptAnimationTarget::GetXMousePos(...)
+    ord= 255  rva=0x4efa7b      AptAnimationTarget::GetYMousePos(...)
+    ord= 264  rva=0x4ef97e      AptAnimationTarget::IncIntervalTimersSize(...)
+    ord= 265  rva=0x4ef90f      AptAnimationTarget::IncNewInstSize(...)
+    ord= 297  rva=0x4f123f      AptCharacterInst::ItemMoved(...)
+    ord= 301  rva=0x4ef1d9      AptGlobalExtensionObject::Lookup(...)
+    ord= 312  rva=0x4efb83      AptValueVector::RemoveAt(...)
+    ord= 313  rva=0x4eec5e      AptCharacterSpriteInstBase::RemoveClipAction(...)
+    ord= 314  rva=0x4f1dc4      AptCIH::RemoveEventHandler(...)
+    ord= 315  rva=0x4ef07f      AptNativeHash::RemoveEventHandler(...)
+    ord= 319  rva=0x4ef225      AptGlobalExtensionObject::Set(...)
+    ord= 343  rva=0x4ef9d8      AptAnimationTarget::SetDragMC(...)
+    ord= 348  rva=0x4efa89      AptAnimationTarget::SetFocusButton(...)
+    ord= 360  rva=0x4f1144      AptAnimationTarget::SetIntervalTimersSize(...)
+    ord= 370  rva=0x4f1130      AptTarget::SetNext(...)
+    ord= 371  rva=0x4efa0a      AptAnimationTarget::SetOnPressObject(...)
+    ord= 372  rva=0x4efa1e      AptAnimationTarget::SetOnRollOverObject(...)
+    ord= 373  rva=0x4f1144      AptTarget::SetPrevious(...)
+    ord= 374  rva=0x4f07bb      AptObject::SetPrototype(...)
+    ord= 375  rva=0x4ef9c4      AptAnimationTarget::SetQueuedInputsSize(...)
+    ord= 379  rva=0x4eebba      AptRenderItemCustomControl::SetTargetStr(...)
+    ord= 387  rva=0x4f10e3      AptExtObject::SetVariable(...)
+    ord= 391  rva=0x4f07a2      AptObject::Set__Proto__(...)
+    ord= 395  rva=0x4f07d4      AptGlobalExtensionObject::UnSet(...)
+    ord= 423  rva=0x4f0536      AptValue::c_object(...)
+    ord= 470  rva=0x4ee7b1      AptValue::isObject(...)
+    ord= 484  rva=0x4ef337      AptAction_TryCatchFinallyBlock::putCaughtObjectInRegister(...)
+
+  💰 Economy / Resources (9 symbols)
+    ord=  64  rva=0x4ef804      AptActionQueueC::DecrementDequeLocation(...)
+    ord= 114  rva=0x4ef846      AptActionQueueC::GetCurItem(...)
+    ord= 133  rva=0x4f1167      AptActionQueueC::GetFirstItem(...)
+    ord= 163  rva=0x4ef7e1      AptActionQueueC::GetLastItem(...)
+    ord= 186  rva=0x4ef743      AptActionQueueC::GetNextItem(...)
+    ord= 267  rva=0x4ef743      AptActionQueueC::IncrementDequeLocation(...)
+    ord= 280  rva=0x4ef776      AptActionQueueC::IsLastItem(...)
+    ord= 281  rva=0x4ef791      AptActionQueueC::IsLastItemOrBeyond(...)
+    ord= 335  rva=0x4ef7f0      AptActionQueueC::SetCurItem(...)
+
+  📜 Scripting / Events (36 symbols)
+    ord=  71  rva=0x4ef3f4      AptScriptFunctionBase::ExistsInLocalScope(...)
+    ord= 147  rva=0x4ef51b      AptScriptFunctionBase::GetInScopeChain(...)
+    ord= 235  rva=0x4ee031      ?GetStructOverHead@_OutsideAllocationT@DOGMA_PoolManager@@SAIXZ
+    ord= 260  rva=0x4eec95      AptCharacterSpriteInstBase::HasClipAction(...)
+    ord= 261  rva=0x4ef09b      AptNativeHash::HasEventHandler(...)
+    ord= 263  rva=0x4f1e06      AptCIH::HasMouseEvent(...)
+    ord= 330  rva=0x4eec2b      AptCharacterSpriteInstBase::SetClipAction(...)
+    ord= 346  rva=0x4f1d84      AptCIH::SetEventHandler(...)
+    ord= 347  rva=0x4ef065      AptNativeHash::SetEventHandler(...)
+    ord= 354  rva=0x4ef452      AptScriptFunctionBase::SetInLocalScope(...)
+    ord= 388  rva=0x4ef488      AptScriptFunctionBase::SetWhereExistsInScopeChain(...)
+    ord= 404  rva=0x2d1c        MemoryPool::_GetBlockSize(...)
+    ord= 426  rva=0x4f0536      AptValue::c_scriptcolour(...)
+    ord= 427  rva=0x4f0536      AptValue::c_scriptfunction(...)
+    ord= 437  rva=0x4ef3d3      AptActionInterpreter::clearThrownValue(...)
+    ord= 440  rva=0x4ef38f      AptActionInterpreter::doUnwindStack(...)
+    ord= 441  rva=0x4ef35f      AptAction_TryCatchFinallyBlock::getCatchBlockBase(...)
+    ord= 442  rva=0x4ef2e9      AptAction_DefineFunction2::getDF2Flag(...)
+    ord= 443  rva=0x4ef374      AptAction_TryCatchFinallyBlock::getFinallyBlockBase(...)
+    ord= 448  rva=0x4ef3a6      AptActionInterpreter::getThrownValue(...)
+    ord= 449  rva=0x4ef350      AptAction_TryCatchFinallyBlock::getTryBlockBase(...)
+    ord= 451  rva=0x4ef305      AptAction_TryCatchFinallyBlock::hasCatchBlock(...)
+    ord= 452  rva=0x4ef31e      AptAction_TryCatchFinallyBlock::hasFinallyBlock(...)
+    ord= 453  rva=0x4ef38f      AptActionInterpreter::hasThrownValue(...)
+    ord= 473  rva=0x4ee704      AptValue::isScriptColour(...)
+    ord= 474  rva=0x4ee499      AptValue::isScriptFunction(...)
+    ord= 485  rva=0x4f0550      AptActionInterpreter::stackAt(...)
+    ord= 486  rva=0x4f0574      AptActionInterpreter::stackGetPop(...)
+    ord= 487  rva=0x4f0647      AptActionInterpreter::stackPop(...)
+    ord= 488  rva=0x4f0635      AptActionInterpreter::stackPop(...)
+    ord= 489  rva=0x4f061a      AptActionInterpreter::stackPopAndPush(...)
+    ord= 490  rva=0x4f05fc      AptActionInterpreter::stackPopNoDec(...)
+    ord= 491  rva=0x4f059d      AptActionInterpreter::stackPush(...)
+    ord= 492  rva=0x4f05d5      AptActionInterpreter::stackPushNoInc(...)
+    ord= 493  rva=0x4f065f      AptActionInterpreter::stackSafePop(...)
+    ord= 494  rva=0x4ef3b5      AptActionInterpreter::throwValue(...)
+
+  🔧 Engine Core / Memory (71 symbols)
+    ord=   5  rva=0x4ee0d2      ??0EAStringC@@AAE@W4EmptyString@0@@Z
+    ord=   6  rva=0x4ee07a      ??0EAStringC@@QAE@ABV0@@Z
+    ord=   7  rva=0x4ee061      ??0EAStringC@@QAE@QBD@Z
+    ord=   8  rva=0x4ee044      ??0EAStringC@@QAE@XZ
+    ord=  23  rva=0x4ee09a      ??1EAStringC@@QAE@XZ
+    ord=  24  rva=0x4f092d      ??8EAStringC@@QBE_NQBD@Z
+    ord=  25  rva=0x4f08d3      ??9EAStringC@@QBE_NABV0@@Z
+    ord=  26  rva=0x4f099c      ??9EAStringC@@QBE_NQBD@Z
+    ord=  27  rva=0x4f08bb      ??AEAStringC@@QBEIH@Z
+    ord=  28  rva=0x4f0898      ??BEAStringC@@QBEPBDXZ
+    ord=  29  rva=0x4f0a13      ??MEAStringC@@QBE_NQBD@Z
+    ord=  30  rva=0x4f0a82      ??NEAStringC@@QBE_NQBD@Z
+    ord=  31  rva=0x4f08f1      ??OEAStringC@@QBE_NABV0@@Z
+    ord=  32  rva=0x4f0af1      ??OEAStringC@@QBE_NQBD@Z
+    ord=  33  rva=0x4f090f      ??PEAStringC@@QBE_NABV0@@Z
+    ord=  34  rva=0x4f0b68      ??PEAStringC@@QBE_NQBD@Z
+    ord=  39  rva=0x4f0e3f      EAStringC::CalculateHashValue(...)
+    ord=  40  rva=0x4edf7d      _DOGMA_MemPool::CanFitBytes(...)
+    ord=  41  rva=0x4f0bdf      EAStringC::Clear(...)
+    ord=  42  rva=0x4f0c04      EAStringC::ClearConstantValue(...)
+    ord=  50  rva=0x4f0cbf      EAStringC::Compare(...)
+    ord=  51  rva=0x4f0c56      EAStringC::Compare(...)
+    ord=  52  rva=0x4f0d68      EAStringC::CompareNoCase(...)
+    ord=  53  rva=0x4f0d43      EAStringC::CompareNoCase(...)
+    ord=  54  rva=0x4f0898      EAStringC::ConstRawPtr(...)
+    ord=  55  rva=0x4edf94      _DOGMA_MemPool::ConsumeBytes(...)
+    ord=  61  rva=0x4f07ed      EAStringC::DeallocateBuffer(...)
+    ord=  67  rva=0x4f0c16      EAStringC::Equal(...)
+    ord=  68  rva=0x4f092d      EAStringC::Equal(...)
+    ord=  69  rva=0x4f0c2c      EAStringC::EqualNoCase(...)
+    ord=  90  rva=0x4f0898      EAStringC::GetBuffer(...)
+    ord=  95  rva=0x4ee00d      _DOGMA_MemPool::GetBytesUsed(...)
+    ord= 137  rva=0x4edfc8      _DOGMA_MemPool::GetFirstItem(...)
+    ord= 145  rva=0x4f08a9      EAStringC::GetHashValue(...)
+    ord= 151  rva=0x4f0898      EAStringC::GetInternalBuffer(...)
+    ord= 152  rva=0x4f082d      EAStringC::GetInternalMaxSize(...)
+    ord= 153  rva=0x4f0857      EAStringC::GetInternalRefCount(...)
+    ord= 154  rva=0x4f0803      EAStringC::GetInternalSize(...)
+    ord= 165  rva=0x4f0803      EAStringC::GetLength(...)
+    ord= 219  rva=0x4ee022      ?GetReturnedPointer@_OutsideAllocationT@DOGMA_PoolManager@@QAEPAXXZ
+    ord= 234  rva=0x4f1103      StringPool::GetString(...)
+    ord= 236  rva=0x4ee039      ?GetStructPointerFromReturnedPointer@_OutsideAllocationT@DOGMA_PoolManager@@SAPAU12@PBX@Z
+    ord= 268  rva=0x4f0dd8      EAStringC::Invalidate(...)
+    ord= 269  rva=0x4f0ea3      EAStringC::InvalidateHashValue(...)
+    ord= 273  rva=0x4ee0ae      EAStringC::IsConstantString(...)
+    ord= 277  rva=0x4f087f      EAStringC::IsEmpty(...)
+    ord= 292  rva=0x4f0e29      EAStringC::IsValid(...)
+    ord= 307  rva=0x4f0dcc      EAStringC::MemUninitialize(...)
+    ord= 309  rva=0x97be        Debug::PostStaticInit(...)
+    ord= 310  rva=0x84e1        Debug::PreStaticInit(...)
+    ord= 311  rva=0x4edfd7      _DOGMA_MemPool::PtrIsInThisPool(...)
+    ord= 316  rva=0x4f0da9      EAStringC::Reserve(...)
+    ord= 357  rva=0x4f083f      EAStringC::SetInternalMaxSize(...)
+    ord= 358  rva=0x4f0868      EAStringC::SetInternalRefCount(...)
+    ord= 359  rva=0x4f0815      EAStringC::SetInternalSize(...)
+    ord= 392  rva=0x4edf52      _DOGMA_MemPool::SetupPool(...)
+    ord= 393  rva=0x4f0803      EAStringC::Size(...)
+    ord= 394  rva=0x4f0eb6      EAStringC::UTF8_IsValid(...)
+    ord= 396  rva=0x4f0e66      EAStringC::UpdateHashValue(...)
+    ord= 397  rva=0x4f0e0c      EAStringC::Validate(...)
+    ord= 398  rva=0x4f0df2      EAStringC::Validate(...)
+    ord= 399  rva=0x2c71        MemoryPool::_Allocate(...)
+    ord= 400  rva=0x2c98        MemoryPool::_AllocateAligned(...)
+    ord= 401  rva=0x2b08        MemoryPool::_DumpFragmentation(...)
+    ord= 402  rva=0x2ac8        MemoryPool::_Exit(...)
+    ord= 403  rva=0x2ce5        MemoryPool::_Free(...)
+    ord= 405  rva=0x29f0        MemoryPool::_Init(...)
+    ord= 406  rva=0x2d05        MemoryPool::_IsValidBlock(...)
+    ord= 407  rva=0x2ccf        MemoryPool::_Reallocate(...)
+    ord= 408  rva=0x2d36        MemoryPool::_VerifyIntegrity(...)
+    ord= 430  rva=0x4f0898      EAStringC::c_str(...)
+
+  🖥️ UI / HUD (APT Flash) (297 symbols)
+    ord=   1  rva=0x4eefce      ??0AptFloat@@AAE@M@Z
+    ord=   2  rva=0x4ef0e1      ??0AptFrameStack@@QAE@PAV0@@Z
+    ord=   3  rva=0x4ef176      ??0AptFrameStack@@QAE@PAV0@H@Z
+    ord=   4  rva=0x4eee4b      ??0AptInteger@@AAE@H@Z
+    ord=   9  rva=0x4eeefa      ??1AptBoolean@@MAE@XZ
+    ord=  10  rva=0x4efbfc      ??1AptDate@@MAE@XZ
+    ord=  11  rva=0x4ef687      ??1AptExtern@@UAE@XZ
+    ord=  12  rva=0x4f0370      ??1AptGlobal@@MAE@XZ
+    ord=  14  rva=0x4efe4e      ??1AptKey@@MAE@XZ
+    ord=  15  rva=0x4efd6b      ??1AptMathObj@@MAE@XZ
+    ord=  16  rva=0x4f00c7      ??1AptMouse@@MAE@XZ
+    ord=  17  rva=0x4f028d      ??1AptMovieClip@@MAE@XZ
+    ord=  18  rva=0x4ef5cb      ??1AptNone@@MAE@XZ
+    ord=  19  rva=0x4eff31      ??1AptSound@@MAE@XZ
+    ord=  20  rva=0x4f01aa      ??1AptStage@@MAE@XZ
+    ord=  21  rva=0x4f0014      ??1AptTextFormat@@MAE@XZ
+    ord=  22  rva=0x4ee979      ??1AptValue@@MAE@XZ
+    ord=  43  rva=0x4ef1f2      AptFrameStack::ClearScope(...)
+    ord=  44  rva=0x4f19c9      AptCharacterTextInst::ClearStateFlags(...)
+    ord=  45  rva=0x4efb14      AptMath::ClipStackGetTop(...)
+    ord=  46  rva=0x4efb29      AptMath::ClipStackIsEmpty(...)
+    ord=  47  rva=0x4efaef      AptMath::ClipStackPop(...)
+    ord=  48  rva=0x4efaca      AptMath::ClipStackPush(...)
+    ord=  49  rva=0x4f130f      AptCharacterInst::CloneItem(...)
+    ord=  56  rva=0x4f076f      AptBoolean::Create(...)
+    ord=  57  rva=0x4eee3b      AptString::Create(...)
+    ord=  65  rva=0x4f14b5      AptCharacterInst::DestroyGCPointers(...)
+    ord=  70  rva=0x4ef206      AptFrameStack::ExistsInLocalScope(...)
+    ord=  72  rva=0x4eecf0      AptCIH::GetASChanged(...)
+    ord=  76  rva=0x4f17de      AptCharacterTextInst::GetAlignment(...)
+    ord=  77  rva=0x4f1b8a      AptCIH::GetAnimationInst(...)
+    ord=  78  rva=0x4f1b8a      AptCIH::GetAnimationInst(...)
+    ord=  79  rva=0x4f0536      AptCharacterInst::GetAnimationInst(...)
+    ord=  81  rva=0x4ef0af      AptNativeHash::GetAt(...)
+    ord=  82  rva=0x4ef0c7      AptNativeHash::GetAt(...)
+    ord=  83  rva=0x4efb3a      AptValueVector::GetAt(...)
+    ord=  84  rva=0x4f16df      AptCharacterTextInst::GetBackgroundColor(...)
+    ord=  85  rva=0x4f0793      AptBoolean::GetBool(...)
+    ord=  86  rva=0x4f1735      AptCharacterTextInst::GetBorderColor(...)
+    ord=  87  rva=0x4f18a6      AptCharacterTextInst::GetBoundsConst(...)
+    ord=  88  rva=0x4f18bf      AptCharacterTextInst::GetBoundsWritable(...)
+    ord=  89  rva=0x4f178b      AptCharacterTextInst::GetBoxAlignment(...)
+    ord=  91  rva=0x4f1b8a      AptCIH::GetButtonInst(...)
+    ord=  92  rva=0x4f1b8a      AptCIH::GetButtonInst(...)
+    ord=  93  rva=0x4f0536      AptCharacterInst::GetButtonInst(...)
+    ord=  97  rva=0x4eed69      AptCIH::GetCIHState(...)
+    ord=  98  rva=0x4f137e      AptCharacterInst::GetCharacterConst(...)
+    ord=  99  rva=0x4f1167      AptRenderItem::GetCharacterConst(...)
+    ord= 100  rva=0x4f1112      AptCIH::GetCharacterInst(...)
+    ord= 101  rva=0x4f1b8a      AptCIH::GetCharacterInst(...)
+    ord= 102  rva=0x4f0536      AptCharacterInst::GetCharacterInst(...)
+    ord= 103  rva=0x4f139e      AptCharacterInst::GetCharacterWritable(...)
+    ord= 104  rva=0x4f1167      AptRenderItem::GetCharacterWritable(...)
+    ord= 105  rva=0x4f11d3      AptCharacterInst::GetClipDepth(...)
+    ord= 106  rva=0x4eea9c      AptRenderItem::GetClipDepth(...)
+    ord= 107  rva=0x4f1faf      AptCIH::GetColorMatrixConst(...)
+    ord= 108  rva=0x4f11b8      AptCharacterInst::GetColorMatrixConst(...)
+    ord= 109  rva=0x4f1f8d      AptCIH::GetColorMatrixWritable(...)
+    ord= 110  rva=0x4f1205      AptCharacterInst::GetColorMatrixWritable(...)
+    ord= 111  rva=0x4f1a37      AptCharacterTextInst::GetCreatedDynamic(...)
+    ord= 112  rva=0x4eedff      AptCIH::GetCreatedOnFrame(...)
+    ord= 113  rva=0x4f1112      AptRenderItem::GetCreatedOnTick(...)
+    ord= 115  rva=0x4eeb6a      AptRenderItemCustomControl::GetCustomPropertiesStr(...)
+    ord= 118  rva=0x4f1ee9      AptCIH::GetDepth(...)
+    ord= 119  rva=0x4f1364      AptCharacterInst::GetDepth(...)
+    ord= 120  rva=0x4eeaac      AptRenderItem::GetDepth(...)
+    ord= 121  rva=0x4f1ff9      AptCIH::GetDirtyState(...)
+    ord= 123  rva=0x545536      AptCIH::GetDisplayListNext(...)
+    ord= 124  rva=0x4eead0      AptCIH::GetDisplayListParent(...)
+    ord= 125  rva=0x545513      AptCIH::GetDisplayListPrevious(...)
+    ord= 128  rva=0x4f1ae2      AptCharacterTextInst::GetDrawsBackground(...)
+    ord= 129  rva=0x4f1a8e      AptCharacterTextInst::GetDrawsBorder(...)
+    ord= 130  rva=0x4f1b8a      AptCIH::GetDynamicTextInst(...)
+    ord= 131  rva=0x4f1b8a      AptCIH::GetDynamicTextInst(...)
+    ord= 132  rva=0x4f0536      AptCharacterInst::GetDynamicTextInst(...)
+    ord= 134  rva=0x4eec05      AptDisplayListState::GetFirstItem(...)
+    ord= 135  rva=0x4eec05      AptDisplayListState::GetFirstItem(...)
+    ord= 136  rva=0x4eec13      AptPseudoDisplayList::GetFirstItem(...)
+    ord= 138  rva=0x4eefbf      AptFloat::GetFloat(...)
+    ord= 140  rva=0x4f194a      AptCharacterTextInst::GetFontID(...)
+    ord= 141  rva=0x4f1902      AptCharacterTextInst::GetFontSize(...)
+    ord= 142  rva=0x4f13de      AptCharacterInst::GetHasMask(...)
+    ord= 143  rva=0x4eeadf      AptRenderItem::GetHasMask(...)
+    ord= 144  rva=0x4eef15      AptFrameStack::GetHashSize(...)
+    ord= 146  rva=0x4eedea      AptCIH::GetInRemList(...)
+    ord= 149  rva=0x4ee022      AptCIH::GetInstanceName(...)
+    ord= 150  rva=0x4ef7e1      AptInteger::GetInt(...)
+    ord= 155  rva=0x4ee022      AptString::GetInternalString(...)
+    ord= 158  rva=0x4f13c0      AptCharacterInst::GetIsMask(...)
+    ord= 159  rva=0x4eeabc      AptRenderItem::GetIsMask(...)
+    ord= 160  rva=0x4f1fd4      AptCIH::GetIsPlaying(...)
+    ord= 161  rva=0x4f13fd      AptCharacterInst::GetIsVisible(...)
+    ord= 162  rva=0x4eeaf4      AptRenderItem::GetIsVisible(...)
+    ord= 164  rva=0x4f187f      AptCharacterTextInst::GetLength(...)
+    ord= 166  rva=0x4f0536      AptCharacterInst::GetLevelInst(...)
+    ord= 170  rva=0x4eead0      AptRenderItem::GetMask(...)
+    ord= 175  rva=0x4ee167      AptValue::GetMaxRefCountHit(...)
+    ord= 176  rva=0x4f167c      AptCharacterTextInst::GetMaxScroll(...)
+    ord= 177  rva=0x4f1b8a      AptCIH::GetMorphInst(...)
+    ord= 178  rva=0x4f1b8a      AptCIH::GetMorphInst(...)
+    ord= 179  rva=0x4f0536      AptCharacterInst::GetMorphInst(...)
+    ord= 181  rva=0x4f1b36      AptCharacterTextInst::GetMouseWheelEnabled(...)
+    ord= 182  rva=0x4f1d5a      AptCIH::GetNativeHash(...)
+    ord= 187  rva=0x4f069c      AptValueVector::GetNumValues(...)
+    ord= 191  rva=0x4f1167      AptPseudoDisplayList::GetParentSprite(...)
+    ord= 197  rva=0x4ef846      AptNativeHash::GetPrototype(...)
+    ord= 199  rva=0x4eebf6      AptRenderItemMorph::GetRatio(...)
+    ord= 200  rva=0x4eeb06      AptRenderItem::GetRefCount(...)
+    ord= 201  rva=0x4f1167      AptCharacterInst::GetRenderItem(...)
+    ord= 202  rva=0x4f1176      AptCharacterInst::GetRenderItemAnimation(...)
+    ord= 203  rva=0x4f118c      AptCharacterInst::GetRenderItemAnimationWritable(...)
+    ord= 204  rva=0x4f1176      AptCharacterInst::GetRenderItemButton(...)
+    ord= 205  rva=0x4f118c      AptCharacterInst::GetRenderItemButtonWritable(...)
+    ord= 206  rva=0x4f1176      AptCharacterInst::GetRenderItemCustomControl(...)
+    ord= 207  rva=0x4f118c      AptCharacterInst::GetRenderItemCustomControlWritable(...)
+    ord= 208  rva=0x4f1176      AptCharacterInst::GetRenderItemDynamicText(...)
+    ord= 209  rva=0x4f118c      AptCharacterInst::GetRenderItemDynamicTextWritable(...)
+    ord= 210  rva=0x4f1176      AptCharacterInst::GetRenderItemMorph(...)
+    ord= 211  rva=0x4f118c      AptCharacterInst::GetRenderItemMorphWritable(...)
+    ord= 212  rva=0x4f1176      AptCharacterInst::GetRenderItemShape(...)
+    ord= 213  rva=0x4f118c      AptCharacterInst::GetRenderItemShapeWritable(...)
+    ord= 214  rva=0x4f1176      AptCharacterInst::GetRenderItemSprite(...)
+    ord= 215  rva=0x4f118c      AptCharacterInst::GetRenderItemSpriteWritable(...)
+    ord= 216  rva=0x4f0536      AptCharacterInst::GetRenderItemStaticText(...)
+    ord= 217  rva=0x4f118c      AptCharacterInst::GetRenderItemStaticTextWritable(...)
+    ord= 220  rva=0x4f169f      AptCharacterTextInst::GetScroll(...)
+    ord= 221  rva=0x4f1b8a      AptCIH::GetShapeInst(...)
+    ord= 222  rva=0x4f1b8a      AptCIH::GetShapeInst(...)
+    ord= 223  rva=0x4f0536      AptCharacterInst::GetShapeInst(...)
+    ord= 224  rva=0x4f1b8a      AptCIH::GetSpriteInst(...)
+    ord= 225  rva=0x4f1b8a      AptCIH::GetSpriteInst(...)
+    ord= 226  rva=0x4f0536      AptCharacterInst::GetSpriteInst(...)
+    ord= 227  rva=0x4f1b8a      AptCIH::GetSpriteInstBase(...)
+    ord= 228  rva=0x4f1b8a      AptCIH::GetSpriteInstBase(...)
+    ord= 229  rva=0x4f0536      AptCharacterInst::GetSpriteInstBase(...)
+    ord= 230  rva=0x4f1a17      AptCharacterTextInst::GetStateFlags(...)
+    ord= 231  rva=0x4f1b8a      AptCIH::GetStaticTextInst(...)
+    ord= 232  rva=0x4f1b8a      AptCIH::GetStaticTextInst(...)
+    ord= 233  rva=0x4f0536      AptCharacterInst::GetStaticTextInst(...)
+    ord= 237  rva=0x4eead0      AptPrototype::GetSuperConstructor(...)
+    ord= 241  rva=0x4f163c      AptCharacterTextInst::GetTextColor(...)
+    ord= 242  rva=0x4f196a      AptCharacterTextInst::GetTextFormatConst(...)
+    ord= 243  rva=0x4f198a      AptCharacterTextInst::GetTextFormatWritable(...)
+    ord= 244  rva=0x4f1858      AptCharacterTextInst::GetTextHeight(...)
+    ord= 245  rva=0x4f154d      AptCharacterTextInst::GetTextValueConst(...)
+    ord= 246  rva=0x4f1566      AptCharacterTextInst::GetTextValueWritable(...)
+    ord= 247  rva=0x4f1831      AptCharacterTextInst::GetTextWidth(...)
+    ord= 249  rva=0x4eebab      AptRenderItemCustomControl::GetTypeStr(...)
+    ord= 251  rva=0x4f15a6      AptCharacterTextInst::GetVarValueConst(...)
+    ord= 252  rva=0x4f15bf      AptCharacterTextInst::GetVarValueWritable(...)
+    ord= 256  rva=0x4f15ff      AptCharacterTextInst::GetZID(...)
+    ord= 257  rva=0x5048a9      AptRenderItemCustomControl::GetZId(...)
+    ord= 258  rva=0x4eedaf      AptCIH::GetZombieCount(...)
+    ord= 259  rva=0x4ef7e1      AptNativeHash::Get__Proto__(...)
+    ord= 262  rva=0x4f1e73      AptCIH::HasMask(...)
+    ord= 266  rva=0x4eed7d      AptCIH::IncZombieCount(...)
+    ord= 270  rva=0x4f1cdd      AptCIH::IsAnimationInst(...)
+    ord= 271  rva=0x4f1c40      AptCIH::IsButtonInst(...)
+    ord= 272  rva=0x4f0741      AptString::IsConstantString(...)
+    ord= 274  rva=0x4f1d3a      AptCIH::IsCustomControlInst(...)
+    ord= 275  rva=0x4f1c7e      AptCIH::IsDynamicTextInst(...)
+    ord= 276  rva=0x4ef04e      AptNativeHash::IsEmpty(...)
+    ord= 279  rva=0x4eed08      AptCIH::IsInCtor(...)
+    ord= 282  rva=0x4f1cfd      AptCIH::IsLevelInst(...)
+    ord= 283  rva=0x4f1e52      AptCIH::IsMask(...)
+    ord= 284  rva=0x4f1cbd      AptCIH::IsMorphInst(...)
+    ord= 285  rva=0x4f1d1d      AptCIH::IsNone(...)
+    ord= 286  rva=0x4ee1ab      AptValue::IsReleaseAtEnd(...)
+    ord= 287  rva=0x4eeb52      AptRenderItem::IsRenderableForThisTick(...)
+    ord= 288  rva=0x4f1c60      AptCIH::IsShapeInst(...)
+    ord= 289  rva=0x4f1ba0      AptCIH::IsSpriteInst(...)
+    ord= 290  rva=0x4f1bf0      AptCIH::IsSpriteInstBase(...)
+    ord= 291  rva=0x4f1c9d      AptCIH::IsStaticTextInst(...)
+    ord= 293  rva=0x4f06b7      AptValueVector::IsVectorFull(...)
+    ord= 294  rva=0x4eeb52      AptRenderItem::IsWritableForThisTick(...)
+    ord= 295  rva=0x4f12bd      AptCharacterInst::ItemFirstChildChanged(...)
+    ord= 296  rva=0x4f12e6      AptCharacterInst::ItemInserted(...)
+    ord= 298  rva=0x4f1268      AptCharacterInst::ItemNextSiblingChanged(...)
+    ord= 299  rva=0x4ef1d9      AptFrameStack::Lookup(...)
+    ord= 300  rva=0x4ef1d9      AptGlobal::Lookup(...)
+    ord= 302  rva=0x4ef1d9      AptValueWithHash::Lookup(...)
+    ord= 303  rva=0x4f1112      AptRenderItem::Manager_GetCreatedOnTick(...)
+    ord= 304  rva=0x4eead0      AptRenderItem::Manager_GetMask(...)
+    ord= 305  rva=0x4eeb3d      AptRenderItem::Manager_IsDeletionMark(...)
+    ord= 306  rva=0x4f0dbf      EAStringC::MemInitialize(...)
+    ord= 308  rva=0x4f0677      AptValueVector::PopValue(...)
+    ord= 317  rva=0x4ef225      AptFrameStack::Set(...)
+    ord= 318  rva=0x4ef225      AptGlobal::Set(...)
+    ord= 320  rva=0x4ef225      AptValueWithHash::Set(...)
+    ord= 321  rva=0x4eecc8      AptCIH::SetASChanged(...)
+    ord= 322  rva=0x4f17fd      AptCharacterTextInst::SetAlignment(...)
+    ord= 323  rva=0x4efb5d      AptValueVector::SetAt(...)
+    ord= 324  rva=0x4f1702      AptCharacterTextInst::SetBackgroundColor(...)
+    ord= 325  rva=0x4f1758      AptCharacterTextInst::SetBorderColor(...)
+    ord= 326  rva=0x4f18da      AptCharacterTextInst::SetBounds(...)
+    ord= 327  rva=0x4f17aa      AptCharacterTextInst::SetBoxAlignment(...)
+    ord= 328  rva=0x4eed42      AptCIH::SetCIHState(...)
+    ord= 329  rva=0x4f143b      AptCharacterInst::SetCharacter(...)
+    ord= 331  rva=0x4f121d      AptCharacterInst::SetClipDepth(...)
+    ord= 332  rva=0x4eeb27      AptRenderItem::SetClipDepth(...)
+    ord= 333  rva=0x4f1a56      AptCharacterTextInst::SetCreatedDynamic(...)
+    ord= 334  rva=0x4eee14      AptCIH::SetCreatedOnFrame(...)
+    ord= 336  rva=0x4eeb79      AptRenderItemCustomControl::SetCustomPropertiesStr(...)
+    ord= 337  rva=0x4f1f06      AptCIH::SetDepth(...)
+    ord= 338  rva=0x4f1419      AptCharacterInst::SetDepth(...)
+    ord= 339  rva=0x4eeb11      AptRenderItem::SetDepth(...)
+    ord= 340  rva=0x545522      AptCIH::SetDisplayListNext(...)
+    ord= 341  rva=0x4f1f32      AptCIH::SetDisplayListParent(...)
+    ord= 342  rva=0x5454ff      AptCIH::SetDisplayListPrevious(...)
+    ord= 344  rva=0x4f1b01      AptCharacterTextInst::SetDrawsBackground(...)
+    ord= 345  rva=0x4f1aad      AptCharacterTextInst::SetDrawsBorder(...)
+    ord= 349  rva=0x4f1926      AptCharacterTextInst::SetFontSize(...)
+    ord= 350  rva=0x4f1ebf      AptCIH::SetHasMask(...)
+    ord= 351  rva=0x4f1478      AptCharacterInst::SetHasMask(...)
+    ord= 352  rva=0x4eed1d      AptCIH::SetInCtor(...)
+    ord= 353  rva=0x4ef225      AptFrameStack::SetInLocalScope(...)
+    ord= 355  rva=0x4eedc4      AptCIH::SetInRemList(...)
+    ord= 356  rva=0x4eecaf      AptCIH::SetInstanceName(...)
+    ord= 361  rva=0x4f1e1c      AptCIH::SetIsInserted(...)
+    ord= 362  rva=0x4f1e95      AptCIH::SetIsMask(...)
+    ord= 363  rva=0x4f1458      AptCharacterInst::SetIsMask(...)
+    ord= 364  rva=0x4f1498      AptCharacterInst::SetIsVisible(...)
+    ord= 365  rva=0x4f188e      AptCharacterTextInst::SetLength(...)
+    ord= 366  rva=0x4f1291      AptCharacterInst::SetMaskedItem(...)
+    ord= 367  rva=0x4ee17c      AptValue::SetMaxRefCountHit(...)
+    ord= 368  rva=0x4f168b      AptCharacterTextInst::SetMaxScroll(...)
+    ord= 369  rva=0x4f1b55      AptCharacterTextInst::SetMouseWheelEnabled(...)
+    ord= 376  rva=0x4f133b      AptCharacterInst::SetRootItem(...)
+    ord= 377  rva=0x4f16bf      AptCharacterTextInst::SetScroll(...)
+    ord= 378  rva=0x4f19f1      AptCharacterTextInst::SetStateFlags(...)
+    ord= 380  rva=0x4f165c      AptCharacterTextInst::SetTextColor(...)
+    ord= 381  rva=0x4f19ac      AptCharacterTextInst::SetTextFormat(...)
+    ord= 382  rva=0x4f1867      AptCharacterTextInst::SetTextHeight(...)
+    ord= 383  rva=0x4f1581      AptCharacterTextInst::SetTextValue(...)
+    ord= 384  rva=0x4f1840      AptCharacterTextInst::SetTextWidth(...)
+    ord= 385  rva=0x4eeb92      AptRenderItemCustomControl::SetTypeStr(...)
+    ord= 386  rva=0x4f15da      AptCharacterTextInst::SetVarValue(...)
+    ord= 389  rva=0x4f161f      AptCharacterTextInst::SetZID(...)
+    ord= 390  rva=0x4eebe2      AptRenderItemCustomControl::SetZId(...)
+    ord= 409  rva=0x4f0536      AptValue::c_array(...)
+    ord= 410  rva=0x4f0536      AptValue::c_boolean(...)
+    ord= 411  rva=0x4f0542      AptValue::c_cih(...)
+    ord= 412  rva=0x4f0536      AptValue::c_date(...)
+    ord= 413  rva=0x4f0536      AptValue::c_float(...)
+    ord= 414  rva=0x4f0536      AptValue::c_global(...)
+    ord= 415  rva=0x4f0536      AptValue::c_integer(...)
+    ord= 416  rva=0x4f0536      AptValue::c_key(...)
+    ord= 417  rva=0x4f0536      AptValue::c_loadvars(...)
+    ord= 418  rva=0x4f0536      AptValue::c_lookup(...)
+    ord= 419  rva=0x4f0536      AptValue::c_math(...)
+    ord= 420  rva=0x4f0536      AptValue::c_mouse(...)
+    ord= 421  rva=0x4f0536      AptValue::c_movieClip(...)
+    ord= 422  rva=0x4f0536      AptValue::c_nativefunction(...)
+    ord= 424  rva=0x4f0536      AptValue::c_prototype(...)
+    ord= 425  rva=0x4f0536      AptValue::c_register(...)
+    ord= 428  rva=0x4f0536      AptValue::c_sound(...)
+    ord= 429  rva=0x4f0536      AptValue::c_stage(...)
+    ord= 431  rva=0x4f0536      AptValue::c_textformat(...)
+    ord= 432  rva=0x4f0536      AptValue::c_xml(...)
+    ord= 433  rva=0x4f0536      AptValue::c_xmlattributes(...)
+    ord= 434  rva=0x4f0536      AptValue::c_xmlnode(...)
+    ord= 435  rva=0x4f0728      AptString::cat(...)
+    ord= 436  rva=0x4f070f      AptString::cat(...)
+    ord= 438  rva=0x4f06e0      AptString::cpy(...)
+    ord= 439  rva=0x4eecaf      AptString::cpy(...)
+    ord= 444  rva=0x4ee138      AptValue::getGCMark(...)
+    ord= 445  rva=0x4ee152      AptValue::getGCRoot(...)
+    ord= 446  rva=0x4ee11d      AptValue::getIsDefined(...)
+    ord= 447  rva=0x4ee0f1      AptValue::getRefCount(...)
+    ord= 450  rva=0x4ee108      AptValue::getVtblIndex(...)
+    ord= 454  rva=0x4ee588      AptValue::isArray(...)
+    ord= 455  rva=0x4ee31d      AptValue::isBoolean(...)
+    ord= 456  rva=0x4ee750      AptValue::isCIH(...)
+    ord= 457  rva=0x4ee849      AptValue::isDate(...)
+    ord= 458  rva=0x4ee4f0      AptValue::isExtern(...)
+    ord= 459  rva=0x4ee401      AptValue::isFloat(...)
+    ord= 460  rva=0x4ee53c      AptValue::isFrameStack(...)
+    ord= 461  rva=0x4ee369      AptValue::isInteger(...)
+    ord= 462  rva=0x4ee620      AptValue::isKey(...)
+    ord= 463  rva=0x4ee21d      AptValue::isLoadVars(...)
+    ord= 464  rva=0x4ee27a      AptValue::isLookup(...)
+    ord= 465  rva=0x4ee6b8      AptValue::isMath(...)
+    ord= 466  rva=0x4ee66c      AptValue::isMouse(...)
+    ord= 467  rva=0x4ee8e1      AptValue::isMovieClip(...)
+    ord= 468  rva=0x4ee44d      AptValue::isNativeFunction(...)
+    ord= 469  rva=0x4ee23a      AptValue::isNone(...)
+    ord= 471  rva=0x4ee7fd      AptValue::isPrototype(...)
+    ord= 472  rva=0x4ee3b5      AptValue::isRegister(...)
+    ord= 475  rva=0x4ee5d4      AptValue::isSound(...)
+    ord= 476  rva=0x4ee92d      AptValue::isStage(...)
+    ord= 477  rva=0x4ee2c6      AptValue::isString(...)
+    ord= 478  rva=0x4ee895      AptValue::isTextFormat(...)
+    ord= 479  rva=0x4ee257      AptValue::isUndefined(...)
+    ord= 480  rva=0x4ee1e3      AptValue::isXml(...)
+    ord= 481  rva=0x4ee200      AptValue::isXmlAttributes(...)
+    ord= 482  rva=0x4ee1c6      AptValue::isXmlNode(...)
+    ord= 483  rva=0x4ef0d2      AptArray::length(...)
+
+  🗺️ World / Map (1 symbols)
+    ord= 278  rva=0x4eeb5f      AptRenderItem::IsHighestRevisionItem(...)
+
+────────────────────────────────────────────────────────────────────────────────
+SECTION 2: cnc3game.dat — Import Address Table (IAT) Hook Candidates
+Hook these with a DLL injector (e.g., detours/minhook) to intercept engine calls.
+────────────────────────────────────────────────────────────────────────────────
+
+  [DINPUT8.dll]  ← DirectInput 8 → hook GetDeviceState() to inject input
+  1 imported functions. Top candidates:
+    DirectInput8Create
+
+  [DSOUND.dll]  ← DirectSound → hook volume/play for audio mods
+  5 imported functions. Top candidates:
+
+  [WINMM.dll]  ← WinMM timeGetTime() → hook game timer for speed hacks
+  3 imported functions. Top candidates:
+    timeBeginPeriod
+    timeEndPeriod
+    timeGetTime
+
+  [KERNEL32.dll]  ← Kernel32 → VirtualAlloc, CreateThread, GetTickCount (speed/mem)
+  154 imported functions. Top candidates:
+    TlsAlloc
+    HeapAlloc
+    HeapCreate
+    GetCommandLineA
+    GetModuleHandleExA
+    GetTickCount
+    GetConsoleScreenBufferInfo
+    GetNumberOfConsoleInputEvents
+    GetStdHandle
+    SetConsoleScreenBufferSize
+    SetConsoleWindowInfo
+    CreateFileA
+    GetComputerNameA
+    GetLocalTime
+    GetModuleFileNameA
+    SetNamedPipeHandleState
+    GetCurrentThreadId
+    GlobalLock
+    GlobalAlloc
+    TlsSetValue
+    ... and 77 more
+
+  [USER32.dll]  ← User32 → SendMessage, PostMessage, WM hooks for UI control
+  63 imported functions. Top candidates:
+    PostQuitMessage
+    SetForegroundWindow
+    GetWindowRect
+    GetClientRect
+    SetFocus
+    GetKeyboardLayout
+    GetKeyboardLayoutList
+    SetWindowTextW
+    GetMessageA
+    GetKeyState
+    GetCursorPos
+    SetCursorPos
+    SetCursor
+    KillTimer
+    SetTimer
+    GetAsyncKeyState
+    GetWindowLongA
+    EnumThreadWindows
+    SetClipboardData
+    GetSystemMenu
+    ... and 11 more
+
+  [WS2_32.dll]  ← WinSock2 → same as above
+  38 imported functions. Top candidates:
+    send
+    gethostname
+    gethostbyname
+    setsockopt
+    getsockname
+    sendto
+    recv
+    __WSAFDIsSet
+    getsockopt
+    WSACreateEvent
+    recvfrom
+    WSASetEvent
+    WSARecv
+    WSARecvFrom
+    WSAResetEvent
+    WSAGetOverlappedResult
+    getpeername
+    WSAGetLastError
+
+────────────────────────────────────────────────────────────────────────────────
+SECTION 3: patchw32.dll — RT-Patch Live Update Library
+EA's real-time binary patching library. These are used by the game's auto-updater
+and can also be exploited to apply in-memory patches while the game is running.
+────────────────────────────────────────────────────────────────────────────────
+  ord=  11  rva=0x12810       RTPBatSvr
+  ord=  12  rva=0x129f0       RTPRegSvr
+  ord=  13  rva=0x7b00        RTPRenSvr
+  ord=   1  rva=0xaa20        RTPatchApply32@12
+  ord=   9  rva=0xb490        RTPatchApply32NoCall
+  ord=  10  rva=0xb6e0        RTPatchEnumPatches@12
+  ord=   8  rva=0xad30        RTPatchSetAttribGet@8
+  ord=   7  rva=0xad00        RTPatchSetAttribSet@8
+  ord=   4  rva=0xac70        RTPatchSetCreate@8
+  ord=   5  rva=0xaca0        RTPatchSetDelete@8
+  ord=   3  rva=0xac40        RTPatchSetDirWalk@8
+  ord=   2  rva=0xac10        RTPatchSetOpen@8
+  ord=   6  rva=0xacd0        RTPatchSetRename@8
+
+  ⚡ KEY: RTPatchApply32@12 — applies a binary diff to a loaded module in memory.
+  Can be called to patch cnc3game.dat at runtime without restarting the game.
+
+────────────────────────────────────────────────────────────────────────────────
+SECTION 4: CNC3.exe — Launcher Single Export
+────────────────────────────────────────────────────────────────────────────────
+  ord=   1  rva=0x24d10       ?PatchCallBack@@YGPAXIPAX@Z
+
+================================================================================
+SECTION 5: RECOMMENDED REAL-TIME MODIFICATION STRATEGIES
+================================================================================
+
+  ▶ METHOD A — GetProcAddress on cnc3game.dat
+    cnc3game.dat is loaded by CNC3.exe via LoadLibrary (it's a renamed DLL).
+    Get the base address: GetModuleHandle('cnc3game.dat')
+    Resolve any of the 494 exported symbols with GetProcAddress.
+    Best targets for real-time effects:
+      • AptAnimationTarget::SetEventHandler  (UI scripting events)
+      • AptCharacterTextInst::SetTextValue   (change HUD text live)
+      • AptExtObject::SetVariable            (set script variables)
+      • AptAnimationTarget::GetDisplayList   (traverse scene graph)
+      • AptCIH::SetDepth / SetIsVisible      (show/hide UI elements)
+
+  ▶ METHOD B — IAT Hook (recommended for game logic)
+    Inject a DLL via CreateRemoteThread + LoadLibrary into CNC3.exe.
+    In DllMain, find cnc3game.dat's IAT and replace function pointers.
+    Priority hooks:
+      • USER32:SetTimer / KillTimer          → control game tick rate
+      • KERNEL32:GetTickCount                → freeze/speed time
+      • USER32:SendMessage / PostMessage     → inject UI commands
+      • KERNEL32:CreateThread                → intercept new threads
+      • KERNEL32:VirtualAlloc                → monitor memory allocation
+    Tools: Microsoft Detours, MinHook, or manual IAT patching.
+
+  ▶ METHOD C — patchw32 In-Memory Binary Patching
+    patchw32.dll!RTPatchApply32@12 is already loaded in the process.
+    Create a binary diff (RTPatch format) for specific game logic bytes.
+    Call RTPatchApply32 at runtime to apply the diff to cnc3game.dat's mapping.
+    Effective for: changing unit stats, weapon damage, build times embedded
+                  in the executable's data sections.
+
+  ▶ METHOD D — SAGE Script Injection via Apt scripting API
+    cnc3game.dat exports the full APT ActionScript runtime.
+    Inject code via AptExtObject::SetVariable to modify game-visible vars.
+    Use AptAnimationTarget::AddActionFront to queue script actions.
+    Intercept AptActionInterpreter::stackGetPop to monitor script execution.
+    This is the cleanest, least crash-prone approach for UI/HUD mods.
+
+================================================================================
+Full raw data: cnc3_analysis.json
+================================================================================
+
+→ Report saved to cnc3_entrypoints.txt

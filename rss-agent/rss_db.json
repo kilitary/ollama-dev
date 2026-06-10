@@ -12,9 +12,9 @@
         "seed"
       ],
       "discovered_at": "2026-03-17T09:19:49.160440",
-      "last_checked": "2026-03-28T07:46:22.645673",
+      "last_checked": "2026-04-02T22:26:09.210759",
       "is_available": true,
-      "check_count": 41,
+      "check_count": 45,
       "http_status": 200,
       "feed_item_count": 100
     },
@@ -30,11 +30,11 @@
         "seed"
       ],
       "discovered_at": "2026-03-17T09:19:49.161439",
-      "last_checked": "2026-03-28T07:46:24.105856",
+      "last_checked": "2026-04-02T22:26:10.997475",
       "is_available": true,
-      "check_count": 39,
+      "check_count": 43,
       "http_status": 200,
-      "feed_item_count": 751
+      "feed_item_count": 756
     },
     {
       "id": "24d7e255-0624-4f17-890b-0d0945c27d85",
@@ -47,9 +47,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:20:33.382904",
-      "last_checked": "2026-03-28T07:46:49.755940",
+      "last_checked": "2026-04-02T22:26:12.657298",
       "is_available": true,
-      "check_count": 35,
+      "check_count": 38,
       "http_status": 200,
       "feed_item_count": 10
     },
@@ -64,9 +64,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:20:47.905953",
-      "last_checked": "2026-03-28T07:46:51.764163",
+      "last_checked": "2026-04-02T22:26:16.098601",
       "is_available": true,
-      "check_count": 33,
+      "check_count": 36,
       "http_status": 200,
       "feed_item_count": 10
     },
@@ -81,11 +81,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:24:24.876550",
-      "last_checked": "2026-03-28T07:46:52.850294",
+      "last_checked": "2026-04-02T22:26:18.529899",
       "is_available": true,
-      "check_count": 33,
+      "check_count": 36,
       "http_status": 200,
-      "feed_item_count": 0
+      "feed_item_count": 1033
     },
     {
       "id": "a8ce404b-604a-4fd9-9d3d-e00b8a5ca9c7",
@@ -98,11 +98,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:24:26.561599",
-      "last_checked": "2026-03-28T07:46:53.972797",
+      "last_checked": "2026-04-02T22:26:19.868513",
       "is_available": true,
-      "check_count": 29,
+      "check_count": 32,
       "http_status": 200,
-      "feed_item_count": 0
+      "feed_item_count": 14
     },
     {
       "id": "7b8a22c1-f635-4175-9f2a-9d1762eb31d9",
@@ -115,11 +115,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:24:29.148708",
-      "last_checked": "2026-03-28T07:46:55.162967",
+      "last_checked": "2026-04-02T22:26:21.540021",
       "is_available": true,
-      "check_count": 28,
+      "check_count": 31,
       "http_status": 200,
-      "feed_item_count": 0
+      "feed_item_count": 262
     },
     {
       "id": "915f0828-496f-4c1f-b7c3-281d133a403e",
@@ -132,11 +132,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:41:18.912334",
-      "last_checked": "2026-03-28T07:46:56.436040",
+      "last_checked": "2026-04-02T22:26:24.839563",
       "is_available": true,
-      "check_count": 27,
+      "check_count": 30,
       "http_status": 200,
-      "feed_item_count": 0
+      "feed_item_count": 276
     },
     {
       "id": "c0b9dcc3-e149-47bd-b27d-fbff7d67ed5b",
@@ -149,11 +149,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:41:21.733101",
-      "last_checked": "2026-03-28T07:46:57.550399",
+      "last_checked": "2026-04-02T22:26:26.455356",
       "is_available": true,
-      "check_count": 25,
+      "check_count": 28,
       "http_status": 200,
-      "feed_item_count": 0
+      "feed_item_count": 122
     },
     {
       "id": "5be8d76a-c8b9-48d0-bfff-3a732b9e413b",
@@ -166,11 +166,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:41:24.680326",
-      "last_checked": "2026-03-28T07:46:58.823996",
+      "last_checked": "2026-04-02T22:26:27.982836",
       "is_available": true,
-      "check_count": 24,
+      "check_count": 27,
       "http_status": 200,
-      "feed_item_count": 0
+      "feed_item_count": 232
     },
     {
       "id": "32ea116e-5385-4074-991f-387a58e6f6e7",
@@ -183,11 +183,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:41:26.519967",
-      "last_checked": "2026-03-28T07:47:00.736789",
+      "last_checked": "2026-04-02T22:26:29.428624",
       "is_available": true,
-      "check_count": 23,
+      "check_count": 26,
       "http_status": 200,
-      "feed_item_count": 0
+      "feed_item_count": 64
     },
     {
       "id": "db406a1c-0a67-4f77-a767-2ef97afc9185",
@@ -200,11 +200,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T09:41:29.292887",
-      "last_checked": "2026-03-28T07:47:02.110716",
+      "last_checked": "2026-04-02T22:26:30.771033",
       "is_available": true,
-      "check_count": 23,
+      "check_count": 26,
       "http_status": 200,
-      "feed_item_count": 0
+      "feed_item_count": 10
     },
     {
       "id": "cfeff998-0e77-4031-bc67-edd26b5c86f9",
@@ -217,9 +217,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T15:05:28.198590",
-      "last_checked": "2026-03-28T07:47:04.058228",
+      "last_checked": "2026-04-02T22:26:33.101029",
       "is_available": true,
-      "check_count": 21,
+      "check_count": 24,
       "http_status": 200,
       "feed_item_count": 10
     },
@@ -234,9 +234,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T15:16:10.648034",
-      "last_checked": "2026-03-28T07:47:05.587794",
+      "last_checked": "2026-04-02T22:26:34.954374",
       "is_available": true,
-      "check_count": 18,
+      "check_count": 21,
       "http_status": 200,
       "feed_item_count": 20
     },
@@ -251,9 +251,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T15:19:05.601939",
-      "last_checked": "2026-03-28T07:47:34.852864",
+      "last_checked": "2026-04-02T22:26:36.827101",
       "is_available": true,
-      "check_count": 19,
+      "check_count": 22,
       "http_status": 200,
       "feed_item_count": 1
     },
@@ -268,9 +268,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T16:15:39.966165",
-      "last_checked": "2026-03-28T07:47:36.831106",
+      "last_checked": "2026-04-02T22:26:38.442842",
       "is_available": true,
-      "check_count": 16,
+      "check_count": 19,
       "http_status": 200,
       "feed_item_count": 10
     },
@@ -285,16 +285,16 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T16:15:47.562670",
-      "last_checked": "2026-03-28T07:47:39.750910",
+      "last_checked": "2026-04-02T22:26:55.454562",
       "is_available": true,
-      "check_count": 19,
+      "check_count": 22,
       "http_status": 200,
       "feed_item_count": 0
     },
     {
       "id": "fa949179-cdfd-402e-89d7-e54957986005",
       "url": "https://aiweekly.co/issues.rss",
-      "title": "AI News Weekly",
+      "title": "AI Weekly — AI News & Artificial Intelligence Newsletter",
       "description": null,
       "language": null,
       "category": "ai",
@@ -302,11 +302,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T16:20:04.117989",
-      "last_checked": "2026-03-28T07:47:41.288872",
+      "last_checked": "2026-04-02T22:26:57.078685",
       "is_available": true,
-      "check_count": 15,
+      "check_count": 18,
       "http_status": 200,
-      "feed_item_count": 10
+      "feed_item_count": 20
     },
     {
       "id": "8af8edcf-45eb-4439-9c1d-d0bd1c54ab66",
@@ -319,9 +319,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T19:59:36.911408",
-      "last_checked": "2026-03-28T07:47:42.870636",
+      "last_checked": "2026-04-02T22:26:58.334912",
       "is_available": true,
-      "check_count": 17,
+      "check_count": 20,
       "http_status": 200,
       "feed_item_count": 6
     },
@@ -336,9 +336,9 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T19:59:41.429042",
-      "last_checked": "2026-03-28T07:47:44.466376",
+      "last_checked": "2026-04-02T22:26:59.852196",
       "is_available": true,
-      "check_count": 16,
+      "check_count": 19,
       "http_status": 200,
       "feed_item_count": 1
     },
@@ -353,11 +353,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T20:29:08.157154",
-      "last_checked": "2026-03-28T07:47:45.652829",
+      "last_checked": "2026-04-02T22:28:15.196578",
       "is_available": true,
-      "check_count": 13,
+      "check_count": 17,
       "http_status": 200,
-      "feed_item_count": 0
+      "feed_item_count": 260
     },
     {
       "id": "9d69ea2d-5ae3-40ca-8520-71b05961cc22",
@@ -370,11 +370,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T20:29:12.750447",
-      "last_checked": "2026-03-28T07:47:46.999649",
+      "last_checked": "2026-04-02T22:27:02.943739",
       "is_available": true,
-      "check_count": 13,
+      "check_count": 16,
       "http_status": 200,
-      "feed_item_count": 0
+      "feed_item_count": 149
     },
     {
       "id": "767f3eaf-44d3-4512-8595-53a184a7df31",
@@ -387,11 +387,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T20:29:17.313452",
-      "last_checked": "2026-03-28T07:47:48.129283",
+      "last_checked": "2026-04-02T22:27:04.602633",
       "is_available": true,
-      "check_count": 13,
+      "check_count": 16,
       "http_status": 200,
-      "feed_item_count": 0
+      "feed_item_count": 276
     },
     {
       "id": "14e3da4c-3abf-4e80-90ee-f2aa868549ff",
@@ -404,11 +404,11 @@
         "ai"
       ],
       "discovered_at": "2026-03-17T20:29:19.626548",
-      "last_checked": "2026-03-28T07:47:49.282636",
+      "last_checked": "2026-04-02T22:27:06.230788",
       "is_available": true,
-      "check_count": 11,
+      "check_count": 14,
       "http_status": 200,
-      "feed_item_count": 0
+      "feed_item_count": 232
     },
     {
       "id": "7a53af10-6d3c-4d8d-97d7-abf362ea191f",
@@ -422,9 +422,9 @@
         "research"
       ],
       "discovered_at": "2026-03-26T19:32:57.928884",
-      "last_checked": "2026-03-28T07:47:50.934219",
+      "last_checked": "2026-05-03T12:32:43.962050",
       "is_available": true,
-      "check_count": 4,
+      "check_count": 8,
       "http_status": 200,
       "feed_item_count": 0
     },
@@ -440,9 +440,9 @@
         "machine-learning"
       ],
       "discovered_at": "2026-03-26T19:32:59.643766",
-      "last_checked": "2026-03-28T07:47:52.639182",
+      "last_checked": "2026-05-03T12:32:46.343666",
       "is_available": true,
-      "check_count": 4,
+      "check_count": 8,
       "http_status": 200,
       "feed_item_count": 0
     },
@@ -458,13 +458,81 @@
         "nlp"
       ],
       "discovered_at": "2026-03-26T19:33:00.707471",
-      "last_checked": "2026-03-28T07:47:53.938023",
+      "last_checked": "2026-04-02T22:27:13.310823",
       "is_available": true,
-      "check_count": 4,
+      "check_count": 7,
+      "http_status": 200,
+      "feed_item_count": 149
+    },
+    {
+      "id": "9e95ad6d-9fb3-4640-be1a-02e0a75e456d",
+      "url": "https://www.reddit.com/r/MachineLearning/.rss",
+      "title": "Machine Learning",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-04-02T22:28:34.074504",
+      "last_checked": "2026-04-02T22:28:34.078723",
+      "is_available": true,
+      "check_count": 1,
+      "http_status": 200,
+      "feed_item_count": 25
+    },
+    {
+      "id": "ea058c6d-93b4-4698-9400-792ee9fbe95a",
+      "url": "https://www.reddit.com/r/artificial/.rss",
+      "title": "Artificial Intelligence (AI)",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-04-02T22:28:36.273236",
+      "last_checked": "2026-04-02T22:28:36.276646",
+      "is_available": true,
+      "check_count": 1,
+      "http_status": 200,
+      "feed_item_count": 25
+    },
+    {
+      "id": "fda8835d-b8a8-4ed9-994f-9dcbf1118aef",
+      "url": "https://deepmind.com/blog/feed",
+      "title": "Google DeepMind News",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-05-03T12:32:49.448978",
+      "last_checked": "2026-05-03T12:32:49.451500",
+      "is_available": true,
+      "check_count": 1,
+      "http_status": 200,
+      "feed_item_count": 100
+    },
+    {
+      "id": "9146f487-804a-47fd-b12b-bd2547b1eda9",
+      "url": "https://feeds.feedburner.com/GoogleAI",
+      "title": "GoogleAI",
+      "description": null,
+      "language": null,
+      "category": "ai",
+      "tags": [
+        "ai"
+      ],
+      "discovered_at": "2026-05-03T12:33:11.168581",
+      "last_checked": "2026-05-03T12:33:11.171048",
+      "is_available": true,
+      "check_count": 1,
       "http_status": 200,
       "feed_item_count": 0
     }
   ],
-  "last_saved": "2026-03-28T07:47:55.462499",
-  "total_links": 27
+  "last_saved": "2026-05-03T12:33:11.172014",
+  "total_links": 31
 }

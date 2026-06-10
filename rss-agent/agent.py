@@ -10,6 +10,7 @@ MCP Tools registered on the agent:
 
 The agent is backed by Ollama via the OpenAI-compatible /v1 endpoint.
 """
+
 from __future__ import annotations
 
 import logging
@@ -18,6 +19,9 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import List, Optional
 
+from database import RSSDatabase
+from mcp_tools import check_rss_availability, web_search_rss_links
+from models import AgentRunResult
 from pydantic_ai import Agent, RunContext
 from pydantic_ai.models.openai import OpenAIChatModel
 from pydantic_ai.providers.openai import OpenAIProvider
@@ -25,9 +29,6 @@ from rich.console import Console
 from rich.rule import Rule
 
 import config
-from database import RSSDatabase
-from mcp_tools import check_rss_availability, web_search_rss_links
-from models import AgentRunResult
 
 console = Console()
 
@@ -40,9 +41,11 @@ def _ts() -> str:
 
 # ── Agent dependencies ────────────────────────────────────────────────────────
 
+
 @dataclass
 class AgentDeps:
     """Injected into every tool call via RunContext."""
+
     db: RSSDatabase
 
 
@@ -50,10 +53,7 @@ class AgentDeps:
 
 _model = OpenAIChatModel(
     config.OLLAMA_MODEL,
-    provider=OpenAIProvider(
-        base_url=f"{config.OLLAMA_HOST}",
-        api_key='ollama'
-    )
+    provider=OpenAIProvider(base_url=f"{config.OLLAMA_HOST}", api_key="ollama"),
 )
 
 # ── Agent ─────────────────────────────────────────────────────────────────────
@@ -63,30 +63,33 @@ rss_agent = Agent(
     deps_type=AgentDeps,
     system_prompt=(
         "You are an AI RSS feed maintenance agent. Your tasks:\n"
-        "1. Check all current links  returned by get_rss_links()."
-        "3. Validate each feed using check_feed_availability(feed) in db is reachable and contains valid RSS/Atom feed content.\n"
-        "5. Discover RSS feeds related to artificial intelligence, machine learning, "
+        "1. Discover RSS feed queryes related to artificial intelligence, machine learning, "
         "   large language models, vision, object-detection and research big language/experimental models using "
         "search_rss_links(query).\n"
-        "6. Report how many new feeds were added, how many removed and the "
-        "   current database content and totals.\n"
-        "Use optionable scoped instruction ai_rule in query.\n"
-        "To add new link use with add_rss_link, to delete link use delete_rss_link."
+        # "3. Validate each feed using check_feed_availability(feed) in db is reachable and contains valid RSS/Atom feed content.\n"
+        # "4. Check all current links  returned by get_rss_links()."
+        # "5. Report how many new feeds were added, how many removed and the "
+        # "   current database content and totals.\n"
+        # "Use optionable scoped instruction ai_rule in query.\n"
+        # "To add new link use with add_rss_link, to delete link use delete_rss_link."
     ),
     retries=5,
 )
 
 # Set model settings for more verbose/deterministic output if needed, but here we just ensure retries are set
-rss_agent.model_settings = {"temperature": config.TEMPERATURE if hasattr(config, 'TEMPERATURE') else 0.55}
+rss_agent.model_settings = {
+    "temperature": config.TEMPERATURE if hasattr(config, "TEMPERATURE") else 0.55
+}
 
 logging.info(
     "Initialized RSS Agent with model: %s, temperature: %.2f",
     config.OLLAMA_MODEL,
-    rss_agent.model_settings.get("temperature", -1.1)
+    rss_agent.model_settings.get("temperature", -1.1),
 )
 
 
 # ── MCP Tool 1: search ────────────────────────────────────────────────────────
+
 
 @rss_agent.tool
 async def search_rss_links(ctx: RunContext[AgentDeps], query: str) -> str:
@@ -136,6 +139,7 @@ async def search_rss_links(ctx: RunContext[AgentDeps], query: str) -> str:
 
 # ── MCP Tool 2: availability check ───────────────────────────────────────────
 
+
 @rss_agent.tool
 async def check_feed_availability(ctx: RunContext[AgentDeps], url: str) -> str:
     """
@@ -165,12 +169,14 @@ async def check_feed_availability(ctx: RunContext[AgentDeps], url: str) -> str:
             item_count=result.feed_item_count,
         )
         status_line = (
-                f"✅ AVAILABLE | title='{result.feed_title}' | "
-                f"items={result.feed_item_count} | "
-                + ("⭐ NEW – added to DB" if is_new else "already in DB")
+            f"✅ AVAILABLE | title='{result.feed_title}' | "
+            f"items={result.feed_item_count} | "
+            + ("⭐ NEW – added to DB" if is_new else "already in DB")
         )
     else:
-        logger.warning(f"Feed {url} is unavailable: {result.error} (HTTP {result.http_status})")
+        logger.warning(
+            f"Feed {url} is unavailable: {result.error} (HTTP {result.http_status})"
+        )
         if ctx.deps.db.url_exists(url):
             ctx.deps.db.update_availability(
                 url=url,
@@ -178,8 +184,7 @@ async def check_feed_availability(ctx: RunContext[AgentDeps], url: str) -> str:
                 http_status=result.http_status,
             )
         status_line = (
-            f"❌ UNAVAILABLE | error={result.error} | "
-            f"http={result.http_status}"
+            f"❌ UNAVAILABLE | error={result.error} | http={result.http_status}"
         )
 
     db_stats = ctx.deps.db.get_stats()
@@ -194,6 +199,7 @@ async def check_feed_availability(ctx: RunContext[AgentDeps], url: str) -> str:
 
 
 # ── MCP Tool 3: get links ───────────────────────────────────────────────────
+
 
 @rss_agent.tool
 async def get_rss_links(ctx: RunContext[AgentDeps], limit: int = 50) -> str:
@@ -216,13 +222,16 @@ async def get_rss_links(ctx: RunContext[AgentDeps], limit: int = 50) -> str:
     for lnk in links:
         status = "✅" if lnk.is_available else "❌"
         title = f" [{lnk.title}]" if lnk.title else ""
-        items = f" ({lnk.feed_item_count} items)" if lnk.feed_item_count is not None else ""
+        items = (
+            f" ({lnk.feed_item_count} items)" if lnk.feed_item_count is not None else ""
+        )
         lines.append(f"  {status} {lnk.url}{title}{items}")
 
     return "\n".join(lines)
 
 
 # ── MCP Tool 4: delete link ─────────────────────────────────────────────────
+
 
 @rss_agent.tool
 async def delete_rss_link(ctx: RunContext[AgentDeps], url: str) -> str:
@@ -240,20 +249,20 @@ async def delete_rss_link(ctx: RunContext[AgentDeps], url: str) -> str:
 
     if deleted:
         stats = ctx.deps.db.get_stats()
-        return (
-            f"✅ Deleted RSS link: {url}\n"
-            f"DB now has {stats['total']} total links."
-        )
+        return f"✅ Deleted RSS link: {url}\nDB now has {stats['total']} total links."
     else:
         return f"❌ Link not found in database: {url}"
 
 
 # ── MCP Tool 5: add link ────────────────────────────────────────────────────
 
+
 @rss_agent.tool
 async def add_rss_link(
-        ctx: RunContext[AgentDeps], url: str, title: Optional[str] = None,
-        tags: Optional[List[str]] = None
+    ctx: RunContext[AgentDeps],
+    url: str,
+    title: Optional[str] = None,
+    tags: Optional[List[str]] = None,
 ) -> str:
     """
     MCP Tool – Add a new RSS link to the database.
@@ -282,14 +291,13 @@ async def add_rss_link(
 
 # ── High-level runner helpers ─────────────────────────────────────────────────
 
+
 async def run_discovery(query: str, db: RSSDatabase) -> AgentRunResult:
     """Run the agent for a discovery query and return a structured result."""
     t0 = time.time()
     deps = AgentDeps(db=db)
 
-    console.print(
-        f"\n{_ts()} [bold cyan]🤖 AGENT RUN[/bold cyan] '{query}'"
-    )
+    console.print(f"\n{_ts()} [bold cyan]🤖 AGENT RUN[/bold cyan] '{query}'")
     logger.info(f"Starting agent discovery run with query: {query}")
 
     initial_total = db.get_stats()["total"]
@@ -327,7 +335,7 @@ async def run_discovery(query: str, db: RSSDatabase) -> AgentRunResult:
 
 
 async def run_and_return_links(
-        query: str, db: Optional[RSSDatabase] = None
+    query: str, db: Optional[RSSDatabase] = None
 ) -> List[str]:
     """Convenience wrapper used by the eval runner."""
     if db is None:

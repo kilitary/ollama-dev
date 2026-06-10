@@ -1,0 +1,12 @@
+{
+    // Folder-specific settings
+    //
+    // For a full list of overridable settings, and general information on folder-specific settings,//zed.dev/docs/configuring-zed#settings-files
+    // "terminal": {
+    //   "working_directory": "first_project_directory",
+    //   "shell": {
+    //     "program": "powershell.exe"
+    //   }
+    // },
+    // "context_server_timeout": 67
+}

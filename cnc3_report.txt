@@ -1,0 +1,1220 @@
+================================================================================
+C&C3 TIBERIUM WARS - SAGE ENGINE ENTRY POINT ANALYSIS
+================================================================================
+
+======================================================================
+BINARY: CNC3.exe
+  Exports: 1   Imports: 653 from 15 DLLs
+
+  [REAL-TIME IMPORTS - 384 hookable calls]
+    COMCTL32.dll                        ImageList_LoadImageW
+    COMCTL32.dll                        _TrackMouseEvent
+    COMCTL32.dll                        ImageList_Destroy
+    COMCTL32.dll                        ImageList_GetIconSize
+    KERNEL32.dll                        GetAtomNameA
+    KERNEL32.dll                        SetThreadPriority
+    KERNEL32.dll                        SetEvent
+    KERNEL32.dll                        SetErrorMode
+    KERNEL32.dll                        GetVersionExA
+    KERNEL32.dll                        GlobalAddAtomA
+    KERNEL32.dll                        FreeResource
+    KERNEL32.dll                        GetLocaleInfoA
+    KERNEL32.dll                        EnumResourceLanguagesA
+    KERNEL32.dll                        GetCurrentThread
+    KERNEL32.dll                        GetCPInfo
+    KERNEL32.dll                        GetOEMCP
+    KERNEL32.dll                        GetPrivateProfileIntA
+    KERNEL32.dll                        GetPrivateProfileStringA
+    KERNEL32.dll                        GetLocaleInfoW
+    KERNEL32.dll                        GetUserDefaultLCID
+    KERNEL32.dll                        CreateFileW
+    KERNEL32.dll                        GetDriveTypeA
+    KERNEL32.dll                        GetTimeZoneInformation
+    KERNEL32.dll                        GetSystemTimeAsFileTime
+    KERNEL32.dll                        GetEnvironmentStringsW
+    KERNEL32.dll                        GetEnvironmentStrings
+    KERNEL32.dll                        GlobalGetAtomNameA
+    KERNEL32.dll                        LCMapStringA
+    KERNEL32.dll                        GetConsoleMode
+    KERNEL32.dll                        GetConsoleCP
+    KERNEL32.dll                        GetStringTypeW
+    KERNEL32.dll                        GetStringTypeA
+    KERNEL32.dll                        SetConsoleCtrlHandler
+    KERNEL32.dll                        SetHandleCount
+    KERNEL32.dll                        SetCurrentDirectoryA
+    KERNEL32.dll                        GetFullPathNameW
+    KERNEL32.dll                        GetDateFormatA
+    KERNEL32.dll                        GetTimeFormatA
+    KERNEL32.dll                        GetStdHandle
+    KERNEL32.dll                        HeapCreate
+    KERNEL32.dll                        CreateThread
+    KERNEL32.dll                        GetFileType
+    KERNEL32.dll                        SetStdHandle
+    KERNEL32.dll                        GetStartupInfoA
+    KERNEL32.dll                        GetCommandLineA
+    KERNEL32.dll                        CreateDirectoryA
+    KERNEL32.dll                        GetDriveTypeW
+    KERNEL32.dll                        GetSystemInfo
+    KERNEL32.dll                        RtlUnwind
+    KERNEL32.dll                        SetUnhandledExceptionFilter
+    KERNEL32.dll                        HeapDestroy
+    KERNEL32.dll                        GetProcessHeap
+    KERNEL32.dll                        InterlockedCompareExchange
+    KERNEL32.dll                        GetACP
+    KERNEL32.dll                        GetFileTime
+    KERNEL32.dll                        SetFileTime
+    KERNEL32.dll                        CreateFileA
+    KERNEL32.dll                        GetShortPathNameA
+    KERNEL32.dll                        GetFullPathNameA
+    KERNEL32.dll                        GetFileSize
+    ... and 324 more
+
+======================================================================
+BINARY: VistaShellSupport.dll
+  Exports: 0   Imports: 0 from 0 DLLs
+
+======================================================================
+BINARY: patchw32.dll
+  Exports: 13   Imports: 173 from 5 DLLs
+
+  [REAL-TIME EXPORTS - 9 hooks]
+    ord=   1  rva=0xaa20        RTPatchApply32@12
+    ord=   9  rva=0xb490        RTPatchApply32NoCall
+    ord=   8  rva=0xad30        RTPatchSetAttribGet@8
+    ord=   7  rva=0xad00        RTPatchSetAttribSet@8
+    ord=   4  rva=0xac70        RTPatchSetCreate@8
+    ord=   5  rva=0xaca0        RTPatchSetDelete@8
+    ord=   3  rva=0xac40        RTPatchSetDirWalk@8
+    ord=   2  rva=0xac10        RTPatchSetOpen@8
+    ord=   6  rva=0xacd0        RTPatchSetRename@8
+
+  [REAL-TIME IMPORTS - 100 hookable calls]
+    USER32.dll                          LoadStringA
+    USER32.dll                          DdeCreateDataHandle
+    USER32.dll                          DdeCreateStringHandleA
+    ADVAPI32.dll                        RegCloseKey
+    ADVAPI32.dll                        RegSetValueExW
+    ADVAPI32.dll                        RegCreateKeyExW
+    ADVAPI32.dll                        SetFileSecurityW
+    ADVAPI32.dll                        GetFileSecurityW
+    ADVAPI32.dll                        RegSetValueExA
+    ADVAPI32.dll                        RegCreateKeyExA
+    ADVAPI32.dll                        IsValidSecurityDescriptor
+    ADVAPI32.dll                        SetSecurityDescriptorOwner
+    ADVAPI32.dll                        SetSecurityDescriptorGroup
+    ADVAPI32.dll                        SetSecurityDescriptorDacl
+    ADVAPI32.dll                        AddAccessAllowedAce
+    ADVAPI32.dll                        GetLengthSid
+    ADVAPI32.dll                        InitializeSecurityDescriptor
+    VERSION.dll                         GetFileVersionInfoSizeW
+    VERSION.dll                         GetFileVersionInfoA
+    VERSION.dll                         GetFileVersionInfoW
+    VERSION.dll                         GetFileVersionInfoSizeA
+    KERNEL32.dll                        CreateMutexA
+    KERNEL32.dll                        GetProfileSectionA
+    KERNEL32.dll                        GetPrivateProfileSectionA
+    KERNEL32.dll                        CreateDirectoryA
+    KERNEL32.dll                        GetLogicalDrives
+    KERNEL32.dll                        GetFileType
+    KERNEL32.dll                        MoveFileW
+    KERNEL32.dll                        GetDriveTypeW
+    KERNEL32.dll                        GetCommandLineA
+    KERNEL32.dll                        GetCurrentProcessId
+    KERNEL32.dll                        GetCPInfo
+    KERNEL32.dll                        GetOEMCP
+    KERNEL32.dll                        GetACP
+    KERNEL32.dll                        GetTimeZoneInformation
+    KERNEL32.dll                        GetStartupInfoA
+    KERNEL32.dll                        GetVersion
+    KERNEL32.dll                        GetDriveTypeA
+    KERNEL32.dll                        GetProcAddress
+    KERNEL32.dll                        LoadLibraryA
+    KERNEL32.dll                        SetEndOfFile
+    KERNEL32.dll                        SetFilePointer
+    KERNEL32.dll                        CloseHandle
+    KERNEL32.dll                        UnmapViewOfFile
+    KERNEL32.dll                        MapViewOfFile
+    KERNEL32.dll                        CreateFileMappingA
+    KERNEL32.dll                        GetFileSize
+    KERNEL32.dll                        CreateFileA
+    KERNEL32.dll                        GetWindowsDirectoryA
+    KERNEL32.dll                        GetShortPathNameA
+    KERNEL32.dll                        GetFullPathNameA
+    KERNEL32.dll                        MoveFileExW
+    KERNEL32.dll                        MoveFileExA
+    KERNEL32.dll                        GetFileAttributesA
+    KERNEL32.dll                        GetModuleFileNameA
+    KERNEL32.dll                        MoveFileA
+    KERNEL32.dll                        SetEnvironmentVariableA
+    KERNEL32.dll                        GetTempPathA
+    KERNEL32.dll                        SetErrorMode
+    KERNEL32.dll                        LockResource
+    ... and 40 more
+
+======================================================================
+BINARY: cnc3game.dat
+  Exports: 494   Imports: 545 from 17 DLLs
+
+  [REAL-TIME EXPORTS - 329 hooks]
+    ord=   2  rva=0x4ef0e1      ??0AptFrameStack@@QAE@PAV0@@Z
+    ord=   3  rva=0x4ef176      ??0AptFrameStack@@QAE@PAV0@H@Z
+    ord=  13  rva=0x4f0453      ??1AptGlobalExtensionObject@@MAE@XZ
+    ord=  35  rva=0x4ef855      ?AddActionBack@AptAnimationTarget@@QAEXPAUAptActionBlock@@PAVAptCIH@@I@Z
+    ord=  36  rva=0x4ef87b      ?AddActionFront@AptAnimationTarget@@QAEXPAUAptActionBlock@@PAVAptCIH@@I@Z
+    ord=  37  rva=0x4ef8a1      ?AddFunctionBack@AptAnimationTarget@@QAEXPAVAptCIH@@PAVAptValue@@HI@Z
+    ord=  38  rva=0x4ef8ca      ?AddFunctionFront@AptAnimationTarget@@QAEXPAVAptCIH@@PAVAptValue@@HI@Z
+    ord=  43  rva=0x4ef1f2      ?ClearScope@AptFrameStack@@QAEXXZ
+    ord=  44  rva=0x4f19c9      ?ClearStateFlags@AptCharacterTextInst@@QAEXI@Z
+    ord=  45  rva=0x4efb14      ?ClipStackGetTop@AptMath@@SAPAUClipTransform_t@1@XZ
+    ord=  56  rva=0x4f076f      ?Create@AptBoolean@@SAPAV1@_N@Z
+    ord=  57  rva=0x4eee3b      ?Create@AptString@@SAPAV1@XZ
+    ord=  58  rva=0x4f0ffc      ?CreateNewAptFunction@AptExtObject@@KAPAVAptNativeFunction@@PAX@Z
+    ord=  59  rva=0x4f0fc6      ?CreateNewAptObject@AptExtObject@@KAPAVAptValue@@H@Z
+    ord=  60  rva=0x4f0f1c      ?CreateNewAptObject@AptExtObject@@KAPAVAptValue@@XZ
+    ord=  62  rva=0x4ef9a1      ?DecIntervalTimersSize@AptAnimationTarget@@QAEHXZ
+    ord=  63  rva=0x4ef90f      ?DecNewInstSize@AptAnimationTarget@@QAEHXZ
+    ord=  65  rva=0x4f14b5      ?DestroyGCPointers@AptCharacterInst@@QAEXXZ
+    ord=  66  rva=0x509520      ?DragMovieClip@AptAnimationTarget@@QAEXXZ
+    ord=  70  rva=0x4ef206      ?ExistsInLocalScope@AptFrameStack@@QAE_NPAVEAStringC@@@Z
+    ord=  71  rva=0x4ef3f4      ?ExistsInLocalScope@AptScriptFunctionBase@@QAE_NPAVEAStringC@@@Z
+    ord=  72  rva=0x4eecf0      ?GetASChanged@AptCIH@@QBE_NXZ
+    ord=  73  rva=0x4efa41      ?GetAStickLeft@AptAnimationTarget@@QAEPAUAptAnalogStickInfo@@H@Z
+    ord=  74  rva=0x4efa57      ?GetAStickRight@AptAnimationTarget@@QAEPAUAptAnalogStickInfo@@H@Z
+    ord=  75  rva=0x4ef846      ?GetActionPool@AptAnimationTarget@@QAEPAVAptActionQueueC@@XZ
+    ord=  76  rva=0x4f17de      ?GetAlignment@AptCharacterTextInst@@QBE?AW4AptStringAlignment@@XZ
+    ord=  77  rva=0x4f1b8a      ?GetAnimationInst@AptCIH@@QAEPAVAptCharacterAnimationInst@@XZ
+    ord=  78  rva=0x4f1b8a      ?GetAnimationInst@AptCIH@@QBEPBVAptCharacterAnimationInst@@XZ
+    ord=  79  rva=0x4f0536      ?GetAnimationInst@AptCharacterInst@@QAEPAVAptCharacterAnimationInst@@XZ
+    ord=  80  rva=0x545536      ?GetAnimationTarget@AptTarget@@QAEPAVAptAnimationTarget@@XZ
+    ord=  81  rva=0x4ef0af      ?GetAt@AptNativeHash@@ABEPAVAptValue@@H@Z
+    ord=  82  rva=0x4ef0c7      ?GetAt@AptNativeHash@@CAPAVAptValue@@QAUAptHashItem@@@Z
+    ord=  83  rva=0x4efb3a      ?GetAt@AptValueVector@@QAEPAVAptValue@@H@Z
+    ord=  84  rva=0x4f16df      ?GetBackgroundColor@AptCharacterTextInst@@QBEIXZ
+    ord=  85  rva=0x4f0793      ?GetBool@AptBoolean@@QBE_NXZ
+    ord=  86  rva=0x4f1735      ?GetBorderColor@AptCharacterTextInst@@QBEIXZ
+    ord=  87  rva=0x4f18a6      ?GetBoundsConst@AptCharacterTextInst@@QBEABUAptRect@@XZ
+    ord=  88  rva=0x4f18bf      ?GetBoundsWritable@AptCharacterTextInst@@QAEAAUAptRect@@XZ
+    ord=  89  rva=0x4f178b      ?GetBoxAlignment@AptCharacterTextInst@@QBE?AW4AptStringAlignment@@XZ
+    ord=  90  rva=0x4f0898      ?GetBuffer@EAStringC@@QBEPBDXZ
+    ord=  91  rva=0x4f1b8a      ?GetButtonInst@AptCIH@@QAEPAVAptCharacterButtonInst@@XZ
+    ord=  92  rva=0x4f1b8a      ?GetButtonInst@AptCIH@@QBEPBVAptCharacterButtonInst@@XZ
+    ord=  93  rva=0x4f0536      ?GetButtonInst@AptCharacterInst@@QAEPAVAptCharacterButtonInst@@XZ
+    ord=  94  rva=0x4efaac      ?GetButtonSet@AptAnimationTarget@@QAEPAV?$AptValueSet@PAVAptCIH@@@@XZ
+    ord=  95  rva=0x4ee00d      ?GetBytesUsed@_DOGMA_MemPool@@QAEIXZ
+    ord=  96  rva=0x4ef943      ?GetCIHMatrixHelper@AptAnimationTarget@@QAEPAPAVAptCIH@@XZ
+    ord=  97  rva=0x4eed69      ?GetCIHState@AptCIH@@QBE?AW4AptCIHState@1@XZ
+    ord=  98  rva=0x4f137e      ?GetCharacterConst@AptCharacterInst@@QBEPBUAptCharacter@@XZ
+    ord=  99  rva=0x4f1167      ?GetCharacterConst@AptRenderItem@@QBEPBUAptCharacter@@XZ
+    ord= 100  rva=0x4f1112      ?GetCharacterInst@AptCIH@@QAEPAVAptCharacterInst@@XZ
+    ord= 101  rva=0x4f1b8a      ?GetCharacterInst@AptCIH@@QBEPBVAptCharacterInst@@XZ
+    ord= 102  rva=0x4f0536      ?GetCharacterInst@AptCharacterInst@@QAEPAV1@XZ
+    ord= 103  rva=0x4f139e      ?GetCharacterWritable@AptCharacterInst@@QAEPAUAptCharacter@@XZ
+    ord= 104  rva=0x4f1167      ?GetCharacterWritable@AptRenderItem@@QAEPAUAptCharacter@@XZ
+    ord= 105  rva=0x4f11d3      ?GetClipDepth@AptCharacterInst@@QBEHXZ
+    ord= 106  rva=0x4eea9c      ?GetClipDepth@AptRenderItem@@QBEHXZ
+    ord= 107  rva=0x4f1faf      ?GetColorMatrixConst@AptCIH@@QBEPBUAptCXForm@@XZ
+    ord= 108  rva=0x4f11b8      ?GetColorMatrixConst@AptCharacterInst@@QBEPBUAptCXForm@@XZ
+    ord= 109  rva=0x4f1f8d      ?GetColorMatrixWritable@AptCIH@@QAEPAUAptCXForm@@XZ
+    ord= 110  rva=0x4f1205      ?GetColorMatrixWritable@AptCharacterInst@@QAEPAUAptCXForm@@XZ
+    ord= 111  rva=0x4f1a37      ?GetCreatedDynamic@AptCharacterTextInst@@QBE_NXZ
+    ord= 112  rva=0x4eedff      ?GetCreatedOnFrame@AptCIH@@QBEHXZ
+    ord= 113  rva=0x4f1112      ?GetCreatedOnTick@AptRenderItem@@QBEHXZ
+    ord= 114  rva=0x4ef846      ?GetCurItem@AptActionQueueC@@QAEPAUAptActionPool@1@XZ
+    ord= 115  rva=0x4eeb6a      ?GetCustomPropertiesStr@AptRenderItemCustomControl@@QBEABVEAStringC@@XZ
+    ord= 116  rva=0x4ef92f      ?GetDelayedReleaseList@AptAnimationTarget@@SAPAPAVAptCIH@@XZ
+    ord= 117  rva=0x4ef939      ?GetDelayedReleaseListSize@AptAnimationTarget@@SAHXZ
+    ord= 118  rva=0x4f1ee9      ?GetDepth@AptCIH@@QBEHXZ
+    ord= 119  rva=0x4f1364      ?GetDepth@AptCharacterInst@@QBEHXZ
+    ord= 120  rva=0x4eeaac      ?GetDepth@AptRenderItem@@QBEHXZ
+    ord= 121  rva=0x4f1ff9      ?GetDirtyState@AptCIH@@QBE_NXZ
+    ord= 122  rva=0x4ef96f      ?GetDisplayList@AptAnimationTarget@@QAEPAUAptDisplayList@@XZ
+    ord= 123  rva=0x545536      ?GetDisplayListNext@AptCIH@@QBEPAV1@XZ
+    ord= 124  rva=0x4eead0      ?GetDisplayListParent@AptCIH@@QBEPAV1@XZ
+    ord= 125  rva=0x545513      ?GetDisplayListPrevious@AptCIH@@QBEPAV1@XZ
+    ord= 126  rva=0x4ef9ec      ?GetDragMC@AptAnimationTarget@@QAEPAVAptValue@@XZ
+    ord= 127  rva=0x4ef9fb      ?GetDragPos@AptAnimationTarget@@QAEPAUAptMatrix@@XZ
+    ord= 128  rva=0x4f1ae2      ?GetDrawsBackground@AptCharacterTextInst@@QBE_NXZ
+    ord= 129  rva=0x4f1a8e      ?GetDrawsBorder@AptCharacterTextInst@@QBE_NXZ
+    ord= 130  rva=0x4f1b8a      ?GetDynamicTextInst@AptCIH@@QAEPAVAptCharacterTextInst@@XZ
+    ord= 131  rva=0x4f1b8a      ?GetDynamicTextInst@AptCIH@@QBEPBVAptCharacterTextInst@@XZ
+    ord= 132  rva=0x4f0536      ?GetDynamicTextInst@AptCharacterInst@@QAEPAVAptCharacterTextInst@@XZ
+    ord= 133  rva=0x4f1167      ?GetFirstItem@AptActionQueueC@@QAEPAUAptActionPool@1@XZ
+    ord= 134  rva=0x4eec05      ?GetFirstItem@AptDisplayListState@@QAEPAVAptCIH@@XZ
+    ord= 135  rva=0x4eec05      ?GetFirstItem@AptDisplayListState@@QBEPBVAptCIH@@XZ
+    ord= 136  rva=0x4eec13      ?GetFirstItem@AptPseudoDisplayList@@QAEPAUAptPseudoCIH_t@@XZ
+    ord= 137  rva=0x4edfc8      ?GetFirstItem@_DOGMA_MemPool@@QAEPAXXZ
+    ord= 138  rva=0x4eefbf      ?GetFloat@AptFloat@@QBEMXZ
+    ord= 139  rva=0x4efa9d      ?GetFocusButton@AptAnimationTarget@@QAEPAVAptCIH@@XZ
+    ord= 140  rva=0x4f194a      ?GetFontID@AptCharacterTextInst@@QBEHXZ
+    ord= 141  rva=0x4f1902      ?GetFontSize@AptCharacterTextInst@@QBEMXZ
+    ord= 142  rva=0x4f13de      ?GetHasMask@AptCharacterInst@@QBE_NXZ
+    ord= 143  rva=0x4eeadf      ?GetHasMask@AptRenderItem@@QBE_NXZ
+    ord= 144  rva=0x4eef15      ?GetHashSize@AptFrameStack@@QAEXXZ
+    ord= 145  rva=0x4f08a9      ?GetHashValue@EAStringC@@QBEGXZ
+    ord= 146  rva=0x4eedea      ?GetInRemList@AptCIH@@QBE_NXZ
+    ord= 147  rva=0x4ef51b      ?GetInScopeChain@AptScriptFunctionBase@@QAEPAVAptValue@@PAVEAStringC@@@Z
+    ord= 148  rva=0x4ef960      ?GetInputSet@AptAnimationTarget@@QAEPAV?$AptValueSet@PAVAptCIH@@@@XZ
+    ord= 149  rva=0x4ee022      ?GetInstanceName@AptCIH@@QBEABVEAStringC@@XZ
+    ord= 150  rva=0x4ef7e1      ?GetInt@AptInteger@@QBEHXZ
+    ord= 151  rva=0x4f0898      ?GetInternalBuffer@EAStringC@@ABEPADXZ
+    ord= 152  rva=0x4f082d      ?GetInternalMaxSize@EAStringC@@QBEIXZ
+    ord= 153  rva=0x4f0857      ?GetInternalRefCount@EAStringC@@QBEIXZ
+    ord= 154  rva=0x4f0803      ?GetInternalSize@EAStringC@@QBEIXZ
+    ord= 155  rva=0x4ee022      ?GetInternalString@AptString@@QAEPAVEAStringC@@XZ
+    ord= 156  rva=0x4f1121      ?GetIntervalTimers@AptAnimationTarget@@QAEPAUAptIntervalTimer@@XZ
+    ord= 157  rva=0x4ef0d2      ?GetIntervalTimersSize@AptAnimationTarget@@QAEHXZ
+    ord= 158  rva=0x4f13c0      ?GetIsMask@AptCharacterInst@@QBE_NXZ
+    ord= 159  rva=0x4eeabc      ?GetIsMask@AptRenderItem@@QBE_NXZ
+    ord= 160  rva=0x4f1fd4      ?GetIsPlaying@AptCIH@@QBE_NXZ
+    ord= 161  rva=0x4f13fd      ?GetIsVisible@AptCharacterInst@@QBE_NXZ
+    ord= 162  rva=0x4eeaf4      ?GetIsVisible@AptRenderItem@@QBE_NXZ
+    ord= 163  rva=0x4ef7e1      ?GetLastItem@AptActionQueueC@@QAEPAUAptActionPool@1@XZ
+    ord= 164  rva=0x4f187f      ?GetLength@AptCharacterTextInst@@QBEMXZ
+    ord= 165  rva=0x4f0803      ?GetLength@EAStringC@@QBEIXZ
+    ord= 166  rva=0x4f0536      ?GetLevelInst@AptCharacterInst@@QAEPAVAptCharacterLevelInst@@XZ
+    ord= 167  rva=0x4f1112      ?GetLinker@AptTarget@@QAEPAUAptLinker@@XZ
+    ord= 168  rva=0x4ef951      ?GetListenerSet@AptAnimationTarget@@QAEPAV?$AptValueSet@PAVAptValue@@@@XZ
+    ord= 169  rva=0x4eead0      ?GetLoader@AptTarget@@QAEPAUAptLoader@@XZ
+    ord= 170  rva=0x4eead0      ?GetMask@AptRenderItem@@QBEPBV1@XZ
+    ord= 171  rva=0x4f167c      ?GetMaskPositionMatrixConst@AptRenderItem@@QBEPBUAptMatrix@@XZ
+    ord= 172  rva=0x4f167c      ?GetMaskPositionMatrixWritable@AptRenderItem@@QAEPAUAptMatrix@@XZ
+    ord= 173  rva=0x4f1167      ?GetMaxIntervalTimers@AptAnimationTarget@@QAEHXZ
+    ord= 174  rva=0x4ef838      ?GetMaxNewMovieClips@AptAnimationTarget@@QAEHXZ
+    ord= 175  rva=0x4ee167      ?GetMaxRefCountHit@AptValue@@QBE_NXZ
+    ord= 176  rva=0x4f167c      ?GetMaxScroll@AptCharacterTextInst@@QBEIXZ
+    ord= 177  rva=0x4f1b8a      ?GetMorphInst@AptCIH@@QAEPAVAptCharacterMorphInst@@XZ
+    ord= 178  rva=0x4f1b8a      ?GetMorphInst@AptCIH@@QBEPBVAptCharacterMorphInst@@XZ
+    ord= 179  rva=0x4f0536      ?GetMorphInst@AptCharacterInst@@QAEPAVAptCharacterMorphInst@@XZ
+    ord= 180  rva=0x4efabb      ?GetMouseListenerSet@AptAnimationTarget@@QAEPAV?$AptValueSet@PAVAptValue@@@@XZ
+    ord= 181  rva=0x4f1b36      ?GetMouseWheelEnabled@AptCharacterTextInst@@QBE_NXZ
+    ord= 182  rva=0x4f1d5a      ?GetNativeHash@AptCIH@@QBEPAVAptNativeHash@@XZ
+    ord= 183  rva=0x4ef901      ?GetNewInstSize@AptAnimationTarget@@QAEHXZ
+    ord= 184  rva=0x4ef8f3      ?GetNewInsts@AptAnimationTarget@@QAEPAPAVAptCIH@@XZ
+    ord= 185  rva=0x4f1121      ?GetNext@AptTarget@@QAEPAV1@XZ
+    ord= 186  rva=0x4ef743      ?GetNextItem@AptActionQueueC@@QAEPAUAptActionPool@1@PAU21@@Z
+    ord= 187  rva=0x4f069c      ?GetNumValues@AptValueVector@@QBEHXZ
+    ord= 188  rva=0x5048b8      ?GetOnPressObject@AptAnimationTarget@@QAEPAVAptValue@@XZ
+    ord= 189  rva=0x50489a      ?GetOnRollOverObject@AptAnimationTarget@@QAEPAVAptValue@@XZ
+    ord= 190  rva=0x4f0eca      ?GetParam@AptExtObject@@KAPAVAptValue@@H@Z
+    ord= 191  rva=0x4f1167      ?GetParentSprite@AptPseudoDisplayList@@QAEPAVAptCIH@@XZ
+    ord= 192  rva=0x4f1f68      ?GetPositionMatrixConst@AptCIH@@QBEPBUAptMatrix@@XZ
+    ord= 193  rva=0x4f119d      ?GetPositionMatrixConst@AptCharacterInst@@QBEPBUAptMatrix@@XZ
+    ord= 194  rva=0x4f1f46      ?GetPositionMatrixWritable@AptCIH@@QAEPAUAptMatrix@@XZ
+    ord= 195  rva=0x4f11ed      ?GetPositionMatrixWritable@AptCharacterInst@@QAEPAUAptMatrix@@XZ
+    ord= 196  rva=0x4ef0d2      ?GetPrevious@AptTarget@@QAEPAV1@XZ
+    ord= 197  rva=0x4ef846      ?GetPrototype@AptNativeHash@@QBEPAVAptValue@@XZ
+    ord= 198  rva=0x4f1158      ?GetQueuedInputsSize@AptAnimationTarget@@QAEHXZ
+    ord= 199  rva=0x4eebf6      ?GetRatio@AptRenderItemMorph@@QBEMXZ
+    ord= 200  rva=0x4eeb06      ?GetRefCount@AptRenderItem@@QBEHXZ
+    ord= 201  rva=0x4f1167      ?GetRenderItem@AptCharacterInst@@QBEPBVAptRenderItem@@XZ
+    ord= 202  rva=0x4f1176      ?GetRenderItemAnimation@AptCharacterInst@@IBEPBVAptRenderItemAnimation@@XZ
+    ord= 203  rva=0x4f118c      ?GetRenderItemAnimationWritable@AptCharacterInst@@IAEPAVAptRenderItemAnimation@@XZ
+    ord= 204  rva=0x4f1176      ?GetRenderItemButton@AptCharacterInst@@IBEPBVAptRenderItemButton@@XZ
+    ord= 205  rva=0x4f118c      ?GetRenderItemButtonWritable@AptCharacterInst@@IAEPAVAptRenderItemButton@@XZ
+    ord= 206  rva=0x4f1176      ?GetRenderItemCustomControl@AptCharacterInst@@IBEPBVAptRenderItemCustomControl@@XZ
+    ord= 207  rva=0x4f118c      ?GetRenderItemCustomControlWritable@AptCharacterInst@@IAEPAVAptRenderItemCustomControl@@XZ
+    ord= 208  rva=0x4f1176      ?GetRenderItemDynamicText@AptCharacterInst@@IBEPBVAptRenderItemDynamicText@@XZ
+    ord= 209  rva=0x4f118c      ?GetRenderItemDynamicTextWritable@AptCharacterInst@@IAEPAVAptRenderItemDynamicText@@XZ
+    ord= 210  rva=0x4f1176      ?GetRenderItemMorph@AptCharacterInst@@IBEPBVAptRenderItemMorph@@XZ
+    ord= 211  rva=0x4f118c      ?GetRenderItemMorphWritable@AptCharacterInst@@IAEPAVAptRenderItemMorph@@XZ
+    ord= 212  rva=0x4f1176      ?GetRenderItemShape@AptCharacterInst@@IBEPBVAptRenderItemShape@@XZ
+    ord= 213  rva=0x4f118c      ?GetRenderItemShapeWritable@AptCharacterInst@@IAEPAVAptRenderItemShape@@XZ
+    ord= 214  rva=0x4f1176      ?GetRenderItemSprite@AptCharacterInst@@IBEPBVAptRenderItemSprite@@XZ
+    ord= 215  rva=0x4f118c      ?GetRenderItemSpriteWritable@AptCharacterInst@@IAEPAVAptRenderItemSprite@@XZ
+    ord= 216  rva=0x4f0536      ?GetRenderItemStaticText@AptCharacterInst@@IBEPBVAptRenderItemStaticText@@XZ
+    ord= 217  rva=0x4f118c      ?GetRenderItemStaticTextWritable@AptCharacterInst@@IAEPAVAptRenderItemStaticText@@XZ
+    ord= 218  rva=0x4f1158      ?GetRenderManager@AptTarget@@QAEPAVAptBCRenderTreeManager@@XZ
+    ord= 219  rva=0x4ee022      ?GetReturnedPointer@_OutsideAllocationT@DOGMA_PoolManager@@QAEPAXXZ
+    ord= 220  rva=0x4f169f      ?GetScroll@AptCharacterTextInst@@QBEIXZ
+    ord= 221  rva=0x4f1b8a      ?GetShapeInst@AptCIH@@QAEPAVAptCharacterShapeInst@@XZ
+    ord= 222  rva=0x4f1b8a      ?GetShapeInst@AptCIH@@QBEPBVAptCharacterShapeInst@@XZ
+    ord= 223  rva=0x4f0536      ?GetShapeInst@AptCharacterInst@@QAEPAVAptCharacterShapeInst@@XZ
+    ord= 224  rva=0x4f1b8a      ?GetSpriteInst@AptCIH@@QAEPAVAptCharacterSpriteInst@@XZ
+    ord= 225  rva=0x4f1b8a      ?GetSpriteInst@AptCIH@@QBEPBVAptCharacterSpriteInst@@XZ
+    ord= 226  rva=0x4f0536      ?GetSpriteInst@AptCharacterInst@@QAEPAVAptCharacterSpriteInst@@XZ
+    ord= 227  rva=0x4f1b8a      ?GetSpriteInstBase@AptCIH@@QAEPAVAptCharacterSpriteInstBase@@XZ
+    ord= 228  rva=0x4f1b8a      ?GetSpriteInstBase@AptCIH@@QBEPBVAptCharacterSpriteInstBase@@XZ
+    ord= 229  rva=0x4f0536      ?GetSpriteInstBase@AptCharacterInst@@QAEPAVAptCharacterSpriteInstBase@@XZ
+    ord= 230  rva=0x4f1a17      ?GetStateFlags@AptCharacterTextInst@@QBEIXZ
+    ord= 231  rva=0x4f1b8a      ?GetStaticTextInst@AptCIH@@QAEPAVAptCharacterStaticTextInst@@XZ
+    ord= 232  rva=0x4f1b8a      ?GetStaticTextInst@AptCIH@@QBEPBVAptCharacterStaticTextInst@@XZ
+    ord= 233  rva=0x4f0536      ?GetStaticTextInst@AptCharacterInst@@QAEPAVAptCharacterStaticTextInst@@XZ
+    ord= 234  rva=0x4f1103      ?GetString@StringPool@@SAPBVEAStringC@@W4StringCode@@@Z
+    ord= 235  rva=0x4ee031      ?GetStructOverHead@_OutsideAllocationT@DOGMA_PoolManager@@SAIXZ
+    ord= 236  rva=0x4ee039      ?GetStructPointerFromReturnedPointer@_OutsideAllocationT@DOGMA_PoolManager@@SAPAU12@PBX@Z
+    ord= 237  rva=0x4eead0      ?GetSuperConstructor@AptPrototype@@QBEPAVAptValue@@XZ
+    ord= 238  rva=0x4f201e      ?GetTargetRender@@YAPAVAptTarget@@XZ
+    ord= 239  rva=0x4f2014      ?GetTargetSim@@YAPAVAptTarget@@XZ
+    ord= 240  rva=0x4eebd3      ?GetTargetStr@AptRenderItemCustomControl@@QBEABVEAStringC@@XZ
+    ord= 241  rva=0x4f163c      ?GetTextColor@AptCharacterTextInst@@QBEIXZ
+    ord= 242  rva=0x4f196a      ?GetTextFormatConst@AptCharacterTextInst@@QBEPBUTextFormat@@XZ
+    ord= 243  rva=0x4f198a      ?GetTextFormatWritable@AptCharacterTextInst@@QAEPAUTextFormat@@XZ
+    ord= 244  rva=0x4f1858      ?GetTextHeight@AptCharacterTextInst@@QBEMXZ
+    ord= 245  rva=0x4f154d      ?GetTextValueConst@AptCharacterTextInst@@QBEABVEAStringC@@XZ
+    ord= 246  rva=0x4f1566      ?GetTextValueWritable@AptCharacterTextInst@@QAEAAVEAStringC@@XZ
+    ord= 247  rva=0x4f1831      ?GetTextWidth@AptCharacterTextInst@@QBEMXZ
+    ord= 248  rva=0x4efa32      ?GetTopMostSprite@AptAnimationTarget@@QAEPAVAptValue@@XZ
+    ord= 249  rva=0x4eebab      ?GetTypeStr@AptRenderItemCustomControl@@QBEABVEAStringC@@XZ
+    ord= 250  rva=0x4f0f12      ?GetUndefinedValue@AptExtObject@@KAPAVAptValue@@XZ
+    ord= 251  rva=0x4f15a6      ?GetVarValueConst@AptCharacterTextInst@@QBEABVEAStringC@@XZ
+    ord= 252  rva=0x4f15bf      ?GetVarValueWritable@AptCharacterTextInst@@QAEAAVEAStringC@@XZ
+    ord= 253  rva=0x4f109c      ?GetVariable@AptExtObject@@KAPAVAptValue@@PAV2@QBVEAStringC@@@Z
+    ord= 254  rva=0x4efa6d      ?GetXMousePos@AptAnimationTarget@@QAEHXZ
+    ord= 255  rva=0x4efa7b      ?GetYMousePos@AptAnimationTarget@@QAEHXZ
+    ord= 256  rva=0x4f15ff      ?GetZID@AptCharacterTextInst@@QBEQAXXZ
+    ord= 257  rva=0x5048a9      ?GetZId@AptRenderItemCustomControl@@QBEQAXXZ
+    ord= 258  rva=0x4eedaf      ?GetZombieCount@AptCIH@@QAEHXZ
+    ord= 259  rva=0x4ef7e1      ?Get__Proto__@AptNativeHash@@QBEPAVAptValue@@XZ
+    ord= 261  rva=0x4ef09b      ?HasEventHandler@AptNativeHash@@QAEHH@Z
+    ord= 263  rva=0x4f1e06      ?HasMouseEvent@AptCIH@@QAEHXZ
+    ord= 264  rva=0x4ef97e      ?IncIntervalTimersSize@AptAnimationTarget@@QAEHXZ
+    ord= 265  rva=0x4ef90f      ?IncNewInstSize@AptAnimationTarget@@QAEHXZ
+    ord= 278  rva=0x4eeb5f      ?IsHighestRevisionItem@AptRenderItem@@QBE_NXZ
+    ord= 287  rva=0x4eeb52      ?IsRenderableForThisTick@AptRenderItem@@QAE_NH@Z
+    ord= 294  rva=0x4eeb52      ?IsWritableForThisTick@AptRenderItem@@QBE_NH@Z
+    ord= 295  rva=0x4f12bd      ?ItemFirstChildChanged@AptCharacterInst@@SAXPAVAptCIH@@@Z
+    ord= 297  rva=0x4f123f      ?ItemMoved@AptCharacterInst@@SAXPAVAptCIH@@@Z
+    ord= 298  rva=0x4f1268      ?ItemNextSiblingChanged@AptCharacterInst@@SAXPAVAptCIH@@@Z
+    ord= 299  rva=0x4ef1d9      ?Lookup@AptFrameStack@@QAEPAVAptValue@@QBVEAStringC@@@Z
+    ord= 301  rva=0x4ef1d9      ?Lookup@AptGlobalExtensionObject@@QAEPAVAptValue@@QBVEAStringC@@@Z
+    ord= 303  rva=0x4f1112      ?Manager_GetCreatedOnTick@AptRenderItem@@QBEHXZ
+    ord= 304  rva=0x4eead0      ?Manager_GetMask@AptRenderItem@@QAEPAV1@XZ
+    ord= 305  rva=0x4eeb3d      ?Manager_IsDeletionMark@AptRenderItem@@QBE_NXZ
+    ord= 312  rva=0x4efb83      ?RemoveAt@AptValueVector@@QAEXH@Z
+    ord= 313  rva=0x4eec5e      ?RemoveClipAction@AptCharacterSpriteInstBase@@QAEXH@Z
+    ord= 314  rva=0x4f1dc4      ?RemoveEventHandler@AptCIH@@QAEXH@Z
+    ord= 315  rva=0x4ef07f      ?RemoveEventHandler@AptNativeHash@@QAEXH@Z
+    ord= 317  rva=0x4ef225      ?Set@AptFrameStack@@QAEXQBVEAStringC@@QAVAptValue@@@Z
+    ord= 318  rva=0x4ef225      ?Set@AptGlobal@@QAEXQBVEAStringC@@QAVAptValue@@@Z
+    ord= 319  rva=0x4ef225      ?Set@AptGlobalExtensionObject@@QAEXQBVEAStringC@@QAVAptValue@@@Z
+    ord= 320  rva=0x4ef225      ?Set@AptValueWithHash@@QAEXQBVEAStringC@@QAVAptValue@@@Z
+    ord= 321  rva=0x4eecc8      ?SetASChanged@AptCIH@@QAEXH@Z
+    ord= 322  rva=0x4f17fd      ?SetAlignment@AptCharacterTextInst@@QAEXW4AptStringAlignment@@@Z
+    ord= 323  rva=0x4efb5d      ?SetAt@AptValueVector@@QAEXHPAVAptValue@@@Z
+    ord= 324  rva=0x4f1702      ?SetBackgroundColor@AptCharacterTextInst@@QAEXI@Z
+    ord= 325  rva=0x4f1758      ?SetBorderColor@AptCharacterTextInst@@QAEXI@Z
+    ord= 326  rva=0x4f18da      ?SetBounds@AptCharacterTextInst@@QAEXABUAptRect@@@Z
+    ord= 327  rva=0x4f17aa      ?SetBoxAlignment@AptCharacterTextInst@@QAEXW4AptStringAlignment@@@Z
+    ord= 328  rva=0x4eed42      ?SetCIHState@AptCIH@@QAEXW4AptCIHState@1@@Z
+    ord= 329  rva=0x4f143b      ?SetCharacter@AptCharacterInst@@QAEXPAUAptCharacter@@@Z
+    ord= 330  rva=0x4eec2b      ?SetClipAction@AptCharacterSpriteInstBase@@QAEXH@Z
+    ord= 331  rva=0x4f121d      ?SetClipDepth@AptCharacterInst@@QAEXH@Z
+    ord= 332  rva=0x4eeb27      ?SetClipDepth@AptRenderItem@@QAEXH@Z
+    ord= 333  rva=0x4f1a56      ?SetCreatedDynamic@AptCharacterTextInst@@QAEX_N@Z
+    ord= 334  rva=0x4eee14      ?SetCreatedOnFrame@AptCIH@@QAEXH@Z
+    ord= 335  rva=0x4ef7f0      ?SetCurItem@AptActionQueueC@@QAEXPAUAptActionPool@1@@Z
+    ord= 336  rva=0x4eeb79      ?SetCustomPropertiesStr@AptRenderItemCustomControl@@QAEXABVEAStringC@@@Z
+    ord= 337  rva=0x4f1f06      ?SetDepth@AptCIH@@QAEXI@Z
+    ord= 338  rva=0x4f1419      ?SetDepth@AptCharacterInst@@QAEXH@Z
+    ord= 339  rva=0x4eeb11      ?SetDepth@AptRenderItem@@QAEXH@Z
+    ord= 340  rva=0x545522      ?SetDisplayListNext@AptCIH@@QAEXPAV1@@Z
+    ord= 341  rva=0x4f1f32      ?SetDisplayListParent@AptCIH@@QAEXPAV1@@Z
+    ord= 342  rva=0x5454ff      ?SetDisplayListPrevious@AptCIH@@QAEXPAV1@@Z
+    ord= 343  rva=0x4ef9d8      ?SetDragMC@AptAnimationTarget@@QAEXPAVAptValue@@@Z
+    ord= 344  rva=0x4f1b01      ?SetDrawsBackground@AptCharacterTextInst@@QAEX_N@Z
+    ord= 345  rva=0x4f1aad      ?SetDrawsBorder@AptCharacterTextInst@@QAEX_N@Z
+    ord= 346  rva=0x4f1d84      ?SetEventHandler@AptCIH@@QAEXH@Z
+    ord= 347  rva=0x4ef065      ?SetEventHandler@AptNativeHash@@QAEXH@Z
+    ord= 348  rva=0x4efa89      ?SetFocusButton@AptAnimationTarget@@QAEXPAVAptCIH@@@Z
+    ord= 349  rva=0x4f1926      ?SetFontSize@AptCharacterTextInst@@QAEXM@Z
+    ord= 350  rva=0x4f1ebf      ?SetHasMask@AptCIH@@QAEX_NPAVAptRenderItem@@@Z
+    ord= 351  rva=0x4f1478      ?SetHasMask@AptCharacterInst@@QAEX_NPAVAptRenderItem@@@Z
+    ord= 352  rva=0x4eed1d      ?SetInCtor@AptCIH@@QAEXI@Z
+    ord= 353  rva=0x4ef225      ?SetInLocalScope@AptFrameStack@@QAEXPAVEAStringC@@PAVAptValue@@@Z
+    ord= 354  rva=0x4ef452      ?SetInLocalScope@AptScriptFunctionBase@@QAEXPAVEAStringC@@PAVAptValue@@@Z
+    ord= 355  rva=0x4eedc4      ?SetInRemList@AptCIH@@QAEX_N@Z
+    ord= 356  rva=0x4eecaf      ?SetInstanceName@AptCIH@@QAEXABVEAStringC@@@Z
+    ord= 357  rva=0x4f083f      ?SetInternalMaxSize@EAStringC@@AAEXI@Z
+    ord= 358  rva=0x4f0868      ?SetInternalRefCount@EAStringC@@AAEXI@Z
+    ord= 359  rva=0x4f0815      ?SetInternalSize@EAStringC@@AAEXI@Z
+    ord= 360  rva=0x4f1144      ?SetIntervalTimersSize@AptAnimationTarget@@QAEXH@Z
+    ord= 361  rva=0x4f1e1c      ?SetIsInserted@AptCIH@@QAEXXZ
+    ord= 362  rva=0x4f1e95      ?SetIsMask@AptCIH@@QAEX_NPAUAptMatrix@@@Z
+    ord= 363  rva=0x4f1458      ?SetIsMask@AptCharacterInst@@QAEX_NPAUAptMatrix@@@Z
+    ord= 364  rva=0x4f1498      ?SetIsVisible@AptCharacterInst@@QAEX_N@Z
+    ord= 365  rva=0x4f188e      ?SetLength@AptCharacterTextInst@@QAEXM@Z
+    ord= 366  rva=0x4f1291      ?SetMaskedItem@AptCharacterInst@@SAXPAVAptCIH@@_N@Z
+    ord= 367  rva=0x4ee17c      ?SetMaxRefCountHit@AptValue@@QAEX_N@Z
+    ord= 368  rva=0x4f168b      ?SetMaxScroll@AptCharacterTextInst@@QAEXI@Z
+    ord= 369  rva=0x4f1b55      ?SetMouseWheelEnabled@AptCharacterTextInst@@QAEX_N@Z
+    ord= 370  rva=0x4f1130      ?SetNext@AptTarget@@QAEXPAV1@@Z
+    ord= 371  rva=0x4efa0a      ?SetOnPressObject@AptAnimationTarget@@QAEXPAVAptValue@@@Z
+    ord= 372  rva=0x4efa1e      ?SetOnRollOverObject@AptAnimationTarget@@QAEXPAVAptValue@@@Z
+    ord= 373  rva=0x4f1144      ?SetPrevious@AptTarget@@QAEXPAV1@@Z
+    ord= 374  rva=0x4f07bb      ?SetPrototype@AptObject@@QAEXQAVAptValue@@@Z
+    ord= 375  rva=0x4ef9c4      ?SetQueuedInputsSize@AptAnimationTarget@@QAEXH@Z
+    ord= 376  rva=0x4f133b      ?SetRootItem@AptCharacterInst@@SAXPAVAptCIH@@@Z
+    ord= 377  rva=0x4f16bf      ?SetScroll@AptCharacterTextInst@@QAEXI@Z
+    ord= 378  rva=0x4f19f1      ?SetStateFlags@AptCharacterTextInst@@QAEXI@Z
+    ord= 379  rva=0x4eebba      ?SetTargetStr@AptRenderItemCustomControl@@QAEXABVEAStringC@@@Z
+    ord= 380  rva=0x4f165c      ?SetTextColor@AptCharacterTextInst@@QAEXI@Z
+    ord= 381  rva=0x4f19ac      ?SetTextFormat@AptCharacterTextInst@@QAEXPAUTextFormat@@@Z
+    ord= 382  rva=0x4f1867      ?SetTextHeight@AptCharacterTextInst@@QAEXM@Z
+    ord= 383  rva=0x4f1581      ?SetTextValue@AptCharacterTextInst@@QAEXABVEAStringC@@@Z
+    ord= 384  rva=0x4f1840      ?SetTextWidth@AptCharacterTextInst@@QAEXM@Z
+    ord= 385  rva=0x4eeb92      ?SetTypeStr@AptRenderItemCustomControl@@QAEXABVEAStringC@@@Z
+    ord= 386  rva=0x4f15da      ?SetVarValue@AptCharacterTextInst@@QAEXABVEAStringC@@@Z
+    ord= 387  rva=0x4f10e3      ?SetVariable@AptExtObject@@KA_NPAVAptValue@@QBVEAStringC@@QAV2@@Z
+    ord= 388  rva=0x4ef488      ?SetWhereExistsInScopeChain@AptScriptFunctionBase@@QAE_NPAVEAStringC@@PAVAptValue@@@Z
+    ord= 389  rva=0x4f161f      ?SetZID@AptCharacterTextInst@@QAEXPAX@Z
+    ord= 390  rva=0x4eebe2      ?SetZId@AptRenderItemCustomControl@@QAEXPAX@Z
+    ord= 391  rva=0x4f07a2      ?Set__Proto__@AptObject@@QAEXQAVAptValue@@@Z
+    ord= 392  rva=0x4edf52      ?SetupPool@_DOGMA_MemPool@@QAEXPAU1@I@Z
+    ord= 395  rva=0x4f07d4      ?UnSet@AptGlobalExtensionObject@@QAEXQBVEAStringC@@@Z
+    ord= 396  rva=0x4f0e66      ?UpdateHashValue@EAStringC@@QBEGXZ
+    ord= 404  rva=0x2d1c        ?_GetBlockSize@MemoryPool@@YAIPAX@Z
+    ord= 417  rva=0x4f0536      ?c_loadvars@AptValue@@QBEPAVAptLoadVars@@XZ
+    ord= 423  rva=0x4f0536      ?c_object@AptValue@@QBEPAVAptObject@@XZ
+    ord= 426  rva=0x4f0536      ?c_scriptcolour@AptValue@@QBEPAVAptScriptColour@@XZ
+    ord= 427  rva=0x4f0536      ?c_scriptfunction@AptValue@@QBEPAVAptScriptFunctionBase@@XZ
+    ord= 440  rva=0x4ef38f      ?doUnwindStack@AptActionInterpreter@@QBE_NXZ
+    ord= 441  rva=0x4ef35f      ?getCatchBlockBase@AptAction_TryCatchFinallyBlock@@QBEPAEXZ
+    ord= 442  rva=0x4ef2e9      ?getDF2Flag@AptAction_DefineFunction2@@QBEHW4AptDefinefunction2FlagsType@@@Z
+    ord= 443  rva=0x4ef374      ?getFinallyBlockBase@AptAction_TryCatchFinallyBlock@@QBEPAEXZ
+    ord= 444  rva=0x4ee138      ?getGCMark@AptValue@@QBE_NXZ
+    ord= 445  rva=0x4ee152      ?getGCRoot@AptValue@@QBEIXZ
+    ord= 446  rva=0x4ee11d      ?getIsDefined@AptValue@@QBE_NXZ
+    ord= 447  rva=0x4ee0f1      ?getRefCount@AptValue@@QBEIXZ
+    ord= 448  rva=0x4ef3a6      ?getThrownValue@AptActionInterpreter@@QBEPAVAptValue@@XZ
+    ord= 449  rva=0x4ef350      ?getTryBlockBase@AptAction_TryCatchFinallyBlock@@QBEPAEXZ
+    ord= 450  rva=0x4ee108      ?getVtblIndex@AptValue@@QBE?AW4AptVirtualFunctionTable_Indices@@XZ
+    ord= 460  rva=0x4ee53c      ?isFrameStack@AptValue@@QBE_NXZ
+    ord= 463  rva=0x4ee21d      ?isLoadVars@AptValue@@QBE_NXZ
+    ord= 470  rva=0x4ee7b1      ?isObject@AptValue@@QBE_NXZ
+    ord= 473  rva=0x4ee704      ?isScriptColour@AptValue@@QBE_NXZ
+    ord= 474  rva=0x4ee499      ?isScriptFunction@AptValue@@QBE_NXZ
+    ord= 484  rva=0x4ef337      ?putCaughtObjectInRegister@AptAction_TryCatchFinallyBlock@@QBE_NXZ
+    ord= 486  rva=0x4f0574      ?stackGetPop@AptActionInterpreter@@QAEPAVAptValue@@XZ
+
+  [REAL-TIME IMPORTS - 226 hookable calls]
+    GDI32.dll                           CreateFontIndirectA
+    GDI32.dll                           CreateDIBSection
+    GDI32.dll                           CreateCompatibleDC
+    GDI32.dll                           SetBkMode
+    GDI32.dll                           SelectObject
+    GDI32.dll                           DeleteObject
+    GDI32.dll                           SetBkColor
+    GDI32.dll                           SetTextColor
+    GDI32.dll                           GetGlyphIndicesW
+    GDI32.dll                           CreateFontA
+    GDI32.dll                           GetTextMetricsA
+    GDI32.dll                           CreateDIBitmap
+    GDI32.dll                           SetDeviceGammaRamp
+    GDI32.dll                           GetTextExtentPoint32W
+    GDI32.dll                           GetCharABCWidthsI
+    GDI32.dll                           GetTextExtentPointI
+    GDI32.dll                           GetStockObject
+    GDI32.dll                           SetMapMode
+    USER32.dll                          PostQuitMessage
+    USER32.dll                          SetForegroundWindow
+    USER32.dll                          LoadIconA
+    USER32.dll                          GetWindowRect
+    USER32.dll                          GetClientRect
+    USER32.dll                          SetFocus
+    USER32.dll                          RegisterWindowMessageA
+    USER32.dll                          GetKeyboardLayout
+    USER32.dll                          GetKeyboardLayoutList
+    USER32.dll                          SetWindowTextW
+    USER32.dll                          EnableMenuItem
+    USER32.dll                          GetMessageA
+    USER32.dll                          GetKeyState
+    USER32.dll                          GetCursorPos
+    USER32.dll                          SetCursorPos
+    USER32.dll                          SetCursor
+    USER32.dll                          KillTimer
+    USER32.dll                          SetTimer
+    USER32.dll                          GetAsyncKeyState
+    USER32.dll                          FindWindowW
+    USER32.dll                          GetWindowLongA
+    USER32.dll                          EnumThreadWindows
+    USER32.dll                          CloseClipboard
+    USER32.dll                          SetClipboardData
+    USER32.dll                          GetSystemMenu
+    USER32.dll                          FindWindowA
+    USER32.dll                          SetWindowTextA
+    USER32.dll                          GetDlgItem
+    USER32.dll                          DefWindowProcW
+    USER32.dll                          AdjustWindowRect
+    USER32.dll                          UpdateWindow
+    USER32.dll                          GetSystemMetrics
+    USER32.dll                          CreateWindowExW
+    USER32.dll                          ShowWindow
+    USER32.dll                          SetWindowPos
+    USER32.dll                          DefWindowProcA
+    USER32.dll                          IsWindowUnicode
+    USER32.dll                          GetDoubleClickTime
+    USER32.dll                          GetForegroundWindow
+    USER32.dll                          GetDesktopWindow
+    USER32.dll                          LoadCursorFromFileA
+    USER32.dll                          GetDC
+    ... and 166 more
+
+======================================================================
+BINARY: dbghelp.dll
+  Exports: 204   Imports: 171 from 4 DLLs
+
+  [REAL-TIME EXPORTS - 95 hooks]
+    ord=   5  rva=0x4bc30       DbgHelpCreateUserDump
+    ord=   6  rva=0x4bd20       DbgHelpCreateUserDumpW
+    ord=  10  rva=0x37af0       EnumerateLoadedModules
+    ord=   9  rva=0x37bd0       EnumerateLoadedModules64
+    ord=  11  rva=0x37d90       EnumerateLoadedModulesEx
+    ord=  12  rva=0x37e70       EnumerateLoadedModulesExW
+    ord=  13  rva=0x37cb0       EnumerateLoadedModulesW64
+    ord=  23  rva=0x2b790       GetTimestampForLoadedLibrary
+    ord=  32  rva=0x3ab80       MapDebugInformation
+    ord=  33  rva=0x5aac0       MiniDumpReadDumpStream
+    ord=   1  rva=0x34a80       SymAddSourceStream
+    ord=   2  rva=0x34a30       SymAddSourceStreamA
+    ord=   3  rva=0x348b0       SymAddSourceStreamW
+    ord=  39  rva=0x389d0       SymAddSymbol
+    ord=  40  rva=0x38860       SymAddSymbolW
+    ord=  54  rva=0x39990       SymEnumSymbolsForAddr
+    ord=  55  rva=0x39b10       SymEnumSymbolsForAddrW
+    ord=  74  rva=0x38c00       SymFromAddr
+    ord=  75  rva=0x38c60       SymFromAddrW
+    ord=  84  rva=0x2cda0       SymGetFileLineOffsets64
+    ord=  85  rva=0x32eb0       SymGetHomeDirectory
+    ord=  86  rva=0x32de0       SymGetHomeDirectoryW
+    ord=  88  rva=0x354e0       SymGetLineFromAddr
+    ord=  87  rva=0x35250       SymGetLineFromAddr64
+    ord=  89  rva=0x352e0       SymGetLineFromAddrW64
+    ord=  91  rva=0x35cb0       SymGetLineFromName
+    ord=  90  rva=0x35c10       SymGetLineFromName64
+    ord=  92  rva=0x35530       SymGetLineFromNameW64
+    ord=  94  rva=0x36020       SymGetLineNext
+    ord=  93  rva=0x35fa0       SymGetLineNext64
+    ord=  95  rva=0x36000       SymGetLineNextW64
+    ord=  97  rva=0x36100       SymGetLinePrev
+    ord=  96  rva=0x36080       SymGetLinePrev64
+    ord=  98  rva=0x360e0       SymGetLinePrevW64
+    ord= 100  rva=0x36fb0       SymGetModuleBase
+    ord=  99  rva=0x36e90       SymGetModuleBase64
+    ord= 102  rva=0x36df0       SymGetModuleInfo
+    ord= 101  rva=0x36860       SymGetModuleInfo64
+    ord= 104  rva=0x36d50       SymGetModuleInfoW
+    ord= 103  rva=0x368f0       SymGetModuleInfoW64
+    ord=   4  rva=0x39090       SymGetOmapBlockBase
+    ord= 105  rva=0x38fb0       SymGetOmaps
+    ord= 106  rva=0x33110       SymGetOptions
+    ord= 107  rva=0x39490       SymGetScope
+    ord= 108  rva=0x39510       SymGetScopeW
+    ord= 109  rva=0x37600       SymGetSearchPath
+    ord= 110  rva=0x37670       SymGetSearchPathW
+    ord= 111  rva=0x346d0       SymGetSourceFile
+    ord= 112  rva=0x34ab0       SymGetSourceFileFromToken
+    ord= 113  rva=0x34b40       SymGetSourceFileFromTokenW
+    ord= 114  rva=0x347b0       SymGetSourceFileToken
+    ord= 115  rva=0x34800       SymGetSourceFileTokenW
+    ord= 116  rva=0x34740       SymGetSourceFileW
+    ord= 117  rva=0x34ba0       SymGetSourceVarFromToken
+    ord= 118  rva=0x34c40       SymGetSourceVarFromTokenW
+    ord= 120  rva=0x33c60       SymGetSymFromAddr
+    ord= 119  rva=0x33c10       SymGetSymFromAddr64
+    ord= 122  rva=0x34040       SymGetSymFromName
+    ord= 121  rva=0x33fd0       SymGetSymFromName64
+    ord= 124  rva=0x341f0       SymGetSymNext
+    ord= 123  rva=0x34310       SymGetSymNext64
+    ord= 126  rva=0x34330       SymGetSymPrev
+    ord= 125  rva=0x343b0       SymGetSymPrev64
+    ord= 127  rva=0x4b640       SymGetSymbolFile
+    ord= 128  rva=0x4b180       SymGetSymbolFileW
+    ord= 129  rva=0x3a060       SymGetTypeFromName
+    ord= 130  rva=0x3a110       SymGetTypeFromNameW
+    ord= 131  rva=0x3a8f0       SymGetTypeInfo
+    ord= 132  rva=0x3a940       SymGetTypeInfoEx
+    ord= 136  rva=0x373b0       SymLoadModule
+    ord= 135  rva=0x37370       SymLoadModule64
+    ord= 137  rva=0x371a0       SymLoadModuleEx
+    ord= 138  rva=0x37290       SymLoadModuleExW
+    ord= 156  rva=0x33130       SymSetContext
+    ord= 157  rva=0x32d50       SymSetHomeDirectory
+    ord= 158  rva=0x32cb0       SymSetHomeDirectoryW
+    ord= 159  rva=0x32f20       SymSetOptions
+    ord= 160  rva=0x32760       SymSetParentWindow
+    ord= 161  rva=0x331a0       SymSetScopeFromAddr
+    ord= 162  rva=0x33250       SymSetScopeFromIndex
+    ord= 163  rva=0x37750       SymSetSearchPath
+    ord= 164  rva=0x37790       SymSetSearchPathW
+    ord= 167  rva=0x4b850       SymSrvGetFileIndexInfo
+    ord= 168  rva=0x4b900       SymSrvGetFileIndexInfoW
+    ord= 169  rva=0x4ab90       SymSrvGetFileIndexString
+    ord= 170  rva=0x4aae0       SymSrvGetFileIndexStringW
+    ord= 171  rva=0x4aa90       SymSrvGetFileIndexes
+    ord= 172  rva=0x4a9e0       SymSrvGetFileIndexesW
+    ord= 173  rva=0x4a790       SymSrvGetSupplement
+    ord= 174  rva=0x4a640       SymSrvGetSupplementW
+    ord= 184  rva=0x37180       SymUnloadModule
+    ord= 183  rva=0x36fd0       SymUnloadModule64
+    ord= 187  rva=0x3ae40       UnmapDebugInformation
+    ord= 188  rva=0x242c0       WinDbgExtensionDllInit
+    ord= 198  rva=0x26540       omap
+
+  [REAL-TIME IMPORTS - 52 hookable calls]
+    msvcrt.dll                          memmove
+    msvcrt.dll                          __CxxFrameHandler
+    msvcrt.dll                          fclose
+    msvcrt.dll                          _wgetenv
+    msvcrt.dll                          _get_osfhandle
+    msvcrt.dll                          _close
+    msvcrt.dll                          memset
+    KERNEL32.dll                        GetVersion
+    KERNEL32.dll                        LCMapStringA
+    KERNEL32.dll                        SetFileAttributesA
+    KERNEL32.dll                        GetFileType
+    KERNEL32.dll                        MapViewOfFileEx
+    KERNEL32.dll                        RtlUnwind
+    KERNEL32.dll                        InterlockedCompareExchange
+    KERNEL32.dll                        InterlockedExchange
+    KERNEL32.dll                        GetThreadSelectorEntry
+    KERNEL32.dll                        CreateThread
+    KERNEL32.dll                        GetPriorityClass
+    KERNEL32.dll                        GetThreadPriority
+    KERNEL32.dll                        GetThreadTimes
+    KERNEL32.dll                        GetThreadContext
+    KERNEL32.dll                        GetSystemInfo
+    KERNEL32.dll                        LoadLibraryA
+    KERNEL32.dll                        SetUnhandledExceptionFilter
+    KERNEL32.dll                        GetSystemTimeAsFileTime
+    KERNEL32.dll                        GetCurrentThreadId
+    KERNEL32.dll                        GetTickCount
+    KERNEL32.dll                        GetProcessHeap
+    KERNEL32.dll                        GetFileAttributesA
+    KERNEL32.dll                        SetErrorMode
+    KERNEL32.dll                        GetCurrentProcessId
+    KERNEL32.dll                        CreateFileMappingA
+    KERNEL32.dll                        MapViewOfFile
+    KERNEL32.dll                        FindClose
+    KERNEL32.dll                        SetLastError
+    KERNEL32.dll                        CloseHandle
+    KERNEL32.dll                        GetFileSize
+    KERNEL32.dll                        CreateFileA
+    KERNEL32.dll                        GetLastError
+    KERNEL32.dll                        TlsSetValue
+    KERNEL32.dll                        TlsGetValue
+    KERNEL32.dll                        HeapDestroy
+    KERNEL32.dll                        HeapCreate
+    KERNEL32.dll                        GetVersionExA
+    KERNEL32.dll                        SetFilePointer
+    KERNEL32.dll                        GetCurrentProcess
+    KERNEL32.dll                        UnmapViewOfFile
+    KERNEL32.dll                        CreateDirectoryA
+    KERNEL32.dll                        GetModuleHandleA
+    ADVAPI32.dll                        CryptAcquireContextA
+    ADVAPI32.dll                        RegCloseKey
+    RPCRT4.dll                          UuidCreate
+
+================================================================================
+ALL EXPORTS FROM cnc3game.dat (SAGE Engine core):
+================================================================================
+  ord=   1  rva=0x4eefce      ??0AptFloat@@AAE@M@Z
+  ord=   2  rva=0x4ef0e1      ??0AptFrameStack@@QAE@PAV0@@Z <-- RT
+  ord=   3  rva=0x4ef176      ??0AptFrameStack@@QAE@PAV0@H@Z <-- RT
+  ord=   4  rva=0x4eee4b      ??0AptInteger@@AAE@H@Z
+  ord=   5  rva=0x4ee0d2      ??0EAStringC@@AAE@W4EmptyString@0@@Z
+  ord=   6  rva=0x4ee07a      ??0EAStringC@@QAE@ABV0@@Z
+  ord=   7  rva=0x4ee061      ??0EAStringC@@QAE@QBD@Z
+  ord=   8  rva=0x4ee044      ??0EAStringC@@QAE@XZ
+  ord=   9  rva=0x4eeefa      ??1AptBoolean@@MAE@XZ
+  ord=  10  rva=0x4efbfc      ??1AptDate@@MAE@XZ
+  ord=  11  rva=0x4ef687      ??1AptExtern@@UAE@XZ
+  ord=  12  rva=0x4f0370      ??1AptGlobal@@MAE@XZ
+  ord=  13  rva=0x4f0453      ??1AptGlobalExtensionObject@@MAE@XZ <-- RT
+  ord=  14  rva=0x4efe4e      ??1AptKey@@MAE@XZ
+  ord=  15  rva=0x4efd6b      ??1AptMathObj@@MAE@XZ
+  ord=  16  rva=0x4f00c7      ??1AptMouse@@MAE@XZ
+  ord=  17  rva=0x4f028d      ??1AptMovieClip@@MAE@XZ
+  ord=  18  rva=0x4ef5cb      ??1AptNone@@MAE@XZ
+  ord=  19  rva=0x4eff31      ??1AptSound@@MAE@XZ
+  ord=  20  rva=0x4f01aa      ??1AptStage@@MAE@XZ
+  ord=  21  rva=0x4f0014      ??1AptTextFormat@@MAE@XZ
+  ord=  22  rva=0x4ee979      ??1AptValue@@MAE@XZ
+  ord=  23  rva=0x4ee09a      ??1EAStringC@@QAE@XZ
+  ord=  24  rva=0x4f092d      ??8EAStringC@@QBE_NQBD@Z
+  ord=  25  rva=0x4f08d3      ??9EAStringC@@QBE_NABV0@@Z
+  ord=  26  rva=0x4f099c      ??9EAStringC@@QBE_NQBD@Z
+  ord=  27  rva=0x4f08bb      ??AEAStringC@@QBEIH@Z
+  ord=  28  rva=0x4f0898      ??BEAStringC@@QBEPBDXZ
+  ord=  29  rva=0x4f0a13      ??MEAStringC@@QBE_NQBD@Z
+  ord=  30  rva=0x4f0a82      ??NEAStringC@@QBE_NQBD@Z
+  ord=  31  rva=0x4f08f1      ??OEAStringC@@QBE_NABV0@@Z
+  ord=  32  rva=0x4f0af1      ??OEAStringC@@QBE_NQBD@Z
+  ord=  33  rva=0x4f090f      ??PEAStringC@@QBE_NABV0@@Z
+  ord=  34  rva=0x4f0b68      ??PEAStringC@@QBE_NQBD@Z
+  ord=  35  rva=0x4ef855      ?AddActionBack@AptAnimationTarget@@QAEXPAUAptActionBlock@@PAVAptCIH@@I@Z <-- RT
+  ord=  36  rva=0x4ef87b      ?AddActionFront@AptAnimationTarget@@QAEXPAUAptActionBlock@@PAVAptCIH@@I@Z <-- RT
+  ord=  37  rva=0x4ef8a1      ?AddFunctionBack@AptAnimationTarget@@QAEXPAVAptCIH@@PAVAptValue@@HI@Z <-- RT
+  ord=  38  rva=0x4ef8ca      ?AddFunctionFront@AptAnimationTarget@@QAEXPAVAptCIH@@PAVAptValue@@HI@Z <-- RT
+  ord=  39  rva=0x4f0e3f      ?CalculateHashValue@EAStringC@@QBEXXZ
+  ord=  40  rva=0x4edf7d      ?CanFitBytes@_DOGMA_MemPool@@QBE_NI@Z
+  ord=  41  rva=0x4f0bdf      ?Clear@EAStringC@@QAEXXZ
+  ord=  42  rva=0x4f0c04      ?ClearConstantValue@EAStringC@@QAEXXZ
+  ord=  43  rva=0x4ef1f2      ?ClearScope@AptFrameStack@@QAEXXZ <-- RT
+  ord=  44  rva=0x4f19c9      ?ClearStateFlags@AptCharacterTextInst@@QAEXI@Z <-- RT
+  ord=  45  rva=0x4efb14      ?ClipStackGetTop@AptMath@@SAPAUClipTransform_t@1@XZ <-- RT
+  ord=  46  rva=0x4efb29      ?ClipStackIsEmpty@AptMath@@SA_NXZ
+  ord=  47  rva=0x4efaef      ?ClipStackPop@AptMath@@SAPAUClipTransform_t@1@XZ
+  ord=  48  rva=0x4efaca      ?ClipStackPush@AptMath@@SAPAUClipTransform_t@1@XZ
+  ord=  49  rva=0x4f130f      ?CloneItem@AptCharacterInst@@SAXPBVAptCIH@@PAV2@@Z
+  ord=  50  rva=0x4f0cbf      ?Compare@EAStringC@@QBEHABV1@@Z
+  ord=  51  rva=0x4f0c56      ?Compare@EAStringC@@QBEHQBD@Z
+  ord=  52  rva=0x4f0d68      ?CompareNoCase@EAStringC@@QBEHABV1@@Z
+  ord=  53  rva=0x4f0d43      ?CompareNoCase@EAStringC@@QBEHQBD@Z
+  ord=  54  rva=0x4f0898      ?ConstRawPtr@EAStringC@@QBEPBDXZ
+  ord=  55  rva=0x4edf94      ?ConsumeBytes@_DOGMA_MemPool@@QAEPAXI@Z
+  ord=  56  rva=0x4f076f      ?Create@AptBoolean@@SAPAV1@_N@Z <-- RT
+  ord=  57  rva=0x4eee3b      ?Create@AptString@@SAPAV1@XZ <-- RT
+  ord=  58  rva=0x4f0ffc      ?CreateNewAptFunction@AptExtObject@@KAPAVAptNativeFunction@@PAX@Z <-- RT
+  ord=  59  rva=0x4f0fc6      ?CreateNewAptObject@AptExtObject@@KAPAVAptValue@@H@Z <-- RT
+  ord=  60  rva=0x4f0f1c      ?CreateNewAptObject@AptExtObject@@KAPAVAptValue@@XZ <-- RT
+  ord=  61  rva=0x4f07ed      ?DeallocateBuffer@EAStringC@@CAXQBXI@Z
+  ord=  62  rva=0x4ef9a1      ?DecIntervalTimersSize@AptAnimationTarget@@QAEHXZ <-- RT
+  ord=  63  rva=0x4ef90f      ?DecNewInstSize@AptAnimationTarget@@QAEHXZ <-- RT
+  ord=  64  rva=0x4ef804      ?DecrementDequeLocation@AptActionQueueC@@AAEPAUAptActionPool@1@PAU21@@Z
+  ord=  65  rva=0x4f14b5      ?DestroyGCPointers@AptCharacterInst@@QAEXXZ <-- RT
+  ord=  66  rva=0x509520      ?DragMovieClip@AptAnimationTarget@@QAEXXZ <-- RT
+  ord=  67  rva=0x4f0c16      ?Equal@EAStringC@@QBE_NABV1@@Z
+  ord=  68  rva=0x4f092d      ?Equal@EAStringC@@QBE_NQBD@Z
+  ord=  69  rva=0x4f0c2c      ?EqualNoCase@EAStringC@@QBE_NQBD@Z
+  ord=  70  rva=0x4ef206      ?ExistsInLocalScope@AptFrameStack@@QAE_NPAVEAStringC@@@Z <-- RT
+  ord=  71  rva=0x4ef3f4      ?ExistsInLocalScope@AptScriptFunctionBase@@QAE_NPAVEAStringC@@@Z <-- RT
+  ord=  72  rva=0x4eecf0      ?GetASChanged@AptCIH@@QBE_NXZ <-- RT
+  ord=  73  rva=0x4efa41      ?GetAStickLeft@AptAnimationTarget@@QAEPAUAptAnalogStickInfo@@H@Z <-- RT
+  ord=  74  rva=0x4efa57      ?GetAStickRight@AptAnimationTarget@@QAEPAUAptAnalogStickInfo@@H@Z <-- RT
+  ord=  75  rva=0x4ef846      ?GetActionPool@AptAnimationTarget@@QAEPAVAptActionQueueC@@XZ <-- RT
+  ord=  76  rva=0x4f17de      ?GetAlignment@AptCharacterTextInst@@QBE?AW4AptStringAlignment@@XZ <-- RT
+  ord=  77  rva=0x4f1b8a      ?GetAnimationInst@AptCIH@@QAEPAVAptCharacterAnimationInst@@XZ <-- RT
+  ord=  78  rva=0x4f1b8a      ?GetAnimationInst@AptCIH@@QBEPBVAptCharacterAnimationInst@@XZ <-- RT
+  ord=  79  rva=0x4f0536      ?GetAnimationInst@AptCharacterInst@@QAEPAVAptCharacterAnimationInst@@XZ <-- RT
+  ord=  80  rva=0x545536      ?GetAnimationTarget@AptTarget@@QAEPAVAptAnimationTarget@@XZ <-- RT
+  ord=  81  rva=0x4ef0af      ?GetAt@AptNativeHash@@ABEPAVAptValue@@H@Z <-- RT
+  ord=  82  rva=0x4ef0c7      ?GetAt@AptNativeHash@@CAPAVAptValue@@QAUAptHashItem@@@Z <-- RT
+  ord=  83  rva=0x4efb3a      ?GetAt@AptValueVector@@QAEPAVAptValue@@H@Z <-- RT
+  ord=  84  rva=0x4f16df      ?GetBackgroundColor@AptCharacterTextInst@@QBEIXZ <-- RT
+  ord=  85  rva=0x4f0793      ?GetBool@AptBoolean@@QBE_NXZ <-- RT
+  ord=  86  rva=0x4f1735      ?GetBorderColor@AptCharacterTextInst@@QBEIXZ <-- RT
+  ord=  87  rva=0x4f18a6      ?GetBoundsConst@AptCharacterTextInst@@QBEABUAptRect@@XZ <-- RT
+  ord=  88  rva=0x4f18bf      ?GetBoundsWritable@AptCharacterTextInst@@QAEAAUAptRect@@XZ <-- RT
+  ord=  89  rva=0x4f178b      ?GetBoxAlignment@AptCharacterTextInst@@QBE?AW4AptStringAlignment@@XZ <-- RT
+  ord=  90  rva=0x4f0898      ?GetBuffer@EAStringC@@QBEPBDXZ <-- RT
+  ord=  91  rva=0x4f1b8a      ?GetButtonInst@AptCIH@@QAEPAVAptCharacterButtonInst@@XZ <-- RT
+  ord=  92  rva=0x4f1b8a      ?GetButtonInst@AptCIH@@QBEPBVAptCharacterButtonInst@@XZ <-- RT
+  ord=  93  rva=0x4f0536      ?GetButtonInst@AptCharacterInst@@QAEPAVAptCharacterButtonInst@@XZ <-- RT
+  ord=  94  rva=0x4efaac      ?GetButtonSet@AptAnimationTarget@@QAEPAV?$AptValueSet@PAVAptCIH@@@@XZ <-- RT
+  ord=  95  rva=0x4ee00d      ?GetBytesUsed@_DOGMA_MemPool@@QAEIXZ <-- RT
+  ord=  96  rva=0x4ef943      ?GetCIHMatrixHelper@AptAnimationTarget@@QAEPAPAVAptCIH@@XZ <-- RT
+  ord=  97  rva=0x4eed69      ?GetCIHState@AptCIH@@QBE?AW4AptCIHState@1@XZ <-- RT
+  ord=  98  rva=0x4f137e      ?GetCharacterConst@AptCharacterInst@@QBEPBUAptCharacter@@XZ <-- RT
+  ord=  99  rva=0x4f1167      ?GetCharacterConst@AptRenderItem@@QBEPBUAptCharacter@@XZ <-- RT
+  ord= 100  rva=0x4f1112      ?GetCharacterInst@AptCIH@@QAEPAVAptCharacterInst@@XZ <-- RT
+  ord= 101  rva=0x4f1b8a      ?GetCharacterInst@AptCIH@@QBEPBVAptCharacterInst@@XZ <-- RT
+  ord= 102  rva=0x4f0536      ?GetCharacterInst@AptCharacterInst@@QAEPAV1@XZ <-- RT
+  ord= 103  rva=0x4f139e      ?GetCharacterWritable@AptCharacterInst@@QAEPAUAptCharacter@@XZ <-- RT
+  ord= 104  rva=0x4f1167      ?GetCharacterWritable@AptRenderItem@@QAEPAUAptCharacter@@XZ <-- RT
+  ord= 105  rva=0x4f11d3      ?GetClipDepth@AptCharacterInst@@QBEHXZ <-- RT
+  ord= 106  rva=0x4eea9c      ?GetClipDepth@AptRenderItem@@QBEHXZ <-- RT
+  ord= 107  rva=0x4f1faf      ?GetColorMatrixConst@AptCIH@@QBEPBUAptCXForm@@XZ <-- RT
+  ord= 108  rva=0x4f11b8      ?GetColorMatrixConst@AptCharacterInst@@QBEPBUAptCXForm@@XZ <-- RT
+  ord= 109  rva=0x4f1f8d      ?GetColorMatrixWritable@AptCIH@@QAEPAUAptCXForm@@XZ <-- RT
+  ord= 110  rva=0x4f1205      ?GetColorMatrixWritable@AptCharacterInst@@QAEPAUAptCXForm@@XZ <-- RT
+  ord= 111  rva=0x4f1a37      ?GetCreatedDynamic@AptCharacterTextInst@@QBE_NXZ <-- RT
+  ord= 112  rva=0x4eedff      ?GetCreatedOnFrame@AptCIH@@QBEHXZ <-- RT
+  ord= 113  rva=0x4f1112      ?GetCreatedOnTick@AptRenderItem@@QBEHXZ <-- RT
+  ord= 114  rva=0x4ef846      ?GetCurItem@AptActionQueueC@@QAEPAUAptActionPool@1@XZ <-- RT
+  ord= 115  rva=0x4eeb6a      ?GetCustomPropertiesStr@AptRenderItemCustomControl@@QBEABVEAStringC@@XZ <-- RT
+  ord= 116  rva=0x4ef92f      ?GetDelayedReleaseList@AptAnimationTarget@@SAPAPAVAptCIH@@XZ <-- RT
+  ord= 117  rva=0x4ef939      ?GetDelayedReleaseListSize@AptAnimationTarget@@SAHXZ <-- RT
+  ord= 118  rva=0x4f1ee9      ?GetDepth@AptCIH@@QBEHXZ <-- RT
+  ord= 119  rva=0x4f1364      ?GetDepth@AptCharacterInst@@QBEHXZ <-- RT
+  ord= 120  rva=0x4eeaac      ?GetDepth@AptRenderItem@@QBEHXZ <-- RT
+  ord= 121  rva=0x4f1ff9      ?GetDirtyState@AptCIH@@QBE_NXZ <-- RT
+  ord= 122  rva=0x4ef96f      ?GetDisplayList@AptAnimationTarget@@QAEPAUAptDisplayList@@XZ <-- RT
+  ord= 123  rva=0x545536      ?GetDisplayListNext@AptCIH@@QBEPAV1@XZ <-- RT
+  ord= 124  rva=0x4eead0      ?GetDisplayListParent@AptCIH@@QBEPAV1@XZ <-- RT
+  ord= 125  rva=0x545513      ?GetDisplayListPrevious@AptCIH@@QBEPAV1@XZ <-- RT
+  ord= 126  rva=0x4ef9ec      ?GetDragMC@AptAnimationTarget@@QAEPAVAptValue@@XZ <-- RT
+  ord= 127  rva=0x4ef9fb      ?GetDragPos@AptAnimationTarget@@QAEPAUAptMatrix@@XZ <-- RT
+  ord= 128  rva=0x4f1ae2      ?GetDrawsBackground@AptCharacterTextInst@@QBE_NXZ <-- RT
+  ord= 129  rva=0x4f1a8e      ?GetDrawsBorder@AptCharacterTextInst@@QBE_NXZ <-- RT
+  ord= 130  rva=0x4f1b8a      ?GetDynamicTextInst@AptCIH@@QAEPAVAptCharacterTextInst@@XZ <-- RT
+  ord= 131  rva=0x4f1b8a      ?GetDynamicTextInst@AptCIH@@QBEPBVAptCharacterTextInst@@XZ <-- RT
+  ord= 132  rva=0x4f0536      ?GetDynamicTextInst@AptCharacterInst@@QAEPAVAptCharacterTextInst@@XZ <-- RT
+  ord= 133  rva=0x4f1167      ?GetFirstItem@AptActionQueueC@@QAEPAUAptActionPool@1@XZ <-- RT
+  ord= 134  rva=0x4eec05      ?GetFirstItem@AptDisplayListState@@QAEPAVAptCIH@@XZ <-- RT
+  ord= 135  rva=0x4eec05      ?GetFirstItem@AptDisplayListState@@QBEPBVAptCIH@@XZ <-- RT
+  ord= 136  rva=0x4eec13      ?GetFirstItem@AptPseudoDisplayList@@QAEPAUAptPseudoCIH_t@@XZ <-- RT
+  ord= 137  rva=0x4edfc8      ?GetFirstItem@_DOGMA_MemPool@@QAEPAXXZ <-- RT
+  ord= 138  rva=0x4eefbf      ?GetFloat@AptFloat@@QBEMXZ <-- RT
+  ord= 139  rva=0x4efa9d      ?GetFocusButton@AptAnimationTarget@@QAEPAVAptCIH@@XZ <-- RT
+  ord= 140  rva=0x4f194a      ?GetFontID@AptCharacterTextInst@@QBEHXZ <-- RT
+  ord= 141  rva=0x4f1902      ?GetFontSize@AptCharacterTextInst@@QBEMXZ <-- RT
+  ord= 142  rva=0x4f13de      ?GetHasMask@AptCharacterInst@@QBE_NXZ <-- RT
+  ord= 143  rva=0x4eeadf      ?GetHasMask@AptRenderItem@@QBE_NXZ <-- RT
+  ord= 144  rva=0x4eef15      ?GetHashSize@AptFrameStack@@QAEXXZ <-- RT
+  ord= 145  rva=0x4f08a9      ?GetHashValue@EAStringC@@QBEGXZ <-- RT
+  ord= 146  rva=0x4eedea      ?GetInRemList@AptCIH@@QBE_NXZ <-- RT
+  ord= 147  rva=0x4ef51b      ?GetInScopeChain@AptScriptFunctionBase@@QAEPAVAptValue@@PAVEAStringC@@@Z <-- RT
+  ord= 148  rva=0x4ef960      ?GetInputSet@AptAnimationTarget@@QAEPAV?$AptValueSet@PAVAptCIH@@@@XZ <-- RT
+  ord= 149  rva=0x4ee022      ?GetInstanceName@AptCIH@@QBEABVEAStringC@@XZ <-- RT
+  ord= 150  rva=0x4ef7e1      ?GetInt@AptInteger@@QBEHXZ <-- RT
+  ord= 151  rva=0x4f0898      ?GetInternalBuffer@EAStringC@@ABEPADXZ <-- RT
+  ord= 152  rva=0x4f082d      ?GetInternalMaxSize@EAStringC@@QBEIXZ <-- RT
+  ord= 153  rva=0x4f0857      ?GetInternalRefCount@EAStringC@@QBEIXZ <-- RT
+  ord= 154  rva=0x4f0803      ?GetInternalSize@EAStringC@@QBEIXZ <-- RT
+  ord= 155  rva=0x4ee022      ?GetInternalString@AptString@@QAEPAVEAStringC@@XZ <-- RT
+  ord= 156  rva=0x4f1121      ?GetIntervalTimers@AptAnimationTarget@@QAEPAUAptIntervalTimer@@XZ <-- RT
+  ord= 157  rva=0x4ef0d2      ?GetIntervalTimersSize@AptAnimationTarget@@QAEHXZ <-- RT
+  ord= 158  rva=0x4f13c0      ?GetIsMask@AptCharacterInst@@QBE_NXZ <-- RT
+  ord= 159  rva=0x4eeabc      ?GetIsMask@AptRenderItem@@QBE_NXZ <-- RT
+  ord= 160  rva=0x4f1fd4      ?GetIsPlaying@AptCIH@@QBE_NXZ <-- RT
+  ord= 161  rva=0x4f13fd      ?GetIsVisible@AptCharacterInst@@QBE_NXZ <-- RT
+  ord= 162  rva=0x4eeaf4      ?GetIsVisible@AptRenderItem@@QBE_NXZ <-- RT
+  ord= 163  rva=0x4ef7e1      ?GetLastItem@AptActionQueueC@@QAEPAUAptActionPool@1@XZ <-- RT
+  ord= 164  rva=0x4f187f      ?GetLength@AptCharacterTextInst@@QBEMXZ <-- RT
+  ord= 165  rva=0x4f0803      ?GetLength@EAStringC@@QBEIXZ <-- RT
+  ord= 166  rva=0x4f0536      ?GetLevelInst@AptCharacterInst@@QAEPAVAptCharacterLevelInst@@XZ <-- RT
+  ord= 167  rva=0x4f1112      ?GetLinker@AptTarget@@QAEPAUAptLinker@@XZ <-- RT
+  ord= 168  rva=0x4ef951      ?GetListenerSet@AptAnimationTarget@@QAEPAV?$AptValueSet@PAVAptValue@@@@XZ <-- RT
+  ord= 169  rva=0x4eead0      ?GetLoader@AptTarget@@QAEPAUAptLoader@@XZ <-- RT
+  ord= 170  rva=0x4eead0      ?GetMask@AptRenderItem@@QBEPBV1@XZ <-- RT
+  ord= 171  rva=0x4f167c      ?GetMaskPositionMatrixConst@AptRenderItem@@QBEPBUAptMatrix@@XZ <-- RT
+  ord= 172  rva=0x4f167c      ?GetMaskPositionMatrixWritable@AptRenderItem@@QAEPAUAptMatrix@@XZ <-- RT
+  ord= 173  rva=0x4f1167      ?GetMaxIntervalTimers@AptAnimationTarget@@QAEHXZ <-- RT
+  ord= 174  rva=0x4ef838      ?GetMaxNewMovieClips@AptAnimationTarget@@QAEHXZ <-- RT
+  ord= 175  rva=0x4ee167      ?GetMaxRefCountHit@AptValue@@QBE_NXZ <-- RT
+  ord= 176  rva=0x4f167c      ?GetMaxScroll@AptCharacterTextInst@@QBEIXZ <-- RT
+  ord= 177  rva=0x4f1b8a      ?GetMorphInst@AptCIH@@QAEPAVAptCharacterMorphInst@@XZ <-- RT
+  ord= 178  rva=0x4f1b8a      ?GetMorphInst@AptCIH@@QBEPBVAptCharacterMorphInst@@XZ <-- RT
+  ord= 179  rva=0x4f0536      ?GetMorphInst@AptCharacterInst@@QAEPAVAptCharacterMorphInst@@XZ <-- RT
+  ord= 180  rva=0x4efabb      ?GetMouseListenerSet@AptAnimationTarget@@QAEPAV?$AptValueSet@PAVAptValue@@@@XZ <-- RT
+  ord= 181  rva=0x4f1b36      ?GetMouseWheelEnabled@AptCharacterTextInst@@QBE_NXZ <-- RT
+  ord= 182  rva=0x4f1d5a      ?GetNativeHash@AptCIH@@QBEPAVAptNativeHash@@XZ <-- RT
+  ord= 183  rva=0x4ef901      ?GetNewInstSize@AptAnimationTarget@@QAEHXZ <-- RT
+  ord= 184  rva=0x4ef8f3      ?GetNewInsts@AptAnimationTarget@@QAEPAPAVAptCIH@@XZ <-- RT
+  ord= 185  rva=0x4f1121      ?GetNext@AptTarget@@QAEPAV1@XZ <-- RT
+  ord= 186  rva=0x4ef743      ?GetNextItem@AptActionQueueC@@QAEPAUAptActionPool@1@PAU21@@Z <-- RT
+  ord= 187  rva=0x4f069c      ?GetNumValues@AptValueVector@@QBEHXZ <-- RT
+  ord= 188  rva=0x5048b8      ?GetOnPressObject@AptAnimationTarget@@QAEPAVAptValue@@XZ <-- RT
+  ord= 189  rva=0x50489a      ?GetOnRollOverObject@AptAnimationTarget@@QAEPAVAptValue@@XZ <-- RT
+  ord= 190  rva=0x4f0eca      ?GetParam@AptExtObject@@KAPAVAptValue@@H@Z <-- RT
+  ord= 191  rva=0x4f1167      ?GetParentSprite@AptPseudoDisplayList@@QAEPAVAptCIH@@XZ <-- RT
+  ord= 192  rva=0x4f1f68      ?GetPositionMatrixConst@AptCIH@@QBEPBUAptMatrix@@XZ <-- RT
+  ord= 193  rva=0x4f119d      ?GetPositionMatrixConst@AptCharacterInst@@QBEPBUAptMatrix@@XZ <-- RT
+  ord= 194  rva=0x4f1f46      ?GetPositionMatrixWritable@AptCIH@@QAEPAUAptMatrix@@XZ <-- RT
+  ord= 195  rva=0x4f11ed      ?GetPositionMatrixWritable@AptCharacterInst@@QAEPAUAptMatrix@@XZ <-- RT
+  ord= 196  rva=0x4ef0d2      ?GetPrevious@AptTarget@@QAEPAV1@XZ <-- RT
+  ord= 197  rva=0x4ef846      ?GetPrototype@AptNativeHash@@QBEPAVAptValue@@XZ <-- RT
+  ord= 198  rva=0x4f1158      ?GetQueuedInputsSize@AptAnimationTarget@@QAEHXZ <-- RT
+  ord= 199  rva=0x4eebf6      ?GetRatio@AptRenderItemMorph@@QBEMXZ <-- RT
+  ord= 200  rva=0x4eeb06      ?GetRefCount@AptRenderItem@@QBEHXZ <-- RT
+  ord= 201  rva=0x4f1167      ?GetRenderItem@AptCharacterInst@@QBEPBVAptRenderItem@@XZ <-- RT
+  ord= 202  rva=0x4f1176      ?GetRenderItemAnimation@AptCharacterInst@@IBEPBVAptRenderItemAnimation@@XZ <-- RT
+  ord= 203  rva=0x4f118c      ?GetRenderItemAnimationWritable@AptCharacterInst@@IAEPAVAptRenderItemAnimation@@XZ <-- RT
+  ord= 204  rva=0x4f1176      ?GetRenderItemButton@AptCharacterInst@@IBEPBVAptRenderItemButton@@XZ <-- RT
+  ord= 205  rva=0x4f118c      ?GetRenderItemButtonWritable@AptCharacterInst@@IAEPAVAptRenderItemButton@@XZ <-- RT
+  ord= 206  rva=0x4f1176      ?GetRenderItemCustomControl@AptCharacterInst@@IBEPBVAptRenderItemCustomControl@@XZ <-- RT
+  ord= 207  rva=0x4f118c      ?GetRenderItemCustomControlWritable@AptCharacterInst@@IAEPAVAptRenderItemCustomControl@@XZ <-- RT
+  ord= 208  rva=0x4f1176      ?GetRenderItemDynamicText@AptCharacterInst@@IBEPBVAptRenderItemDynamicText@@XZ <-- RT
+  ord= 209  rva=0x4f118c      ?GetRenderItemDynamicTextWritable@AptCharacterInst@@IAEPAVAptRenderItemDynamicText@@XZ <-- RT
+  ord= 210  rva=0x4f1176      ?GetRenderItemMorph@AptCharacterInst@@IBEPBVAptRenderItemMorph@@XZ <-- RT
+  ord= 211  rva=0x4f118c      ?GetRenderItemMorphWritable@AptCharacterInst@@IAEPAVAptRenderItemMorph@@XZ <-- RT
+  ord= 212  rva=0x4f1176      ?GetRenderItemShape@AptCharacterInst@@IBEPBVAptRenderItemShape@@XZ <-- RT
+  ord= 213  rva=0x4f118c      ?GetRenderItemShapeWritable@AptCharacterInst@@IAEPAVAptRenderItemShape@@XZ <-- RT
+  ord= 214  rva=0x4f1176      ?GetRenderItemSprite@AptCharacterInst@@IBEPBVAptRenderItemSprite@@XZ <-- RT
+  ord= 215  rva=0x4f118c      ?GetRenderItemSpriteWritable@AptCharacterInst@@IAEPAVAptRenderItemSprite@@XZ <-- RT
+  ord= 216  rva=0x4f0536      ?GetRenderItemStaticText@AptCharacterInst@@IBEPBVAptRenderItemStaticText@@XZ <-- RT
+  ord= 217  rva=0x4f118c      ?GetRenderItemStaticTextWritable@AptCharacterInst@@IAEPAVAptRenderItemStaticText@@XZ <-- RT
+  ord= 218  rva=0x4f1158      ?GetRenderManager@AptTarget@@QAEPAVAptBCRenderTreeManager@@XZ <-- RT
+  ord= 219  rva=0x4ee022      ?GetReturnedPointer@_OutsideAllocationT@DOGMA_PoolManager@@QAEPAXXZ <-- RT
+  ord= 220  rva=0x4f169f      ?GetScroll@AptCharacterTextInst@@QBEIXZ <-- RT
+  ord= 221  rva=0x4f1b8a      ?GetShapeInst@AptCIH@@QAEPAVAptCharacterShapeInst@@XZ <-- RT
+  ord= 222  rva=0x4f1b8a      ?GetShapeInst@AptCIH@@QBEPBVAptCharacterShapeInst@@XZ <-- RT
+  ord= 223  rva=0x4f0536      ?GetShapeInst@AptCharacterInst@@QAEPAVAptCharacterShapeInst@@XZ <-- RT
+  ord= 224  rva=0x4f1b8a      ?GetSpriteInst@AptCIH@@QAEPAVAptCharacterSpriteInst@@XZ <-- RT
+  ord= 225  rva=0x4f1b8a      ?GetSpriteInst@AptCIH@@QBEPBVAptCharacterSpriteInst@@XZ <-- RT
+  ord= 226  rva=0x4f0536      ?GetSpriteInst@AptCharacterInst@@QAEPAVAptCharacterSpriteInst@@XZ <-- RT
+  ord= 227  rva=0x4f1b8a      ?GetSpriteInstBase@AptCIH@@QAEPAVAptCharacterSpriteInstBase@@XZ <-- RT
+  ord= 228  rva=0x4f1b8a      ?GetSpriteInstBase@AptCIH@@QBEPBVAptCharacterSpriteInstBase@@XZ <-- RT
+  ord= 229  rva=0x4f0536      ?GetSpriteInstBase@AptCharacterInst@@QAEPAVAptCharacterSpriteInstBase@@XZ <-- RT
+  ord= 230  rva=0x4f1a17      ?GetStateFlags@AptCharacterTextInst@@QBEIXZ <-- RT
+  ord= 231  rva=0x4f1b8a      ?GetStaticTextInst@AptCIH@@QAEPAVAptCharacterStaticTextInst@@XZ <-- RT
+  ord= 232  rva=0x4f1b8a      ?GetStaticTextInst@AptCIH@@QBEPBVAptCharacterStaticTextInst@@XZ <-- RT
+  ord= 233  rva=0x4f0536      ?GetStaticTextInst@AptCharacterInst@@QAEPAVAptCharacterStaticTextInst@@XZ <-- RT
+  ord= 234  rva=0x4f1103      ?GetString@StringPool@@SAPBVEAStringC@@W4StringCode@@@Z <-- RT
+  ord= 235  rva=0x4ee031      ?GetStructOverHead@_OutsideAllocationT@DOGMA_PoolManager@@SAIXZ <-- RT
+  ord= 236  rva=0x4ee039      ?GetStructPointerFromReturnedPointer@_OutsideAllocationT@DOGMA_PoolManager@@SAPAU12@PBX@Z <-- RT
+  ord= 237  rva=0x4eead0      ?GetSuperConstructor@AptPrototype@@QBEPAVAptValue@@XZ <-- RT
+  ord= 238  rva=0x4f201e      ?GetTargetRender@@YAPAVAptTarget@@XZ <-- RT
+  ord= 239  rva=0x4f2014      ?GetTargetSim@@YAPAVAptTarget@@XZ <-- RT
+  ord= 240  rva=0x4eebd3      ?GetTargetStr@AptRenderItemCustomControl@@QBEABVEAStringC@@XZ <-- RT
+  ord= 241  rva=0x4f163c      ?GetTextColor@AptCharacterTextInst@@QBEIXZ <-- RT
+  ord= 242  rva=0x4f196a      ?GetTextFormatConst@AptCharacterTextInst@@QBEPBUTextFormat@@XZ <-- RT
+  ord= 243  rva=0x4f198a      ?GetTextFormatWritable@AptCharacterTextInst@@QAEPAUTextFormat@@XZ <-- RT
+  ord= 244  rva=0x4f1858      ?GetTextHeight@AptCharacterTextInst@@QBEMXZ <-- RT
+  ord= 245  rva=0x4f154d      ?GetTextValueConst@AptCharacterTextInst@@QBEABVEAStringC@@XZ <-- RT
+  ord= 246  rva=0x4f1566      ?GetTextValueWritable@AptCharacterTextInst@@QAEAAVEAStringC@@XZ <-- RT
+  ord= 247  rva=0x4f1831      ?GetTextWidth@AptCharacterTextInst@@QBEMXZ <-- RT
+  ord= 248  rva=0x4efa32      ?GetTopMostSprite@AptAnimationTarget@@QAEPAVAptValue@@XZ <-- RT
+  ord= 249  rva=0x4eebab      ?GetTypeStr@AptRenderItemCustomControl@@QBEABVEAStringC@@XZ <-- RT
+  ord= 250  rva=0x4f0f12      ?GetUndefinedValue@AptExtObject@@KAPAVAptValue@@XZ <-- RT
+  ord= 251  rva=0x4f15a6      ?GetVarValueConst@AptCharacterTextInst@@QBEABVEAStringC@@XZ <-- RT
+  ord= 252  rva=0x4f15bf      ?GetVarValueWritable@AptCharacterTextInst@@QAEAAVEAStringC@@XZ <-- RT
+  ord= 253  rva=0x4f109c      ?GetVariable@AptExtObject@@KAPAVAptValue@@PAV2@QBVEAStringC@@@Z <-- RT
+  ord= 254  rva=0x4efa6d      ?GetXMousePos@AptAnimationTarget@@QAEHXZ <-- RT
+  ord= 255  rva=0x4efa7b      ?GetYMousePos@AptAnimationTarget@@QAEHXZ <-- RT
+  ord= 256  rva=0x4f15ff      ?GetZID@AptCharacterTextInst@@QBEQAXXZ <-- RT
+  ord= 257  rva=0x5048a9      ?GetZId@AptRenderItemCustomControl@@QBEQAXXZ <-- RT
+  ord= 258  rva=0x4eedaf      ?GetZombieCount@AptCIH@@QAEHXZ <-- RT
+  ord= 259  rva=0x4ef7e1      ?Get__Proto__@AptNativeHash@@QBEPAVAptValue@@XZ <-- RT
+  ord= 260  rva=0x4eec95      ?HasClipAction@AptCharacterSpriteInstBase@@QAEHH@Z
+  ord= 261  rva=0x4ef09b      ?HasEventHandler@AptNativeHash@@QAEHH@Z <-- RT
+  ord= 262  rva=0x4f1e73      ?HasMask@AptCIH@@QBE_NXZ
+  ord= 263  rva=0x4f1e06      ?HasMouseEvent@AptCIH@@QAEHXZ <-- RT
+  ord= 264  rva=0x4ef97e      ?IncIntervalTimersSize@AptAnimationTarget@@QAEHXZ <-- RT
+  ord= 265  rva=0x4ef90f      ?IncNewInstSize@AptAnimationTarget@@QAEHXZ <-- RT
+  ord= 266  rva=0x4eed7d      ?IncZombieCount@AptCIH@@QAEXXZ
+  ord= 267  rva=0x4ef743      ?IncrementDequeLocation@AptActionQueueC@@AAEPAUAptActionPool@1@PAU21@@Z
+  ord= 268  rva=0x4f0dd8      ?Invalidate@EAStringC@@QAEXXZ
+  ord= 269  rva=0x4f0ea3      ?InvalidateHashValue@EAStringC@@ABEXXZ
+  ord= 270  rva=0x4f1cdd      ?IsAnimationInst@AptCIH@@QBE_NXZ
+  ord= 271  rva=0x4f1c40      ?IsButtonInst@AptCIH@@QBE_NXZ
+  ord= 272  rva=0x4f0741      ?IsConstantString@AptString@@AAE_NXZ
+  ord= 273  rva=0x4ee0ae      ?IsConstantString@EAStringC@@QAE_NXZ
+  ord= 274  rva=0x4f1d3a      ?IsCustomControlInst@AptCIH@@QBE_NXZ
+  ord= 275  rva=0x4f1c7e      ?IsDynamicTextInst@AptCIH@@QBE_NXZ
+  ord= 276  rva=0x4ef04e      ?IsEmpty@AptNativeHash@@QBE_NXZ
+  ord= 277  rva=0x4f087f      ?IsEmpty@EAStringC@@QBE_NXZ
+  ord= 278  rva=0x4eeb5f      ?IsHighestRevisionItem@AptRenderItem@@QBE_NXZ <-- RT
+  ord= 279  rva=0x4eed08      ?IsInCtor@AptCIH@@QBE_NXZ
+  ord= 280  rva=0x4ef776      ?IsLastItem@AptActionQueueC@@QAE_NPAUAptActionPool@1@@Z
+  ord= 281  rva=0x4ef791      ?IsLastItemOrBeyond@AptActionQueueC@@QAE_NPAUAptActionPool@1@@Z
+  ord= 282  rva=0x4f1cfd      ?IsLevelInst@AptCIH@@QBE_NXZ
+  ord= 283  rva=0x4f1e52      ?IsMask@AptCIH@@QBE_NXZ
+  ord= 284  rva=0x4f1cbd      ?IsMorphInst@AptCIH@@QBE_NXZ
+  ord= 285  rva=0x4f1d1d      ?IsNone@AptCIH@@QBE_NXZ
+  ord= 286  rva=0x4ee1ab      ?IsReleaseAtEnd@AptValue@@QBE_NXZ
+  ord= 287  rva=0x4eeb52      ?IsRenderableForThisTick@AptRenderItem@@QAE_NH@Z <-- RT
+  ord= 288  rva=0x4f1c60      ?IsShapeInst@AptCIH@@QBE_NXZ
+  ord= 289  rva=0x4f1ba0      ?IsSpriteInst@AptCIH@@QBE_NXZ
+  ord= 290  rva=0x4f1bf0      ?IsSpriteInstBase@AptCIH@@QBE_NXZ
+  ord= 291  rva=0x4f1c9d      ?IsStaticTextInst@AptCIH@@QBE_NXZ
+  ord= 292  rva=0x4f0e29      ?IsValid@EAStringC@@QBE_NXZ
+  ord= 293  rva=0x4f06b7      ?IsVectorFull@AptValueVector@@QBEHXZ
+  ord= 294  rva=0x4eeb52      ?IsWritableForThisTick@AptRenderItem@@QBE_NH@Z <-- RT
+  ord= 295  rva=0x4f12bd      ?ItemFirstChildChanged@AptCharacterInst@@SAXPAVAptCIH@@@Z <-- RT
+  ord= 296  rva=0x4f12e6      ?ItemInserted@AptCharacterInst@@SAXPAVAptCIH@@@Z
+  ord= 297  rva=0x4f123f      ?ItemMoved@AptCharacterInst@@SAXPAVAptCIH@@@Z <-- RT
+  ord= 298  rva=0x4f1268      ?ItemNextSiblingChanged@AptCharacterInst@@SAXPAVAptCIH@@@Z <-- RT
+  ord= 299  rva=0x4ef1d9      ?Lookup@AptFrameStack@@QAEPAVAptValue@@QBVEAStringC@@@Z <-- RT
+  ord= 300  rva=0x4ef1d9      ?Lookup@AptGlobal@@QBEPAVAptValue@@QBVEAStringC@@@Z
+  ord= 301  rva=0x4ef1d9      ?Lookup@AptGlobalExtensionObject@@QAEPAVAptValue@@QBVEAStringC@@@Z <-- RT
+  ord= 302  rva=0x4ef1d9      ?Lookup@AptValueWithHash@@QBEPAVAptValue@@QBVEAStringC@@@Z
+  ord= 303  rva=0x4f1112      ?Manager_GetCreatedOnTick@AptRenderItem@@QBEHXZ <-- RT
+  ord= 304  rva=0x4eead0      ?Manager_GetMask@AptRenderItem@@QAEPAV1@XZ <-- RT
+  ord= 305  rva=0x4eeb3d      ?Manager_IsDeletionMark@AptRenderItem@@QBE_NXZ <-- RT
+  ord= 306  rva=0x4f0dbf      ?MemInitialize@EAStringC@@SAXQAUAptUserFunctions@@@Z
+  ord= 307  rva=0x4f0dcc      ?MemUninitialize@EAStringC@@SAXXZ
+  ord= 308  rva=0x4f0677      ?PopValue@AptValueVector@@QAEPAVAptValue@@XZ
+  ord= 309  rva=0x97be        ?PostStaticInit@Debug@@CAXXZ
+  ord= 310  rva=0x84e1        ?PreStaticInit@Debug@@CAPAV1@XZ
+  ord= 311  rva=0x4edfd7      ?PtrIsInThisPool@_DOGMA_MemPool@@QBE_NPBX@Z
+  ord= 312  rva=0x4efb83      ?RemoveAt@AptValueVector@@QAEXH@Z <-- RT
+  ord= 313  rva=0x4eec5e      ?RemoveClipAction@AptCharacterSpriteInstBase@@QAEXH@Z <-- RT
+  ord= 314  rva=0x4f1dc4      ?RemoveEventHandler@AptCIH@@QAEXH@Z <-- RT
+  ord= 315  rva=0x4ef07f      ?RemoveEventHandler@AptNativeHash@@QAEXH@Z <-- RT
+  ord= 316  rva=0x4f0da9      ?Reserve@EAStringC@@QAEXH@Z
+  ord= 317  rva=0x4ef225      ?Set@AptFrameStack@@QAEXQBVEAStringC@@QAVAptValue@@@Z <-- RT
+  ord= 318  rva=0x4ef225      ?Set@AptGlobal@@QAEXQBVEAStringC@@QAVAptValue@@@Z <-- RT
+  ord= 319  rva=0x4ef225      ?Set@AptGlobalExtensionObject@@QAEXQBVEAStringC@@QAVAptValue@@@Z <-- RT
+  ord= 320  rva=0x4ef225      ?Set@AptValueWithHash@@QAEXQBVEAStringC@@QAVAptValue@@@Z <-- RT
+  ord= 321  rva=0x4eecc8      ?SetASChanged@AptCIH@@QAEXH@Z <-- RT
+  ord= 322  rva=0x4f17fd      ?SetAlignment@AptCharacterTextInst@@QAEXW4AptStringAlignment@@@Z <-- RT
+  ord= 323  rva=0x4efb5d      ?SetAt@AptValueVector@@QAEXHPAVAptValue@@@Z <-- RT
+  ord= 324  rva=0x4f1702      ?SetBackgroundColor@AptCharacterTextInst@@QAEXI@Z <-- RT
+  ord= 325  rva=0x4f1758      ?SetBorderColor@AptCharacterTextInst@@QAEXI@Z <-- RT
+  ord= 326  rva=0x4f18da      ?SetBounds@AptCharacterTextInst@@QAEXABUAptRect@@@Z <-- RT
+  ord= 327  rva=0x4f17aa      ?SetBoxAlignment@AptCharacterTextInst@@QAEXW4AptStringAlignment@@@Z <-- RT
+  ord= 328  rva=0x4eed42      ?SetCIHState@AptCIH@@QAEXW4AptCIHState@1@@Z <-- RT
+  ord= 329  rva=0x4f143b      ?SetCharacter@AptCharacterInst@@QAEXPAUAptCharacter@@@Z <-- RT
+  ord= 330  rva=0x4eec2b      ?SetClipAction@AptCharacterSpriteInstBase@@QAEXH@Z <-- RT
+  ord= 331  rva=0x4f121d      ?SetClipDepth@AptCharacterInst@@QAEXH@Z <-- RT
+  ord= 332  rva=0x4eeb27      ?SetClipDepth@AptRenderItem@@QAEXH@Z <-- RT
+  ord= 333  rva=0x4f1a56      ?SetCreatedDynamic@AptCharacterTextInst@@QAEX_N@Z <-- RT
+  ord= 334  rva=0x4eee14      ?SetCreatedOnFrame@AptCIH@@QAEXH@Z <-- RT
+  ord= 335  rva=0x4ef7f0      ?SetCurItem@AptActionQueueC@@QAEXPAUAptActionPool@1@@Z <-- RT
+  ord= 336  rva=0x4eeb79      ?SetCustomPropertiesStr@AptRenderItemCustomControl@@QAEXABVEAStringC@@@Z <-- RT
+  ord= 337  rva=0x4f1f06      ?SetDepth@AptCIH@@QAEXI@Z <-- RT
+  ord= 338  rva=0x4f1419      ?SetDepth@AptCharacterInst@@QAEXH@Z <-- RT
+  ord= 339  rva=0x4eeb11      ?SetDepth@AptRenderItem@@QAEXH@Z <-- RT
+  ord= 340  rva=0x545522      ?SetDisplayListNext@AptCIH@@QAEXPAV1@@Z <-- RT
+  ord= 341  rva=0x4f1f32      ?SetDisplayListParent@AptCIH@@QAEXPAV1@@Z <-- RT
+  ord= 342  rva=0x5454ff      ?SetDisplayListPrevious@AptCIH@@QAEXPAV1@@Z <-- RT
+  ord= 343  rva=0x4ef9d8      ?SetDragMC@AptAnimationTarget@@QAEXPAVAptValue@@@Z <-- RT
+  ord= 344  rva=0x4f1b01      ?SetDrawsBackground@AptCharacterTextInst@@QAEX_N@Z <-- RT
+  ord= 345  rva=0x4f1aad      ?SetDrawsBorder@AptCharacterTextInst@@QAEX_N@Z <-- RT
+  ord= 346  rva=0x4f1d84      ?SetEventHandler@AptCIH@@QAEXH@Z <-- RT
+  ord= 347  rva=0x4ef065      ?SetEventHandler@AptNativeHash@@QAEXH@Z <-- RT
+  ord= 348  rva=0x4efa89      ?SetFocusButton@AptAnimationTarget@@QAEXPAVAptCIH@@@Z <-- RT
+  ord= 349  rva=0x4f1926      ?SetFontSize@AptCharacterTextInst@@QAEXM@Z <-- RT
+  ord= 350  rva=0x4f1ebf      ?SetHasMask@AptCIH@@QAEX_NPAVAptRenderItem@@@Z <-- RT
+  ord= 351  rva=0x4f1478      ?SetHasMask@AptCharacterInst@@QAEX_NPAVAptRenderItem@@@Z <-- RT
+  ord= 352  rva=0x4eed1d      ?SetInCtor@AptCIH@@QAEXI@Z <-- RT
+  ord= 353  rva=0x4ef225      ?SetInLocalScope@AptFrameStack@@QAEXPAVEAStringC@@PAVAptValue@@@Z <-- RT
+  ord= 354  rva=0x4ef452      ?SetInLocalScope@AptScriptFunctionBase@@QAEXPAVEAStringC@@PAVAptValue@@@Z <-- RT
+  ord= 355  rva=0x4eedc4      ?SetInRemList@AptCIH@@QAEX_N@Z <-- RT
+  ord= 356  rva=0x4eecaf      ?SetInstanceName@AptCIH@@QAEXABVEAStringC@@@Z <-- RT
+  ord= 357  rva=0x4f083f      ?SetInternalMaxSize@EAStringC@@AAEXI@Z <-- RT
+  ord= 358  rva=0x4f0868      ?SetInternalRefCount@EAStringC@@AAEXI@Z <-- RT
+  ord= 359  rva=0x4f0815      ?SetInternalSize@EAStringC@@AAEXI@Z <-- RT
+  ord= 360  rva=0x4f1144      ?SetIntervalTimersSize@AptAnimationTarget@@QAEXH@Z <-- RT
+  ord= 361  rva=0x4f1e1c      ?SetIsInserted@AptCIH@@QAEXXZ <-- RT
+  ord= 362  rva=0x4f1e95      ?SetIsMask@AptCIH@@QAEX_NPAUAptMatrix@@@Z <-- RT
+  ord= 363  rva=0x4f1458      ?SetIsMask@AptCharacterInst@@QAEX_NPAUAptMatrix@@@Z <-- RT
+  ord= 364  rva=0x4f1498      ?SetIsVisible@AptCharacterInst@@QAEX_N@Z <-- RT
+  ord= 365  rva=0x4f188e      ?SetLength@AptCharacterTextInst@@QAEXM@Z <-- RT
+  ord= 366  rva=0x4f1291      ?SetMaskedItem@AptCharacterInst@@SAXPAVAptCIH@@_N@Z <-- RT
+  ord= 367  rva=0x4ee17c      ?SetMaxRefCountHit@AptValue@@QAEX_N@Z <-- RT
+  ord= 368  rva=0x4f168b      ?SetMaxScroll@AptCharacterTextInst@@QAEXI@Z <-- RT
+  ord= 369  rva=0x4f1b55      ?SetMouseWheelEnabled@AptCharacterTextInst@@QAEX_N@Z <-- RT
+  ord= 370  rva=0x4f1130      ?SetNext@AptTarget@@QAEXPAV1@@Z <-- RT
+  ord= 371  rva=0x4efa0a      ?SetOnPressObject@AptAnimationTarget@@QAEXPAVAptValue@@@Z <-- RT
+  ord= 372  rva=0x4efa1e      ?SetOnRollOverObject@AptAnimationTarget@@QAEXPAVAptValue@@@Z <-- RT
+  ord= 373  rva=0x4f1144      ?SetPrevious@AptTarget@@QAEXPAV1@@Z <-- RT
+  ord= 374  rva=0x4f07bb      ?SetPrototype@AptObject@@QAEXQAVAptValue@@@Z <-- RT
+  ord= 375  rva=0x4ef9c4      ?SetQueuedInputsSize@AptAnimationTarget@@QAEXH@Z <-- RT
+  ord= 376  rva=0x4f133b      ?SetRootItem@AptCharacterInst@@SAXPAVAptCIH@@@Z <-- RT
+  ord= 377  rva=0x4f16bf      ?SetScroll@AptCharacterTextInst@@QAEXI@Z <-- RT
+  ord= 378  rva=0x4f19f1      ?SetStateFlags@AptCharacterTextInst@@QAEXI@Z <-- RT
+  ord= 379  rva=0x4eebba      ?SetTargetStr@AptRenderItemCustomControl@@QAEXABVEAStringC@@@Z <-- RT
+  ord= 380  rva=0x4f165c      ?SetTextColor@AptCharacterTextInst@@QAEXI@Z <-- RT
+  ord= 381  rva=0x4f19ac      ?SetTextFormat@AptCharacterTextInst@@QAEXPAUTextFormat@@@Z <-- RT
+  ord= 382  rva=0x4f1867      ?SetTextHeight@AptCharacterTextInst@@QAEXM@Z <-- RT
+  ord= 383  rva=0x4f1581      ?SetTextValue@AptCharacterTextInst@@QAEXABVEAStringC@@@Z <-- RT
+  ord= 384  rva=0x4f1840      ?SetTextWidth@AptCharacterTextInst@@QAEXM@Z <-- RT
+  ord= 385  rva=0x4eeb92      ?SetTypeStr@AptRenderItemCustomControl@@QAEXABVEAStringC@@@Z <-- RT
+  ord= 386  rva=0x4f15da      ?SetVarValue@AptCharacterTextInst@@QAEXABVEAStringC@@@Z <-- RT
+  ord= 387  rva=0x4f10e3      ?SetVariable@AptExtObject@@KA_NPAVAptValue@@QBVEAStringC@@QAV2@@Z <-- RT
+  ord= 388  rva=0x4ef488      ?SetWhereExistsInScopeChain@AptScriptFunctionBase@@QAE_NPAVEAStringC@@PAVAptValue@@@Z <-- RT
+  ord= 389  rva=0x4f161f      ?SetZID@AptCharacterTextInst@@QAEXPAX@Z <-- RT
+  ord= 390  rva=0x4eebe2      ?SetZId@AptRenderItemCustomControl@@QAEXPAX@Z <-- RT
+  ord= 391  rva=0x4f07a2      ?Set__Proto__@AptObject@@QAEXQAVAptValue@@@Z <-- RT
+  ord= 392  rva=0x4edf52      ?SetupPool@_DOGMA_MemPool@@QAEXPAU1@I@Z <-- RT
+  ord= 393  rva=0x4f0803      ?Size@EAStringC@@QBEHXZ
+  ord= 394  rva=0x4f0eb6      ?UTF8_IsValid@EAStringC@@SA_NH@Z
+  ord= 395  rva=0x4f07d4      ?UnSet@AptGlobalExtensionObject@@QAEXQBVEAStringC@@@Z <-- RT
+  ord= 396  rva=0x4f0e66      ?UpdateHashValue@EAStringC@@QBEGXZ <-- RT
+  ord= 397  rva=0x4f0e0c      ?Validate@EAStringC@@QAEXABV1@@Z
+  ord= 398  rva=0x4f0df2      ?Validate@EAStringC@@QAEXXZ
+  ord= 399  rva=0x2c71        ?_Allocate@MemoryPool@@YAPAXIW4AllocType@1@@Z
+  ord= 400  rva=0x2c98        ?_AllocateAligned@MemoryPool@@YAPAXIIW4AllocType@1@@Z
+  ord= 401  rva=0x2b08        ?_DumpFragmentation@MemoryPool@@YAXPAU_iobuf@@_NPBD@Z
+  ord= 402  rva=0x2ac8        ?_Exit@MemoryPool@@YAXXZ
+  ord= 403  rva=0x2ce5        ?_Free@MemoryPool@@YAXPAXW4AllocType@1@@Z
+  ord= 404  rva=0x2d1c        ?_GetBlockSize@MemoryPool@@YAIPAX@Z <-- RT
+  ord= 405  rva=0x29f0        ?_Init@MemoryPool@@YAXXZ
+  ord= 406  rva=0x2d05        ?_IsValidBlock@MemoryPool@@YA_NPAX@Z
+  ord= 407  rva=0x2ccf        ?_Reallocate@MemoryPool@@YAPAXPAXIW4AllocType@1@@Z
+  ord= 408  rva=0x2d36        ?_VerifyIntegrity@MemoryPool@@YAXXZ
+  ord= 409  rva=0x4f0536      ?c_array@AptValue@@QBEPAVAptArray@@XZ
+  ord= 410  rva=0x4f0536      ?c_boolean@AptValue@@QBEPAVAptBoolean@@XZ
+  ord= 411  rva=0x4f0542      ?c_cih@AptValue@@QBEPAVAptCIH@@_N@Z
+  ord= 412  rva=0x4f0536      ?c_date@AptValue@@QBEPAVAptDate@@XZ
+  ord= 413  rva=0x4f0536      ?c_float@AptValue@@QBEPAVAptFloat@@XZ
+  ord= 414  rva=0x4f0536      ?c_global@AptValue@@QBEPAVAptGlobal@@XZ
+  ord= 415  rva=0x4f0536      ?c_integer@AptValue@@QBEPAVAptInteger@@XZ
+  ord= 416  rva=0x4f0536      ?c_key@AptValue@@QBEPAVAptKey@@XZ
+  ord= 417  rva=0x4f0536      ?c_loadvars@AptValue@@QBEPAVAptLoadVars@@XZ <-- RT
+  ord= 418  rva=0x4f0536      ?c_lookup@AptValue@@QBEPAVAptLookup@@XZ
+  ord= 419  rva=0x4f0536      ?c_math@AptValue@@QBEPAVAptMathObj@@XZ
+  ord= 420  rva=0x4f0536      ?c_mouse@AptValue@@QBEPAVAptMouse@@XZ
+  ord= 421  rva=0x4f0536      ?c_movieClip@AptValue@@QBEPAVAptMovieClip@@XZ
+  ord= 422  rva=0x4f0536      ?c_nativefunction@AptValue@@QBEPAVAptNativeFunction@@XZ
+  ord= 423  rva=0x4f0536      ?c_object@AptValue@@QBEPAVAptObject@@XZ <-- RT
+  ord= 424  rva=0x4f0536      ?c_prototype@AptValue@@QBEPAVAptPrototype@@XZ
+  ord= 425  rva=0x4f0536      ?c_register@AptValue@@QBEPAVAptRegister@@XZ
+  ord= 426  rva=0x4f0536      ?c_scriptcolour@AptValue@@QBEPAVAptScriptColour@@XZ <-- RT
+  ord= 427  rva=0x4f0536      ?c_scriptfunction@AptValue@@QBEPAVAptScriptFunctionBase@@XZ <-- RT
+  ord= 428  rva=0x4f0536      ?c_sound@AptValue@@QBEPAVAptSound@@XZ
+  ord= 429  rva=0x4f0536      ?c_stage@AptValue@@QBEPAVAptStage@@XZ
+  ord= 430  rva=0x4f0898      ?c_str@EAStringC@@QBEPBDXZ
+  ord= 431  rva=0x4f0536      ?c_textformat@AptValue@@QBEPAVAptTextFormat@@XZ
+  ord= 432  rva=0x4f0536      ?c_xml@AptValue@@QBEPAVAptXml@@XZ
+  ord= 433  rva=0x4f0536      ?c_xmlattributes@AptValue@@QBEPAVAptXmlAttributes@@XZ
+  ord= 434  rva=0x4f0536      ?c_xmlnode@AptValue@@QBEPAVAptXmlNode@@XZ
+  ord= 435  rva=0x4f0728      ?cat@AptString@@QAEXPBD@Z
+  ord= 436  rva=0x4f070f      ?cat@AptString@@QAEXPBVEAStringC@@@Z
+  ord= 437  rva=0x4ef3d3      ?clearThrownValue@AptActionInterpreter@@QAEXXZ
+  ord= 438  rva=0x4f06e0      ?cpy@AptString@@QAEXPBD@Z
+  ord= 439  rva=0x4eecaf      ?cpy@AptString@@QAEXPBVEAStringC@@@Z
+  ord= 440  rva=0x4ef38f      ?doUnwindStack@AptActionInterpreter@@QBE_NXZ <-- RT
+  ord= 441  rva=0x4ef35f      ?getCatchBlockBase@AptAction_TryCatchFinallyBlock@@QBEPAEXZ <-- RT
+  ord= 442  rva=0x4ef2e9      ?getDF2Flag@AptAction_DefineFunction2@@QBEHW4AptDefinefunction2FlagsType@@@Z <-- RT
+  ord= 443  rva=0x4ef374      ?getFinallyBlockBase@AptAction_TryCatchFinallyBlock@@QBEPAEXZ <-- RT
+  ord= 444  rva=0x4ee138      ?getGCMark@AptValue@@QBE_NXZ <-- RT
+  ord= 445  rva=0x4ee152      ?getGCRoot@AptValue@@QBEIXZ <-- RT
+  ord= 446  rva=0x4ee11d      ?getIsDefined@AptValue@@QBE_NXZ <-- RT
+  ord= 447  rva=0x4ee0f1      ?getRefCount@AptValue@@QBEIXZ <-- RT
+  ord= 448  rva=0x4ef3a6      ?getThrownValue@AptActionInterpreter@@QBEPAVAptValue@@XZ <-- RT
+  ord= 449  rva=0x4ef350      ?getTryBlockBase@AptAction_TryCatchFinallyBlock@@QBEPAEXZ <-- RT
+  ord= 450  rva=0x4ee108      ?getVtblIndex@AptValue@@QBE?AW4AptVirtualFunctionTable_Indices@@XZ <-- RT
+  ord= 451  rva=0x4ef305      ?hasCatchBlock@AptAction_TryCatchFinallyBlock@@QBE_NXZ
+  ord= 452  rva=0x4ef31e      ?hasFinallyBlock@AptAction_TryCatchFinallyBlock@@QBE_NXZ
+  ord= 453  rva=0x4ef38f      ?hasThrownValue@AptActionInterpreter@@QBE_NXZ
+  ord= 454  rva=0x4ee588      ?isArray@AptValue@@QBE_NXZ
+  ord= 455  rva=0x4ee31d      ?isBoolean@AptValue@@QBE_NXZ
+  ord= 456  rva=0x4ee750      ?isCIH@AptValue@@QBE_N_N@Z
+  ord= 457  rva=0x4ee849      ?isDate@AptValue@@QBE_NXZ
+  ord= 458  rva=0x4ee4f0      ?isExtern@AptValue@@QBE_NXZ
+  ord= 459  rva=0x4ee401      ?isFloat@AptValue@@QBE_NXZ
+  ord= 460  rva=0x4ee53c      ?isFrameStack@AptValue@@QBE_NXZ <-- RT
+  ord= 461  rva=0x4ee369      ?isInteger@AptValue@@QBE_NXZ
+  ord= 462  rva=0x4ee620      ?isKey@AptValue@@QBE_NXZ
+  ord= 463  rva=0x4ee21d      ?isLoadVars@AptValue@@QBE_NXZ <-- RT
+  ord= 464  rva=0x4ee27a      ?isLookup@AptValue@@QBE_NXZ
+  ord= 465  rva=0x4ee6b8      ?isMath@AptValue@@QBE_NXZ
+  ord= 466  rva=0x4ee66c      ?isMouse@AptValue@@QBE_NXZ
+  ord= 467  rva=0x4ee8e1      ?isMovieClip@AptValue@@QBE_NXZ
+  ord= 468  rva=0x4ee44d      ?isNativeFunction@AptValue@@QBE_NXZ
+  ord= 469  rva=0x4ee23a      ?isNone@AptValue@@QBE_NXZ
+  ord= 470  rva=0x4ee7b1      ?isObject@AptValue@@QBE_NXZ <-- RT
+  ord= 471  rva=0x4ee7fd      ?isPrototype@AptValue@@QBE_NXZ
+  ord= 472  rva=0x4ee3b5      ?isRegister@AptValue@@QBE_NXZ
+  ord= 473  rva=0x4ee704      ?isScriptColour@AptValue@@QBE_NXZ <-- RT
+  ord= 474  rva=0x4ee499      ?isScriptFunction@AptValue@@QBE_NXZ <-- RT
+  ord= 475  rva=0x4ee5d4      ?isSound@AptValue@@QBE_NXZ
+  ord= 476  rva=0x4ee92d      ?isStage@AptValue@@QBE_NXZ
+  ord= 477  rva=0x4ee2c6      ?isString@AptValue@@QBE_NXZ
+  ord= 478  rva=0x4ee895      ?isTextFormat@AptValue@@QBE_NXZ
+  ord= 479  rva=0x4ee257      ?isUndefined@AptValue@@QBE_NXZ
+  ord= 480  rva=0x4ee1e3      ?isXml@AptValue@@QBE_NXZ
+  ord= 481  rva=0x4ee200      ?isXmlAttributes@AptValue@@QBE_NXZ
+  ord= 482  rva=0x4ee1c6      ?isXmlNode@AptValue@@QBE_NXZ
+  ord= 483  rva=0x4ef0d2      ?length@AptArray@@QAEHXZ
+  ord= 484  rva=0x4ef337      ?putCaughtObjectInRegister@AptAction_TryCatchFinallyBlock@@QBE_NXZ <-- RT
+  ord= 485  rva=0x4f0550      ?stackAt@AptActionInterpreter@@QBEPAVAptValue@@H@Z
+  ord= 486  rva=0x4f0574      ?stackGetPop@AptActionInterpreter@@QAEPAVAptValue@@XZ <-- RT
+  ord= 487  rva=0x4f0647      ?stackPop@AptActionInterpreter@@QAEXH@Z
+  ord= 488  rva=0x4f0635      ?stackPop@AptActionInterpreter@@QAEXXZ
+  ord= 489  rva=0x4f061a      ?stackPopAndPush@AptActionInterpreter@@QAEXHQAVAptValue@@@Z
+  ord= 490  rva=0x4f05fc      ?stackPopNoDec@AptActionInterpreter@@QAEXXZ
+  ord= 491  rva=0x4f059d      ?stackPush@AptActionInterpreter@@QAEXQAVAptValue@@@Z
+  ord= 492  rva=0x4f05d5      ?stackPushNoInc@AptActionInterpreter@@QAEXQAVAptValue@@@Z
+  ord= 493  rva=0x4f065f      ?stackSafePop@AptActionInterpreter@@QAEXH@Z
+  ord= 494  rva=0x4ef3b5      ?throwValue@AptActionInterpreter@@QAEXPAVAptValue@@@Z
+
+================================================================================
+ALL EXPORTS FROM patchw32.dll:
+================================================================================
+  ord=  11  rva=0x12810       RTPBatSvr
+  ord=  12  rva=0x129f0       RTPRegSvr
+  ord=  13  rva=0x7b00        RTPRenSvr
+  ord=   1  rva=0xaa20        RTPatchApply32@12
+  ord=   9  rva=0xb490        RTPatchApply32NoCall
+  ord=  10  rva=0xb6e0        RTPatchEnumPatches@12
+  ord=   8  rva=0xad30        RTPatchSetAttribGet@8
+  ord=   7  rva=0xad00        RTPatchSetAttribSet@8
+  ord=   4  rva=0xac70        RTPatchSetCreate@8
+  ord=   5  rva=0xaca0        RTPatchSetDelete@8
+  ord=   3  rva=0xac40        RTPatchSetDirWalk@8
+  ord=   2  rva=0xac10        RTPatchSetOpen@8
+  ord=   6  rva=0xacd0        RTPatchSetRename@8

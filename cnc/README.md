@@ -1,34 +1,20 @@
-# Command and Conquer Research Docs
+# Command & Conquer API Interface (CNC3)
 
-This directory centralizes the Command and Conquer 3 (CNC3) reverse-engineering and tooling guides used in this repository.
+This directory contains the programming interfaces and implementation guides for the Command & Conquer 3: Tiberium Wars API.
 
-## Start Here
+## Contents
 
-- [Command and Conquer Programming Guide](COMMAND_CONQUER_PROGRAMMING_GUIDE.md) - End-to-end workflow for binary analysis, memory scanning, and result interpretation.
+- [**COMMAND_CONQUER_PROGRAMMING_GUIDE.md**](COMMAND_CONQUER_PROGRAMMING_GUIDE.md): The core API documentation, class definitions, and implementation workflow.
+- [**examples/README.md**](./examples/README.md): Runnable custom unit + custom AI example pack with local validation script and SCR interface.
+- [**Internal Analysis**: refer to `P:/ollama-dev/CNC3_GameAPI_SinglePlayer.md` for the underlying technical reference.]
 
-## Related Scripts
+## Quick Start
 
-- `cnc3_memtest.py` - Read-only memory access smoke test.
-- `cnc3_cashscan.py` - Broad float scan for cash-like values.
-- `cnc3_cashdelta.py` - Double-snapshot delta method to find live values.
-- `cnc3_human_cash.py` - Human cash candidate isolation from unique values.
-- `cnc3_allplayers.py` - Multi-sample comparison across known player addresses.
-- `cnc3_analyze.py` - PE export/import extraction into `cnc3_analysis.json`.
-- `cnc3_report.py` - Real-time keyword report from analysis JSON.
-- `cnc3_entrypoints.py` - Categorized symbol and IAT hook candidate report.
+1.  Review the `Core API Classes` in the programming guide.
+2.  Use the `EventManager` to register for game hooks.
+3.  Implement custom logic using the `GameObject`, `Unit`, and `Building` interfaces.
+4.  Test via the in-game debug console (`~`) before deployment.
 
-## Related Reports
+## Notice
 
-- `cnc3_report.txt`
-- `cnc3_entrypoints_out.txt`
-- `cnc3_human_result.txt`
-- `CNC3_Process_Thread_Analysis.md`
-- `CNC3_Network_Anticheat_Analysis.md`
-- `CNC3_GameAPI_SinglePlayer.md`
-
-## Scope
-
-- Primary focus: single-player research workflows.
-- Primary safety posture: read-only memory inspection scripts.
-- Multiplayer context and desync/anticheat behavior are documented in the linked network analysis report.
-
+This interface is designed for **Single-Player/Skirmish** use only. Multiplayer usage will result in desynchronization and account penalties.

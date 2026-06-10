@@ -10,6 +10,8 @@ This example demonstrates a legal Mod SDK style workflow for a custom unit with 
 - `shadow_striker/generated/shadow_striker_ai.scr` - Example script hooks (`OnAIThink`, `OnEnemySpotted`).
 - `shadow_striker/test_state.json` - Local simulation fixture.
 - `validate_custom_unit.py` - Local validator/simulator (no SDK required).
+- `scr_interface.py` - Python interface for parsing/generating SCR scripts.
+- `test_scr_interface.py` - Test suite for SCR interface functionality.
 
 ## Behavior summary
 
@@ -35,3 +37,30 @@ Expected result:
 - This is for offline/single-player modding patterns only.
 - The generated files are examples of SDK-style assets; you can adapt naming/layout to your Mod SDK project structure.
 
+## SCR Interface Usage
+
+The `scr_interface.py` module provides Python bindings for CNC3 script files:
+
+```python
+from scr_interface import SCRInterface, convert_ai_profile_to_scr
+
+# Load existing SCR script
+script = SCRInterface.load_scr("path/to/script.scr")
+
+# Generate SCR from AI profile JSON
+convert_ai_profile_to_scr("ai_profile.json", "output.scr")
+
+# Parse SCR text
+scr_text = "function MyFunc(unit): IssueCommand(unit, \"Move\", null, {100, 200}) end"
+script = SCRInterface.parse_scr(scr_text)
+```
+
+## Testing the SCR Interface
+
+Run the test suite to verify SCR interface functionality:
+
+```powershell
+python P:\ollama-dev\cnc\examples\test_scr_interface.py
+```
+
+Expected result: All tests pass, demonstrating parsing, generation, and conversion capabilities.

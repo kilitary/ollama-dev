@@ -372,7 +372,7 @@ def measure_ttfb_request(url, headers=None):
 
 
 def download_with_progress(url, headers=None):
-    """Download a file with a progress bar"""
+    """Download a file with a progress bar and a per‑second dynamic log."""
     try:
         # Measure TTFB at connection start
         start_time = time.time()
@@ -385,12 +385,17 @@ def download_with_progress(url, headers=None):
         total_size = int(response.headers.get('content-length', 0))
 
         if total_size == 0:
-            # Fallback to non-streaming download
+            # Fallback to non‑streaming download
             response = requests.get(url, headers=headers)
             stats.add_download(len(response.content))
             return response
 
         content = bytearray()
+
+        # Variables for dynamic per‑second log
+        file_name = url.split('/')[-1]
+        downloaded = 0
+        last_log = time.time()
 
         with Progress(
                 SpinnerColumn(),
@@ -406,8 +411,23 @@ def download_with_progress(url, headers=None):
             for chunk in response.iter_content(chunk_size=8192):
                 if chunk:
                     content.extend(chunk)
-                    stats.add_download(len(chunk))
-                    progress.update(task, advance=len(chunk))
+                    chunk_len = len(chunk)
+                    stats.add_download(chunk_len)
+                    progress.update(task, advance=chunk_len)
+
+                    # Update per‑second dynamic log
+                    downloaded += chunk_len
+                    now = time.time()
+                    if now - last_log >= 1.0:
+                        elapsed = now - start_time
+                        speed = downloaded / elapsed if elapsed > 0 else 0
+                        percent = downloaded * 100 / total_size
+                        eta = (total_size - downloaded) / speed if speed > 0 else 0
+                        console.print(
+                            f"{get_timestamp()} [dim]DL[/dim] {file_name} "
+                            f"({downloaded / 1024 / 1024:.2f}/{total_size / 1024 / 1024:.2f} MiB) "
+                            f"@ {speed / 1024 / 1024:.2f} MiB/s, ETA {int(eta)}s ({percent:.1f}%)")
+                        last_log = now
 
         # Create a mock response object
         class MockResponse:
@@ -458,9 +478,13 @@ if prevs:
 tot = 0.
 for link in links:
     if not link.startswith('http'):
-        console.print(f"{get_timestamp()} skip {link}")
+        console.print(f"{get_timestamp()} [dim]skip non-http link: {link}[/dim]")
+        stats.add_skipped()
         continue
     package_name = ''
+
+    # More logging: start of processing each link
+    console.print(f"{get_timestamp()} [bold cyan]🔄 START[/bold cyan] Processing link [{updated}/{total}]: {link[:70]}...")
     # Report stats every 2 seconds
     # if stats.should_report():
     #     stats.report_and_reset()
@@ -481,6 +505,13 @@ for link in links:
         xm = xm_response.text
         xm = json.dumps(xm)
         url = re.findall(r'Primary_Download_URL>(.*?)</Prim', xm)
+        # ADD THIS: Log regex results
+        console.print(f"{get_timestamp()} [dim]🔍 REGEX[/dim] Extracted URLs: {url}")
+        if not url:
+            console.print(f"{get_timestamp()} ❌ [red] ERROR[/red] No Primary_Download_URL found in metadata!")
+            stats.add_error()
+            stats.add_failed()
+            continue
         console.print(f"{get_timestamp()} [bold blue]ℹ️ INFO[/bold blue] Primary download URL: {url[0]}")
         stats.complete_operation("Fetch metadata")
     except Exception as e:
@@ -527,11 +558,14 @@ for link in links:
 
         rand_name = str(random.randrange(10, 99120)) + '.zip'
         dr = str(random.randrange(1, 100000))
+        # ADD THIS: Log temp directory details
+        console.print(f"{get_timestamp()} [dim]📁 TEMP[/dim] Creating temp dir: h:\\upd\\{dr}")
         stats.set_operation("Creating temp directory", package_name, "")
         os.makedirs(rf'h:\upd\{dr}')
         stats.add_temp_dir_created()
         drr = os.path.join(r'h:\upd', dr)
         path = os.path.join(r"h:\upd", dr, rand_name)
+        console.print(f"{get_timestamp()} [dim]📁 TEMP[/dim] Temp path: {path}")
 
         stats.set_operation("Writing archive to disk", package_name, path)
         with open(path, 'wb') as f:
@@ -570,7 +604,9 @@ for link in links:
         exes = glob.glob(f'*.exe')
 
         epath = os.path.join(drr, exes[0])
-        console.print(f"{get_timestamp()} ✅ [bold green] FOUND[/bold green] Executable: {epath}")
+        # ADD THIS: Log exe details
+        exe_size = os.path.getsize(epath)
+        console.print(f"{get_timestamp()} ✅ [bold green] FOUND[/bold green] Executable: {epath} ({exe_size / 1024:.1f} KB)")
         stats.complete_operation("Search executable")
     except Exception as e:
         console.print(f"{get_timestamp()} ❌ [red] ERROR[/red] EXE is broken or infected: {e}")
@@ -583,6 +619,11 @@ for link in links:
     try:
         pe = pefile.PE(epath)
         stats.add_pe_analysis()
+        # ADD THIS: Log PE metadata
+        console.print(f"{get_timestamp()} [dim]🦴 PE INFO[/dim] Machine: 0x{pe.FILE_HEADER.Machine:04x}")
+        console.print(f"{get_timestamp()} [dim]🦴 PE INFO[/dim] Image Base: 0x{pe.OPTIONAL_HEADER.ImageBase:08x}")
+        console.print(f"{get_timestamp()} [dim]🦴 PE INFO[/dim] Entry Point: 0x{pe.OPTIONAL_HEADER.AddressOfEntryPoint:08x}")
+        console.print(f"{get_timestamp()} [dim]🦴 PE INFO[/dim] Sections: {pe.FILE_HEADER.NumberOfSections}")
     except Exception as e:
         console.print(f"{get_timestamp()} 🔒 [red]ERROR[/red] ❌ POSSIBLY PASSWORDED")
         stats.add_error()
@@ -602,10 +643,12 @@ for link in links:
     if pe.FILE_HEADER.Machine == 0x8664:
         dest = os.path.join(rf'T:\!power-tools\NirLauncher\NirSoft\x64\{name}')
         console.print(f"{get_timestamp()} [bold blue]ℹ️ INFO[/bold blue] Detected 🐩 x64 architecture")
+        console.print(f"{get_timestamp()} [dim]📍 DEST[/dim] Target: {dest}")
         stats.add_amd64()
     elif pe.FILE_HEADER.Machine == 0x14c:
         dest = os.path.join(rf'T:\!power-tools\NirLauncher\NirSoft\{name}')
         console.print(f"{get_timestamp()} [bold blue]ℹ️ INFO[/bold blue] Detected 🦍 x86 architecture")
+        console.print(f"{get_timestamp()} [dim]📍 DEST[/dim] Target: {dest}")
         stats.add_x86()
     else:
         console.print(
@@ -615,6 +658,9 @@ for link in links:
         time.sleep(10)
 
     stats.set_operation("Extracting to final destination", package_name, dest)
+    # ADD THIS: Log extraction start
+    console.print(f"{get_timestamp()} [bold cyan]⛈️ EXTRACT[/bold cyan] Source: {path}")
+    console.print(f"{get_timestamp()} [bold cyan]⛈️ EXTRACT[/bold cyan] Destination: {dest}")
     console.print(f"{get_timestamp()} [bold cyan]⛈️ Унпако [/bold cyan] Extracting to final destination: {dest}")
     try:
         os.system(rf'7z x -p0 -y -bb0 {path} -o{dest} > o')
@@ -638,8 +684,7 @@ for link in links:
 console.print(f"\n{get_timestamp()} [bold cyan]📊 Файнал фэнтази статс[/bold cyan]")
 console.print(f"{get_timestamp()} [cyan]⬇️ Тоттл лоадэт:[/cyan] {stats.bytes_downloaded / 1024.0 / 1024.0:.2f} MB")
 console.print(
-    f"{get_timestamp()} [cyan]⬆️ Тоттл аплоадэт (kлol (boot sti11)):[/cyan]"              f""
-    f" {stats.bytes_uploaded / 1024.0 / 1024.0:.2f} MB")
+    f"{get_timestamp()} [cyan]⬆️ Тоттл аплоадэт (kлol (boot sti11)):[/cyan] {stats.bytes_uploaded / 1024.0 / 1024.0:.2f} MB")
 console.print(f"{get_timestamp()} [cyan]📦 Пакт Файлзс (lockl):[/cyan] {stats.files_packed}")
 console.print(f"{get_timestamp()} [cyan]📂 Унпячкэд файлзс:[/cyan] {stats.files_unpacked}")
 console.print(f"{get_timestamp()} [cyan]💼 x86© Files:[/cyan] {stats.files_x86}")

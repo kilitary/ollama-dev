@@ -1,0 +1,5214 @@
+{
+  "CNC3.exe": {
+    "exports": [
+      {
+        "name": "?PatchCallBack@@YGPAXIPAX@Z",
+        "ordinal": 1,
+        "rva": "0x24d10"
+      }
+    ],
+    "imports": {
+      "COMCTL32.dll": [
+        "ImageList_LoadImageW",
+        "_TrackMouseEvent",
+        "ImageList_Draw",
+        "ImageList_Destroy",
+        "ord#17",
+        "ImageList_GetIconSize"
+      ],
+      "WINMM.dll": [
+        "PlaySoundW"
+      ],
+      "KERNEL32.dll": [
+        "GetAtomNameA",
+        "lstrcmpA",
+        "SetThreadPriority",
+        "ResumeThread",
+        "SetEvent",
+        "SuspendThread",
+        "GlobalFlags",
+        "SetErrorMode",
+        "GetVersionExA",
+        "GlobalDeleteAtom",
+        "GlobalFindAtomA",
+        "GlobalAddAtomA",
+        "FreeResource",
+        "GetLocaleInfoA",
+        "EnumResourceLanguagesA",
+        "ConvertDefaultLocale",
+        "GetCurrentThread",
+        "GetCPInfo",
+        "GetOEMCP",
+        "GetPrivateProfileIntA",
+        "WritePrivateProfileStringA",
+        "GetPrivateProfileStringA",
+        "WriteConsoleA",
+        "GetLocaleInfoW",
+        "IsValidLocale",
+        "EnumSystemLocalesA",
+        "GetUserDefaultLCID",
+        "CreateFileW",
+        "GetDriveTypeA",
+        "GetTimeZoneInformation",
+        "GetSystemTimeAsFileTime",
+        "QueryPerformanceCounter",
+        "GetEnvironmentStringsW",
+        "FreeEnvironmentStringsW",
+        "GetEnvironmentStrings",
+        "FreeEnvironmentStringsA",
+        "GlobalGetAtomNameA",
+        "LCMapStringA",
+        "GetConsoleMode",
+        "GetConsoleCP",
+        "GetStringTypeW",
+        "GetStringTypeA",
+        "SetConsoleCtrlHandler",
+        "SetHandleCount",
+        "SetCurrentDirectoryA",
+        "GetFullPathNameW",
+        "GetDateFormatA",
+        "GetTimeFormatA",
+        "IsValidCodePage",
+        "GetStdHandle",
+        "HeapCreate",
+        "FatalAppExitA",
+        "CreateThread",
+        "ExitThread",
+        "GetFileType",
+        "SetStdHandle",
+        "GetStartupInfoA",
+        "GetCommandLineA",
+        "DeleteFileW",
+        "CreateDirectoryA",
+        "ExitProcess",
+        "GetDriveTypeW",
+        "VirtualQuery",
+        "GetSystemInfo",
+        "VirtualProtect",
+        "RtlUnwind",
+        "IsDebuggerPresent",
+        "SetUnhandledExceptionFilter",
+        "UnhandledExceptionFilter",
+        "TerminateProcess",
+        "HeapSize",
+        "HeapReAlloc",
+        "HeapDestroy",
+        "VirtualAlloc",
+        "VirtualFree",
+        "IsProcessorFeaturePresent",
+        "HeapAlloc",
+        "GetProcessHeap",
+        "HeapFree",
+        "InterlockedCompareExchange",
+        "GetACP",
+        "FindNextFileA",
+        "GetFileTime",
+        "SetFileTime",
+        "SystemTimeToFileTime",
+        "LocalFileTimeToFileTime",
+        "CreateFileA",
+        "GetShortPathNameA",
+        "GetFullPathNameA",
+        "FindFirstFileA",
+        "DuplicateHandle",
+        "GetFileSize",
+        "SetEndOfFile",
+        "UnlockFile",
+        "LockFile",
+        "FlushFileBuffers",
+        "SetFilePointer",
+        "WriteFile",
+        "ReadFile",
+        "GetThreadLocale",
+        "DeleteFileA",
+        "MoveFileA",
+        "GetModuleHandleA",
+        "TlsFree",
+        "LocalReAlloc",
+        "TlsSetValue",
+        "TlsAlloc",
+        "GlobalHandle",
+        "GlobalReAlloc",
+        "TlsGetValue",
+        "GetCurrentProcessId",
+        "GetModuleFileNameA",
+        "LocalAlloc",
+        "FileTimeToLocalFileTime",
+        "FileTimeToSystemTime",
+        "GlobalSize",
+        "FormatMessageA",
+        "MulDiv",
+        "OpenMutexA",
+        "Sleep",
+        "LoadLibraryExW",
+        "InterlockedDecrement",
+        "InterlockedIncrement",
+        "GetVersionExW",
+        "DeleteCriticalSection",
+        "InitializeCriticalSection",
+        "GetCommandLineW",
+        "SetCurrentDirectoryW",
+        "GetCurrentDirectoryA",
+        "MoveFileExA",
+        "GetFileAttributesA",
+        "SetFileAttributesA",
+        "CopyFileA",
+        "GetCurrentDirectoryW",
+        "LocalFree",
+        "LoadLibraryA",
+        "GetTempPathW",
+        "GetTickCount",
+        "FindResourceA",
+        "GetStringTypeExW",
+        "GetStringTypeExA",
+        "GetEnvironmentVariableW",
+        "GetEnvironmentVariableA",
+        "lstrlenA",
+        "lstrcmpiA",
+        "CompareStringW",
+        "CompareStringA",
+        "lstrlenW",
+        "GetVersion",
+        "FindFirstFileW",
+        "FindNextFileW",
+        "FindClose",
+        "GetModuleHandleW",
+        "lstrcmpiW",
+        "lstrcmpW",
+        "LoadLibraryW",
+        "FreeLibrary",
+        "GetProcAddress",
+        "GetModuleFileNameW",
+        "FindFirstVolumeW",
+        "GetVolumeInformationW",
+        "FindNextVolumeW",
+        "FindVolumeClose",
+        "GetVolumePathNamesForVolumeNameW",
+        "CreateDirectoryW",
+        "GetFileAttributesW",
+        "MapViewOfFileEx",
+        "GetVolumeInformationA",
+        "UnmapViewOfFile",
+        "CreateEventA",
+        "WaitForMultipleObjects",
+        "CreateMutexA",
+        "GetLastError",
+        "GetFileAttributesExW",
+        "CreateFileMappingW",
+        "CreateProcessW",
+        "OpenProcess",
+        "CloseHandle",
+        "WaitForSingleObject",
+        "GetExitCodeProcess",
+        "SetLastError",
+        "GlobalAlloc",
+        "GlobalLock",
+        "GlobalUnlock",
+        "GlobalFree",
+        "InterlockedExchange",
+        "GetCurrentThreadId",
+        "GetCurrentProcess",
+        "FlushInstructionCache",
+        "FindResourceExW",
+        "FindResourceW",
+        "LoadResource",
+        "LockResource",
+        "SizeofResource",
+        "LeaveCriticalSection",
+        "EnterCriticalSection",
+        "RaiseException",
+        "MultiByteToWideChar",
+        "WideCharToMultiByte",
+        "GetNumberFormatW",
+        "GetConsoleOutputCP",
+        "WriteConsoleW",
+        "LCMapStringW",
+        "SetEnvironmentVariableA"
+      ],
+      "USER32.dll": [
+        "SendDlgItemMessageA",
+        "GetDlgItemTextA",
+        "GetDlgItemInt",
+        "CheckRadioButton",
+        "CheckDlgButton",
+        "GetScrollPos",
+        "SetScrollPos",
+        "GetClassNameA",
+        "SetWindowTextA",
+        "UnregisterClassA",
+        "SetWindowsHookExA",
+        "CallNextHookEx",
+        "GetMessageA",
+        "DispatchMessageA",
+        "IsWindowVisible",
+        "GetKeyState",
+        "PeekMessageA",
+        "GetCursorPos",
+        "ValidateRect",
+        "GetWindowTextLengthA",
+        "GetWindowTextA",
+        "LoadCursorA",
+        "UnhookWindowsHookEx",
+        "GetWindowThreadProcessId",
+        "SendMessageA",
+        "GetWindowLongA",
+        "GetLastActivePopup",
+        "MessageBoxA",
+        "GetMenuState",
+        "GetMenuStringA",
+        "AppendMenuA",
+        "SetWindowLongW",
+        "SendMessageW",
+        "DefWindowProcW",
+        "GetWindowLongW",
+        "CallWindowProcW",
+        "GetActiveWindow",
+        "SetWindowPos",
+        "GetMenuItemID",
+        "InsertMenuA",
+        "GetMenuItemCount",
+        "GetSubMenu",
+        "RemoveMenu",
+        "PostMessageW",
+        "RegisterWindowMessageW",
+        "FindWindowW",
+        "ExitWindowsEx",
+        "GetMessageW",
+        "CharNextW",
+        "DefDlgProcW",
+        "wsprintfW",
+        "RegisterClassW",
+        "PeekMessageW",
+        "DispatchMessageW",
+        "TranslateMessage",
+        "CharUpperW",
+        "CharUpperA",
+        "CharLowerW",
+        "CharLowerA",
+        "MessageBoxW",
+        "CallWindowProcA",
+        "SetRect",
+        "EnableWindow",
+        "ScreenToClient",
+        "SetDlgItemInt",
+        "DialogBoxParamW",
+        "CreateDialogParamW",
+        "ShowWindow",
+        "SetDlgItemTextA",
+        "IsDlgButtonChecked",
+        "IsDialogMessageA",
+        "SetWindowLongA",
+        "ScrollWindowEx",
+        "CopyRect",
+        "GetSysColorBrush",
+        "GetSysColor",
+        "GetClientRect",
+        "DrawTextW",
+        "GetWindowTextW",
+        "GetDC",
+        "ReleaseDC",
+        "GetMenu",
+        "AdjustWindowRectEx",
+        "GetClassInfoExW",
+        "LoadCursorW",
+        "IsWindow",
+        "RegisterClassExW",
+        "CreateWindowExW",
+        "DestroyWindow",
+        "GetWindowRect",
+        "ClientToScreen",
+        "UpdateWindow",
+        "InvalidateRect",
+        "DefWindowProcA",
+        "SetWindowPlacement",
+        "SetScrollInfo",
+        "GetScrollInfo",
+        "DeferWindowPos",
+        "EqualRect",
+        "RegisterClassA",
+        "GetClassInfoA",
+        "GetClassInfoExA",
+        "CreateWindowExA",
+        "PostMessageA",
+        "ShowScrollBar",
+        "GetDialogBaseUnits",
+        "GetScrollRange",
+        "SetScrollRange",
+        "TrackPopupMenu",
+        "TrackPopupMenuEx",
+        "ScrollWindow",
+        "GetMessagePos",
+        "GetMessageTime",
+        "GetTopWindow",
+        "EndDeferWindowPos",
+        "BeginDeferWindowPos",
+        "SetActiveWindow",
+        "GetForegroundWindow",
+        "RemovePropA",
+        "GetPropA",
+        "SetPropA",
+        "GetClassLongA",
+        "IsChild",
+        "WinHelpA",
+        "LoadIconA",
+        "RegisterWindowMessageA",
+        "TabbedTextOutA",
+        "DrawTextA",
+        "DrawTextExA",
+        "GrayStringA",
+        "GetWindowDC",
+        "GetMenuItemInfoA",
+        "DestroyMenu",
+        "ShowOwnedPopups",
+        "DeleteMenu",
+        "CheckMenuItem",
+        "EnableMenuItem",
+        "ModifyMenuA",
+        "LoadBitmapA",
+        "GetMenuCheckMarkDimensions",
+        "SetMenuItemBitmaps",
+        "GetWindowPlacement",
+        "IsIconic",
+        "SystemParametersInfoA",
+        "MoveWindow",
+        "IntersectRect",
+        "SetTimer",
+        "KillTimer",
+        "IsWindowEnabled",
+        "SetCapture",
+        "SetFocus",
+        "GetParent",
+        "GetDlgCtrlID",
+        "SystemParametersInfoW",
+        "GetCapture",
+        "DrawFocusRect",
+        "DrawEdge",
+        "ReleaseCapture",
+        "PtInRect",
+        "InflateRect",
+        "GetSystemMetrics",
+        "BeginPaint",
+        "EndPaint",
+        "GetFocus",
+        "PostThreadMessageW",
+        "GetDlgItem",
+        "SetWindowTextW",
+        "MapWindowPoints",
+        "GetWindow",
+        "EndDialog",
+        "SetCursor",
+        "FillRect",
+        "GetDesktopWindow",
+        "LoadImageW",
+        "PostQuitMessage",
+        "SetDlgItemTextW",
+        "LoadIconW",
+        "SetForegroundWindow",
+        "DestroyIcon",
+        "GetNextDlgTabItem",
+        "CreateDialogIndirectParamA",
+        "OffsetRect"
+      ],
+      "GDI32.dll": [
+        "SetGraphicsMode",
+        "SetWorldTransform",
+        "ModifyWorldTransform",
+        "SetMapMode",
+        "ExcludeClipRect",
+        "IntersectClipRect",
+        "OffsetClipRgn",
+        "LineTo",
+        "MoveToEx",
+        "SetTextAlign",
+        "SetTextJustification",
+        "SetTextCharacterExtra",
+        "SetMapperFlags",
+        "SetArcDirection",
+        "SetColorAdjustment",
+        "SelectClipRgn",
+        "GetClipRgn",
+        "CreateRectRgn",
+        "SelectClipPath",
+        "GetViewportExtEx",
+        "GetWindowExtEx",
+        "GetPixel",
+        "StartDocA",
+        "PtVisible",
+        "RectVisible",
+        "TextOutA",
+        "ExtTextOutA",
+        "SetROP2",
+        "SetViewportOrgEx",
+        "OffsetViewportOrgEx",
+        "SetViewportExtEx",
+        "ScaleViewportExtEx",
+        "SetWindowOrgEx",
+        "OffsetWindowOrgEx",
+        "SetWindowExtEx",
+        "ScaleWindowExtEx",
+        "GetCurrentPositionEx",
+        "ArcTo",
+        "PolyDraw",
+        "PolylineTo",
+        "PolyBezierTo",
+        "ExtSelectClipRgn",
+        "CreateDIBPatternBrushPt",
+        "CreatePatternBrush",
+        "GetStockObject",
+        "SelectPalette",
+        "PlayMetaFileRecord",
+        "GetObjectType",
+        "EnumMetaFile",
+        "PlayMetaFile",
+        "ExtCreatePen",
+        "CreateHatchBrush",
+        "CreateFontIndirectA",
+        "GetTextExtentPoint32A",
+        "CreateRectRgnIndirect",
+        "SetRectRgn",
+        "CombineRgn",
+        "GetMapMode",
+        "DPtoLP",
+        "GetTextMetricsA",
+        "SetPolyFillMode",
+        "RestoreDC",
+        "SaveDC",
+        "GetObjectA",
+        "SetBkColor",
+        "GetClipBox",
+        "GetDCOrgEx",
+        "CreateBitmap",
+        "CreateDCA",
+        "CopyMetaFileA",
+        "GetDeviceCaps",
+        "CreateSolidBrush",
+        "Polygon",
+        "CreatePen",
+        "SetStretchBltMode",
+        "CreateCompatibleBitmap",
+        "BitBlt",
+        "CreateDIBitmap",
+        "StretchBlt",
+        "PatBlt",
+        "SetBkMode",
+        "CreateDIBSection",
+        "SetDIBColorTable",
+        "SelectObject",
+        "DeleteDC",
+        "CreateCompatibleDC",
+        "GetObjectW",
+        "DeleteObject",
+        "CreateFontIndirectW",
+        "Escape",
+        "SetTextColor"
+      ],
+      "WINSPOOL.DRV": [
+        "OpenPrinterA",
+        "DocumentPropertiesA",
+        "ClosePrinter"
+      ],
+      "comdlg32.dll": [
+        "ChooseFontW",
+        "GetFileTitleA"
+      ],
+      "ADVAPI32.dll": [
+        "CheckTokenMembership",
+        "AllocateAndInitializeSid",
+        "RegCloseKey",
+        "RegQueryValueExA",
+        "RegOpenKeyExA",
+        "RegSetValueExA",
+        "RegCreateKeyA",
+        "RegQueryValueA",
+        "RegEnumKeyA",
+        "RegDeleteKeyA",
+        "RegDeleteValueA",
+        "RegOpenKeyA",
+        "RegSetValueA",
+        "OpenProcessToken",
+        "LookupPrivilegeValueW",
+        "AdjustTokenPrivileges",
+        "RegEnumKeyExW",
+        "RegQueryInfoKeyW",
+        "RegDeleteValueW",
+        "RegDeleteKeyW",
+        "RegCreateKeyW",
+        "RegOpenKeyExW",
+        "RegQueryValueExW",
+        "GetNamedSecurityInfoA",
+        "SetNamedSecurityInfoA",
+        "RegCreateKeyExW",
+        "RegSetValueExW",
+        "RegCreateKeyExA",
+        "FreeSid"
+      ],
+      "SHELL32.dll": [
+        "ShellExecuteW",
+        "SHGetFileInfoA",
+        "ExtractIconA",
+        "SHGetSpecialFolderPathW"
+      ],
+      "ole32.dll": [
+        "ReadFmtUserTypeStg",
+        "OleRegGetUserType",
+        "WriteClassStg",
+        "WriteFmtUserTypeStg",
+        "SetConvertStg",
+        "CoTaskMemFree",
+        "CoCreateInstance",
+        "CoTaskMemRealloc",
+        "CoTaskMemAlloc",
+        "CreateStreamOnHGlobal",
+        "ReadClassStg",
+        "StringFromCLSID",
+        "CoTreatAsClass",
+        "CreateBindCtx",
+        "OleDuplicateData",
+        "CoDisconnectObject",
+        "StringFromGUID2",
+        "CLSIDFromString",
+        "ReleaseStgMedium"
+      ],
+      "OLEAUT32.dll": [
+        "VariantInit",
+        "VarBstrFromDate",
+        "VarCyFromStr",
+        "VarBstrFromDec",
+        "VarBstrFromCy",
+        "SysReAllocStringLen",
+        "SystemTimeToVariantTime",
+        "VariantTimeToSystemTime",
+        "SysAllocStringLen",
+        "SafeArrayDestroyDescriptor",
+        "SafeArrayDestroyData",
+        "SafeArrayDestroy",
+        "SafeArrayUnlock",
+        "SafeArrayLock",
+        "SafeArrayPutElement",
+        "SafeArrayPtrOfIndex",
+        "SafeArrayGetElement",
+        "SafeArrayCopy",
+        "SafeArrayAllocDescriptor",
+        "SafeArrayAllocData",
+        "VariantCopy",
+        "VariantChangeType",
+        "SafeArrayRedim",
+        "VariantClear",
+        "SafeArrayCreate",
+        "SafeArrayGetDim",
+        "SafeArrayGetElemsize",
+        "SafeArrayGetLBound",
+        "SafeArrayAccessData",
+        "SafeArrayUnaccessData",
+        "SysStringByteLen",
+        "SysAllocStringByteLen",
+        "SysStringLen",
+        "VarUI4FromStr",
+        "VarDecCmp",
+        "VarDecFromStr",
+        "VarR8FromStr",
+        "VarI4FromStr",
+        "VarDateFromStr",
+        "SysFreeString",
+        "SafeArrayGetUBound"
+      ],
+      "SHLWAPI.dll": [
+        "UrlUnescapeA",
+        "PathCanonicalizeW",
+        "PathStripToRootA",
+        "PathRemoveFileSpecW",
+        "PathCombineW",
+        "PathIsUNCA",
+        "PathFindFileNameA",
+        "PathFindExtensionA",
+        "PathFileExistsW",
+        "PathRemoveExtensionA"
+      ],
+      "gdiplus.dll": [
+        "GdipCreateBitmapFromStream",
+        "GdipGetImagePalette",
+        "GdipGetImagePaletteSize",
+        "GdipGetImagePixelFormat",
+        "GdipGetImageHeight",
+        "GdipCreateBitmapFromStreamICM",
+        "GdipDisposeImage",
+        "GdipDeleteGraphics",
+        "GdipAlloc",
+        "GdipFree",
+        "GdipCreateBitmapFromScan0",
+        "GdipBitmapLockBits",
+        "GdipBitmapUnlockBits",
+        "GdipGetImageGraphicsContext",
+        "GdiplusStartup",
+        "GdipDrawImageI",
+        "GdipCloneImage",
+        "GdipGetImageWidth",
+        "GdiplusShutdown"
+      ],
+      "WININET.dll": [
+        "HttpQueryInfoA",
+        "InternetFindNextFileA",
+        "InternetCloseHandle",
+        "GopherFindFirstFileA",
+        "InternetGetLastResponseInfoA",
+        "InternetOpenA",
+        "InternetSetStatusCallback",
+        "InternetSetFilePointer",
+        "InternetWriteFile",
+        "InternetReadFile",
+        "HttpSendRequestA",
+        "HttpEndRequestA",
+        "HttpSendRequestExA",
+        "GopherGetAttributeA",
+        "FtpOpenFileA",
+        "FtpCommandA",
+        "GopherCreateLocatorA",
+        "FtpFindFirstFileA",
+        "InternetConnectA",
+        "GopherOpenFileA",
+        "InternetOpenUrlA",
+        "HttpOpenRequestA",
+        "InternetErrorDlg",
+        "FtpGetFileA",
+        "FtpPutFileA",
+        "FtpGetCurrentDirectoryA",
+        "FtpSetCurrentDirectoryA",
+        "FtpRemoveDirectoryA",
+        "FtpCreateDirectoryA",
+        "FtpRenameFileA",
+        "FtpDeleteFileA",
+        "InternetQueryDataAvailable",
+        "InternetGetCookieA",
+        "InternetSetCookieA",
+        "InternetSetOptionExA",
+        "InternetQueryOptionA",
+        "InternetCanonicalizeUrlA",
+        "InternetCrackUrlA",
+        "HttpAddRequestHeadersA"
+      ],
+      "OLEACC.dll": [
+        "AccessibleObjectFromWindow",
+        "LresultFromObject",
+        "CreateStdAccessibleObject"
+      ]
+    }
+  },
+  "VistaShellSupport.dll": {
+    "exports": [],
+    "imports": {}
+  },
+  "patchw32.dll": {
+    "exports": [
+      {
+        "name": "RTPBatSvr",
+        "ordinal": 11,
+        "rva": "0x12810"
+      },
+      {
+        "name": "RTPRegSvr",
+        "ordinal": 12,
+        "rva": "0x129f0"
+      },
+      {
+        "name": "RTPRenSvr",
+        "ordinal": 13,
+        "rva": "0x7b00"
+      },
+      {
+        "name": "RTPatchApply32@12",
+        "ordinal": 1,
+        "rva": "0xaa20"
+      },
+      {
+        "name": "RTPatchApply32NoCall",
+        "ordinal": 9,
+        "rva": "0xb490"
+      },
+      {
+        "name": "RTPatchEnumPatches@12",
+        "ordinal": 10,
+        "rva": "0xb6e0"
+      },
+      {
+        "name": "RTPatchSetAttribGet@8",
+        "ordinal": 8,
+        "rva": "0xad30"
+      },
+      {
+        "name": "RTPatchSetAttribSet@8",
+        "ordinal": 7,
+        "rva": "0xad00"
+      },
+      {
+        "name": "RTPatchSetCreate@8",
+        "ordinal": 4,
+        "rva": "0xac70"
+      },
+      {
+        "name": "RTPatchSetDelete@8",
+        "ordinal": 5,
+        "rva": "0xaca0"
+      },
+      {
+        "name": "RTPatchSetDirWalk@8",
+        "ordinal": 3,
+        "rva": "0xac40"
+      },
+      {
+        "name": "RTPatchSetOpen@8",
+        "ordinal": 2,
+        "rva": "0xac10"
+      },
+      {
+        "name": "RTPatchSetRename@8",
+        "ordinal": 6,
+        "rva": "0xacd0"
+      }
+    ],
+    "imports": {
+      "USER32.dll": [
+        "wsprintfA",
+        "LoadStringA",
+        "OemToCharA",
+        "TranslateMessage",
+        "PeekMessageA",
+        "DispatchMessageA",
+        "DdeDisconnect",
+        "CharToOemA",
+        "DdeUninitialize",
+        "DdeFreeStringHandle",
+        "DdeClientTransaction",
+        "DdeCreateDataHandle",
+        "DdeInitializeA",
+        "DdeConnect",
+        "DdeCreateStringHandleA",
+        "wvsprintfA"
+      ],
+      "ADVAPI32.dll": [
+        "RegCloseKey",
+        "RegQueryInfoKeyA",
+        "RegEnumValueA",
+        "RegEnumKeyA",
+        "RegEnumValueW",
+        "RegSetValueExW",
+        "RegEnumKeyW",
+        "RegDeleteValueA",
+        "RegDeleteValueW",
+        "RegQueryValueExW",
+        "RegOpenKeyExW",
+        "RegCreateKeyExW",
+        "RegDeleteKeyA",
+        "RegDeleteKeyW",
+        "RegEnumKeyExA",
+        "SetFileSecurityW",
+        "GetFileSecurityW",
+        "RegOpenKeyExA",
+        "RegSetValueExA",
+        "RegCreateKeyExA",
+        "RegQueryValueExA",
+        "FreeSid",
+        "RevertToSelf",
+        "AccessCheck",
+        "IsValidSecurityDescriptor",
+        "SetSecurityDescriptorOwner",
+        "SetSecurityDescriptorGroup",
+        "SetSecurityDescriptorDacl",
+        "AddAccessAllowedAce",
+        "InitializeAcl",
+        "GetLengthSid",
+        "InitializeSecurityDescriptor",
+        "AllocateAndInitializeSid",
+        "OpenProcessToken",
+        "OpenThreadToken",
+        "ImpersonateSelf"
+      ],
+      "ole32.dll": [
+        "CoUninitialize",
+        "CoInitialize"
+      ],
+      "VERSION.dll": [
+        "GetFileVersionInfoSizeW",
+        "GetFileVersionInfoA",
+        "GetFileVersionInfoW",
+        "GetFileVersionInfoSizeA",
+        "VerQueryValueA"
+      ],
+      "KERNEL32.dll": [
+        "CreateMutexA",
+        "DeleteFileA",
+        "GetProfileSectionA",
+        "VirtualAlloc",
+        "GetPrivateProfileSectionA",
+        "ReadFile",
+        "WriteFile",
+        "VirtualFree",
+        "CreateDirectoryA",
+        "GetLogicalDrives",
+        "FlushFileBuffers",
+        "DeleteFileW",
+        "GetFileType",
+        "MoveFileW",
+        "GetDriveTypeW",
+        "GetCommandLineA",
+        "GetCurrentProcessId",
+        "GetCPInfo",
+        "GetOEMCP",
+        "GetACP",
+        "GetTimeZoneInformation",
+        "GetStartupInfoA",
+        "GlobalFree",
+        "GlobalAlloc",
+        "MulDiv",
+        "GetVersion",
+        "FreeLibrary",
+        "GetDriveTypeA",
+        "GetProcAddress",
+        "LoadLibraryA",
+        "SetEndOfFile",
+        "SetFilePointer",
+        "CloseHandle",
+        "UnmapViewOfFile",
+        "MapViewOfFile",
+        "CreateFileMappingA",
+        "GetFileSize",
+        "CreateFileA",
+        "GetWindowsDirectoryA",
+        "GetShortPathNameA",
+        "GetFullPathNameA",
+        "MoveFileExW",
+        "MoveFileExA",
+        "CopyFileA",
+        "GetFileAttributesA",
+        "GetModuleFileNameA",
+        "MoveFileA",
+        "SetEnvironmentVariableA",
+        "GetTempPathA",
+        "SetErrorMode",
+        "LockResource",
+        "SetFileApisToANSI",
+        "ReleaseMutex",
+        "AreFileApisANSI",
+        "WaitForSingleObject",
+        "LocalFree",
+        "GetLastError",
+        "LocalAlloc",
+        "GetCurrentProcess",
+        "GetCurrentThread",
+        "GetLocalTime",
+        "GetDiskFreeSpaceA",
+        "GetSystemDirectoryA",
+        "WideCharToMultiByte",
+        "FindNextFileW",
+        "SetStdHandle",
+        "GetProfileStringA",
+        "GetPrivateProfileStringA",
+        "GetSystemTime",
+        "FindNextFileA",
+        "SetFileAttributesA",
+        "WriteProfileStringA",
+        "WriteProfileSectionA",
+        "WritePrivateProfileStringA",
+        "WritePrivateProfileSectionA",
+        "WriteProfileStringW",
+        "WritePrivateProfileStringW",
+        "CopyFileW",
+        "GetExitCodeProcess",
+        "CreateProcessA",
+        "lstrcmpiA",
+        "CreateFileW",
+        "GetSystemInfo",
+        "GetFileAttributesW",
+        "LoadResource",
+        "FindResourceA",
+        "SetFileApisToOEM",
+        "MultiByteToWideChar",
+        "GetVolumeInformationA",
+        "FindClose",
+        "GetStdHandle",
+        "FindFirstFileW",
+        "FindFirstFileA",
+        "GetModuleHandleA",
+        "FileTimeToSystemTime",
+        "FileTimeToLocalFileTime",
+        "LocalFileTimeToFileTime",
+        "SystemTimeToFileTime",
+        "SetFileAttributesW",
+        "SetFileTime",
+        "GetCurrentDirectoryA",
+        "GetShortPathNameW",
+        "GetFullPathNameW",
+        "CreateDirectoryW",
+        "RaiseException",
+        "RtlUnwind",
+        "RemoveDirectoryW",
+        "RemoveDirectoryA",
+        "SetEnvironmentVariableW",
+        "SetCurrentDirectoryA",
+        "ExitProcess",
+        "SetCurrentDirectoryW",
+        "GetCurrentDirectoryW",
+        "GetEnvironmentStrings"
+      ]
+    }
+  },
+  "cnc3game.dat": {
+    "exports": [
+      {
+        "name": "??0AptFloat@@AAE@M@Z",
+        "ordinal": 1,
+        "rva": "0x4eefce"
+      },
+      {
+        "name": "??0AptFrameStack@@QAE@PAV0@@Z",
+        "ordinal": 2,
+        "rva": "0x4ef0e1"
+      },
+      {
+        "name": "??0AptFrameStack@@QAE@PAV0@H@Z",
+        "ordinal": 3,
+        "rva": "0x4ef176"
+      },
+      {
+        "name": "??0AptInteger@@AAE@H@Z",
+        "ordinal": 4,
+        "rva": "0x4eee4b"
+      },
+      {
+        "name": "??0EAStringC@@AAE@W4EmptyString@0@@Z",
+        "ordinal": 5,
+        "rva": "0x4ee0d2"
+      },
+      {
+        "name": "??0EAStringC@@QAE@ABV0@@Z",
+        "ordinal": 6,
+        "rva": "0x4ee07a"
+      },
+      {
+        "name": "??0EAStringC@@QAE@QBD@Z",
+        "ordinal": 7,
+        "rva": "0x4ee061"
+      },
+      {
+        "name": "??0EAStringC@@QAE@XZ",
+        "ordinal": 8,
+        "rva": "0x4ee044"
+      },
+      {
+        "name": "??1AptBoolean@@MAE@XZ",
+        "ordinal": 9,
+        "rva": "0x4eeefa"
+      },
+      {
+        "name": "??1AptDate@@MAE@XZ",
+        "ordinal": 10,
+        "rva": "0x4efbfc"
+      },
+      {
+        "name": "??1AptExtern@@UAE@XZ",
+        "ordinal": 11,
+        "rva": "0x4ef687"
+      },
+      {
+        "name": "??1AptGlobal@@MAE@XZ",
+        "ordinal": 12,
+        "rva": "0x4f0370"
+      },
+      {
+        "name": "??1AptGlobalExtensionObject@@MAE@XZ",
+        "ordinal": 13,
+        "rva": "0x4f0453"
+      },
+      {
+        "name": "??1AptKey@@MAE@XZ",
+        "ordinal": 14,
+        "rva": "0x4efe4e"
+      },
+      {
+        "name": "??1AptMathObj@@MAE@XZ",
+        "ordinal": 15,
+        "rva": "0x4efd6b"
+      },
+      {
+        "name": "??1AptMouse@@MAE@XZ",
+        "ordinal": 16,
+        "rva": "0x4f00c7"
+      },
+      {
+        "name": "??1AptMovieClip@@MAE@XZ",
+        "ordinal": 17,
+        "rva": "0x4f028d"
+      },
+      {
+        "name": "??1AptNone@@MAE@XZ",
+        "ordinal": 18,
+        "rva": "0x4ef5cb"
+      },
+      {
+        "name": "??1AptSound@@MAE@XZ",
+        "ordinal": 19,
+        "rva": "0x4eff31"
+      },
+      {
+        "name": "??1AptStage@@MAE@XZ",
+        "ordinal": 20,
+        "rva": "0x4f01aa"
+      },
+      {
+        "name": "??1AptTextFormat@@MAE@XZ",
+        "ordinal": 21,
+        "rva": "0x4f0014"
+      },
+      {
+        "name": "??1AptValue@@MAE@XZ",
+        "ordinal": 22,
+        "rva": "0x4ee979"
+      },
+      {
+        "name": "??1EAStringC@@QAE@XZ",
+        "ordinal": 23,
+        "rva": "0x4ee09a"
+      },
+      {
+        "name": "??8EAStringC@@QBE_NQBD@Z",
+        "ordinal": 24,
+        "rva": "0x4f092d"
+      },
+      {
+        "name": "??9EAStringC@@QBE_NABV0@@Z",
+        "ordinal": 25,
+        "rva": "0x4f08d3"
+      },
+      {
+        "name": "??9EAStringC@@QBE_NQBD@Z",
+        "ordinal": 26,
+        "rva": "0x4f099c"
+      },
+      {
+        "name": "??AEAStringC@@QBEIH@Z",
+        "ordinal": 27,
+        "rva": "0x4f08bb"
+      },
+      {
+        "name": "??BEAStringC@@QBEPBDXZ",
+        "ordinal": 28,
+        "rva": "0x4f0898"
+      },
+      {
+        "name": "??MEAStringC@@QBE_NQBD@Z",
+        "ordinal": 29,
+        "rva": "0x4f0a13"
+      },
+      {
+        "name": "??NEAStringC@@QBE_NQBD@Z",
+        "ordinal": 30,
+        "rva": "0x4f0a82"
+      },
+      {
+        "name": "??OEAStringC@@QBE_NABV0@@Z",
+        "ordinal": 31,
+        "rva": "0x4f08f1"
+      },
+      {
+        "name": "??OEAStringC@@QBE_NQBD@Z",
+        "ordinal": 32,
+        "rva": "0x4f0af1"
+      },
+      {
+        "name": "??PEAStringC@@QBE_NABV0@@Z",
+        "ordinal": 33,
+        "rva": "0x4f090f"
+      },
+      {
+        "name": "??PEAStringC@@QBE_NQBD@Z",
+        "ordinal": 34,
+        "rva": "0x4f0b68"
+      },
+      {
+        "name": "?AddActionBack@AptAnimationTarget@@QAEXPAUAptActionBlock@@PAVAptCIH@@I@Z",
+        "ordinal": 35,
+        "rva": "0x4ef855"
+      },
+      {
+        "name": "?AddActionFront@AptAnimationTarget@@QAEXPAUAptActionBlock@@PAVAptCIH@@I@Z",
+        "ordinal": 36,
+        "rva": "0x4ef87b"
+      },
+      {
+        "name": "?AddFunctionBack@AptAnimationTarget@@QAEXPAVAptCIH@@PAVAptValue@@HI@Z",
+        "ordinal": 37,
+        "rva": "0x4ef8a1"
+      },
+      {
+        "name": "?AddFunctionFront@AptAnimationTarget@@QAEXPAVAptCIH@@PAVAptValue@@HI@Z",
+        "ordinal": 38,
+        "rva": "0x4ef8ca"
+      },
+      {
+        "name": "?CalculateHashValue@EAStringC@@QBEXXZ",
+        "ordinal": 39,
+        "rva": "0x4f0e3f"
+      },
+      {
+        "name": "?CanFitBytes@_DOGMA_MemPool@@QBE_NI@Z",
+        "ordinal": 40,
+        "rva": "0x4edf7d"
+      },
+      {
+        "name": "?Clear@EAStringC@@QAEXXZ",
+        "ordinal": 41,
+        "rva": "0x4f0bdf"
+      },
+      {
+        "name": "?ClearConstantValue@EAStringC@@QAEXXZ",
+        "ordinal": 42,
+        "rva": "0x4f0c04"
+      },
+      {
+        "name": "?ClearScope@AptFrameStack@@QAEXXZ",
+        "ordinal": 43,
+        "rva": "0x4ef1f2"
+      },
+      {
+        "name": "?ClearStateFlags@AptCharacterTextInst@@QAEXI@Z",
+        "ordinal": 44,
+        "rva": "0x4f19c9"
+      },
+      {
+        "name": "?ClipStackGetTop@AptMath@@SAPAUClipTransform_t@1@XZ",
+        "ordinal": 45,
+        "rva": "0x4efb14"
+      },
+      {
+        "name": "?ClipStackIsEmpty@AptMath@@SA_NXZ",
+        "ordinal": 46,
+        "rva": "0x4efb29"
+      },
+      {
+        "name": "?ClipStackPop@AptMath@@SAPAUClipTransform_t@1@XZ",
+        "ordinal": 47,
+        "rva": "0x4efaef"
+      },
+      {
+        "name": "?ClipStackPush@AptMath@@SAPAUClipTransform_t@1@XZ",
+        "ordinal": 48,
+        "rva": "0x4efaca"
+      },
+      {
+        "name": "?CloneItem@AptCharacterInst@@SAXPBVAptCIH@@PAV2@@Z",
+        "ordinal": 49,
+        "rva": "0x4f130f"
+      },
+      {
+        "name": "?Compare@EAStringC@@QBEHABV1@@Z",
+        "ordinal": 50,
+        "rva": "0x4f0cbf"
+      },
+      {
+        "name": "?Compare@EAStringC@@QBEHQBD@Z",
+        "ordinal": 51,
+        "rva": "0x4f0c56"
+      },
+      {
+        "name": "?CompareNoCase@EAStringC@@QBEHABV1@@Z",
+        "ordinal": 52,
+        "rva": "0x4f0d68"
+      },
+      {
+        "name": "?CompareNoCase@EAStringC@@QBEHQBD@Z",
+        "ordinal": 53,
+        "rva": "0x4f0d43"
+      },
+      {
+        "name": "?ConstRawPtr@EAStringC@@QBEPBDXZ",
+        "ordinal": 54,
+        "rva": "0x4f0898"
+      },
+      {
+        "name": "?ConsumeBytes@_DOGMA_MemPool@@QAEPAXI@Z",
+        "ordinal": 55,
+        "rva": "0x4edf94"
+      },
+      {
+        "name": "?Create@AptBoolean@@SAPAV1@_N@Z",
+        "ordinal": 56,
+        "rva": "0x4f076f"
+      },
+      {
+        "name": "?Create@AptString@@SAPAV1@XZ",
+        "ordinal": 57,
+        "rva": "0x4eee3b"
+      },
+      {
+        "name": "?CreateNewAptFunction@AptExtObject@@KAPAVAptNativeFunction@@PAX@Z",
+        "ordinal": 58,
+        "rva": "0x4f0ffc"
+      },
+      {
+        "name": "?CreateNewAptObject@AptExtObject@@KAPAVAptValue@@H@Z",
+        "ordinal": 59,
+        "rva": "0x4f0fc6"
+      },
+      {
+        "name": "?CreateNewAptObject@AptExtObject@@KAPAVAptValue@@XZ",
+        "ordinal": 60,
+        "rva": "0x4f0f1c"
+      },
+      {
+        "name": "?DeallocateBuffer@EAStringC@@CAXQBXI@Z",
+        "ordinal": 61,
+        "rva": "0x4f07ed"
+      },
+      {
+        "name": "?DecIntervalTimersSize@AptAnimationTarget@@QAEHXZ",
+        "ordinal": 62,
+        "rva": "0x4ef9a1"
+      },
+      {
+        "name": "?DecNewInstSize@AptAnimationTarget@@QAEHXZ",
+        "ordinal": 63,
+        "rva": "0x4ef90f"
+      },
+      {
+        "name": "?DecrementDequeLocation@AptActionQueueC@@AAEPAUAptActionPool@1@PAU21@@Z",
+        "ordinal": 64,
+        "rva": "0x4ef804"
+      },
+      {
+        "name": "?DestroyGCPointers@AptCharacterInst@@QAEXXZ",
+        "ordinal": 65,
+        "rva": "0x4f14b5"
+      },
+      {
+        "name": "?DragMovieClip@AptAnimationTarget@@QAEXXZ",
+        "ordinal": 66,
+        "rva": "0x509520"
+      },
+      {
+        "name": "?Equal@EAStringC@@QBE_NABV1@@Z",
+        "ordinal": 67,
+        "rva": "0x4f0c16"
+      },
+      {
+        "name": "?Equal@EAStringC@@QBE_NQBD@Z",
+        "ordinal": 68,
+        "rva": "0x4f092d"
+      },
+      {
+        "name": "?EqualNoCase@EAStringC@@QBE_NQBD@Z",
+        "ordinal": 69,
+        "rva": "0x4f0c2c"
+      },
+      {
+        "name": "?ExistsInLocalScope@AptFrameStack@@QAE_NPAVEAStringC@@@Z",
+        "ordinal": 70,
+        "rva": "0x4ef206"
+      },
+      {
+        "name": "?ExistsInLocalScope@AptScriptFunctionBase@@QAE_NPAVEAStringC@@@Z",
+        "ordinal": 71,
+        "rva": "0x4ef3f4"
+      },
+      {
+        "name": "?GetASChanged@AptCIH@@QBE_NXZ",
+        "ordinal": 72,
+        "rva": "0x4eecf0"
+      },
+      {
+        "name": "?GetAStickLeft@AptAnimationTarget@@QAEPAUAptAnalogStickInfo@@H@Z",
+        "ordinal": 73,
+        "rva": "0x4efa41"
+      },
+      {
+        "name": "?GetAStickRight@AptAnimationTarget@@QAEPAUAptAnalogStickInfo@@H@Z",
+        "ordinal": 74,
+        "rva": "0x4efa57"
+      },
+      {
+        "name": "?GetActionPool@AptAnimationTarget@@QAEPAVAptActionQueueC@@XZ",
+        "ordinal": 75,
+        "rva": "0x4ef846"
+      },
+      {
+        "name": "?GetAlignment@AptCharacterTextInst@@QBE?AW4AptStringAlignment@@XZ",
+        "ordinal": 76,
+        "rva": "0x4f17de"
+      },
+      {
+        "name": "?GetAnimationInst@AptCIH@@QAEPAVAptCharacterAnimationInst@@XZ",
+        "ordinal": 77,
+        "rva": "0x4f1b8a"
+      },
+      {
+        "name": "?GetAnimationInst@AptCIH@@QBEPBVAptCharacterAnimationInst@@XZ",
+        "ordinal": 78,
+        "rva": "0x4f1b8a"
+      },
+      {
+        "name": "?GetAnimationInst@AptCharacterInst@@QAEPAVAptCharacterAnimationInst@@XZ",
+        "ordinal": 79,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?GetAnimationTarget@AptTarget@@QAEPAVAptAnimationTarget@@XZ",
+        "ordinal": 80,
+        "rva": "0x545536"
+      },
+      {
+        "name": "?GetAt@AptNativeHash@@ABEPAVAptValue@@H@Z",
+        "ordinal": 81,
+        "rva": "0x4ef0af"
+      },
+      {
+        "name": "?GetAt@AptNativeHash@@CAPAVAptValue@@QAUAptHashItem@@@Z",
+        "ordinal": 82,
+        "rva": "0x4ef0c7"
+      },
+      {
+        "name": "?GetAt@AptValueVector@@QAEPAVAptValue@@H@Z",
+        "ordinal": 83,
+        "rva": "0x4efb3a"
+      },
+      {
+        "name": "?GetBackgroundColor@AptCharacterTextInst@@QBEIXZ",
+        "ordinal": 84,
+        "rva": "0x4f16df"
+      },
+      {
+        "name": "?GetBool@AptBoolean@@QBE_NXZ",
+        "ordinal": 85,
+        "rva": "0x4f0793"
+      },
+      {
+        "name": "?GetBorderColor@AptCharacterTextInst@@QBEIXZ",
+        "ordinal": 86,
+        "rva": "0x4f1735"
+      },
+      {
+        "name": "?GetBoundsConst@AptCharacterTextInst@@QBEABUAptRect@@XZ",
+        "ordinal": 87,
+        "rva": "0x4f18a6"
+      },
+      {
+        "name": "?GetBoundsWritable@AptCharacterTextInst@@QAEAAUAptRect@@XZ",
+        "ordinal": 88,
+        "rva": "0x4f18bf"
+      },
+      {
+        "name": "?GetBoxAlignment@AptCharacterTextInst@@QBE?AW4AptStringAlignment@@XZ",
+        "ordinal": 89,
+        "rva": "0x4f178b"
+      },
+      {
+        "name": "?GetBuffer@EAStringC@@QBEPBDXZ",
+        "ordinal": 90,
+        "rva": "0x4f0898"
+      },
+      {
+        "name": "?GetButtonInst@AptCIH@@QAEPAVAptCharacterButtonInst@@XZ",
+        "ordinal": 91,
+        "rva": "0x4f1b8a"
+      },
+      {
+        "name": "?GetButtonInst@AptCIH@@QBEPBVAptCharacterButtonInst@@XZ",
+        "ordinal": 92,
+        "rva": "0x4f1b8a"
+      },
+      {
+        "name": "?GetButtonInst@AptCharacterInst@@QAEPAVAptCharacterButtonInst@@XZ",
+        "ordinal": 93,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?GetButtonSet@AptAnimationTarget@@QAEPAV?$AptValueSet@PAVAptCIH@@@@XZ",
+        "ordinal": 94,
+        "rva": "0x4efaac"
+      },
+      {
+        "name": "?GetBytesUsed@_DOGMA_MemPool@@QAEIXZ",
+        "ordinal": 95,
+        "rva": "0x4ee00d"
+      },
+      {
+        "name": "?GetCIHMatrixHelper@AptAnimationTarget@@QAEPAPAVAptCIH@@XZ",
+        "ordinal": 96,
+        "rva": "0x4ef943"
+      },
+      {
+        "name": "?GetCIHState@AptCIH@@QBE?AW4AptCIHState@1@XZ",
+        "ordinal": 97,
+        "rva": "0x4eed69"
+      },
+      {
+        "name": "?GetCharacterConst@AptCharacterInst@@QBEPBUAptCharacter@@XZ",
+        "ordinal": 98,
+        "rva": "0x4f137e"
+      },
+      {
+        "name": "?GetCharacterConst@AptRenderItem@@QBEPBUAptCharacter@@XZ",
+        "ordinal": 99,
+        "rva": "0x4f1167"
+      },
+      {
+        "name": "?GetCharacterInst@AptCIH@@QAEPAVAptCharacterInst@@XZ",
+        "ordinal": 100,
+        "rva": "0x4f1112"
+      },
+      {
+        "name": "?GetCharacterInst@AptCIH@@QBEPBVAptCharacterInst@@XZ",
+        "ordinal": 101,
+        "rva": "0x4f1b8a"
+      },
+      {
+        "name": "?GetCharacterInst@AptCharacterInst@@QAEPAV1@XZ",
+        "ordinal": 102,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?GetCharacterWritable@AptCharacterInst@@QAEPAUAptCharacter@@XZ",
+        "ordinal": 103,
+        "rva": "0x4f139e"
+      },
+      {
+        "name": "?GetCharacterWritable@AptRenderItem@@QAEPAUAptCharacter@@XZ",
+        "ordinal": 104,
+        "rva": "0x4f1167"
+      },
+      {
+        "name": "?GetClipDepth@AptCharacterInst@@QBEHXZ",
+        "ordinal": 105,
+        "rva": "0x4f11d3"
+      },
+      {
+        "name": "?GetClipDepth@AptRenderItem@@QBEHXZ",
+        "ordinal": 106,
+        "rva": "0x4eea9c"
+      },
+      {
+        "name": "?GetColorMatrixConst@AptCIH@@QBEPBUAptCXForm@@XZ",
+        "ordinal": 107,
+        "rva": "0x4f1faf"
+      },
+      {
+        "name": "?GetColorMatrixConst@AptCharacterInst@@QBEPBUAptCXForm@@XZ",
+        "ordinal": 108,
+        "rva": "0x4f11b8"
+      },
+      {
+        "name": "?GetColorMatrixWritable@AptCIH@@QAEPAUAptCXForm@@XZ",
+        "ordinal": 109,
+        "rva": "0x4f1f8d"
+      },
+      {
+        "name": "?GetColorMatrixWritable@AptCharacterInst@@QAEPAUAptCXForm@@XZ",
+        "ordinal": 110,
+        "rva": "0x4f1205"
+      },
+      {
+        "name": "?GetCreatedDynamic@AptCharacterTextInst@@QBE_NXZ",
+        "ordinal": 111,
+        "rva": "0x4f1a37"
+      },
+      {
+        "name": "?GetCreatedOnFrame@AptCIH@@QBEHXZ",
+        "ordinal": 112,
+        "rva": "0x4eedff"
+      },
+      {
+        "name": "?GetCreatedOnTick@AptRenderItem@@QBEHXZ",
+        "ordinal": 113,
+        "rva": "0x4f1112"
+      },
+      {
+        "name": "?GetCurItem@AptActionQueueC@@QAEPAUAptActionPool@1@XZ",
+        "ordinal": 114,
+        "rva": "0x4ef846"
+      },
+      {
+        "name": "?GetCustomPropertiesStr@AptRenderItemCustomControl@@QBEABVEAStringC@@XZ",
+        "ordinal": 115,
+        "rva": "0x4eeb6a"
+      },
+      {
+        "name": "?GetDelayedReleaseList@AptAnimationTarget@@SAPAPAVAptCIH@@XZ",
+        "ordinal": 116,
+        "rva": "0x4ef92f"
+      },
+      {
+        "name": "?GetDelayedReleaseListSize@AptAnimationTarget@@SAHXZ",
+        "ordinal": 117,
+        "rva": "0x4ef939"
+      },
+      {
+        "name": "?GetDepth@AptCIH@@QBEHXZ",
+        "ordinal": 118,
+        "rva": "0x4f1ee9"
+      },
+      {
+        "name": "?GetDepth@AptCharacterInst@@QBEHXZ",
+        "ordinal": 119,
+        "rva": "0x4f1364"
+      },
+      {
+        "name": "?GetDepth@AptRenderItem@@QBEHXZ",
+        "ordinal": 120,
+        "rva": "0x4eeaac"
+      },
+      {
+        "name": "?GetDirtyState@AptCIH@@QBE_NXZ",
+        "ordinal": 121,
+        "rva": "0x4f1ff9"
+      },
+      {
+        "name": "?GetDisplayList@AptAnimationTarget@@QAEPAUAptDisplayList@@XZ",
+        "ordinal": 122,
+        "rva": "0x4ef96f"
+      },
+      {
+        "name": "?GetDisplayListNext@AptCIH@@QBEPAV1@XZ",
+        "ordinal": 123,
+        "rva": "0x545536"
+      },
+      {
+        "name": "?GetDisplayListParent@AptCIH@@QBEPAV1@XZ",
+        "ordinal": 124,
+        "rva": "0x4eead0"
+      },
+      {
+        "name": "?GetDisplayListPrevious@AptCIH@@QBEPAV1@XZ",
+        "ordinal": 125,
+        "rva": "0x545513"
+      },
+      {
+        "name": "?GetDragMC@AptAnimationTarget@@QAEPAVAptValue@@XZ",
+        "ordinal": 126,
+        "rva": "0x4ef9ec"
+      },
+      {
+        "name": "?GetDragPos@AptAnimationTarget@@QAEPAUAptMatrix@@XZ",
+        "ordinal": 127,
+        "rva": "0x4ef9fb"
+      },
+      {
+        "name": "?GetDrawsBackground@AptCharacterTextInst@@QBE_NXZ",
+        "ordinal": 128,
+        "rva": "0x4f1ae2"
+      },
+      {
+        "name": "?GetDrawsBorder@AptCharacterTextInst@@QBE_NXZ",
+        "ordinal": 129,
+        "rva": "0x4f1a8e"
+      },
+      {
+        "name": "?GetDynamicTextInst@AptCIH@@QAEPAVAptCharacterTextInst@@XZ",
+        "ordinal": 130,
+        "rva": "0x4f1b8a"
+      },
+      {
+        "name": "?GetDynamicTextInst@AptCIH@@QBEPBVAptCharacterTextInst@@XZ",
+        "ordinal": 131,
+        "rva": "0x4f1b8a"
+      },
+      {
+        "name": "?GetDynamicTextInst@AptCharacterInst@@QAEPAVAptCharacterTextInst@@XZ",
+        "ordinal": 132,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?GetFirstItem@AptActionQueueC@@QAEPAUAptActionPool@1@XZ",
+        "ordinal": 133,
+        "rva": "0x4f1167"
+      },
+      {
+        "name": "?GetFirstItem@AptDisplayListState@@QAEPAVAptCIH@@XZ",
+        "ordinal": 134,
+        "rva": "0x4eec05"
+      },
+      {
+        "name": "?GetFirstItem@AptDisplayListState@@QBEPBVAptCIH@@XZ",
+        "ordinal": 135,
+        "rva": "0x4eec05"
+      },
+      {
+        "name": "?GetFirstItem@AptPseudoDisplayList@@QAEPAUAptPseudoCIH_t@@XZ",
+        "ordinal": 136,
+        "rva": "0x4eec13"
+      },
+      {
+        "name": "?GetFirstItem@_DOGMA_MemPool@@QAEPAXXZ",
+        "ordinal": 137,
+        "rva": "0x4edfc8"
+      },
+      {
+        "name": "?GetFloat@AptFloat@@QBEMXZ",
+        "ordinal": 138,
+        "rva": "0x4eefbf"
+      },
+      {
+        "name": "?GetFocusButton@AptAnimationTarget@@QAEPAVAptCIH@@XZ",
+        "ordinal": 139,
+        "rva": "0x4efa9d"
+      },
+      {
+        "name": "?GetFontID@AptCharacterTextInst@@QBEHXZ",
+        "ordinal": 140,
+        "rva": "0x4f194a"
+      },
+      {
+        "name": "?GetFontSize@AptCharacterTextInst@@QBEMXZ",
+        "ordinal": 141,
+        "rva": "0x4f1902"
+      },
+      {
+        "name": "?GetHasMask@AptCharacterInst@@QBE_NXZ",
+        "ordinal": 142,
+        "rva": "0x4f13de"
+      },
+      {
+        "name": "?GetHasMask@AptRenderItem@@QBE_NXZ",
+        "ordinal": 143,
+        "rva": "0x4eeadf"
+      },
+      {
+        "name": "?GetHashSize@AptFrameStack@@QAEXXZ",
+        "ordinal": 144,
+        "rva": "0x4eef15"
+      },
+      {
+        "name": "?GetHashValue@EAStringC@@QBEGXZ",
+        "ordinal": 145,
+        "rva": "0x4f08a9"
+      },
+      {
+        "name": "?GetInRemList@AptCIH@@QBE_NXZ",
+        "ordinal": 146,
+        "rva": "0x4eedea"
+      },
+      {
+        "name": "?GetInScopeChain@AptScriptFunctionBase@@QAEPAVAptValue@@PAVEAStringC@@@Z",
+        "ordinal": 147,
+        "rva": "0x4ef51b"
+      },
+      {
+        "name": "?GetInputSet@AptAnimationTarget@@QAEPAV?$AptValueSet@PAVAptCIH@@@@XZ",
+        "ordinal": 148,
+        "rva": "0x4ef960"
+      },
+      {
+        "name": "?GetInstanceName@AptCIH@@QBEABVEAStringC@@XZ",
+        "ordinal": 149,
+        "rva": "0x4ee022"
+      },
+      {
+        "name": "?GetInt@AptInteger@@QBEHXZ",
+        "ordinal": 150,
+        "rva": "0x4ef7e1"
+      },
+      {
+        "name": "?GetInternalBuffer@EAStringC@@ABEPADXZ",
+        "ordinal": 151,
+        "rva": "0x4f0898"
+      },
+      {
+        "name": "?GetInternalMaxSize@EAStringC@@QBEIXZ",
+        "ordinal": 152,
+        "rva": "0x4f082d"
+      },
+      {
+        "name": "?GetInternalRefCount@EAStringC@@QBEIXZ",
+        "ordinal": 153,
+        "rva": "0x4f0857"
+      },
+      {
+        "name": "?GetInternalSize@EAStringC@@QBEIXZ",
+        "ordinal": 154,
+        "rva": "0x4f0803"
+      },
+      {
+        "name": "?GetInternalString@AptString@@QAEPAVEAStringC@@XZ",
+        "ordinal": 155,
+        "rva": "0x4ee022"
+      },
+      {
+        "name": "?GetIntervalTimers@AptAnimationTarget@@QAEPAUAptIntervalTimer@@XZ",
+        "ordinal": 156,
+        "rva": "0x4f1121"
+      },
+      {
+        "name": "?GetIntervalTimersSize@AptAnimationTarget@@QAEHXZ",
+        "ordinal": 157,
+        "rva": "0x4ef0d2"
+      },
+      {
+        "name": "?GetIsMask@AptCharacterInst@@QBE_NXZ",
+        "ordinal": 158,
+        "rva": "0x4f13c0"
+      },
+      {
+        "name": "?GetIsMask@AptRenderItem@@QBE_NXZ",
+        "ordinal": 159,
+        "rva": "0x4eeabc"
+      },
+      {
+        "name": "?GetIsPlaying@AptCIH@@QBE_NXZ",
+        "ordinal": 160,
+        "rva": "0x4f1fd4"
+      },
+      {
+        "name": "?GetIsVisible@AptCharacterInst@@QBE_NXZ",
+        "ordinal": 161,
+        "rva": "0x4f13fd"
+      },
+      {
+        "name": "?GetIsVisible@AptRenderItem@@QBE_NXZ",
+        "ordinal": 162,
+        "rva": "0x4eeaf4"
+      },
+      {
+        "name": "?GetLastItem@AptActionQueueC@@QAEPAUAptActionPool@1@XZ",
+        "ordinal": 163,
+        "rva": "0x4ef7e1"
+      },
+      {
+        "name": "?GetLength@AptCharacterTextInst@@QBEMXZ",
+        "ordinal": 164,
+        "rva": "0x4f187f"
+      },
+      {
+        "name": "?GetLength@EAStringC@@QBEIXZ",
+        "ordinal": 165,
+        "rva": "0x4f0803"
+      },
+      {
+        "name": "?GetLevelInst@AptCharacterInst@@QAEPAVAptCharacterLevelInst@@XZ",
+        "ordinal": 166,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?GetLinker@AptTarget@@QAEPAUAptLinker@@XZ",
+        "ordinal": 167,
+        "rva": "0x4f1112"
+      },
+      {
+        "name": "?GetListenerSet@AptAnimationTarget@@QAEPAV?$AptValueSet@PAVAptValue@@@@XZ",
+        "ordinal": 168,
+        "rva": "0x4ef951"
+      },
+      {
+        "name": "?GetLoader@AptTarget@@QAEPAUAptLoader@@XZ",
+        "ordinal": 169,
+        "rva": "0x4eead0"
+      },
+      {
+        "name": "?GetMask@AptRenderItem@@QBEPBV1@XZ",
+        "ordinal": 170,
+        "rva": "0x4eead0"
+      },
+      {
+        "name": "?GetMaskPositionMatrixConst@AptRenderItem@@QBEPBUAptMatrix@@XZ",
+        "ordinal": 171,
+        "rva": "0x4f167c"
+      },
+      {
+        "name": "?GetMaskPositionMatrixWritable@AptRenderItem@@QAEPAUAptMatrix@@XZ",
+        "ordinal": 172,
+        "rva": "0x4f167c"
+      },
+      {
+        "name": "?GetMaxIntervalTimers@AptAnimationTarget@@QAEHXZ",
+        "ordinal": 173,
+        "rva": "0x4f1167"
+      },
+      {
+        "name": "?GetMaxNewMovieClips@AptAnimationTarget@@QAEHXZ",
+        "ordinal": 174,
+        "rva": "0x4ef838"
+      },
+      {
+        "name": "?GetMaxRefCountHit@AptValue@@QBE_NXZ",
+        "ordinal": 175,
+        "rva": "0x4ee167"
+      },
+      {
+        "name": "?GetMaxScroll@AptCharacterTextInst@@QBEIXZ",
+        "ordinal": 176,
+        "rva": "0x4f167c"
+      },
+      {
+        "name": "?GetMorphInst@AptCIH@@QAEPAVAptCharacterMorphInst@@XZ",
+        "ordinal": 177,
+        "rva": "0x4f1b8a"
+      },
+      {
+        "name": "?GetMorphInst@AptCIH@@QBEPBVAptCharacterMorphInst@@XZ",
+        "ordinal": 178,
+        "rva": "0x4f1b8a"
+      },
+      {
+        "name": "?GetMorphInst@AptCharacterInst@@QAEPAVAptCharacterMorphInst@@XZ",
+        "ordinal": 179,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?GetMouseListenerSet@AptAnimationTarget@@QAEPAV?$AptValueSet@PAVAptValue@@@@XZ",
+        "ordinal": 180,
+        "rva": "0x4efabb"
+      },
+      {
+        "name": "?GetMouseWheelEnabled@AptCharacterTextInst@@QBE_NXZ",
+        "ordinal": 181,
+        "rva": "0x4f1b36"
+      },
+      {
+        "name": "?GetNativeHash@AptCIH@@QBEPAVAptNativeHash@@XZ",
+        "ordinal": 182,
+        "rva": "0x4f1d5a"
+      },
+      {
+        "name": "?GetNewInstSize@AptAnimationTarget@@QAEHXZ",
+        "ordinal": 183,
+        "rva": "0x4ef901"
+      },
+      {
+        "name": "?GetNewInsts@AptAnimationTarget@@QAEPAPAVAptCIH@@XZ",
+        "ordinal": 184,
+        "rva": "0x4ef8f3"
+      },
+      {
+        "name": "?GetNext@AptTarget@@QAEPAV1@XZ",
+        "ordinal": 185,
+        "rva": "0x4f1121"
+      },
+      {
+        "name": "?GetNextItem@AptActionQueueC@@QAEPAUAptActionPool@1@PAU21@@Z",
+        "ordinal": 186,
+        "rva": "0x4ef743"
+      },
+      {
+        "name": "?GetNumValues@AptValueVector@@QBEHXZ",
+        "ordinal": 187,
+        "rva": "0x4f069c"
+      },
+      {
+        "name": "?GetOnPressObject@AptAnimationTarget@@QAEPAVAptValue@@XZ",
+        "ordinal": 188,
+        "rva": "0x5048b8"
+      },
+      {
+        "name": "?GetOnRollOverObject@AptAnimationTarget@@QAEPAVAptValue@@XZ",
+        "ordinal": 189,
+        "rva": "0x50489a"
+      },
+      {
+        "name": "?GetParam@AptExtObject@@KAPAVAptValue@@H@Z",
+        "ordinal": 190,
+        "rva": "0x4f0eca"
+      },
+      {
+        "name": "?GetParentSprite@AptPseudoDisplayList@@QAEPAVAptCIH@@XZ",
+        "ordinal": 191,
+        "rva": "0x4f1167"
+      },
+      {
+        "name": "?GetPositionMatrixConst@AptCIH@@QBEPBUAptMatrix@@XZ",
+        "ordinal": 192,
+        "rva": "0x4f1f68"
+      },
+      {
+        "name": "?GetPositionMatrixConst@AptCharacterInst@@QBEPBUAptMatrix@@XZ",
+        "ordinal": 193,
+        "rva": "0x4f119d"
+      },
+      {
+        "name": "?GetPositionMatrixWritable@AptCIH@@QAEPAUAptMatrix@@XZ",
+        "ordinal": 194,
+        "rva": "0x4f1f46"
+      },
+      {
+        "name": "?GetPositionMatrixWritable@AptCharacterInst@@QAEPAUAptMatrix@@XZ",
+        "ordinal": 195,
+        "rva": "0x4f11ed"
+      },
+      {
+        "name": "?GetPrevious@AptTarget@@QAEPAV1@XZ",
+        "ordinal": 196,
+        "rva": "0x4ef0d2"
+      },
+      {
+        "name": "?GetPrototype@AptNativeHash@@QBEPAVAptValue@@XZ",
+        "ordinal": 197,
+        "rva": "0x4ef846"
+      },
+      {
+        "name": "?GetQueuedInputsSize@AptAnimationTarget@@QAEHXZ",
+        "ordinal": 198,
+        "rva": "0x4f1158"
+      },
+      {
+        "name": "?GetRatio@AptRenderItemMorph@@QBEMXZ",
+        "ordinal": 199,
+        "rva": "0x4eebf6"
+      },
+      {
+        "name": "?GetRefCount@AptRenderItem@@QBEHXZ",
+        "ordinal": 200,
+        "rva": "0x4eeb06"
+      },
+      {
+        "name": "?GetRenderItem@AptCharacterInst@@QBEPBVAptRenderItem@@XZ",
+        "ordinal": 201,
+        "rva": "0x4f1167"
+      },
+      {
+        "name": "?GetRenderItemAnimation@AptCharacterInst@@IBEPBVAptRenderItemAnimation@@XZ",
+        "ordinal": 202,
+        "rva": "0x4f1176"
+      },
+      {
+        "name": "?GetRenderItemAnimationWritable@AptCharacterInst@@IAEPAVAptRenderItemAnimation@@XZ",
+        "ordinal": 203,
+        "rva": "0x4f118c"
+      },
+      {
+        "name": "?GetRenderItemButton@AptCharacterInst@@IBEPBVAptRenderItemButton@@XZ",
+        "ordinal": 204,
+        "rva": "0x4f1176"
+      },
+      {
+        "name": "?GetRenderItemButtonWritable@AptCharacterInst@@IAEPAVAptRenderItemButton@@XZ",
+        "ordinal": 205,
+        "rva": "0x4f118c"
+      },
+      {
+        "name": "?GetRenderItemCustomControl@AptCharacterInst@@IBEPBVAptRenderItemCustomControl@@XZ",
+        "ordinal": 206,
+        "rva": "0x4f1176"
+      },
+      {
+        "name": "?GetRenderItemCustomControlWritable@AptCharacterInst@@IAEPAVAptRenderItemCustomControl@@XZ",
+        "ordinal": 207,
+        "rva": "0x4f118c"
+      },
+      {
+        "name": "?GetRenderItemDynamicText@AptCharacterInst@@IBEPBVAptRenderItemDynamicText@@XZ",
+        "ordinal": 208,
+        "rva": "0x4f1176"
+      },
+      {
+        "name": "?GetRenderItemDynamicTextWritable@AptCharacterInst@@IAEPAVAptRenderItemDynamicText@@XZ",
+        "ordinal": 209,
+        "rva": "0x4f118c"
+      },
+      {
+        "name": "?GetRenderItemMorph@AptCharacterInst@@IBEPBVAptRenderItemMorph@@XZ",
+        "ordinal": 210,
+        "rva": "0x4f1176"
+      },
+      {
+        "name": "?GetRenderItemMorphWritable@AptCharacterInst@@IAEPAVAptRenderItemMorph@@XZ",
+        "ordinal": 211,
+        "rva": "0x4f118c"
+      },
+      {
+        "name": "?GetRenderItemShape@AptCharacterInst@@IBEPBVAptRenderItemShape@@XZ",
+        "ordinal": 212,
+        "rva": "0x4f1176"
+      },
+      {
+        "name": "?GetRenderItemShapeWritable@AptCharacterInst@@IAEPAVAptRenderItemShape@@XZ",
+        "ordinal": 213,
+        "rva": "0x4f118c"
+      },
+      {
+        "name": "?GetRenderItemSprite@AptCharacterInst@@IBEPBVAptRenderItemSprite@@XZ",
+        "ordinal": 214,
+        "rva": "0x4f1176"
+      },
+      {
+        "name": "?GetRenderItemSpriteWritable@AptCharacterInst@@IAEPAVAptRenderItemSprite@@XZ",
+        "ordinal": 215,
+        "rva": "0x4f118c"
+      },
+      {
+        "name": "?GetRenderItemStaticText@AptCharacterInst@@IBEPBVAptRenderItemStaticText@@XZ",
+        "ordinal": 216,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?GetRenderItemStaticTextWritable@AptCharacterInst@@IAEPAVAptRenderItemStaticText@@XZ",
+        "ordinal": 217,
+        "rva": "0x4f118c"
+      },
+      {
+        "name": "?GetRenderManager@AptTarget@@QAEPAVAptBCRenderTreeManager@@XZ",
+        "ordinal": 218,
+        "rva": "0x4f1158"
+      },
+      {
+        "name": "?GetReturnedPointer@_OutsideAllocationT@DOGMA_PoolManager@@QAEPAXXZ",
+        "ordinal": 219,
+        "rva": "0x4ee022"
+      },
+      {
+        "name": "?GetScroll@AptCharacterTextInst@@QBEIXZ",
+        "ordinal": 220,
+        "rva": "0x4f169f"
+      },
+      {
+        "name": "?GetShapeInst@AptCIH@@QAEPAVAptCharacterShapeInst@@XZ",
+        "ordinal": 221,
+        "rva": "0x4f1b8a"
+      },
+      {
+        "name": "?GetShapeInst@AptCIH@@QBEPBVAptCharacterShapeInst@@XZ",
+        "ordinal": 222,
+        "rva": "0x4f1b8a"
+      },
+      {
+        "name": "?GetShapeInst@AptCharacterInst@@QAEPAVAptCharacterShapeInst@@XZ",
+        "ordinal": 223,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?GetSpriteInst@AptCIH@@QAEPAVAptCharacterSpriteInst@@XZ",
+        "ordinal": 224,
+        "rva": "0x4f1b8a"
+      },
+      {
+        "name": "?GetSpriteInst@AptCIH@@QBEPBVAptCharacterSpriteInst@@XZ",
+        "ordinal": 225,
+        "rva": "0x4f1b8a"
+      },
+      {
+        "name": "?GetSpriteInst@AptCharacterInst@@QAEPAVAptCharacterSpriteInst@@XZ",
+        "ordinal": 226,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?GetSpriteInstBase@AptCIH@@QAEPAVAptCharacterSpriteInstBase@@XZ",
+        "ordinal": 227,
+        "rva": "0x4f1b8a"
+      },
+      {
+        "name": "?GetSpriteInstBase@AptCIH@@QBEPBVAptCharacterSpriteInstBase@@XZ",
+        "ordinal": 228,
+        "rva": "0x4f1b8a"
+      },
+      {
+        "name": "?GetSpriteInstBase@AptCharacterInst@@QAEPAVAptCharacterSpriteInstBase@@XZ",
+        "ordinal": 229,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?GetStateFlags@AptCharacterTextInst@@QBEIXZ",
+        "ordinal": 230,
+        "rva": "0x4f1a17"
+      },
+      {
+        "name": "?GetStaticTextInst@AptCIH@@QAEPAVAptCharacterStaticTextInst@@XZ",
+        "ordinal": 231,
+        "rva": "0x4f1b8a"
+      },
+      {
+        "name": "?GetStaticTextInst@AptCIH@@QBEPBVAptCharacterStaticTextInst@@XZ",
+        "ordinal": 232,
+        "rva": "0x4f1b8a"
+      },
+      {
+        "name": "?GetStaticTextInst@AptCharacterInst@@QAEPAVAptCharacterStaticTextInst@@XZ",
+        "ordinal": 233,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?GetString@StringPool@@SAPBVEAStringC@@W4StringCode@@@Z",
+        "ordinal": 234,
+        "rva": "0x4f1103"
+      },
+      {
+        "name": "?GetStructOverHead@_OutsideAllocationT@DOGMA_PoolManager@@SAIXZ",
+        "ordinal": 235,
+        "rva": "0x4ee031"
+      },
+      {
+        "name": "?GetStructPointerFromReturnedPointer@_OutsideAllocationT@DOGMA_PoolManager@@SAPAU12@PBX@Z",
+        "ordinal": 236,
+        "rva": "0x4ee039"
+      },
+      {
+        "name": "?GetSuperConstructor@AptPrototype@@QBEPAVAptValue@@XZ",
+        "ordinal": 237,
+        "rva": "0x4eead0"
+      },
+      {
+        "name": "?GetTargetRender@@YAPAVAptTarget@@XZ",
+        "ordinal": 238,
+        "rva": "0x4f201e"
+      },
+      {
+        "name": "?GetTargetSim@@YAPAVAptTarget@@XZ",
+        "ordinal": 239,
+        "rva": "0x4f2014"
+      },
+      {
+        "name": "?GetTargetStr@AptRenderItemCustomControl@@QBEABVEAStringC@@XZ",
+        "ordinal": 240,
+        "rva": "0x4eebd3"
+      },
+      {
+        "name": "?GetTextColor@AptCharacterTextInst@@QBEIXZ",
+        "ordinal": 241,
+        "rva": "0x4f163c"
+      },
+      {
+        "name": "?GetTextFormatConst@AptCharacterTextInst@@QBEPBUTextFormat@@XZ",
+        "ordinal": 242,
+        "rva": "0x4f196a"
+      },
+      {
+        "name": "?GetTextFormatWritable@AptCharacterTextInst@@QAEPAUTextFormat@@XZ",
+        "ordinal": 243,
+        "rva": "0x4f198a"
+      },
+      {
+        "name": "?GetTextHeight@AptCharacterTextInst@@QBEMXZ",
+        "ordinal": 244,
+        "rva": "0x4f1858"
+      },
+      {
+        "name": "?GetTextValueConst@AptCharacterTextInst@@QBEABVEAStringC@@XZ",
+        "ordinal": 245,
+        "rva": "0x4f154d"
+      },
+      {
+        "name": "?GetTextValueWritable@AptCharacterTextInst@@QAEAAVEAStringC@@XZ",
+        "ordinal": 246,
+        "rva": "0x4f1566"
+      },
+      {
+        "name": "?GetTextWidth@AptCharacterTextInst@@QBEMXZ",
+        "ordinal": 247,
+        "rva": "0x4f1831"
+      },
+      {
+        "name": "?GetTopMostSprite@AptAnimationTarget@@QAEPAVAptValue@@XZ",
+        "ordinal": 248,
+        "rva": "0x4efa32"
+      },
+      {
+        "name": "?GetTypeStr@AptRenderItemCustomControl@@QBEABVEAStringC@@XZ",
+        "ordinal": 249,
+        "rva": "0x4eebab"
+      },
+      {
+        "name": "?GetUndefinedValue@AptExtObject@@KAPAVAptValue@@XZ",
+        "ordinal": 250,
+        "rva": "0x4f0f12"
+      },
+      {
+        "name": "?GetVarValueConst@AptCharacterTextInst@@QBEABVEAStringC@@XZ",
+        "ordinal": 251,
+        "rva": "0x4f15a6"
+      },
+      {
+        "name": "?GetVarValueWritable@AptCharacterTextInst@@QAEAAVEAStringC@@XZ",
+        "ordinal": 252,
+        "rva": "0x4f15bf"
+      },
+      {
+        "name": "?GetVariable@AptExtObject@@KAPAVAptValue@@PAV2@QBVEAStringC@@@Z",
+        "ordinal": 253,
+        "rva": "0x4f109c"
+      },
+      {
+        "name": "?GetXMousePos@AptAnimationTarget@@QAEHXZ",
+        "ordinal": 254,
+        "rva": "0x4efa6d"
+      },
+      {
+        "name": "?GetYMousePos@AptAnimationTarget@@QAEHXZ",
+        "ordinal": 255,
+        "rva": "0x4efa7b"
+      },
+      {
+        "name": "?GetZID@AptCharacterTextInst@@QBEQAXXZ",
+        "ordinal": 256,
+        "rva": "0x4f15ff"
+      },
+      {
+        "name": "?GetZId@AptRenderItemCustomControl@@QBEQAXXZ",
+        "ordinal": 257,
+        "rva": "0x5048a9"
+      },
+      {
+        "name": "?GetZombieCount@AptCIH@@QAEHXZ",
+        "ordinal": 258,
+        "rva": "0x4eedaf"
+      },
+      {
+        "name": "?Get__Proto__@AptNativeHash@@QBEPAVAptValue@@XZ",
+        "ordinal": 259,
+        "rva": "0x4ef7e1"
+      },
+      {
+        "name": "?HasClipAction@AptCharacterSpriteInstBase@@QAEHH@Z",
+        "ordinal": 260,
+        "rva": "0x4eec95"
+      },
+      {
+        "name": "?HasEventHandler@AptNativeHash@@QAEHH@Z",
+        "ordinal": 261,
+        "rva": "0x4ef09b"
+      },
+      {
+        "name": "?HasMask@AptCIH@@QBE_NXZ",
+        "ordinal": 262,
+        "rva": "0x4f1e73"
+      },
+      {
+        "name": "?HasMouseEvent@AptCIH@@QAEHXZ",
+        "ordinal": 263,
+        "rva": "0x4f1e06"
+      },
+      {
+        "name": "?IncIntervalTimersSize@AptAnimationTarget@@QAEHXZ",
+        "ordinal": 264,
+        "rva": "0x4ef97e"
+      },
+      {
+        "name": "?IncNewInstSize@AptAnimationTarget@@QAEHXZ",
+        "ordinal": 265,
+        "rva": "0x4ef90f"
+      },
+      {
+        "name": "?IncZombieCount@AptCIH@@QAEXXZ",
+        "ordinal": 266,
+        "rva": "0x4eed7d"
+      },
+      {
+        "name": "?IncrementDequeLocation@AptActionQueueC@@AAEPAUAptActionPool@1@PAU21@@Z",
+        "ordinal": 267,
+        "rva": "0x4ef743"
+      },
+      {
+        "name": "?Invalidate@EAStringC@@QAEXXZ",
+        "ordinal": 268,
+        "rva": "0x4f0dd8"
+      },
+      {
+        "name": "?InvalidateHashValue@EAStringC@@ABEXXZ",
+        "ordinal": 269,
+        "rva": "0x4f0ea3"
+      },
+      {
+        "name": "?IsAnimationInst@AptCIH@@QBE_NXZ",
+        "ordinal": 270,
+        "rva": "0x4f1cdd"
+      },
+      {
+        "name": "?IsButtonInst@AptCIH@@QBE_NXZ",
+        "ordinal": 271,
+        "rva": "0x4f1c40"
+      },
+      {
+        "name": "?IsConstantString@AptString@@AAE_NXZ",
+        "ordinal": 272,
+        "rva": "0x4f0741"
+      },
+      {
+        "name": "?IsConstantString@EAStringC@@QAE_NXZ",
+        "ordinal": 273,
+        "rva": "0x4ee0ae"
+      },
+      {
+        "name": "?IsCustomControlInst@AptCIH@@QBE_NXZ",
+        "ordinal": 274,
+        "rva": "0x4f1d3a"
+      },
+      {
+        "name": "?IsDynamicTextInst@AptCIH@@QBE_NXZ",
+        "ordinal": 275,
+        "rva": "0x4f1c7e"
+      },
+      {
+        "name": "?IsEmpty@AptNativeHash@@QBE_NXZ",
+        "ordinal": 276,
+        "rva": "0x4ef04e"
+      },
+      {
+        "name": "?IsEmpty@EAStringC@@QBE_NXZ",
+        "ordinal": 277,
+        "rva": "0x4f087f"
+      },
+      {
+        "name": "?IsHighestRevisionItem@AptRenderItem@@QBE_NXZ",
+        "ordinal": 278,
+        "rva": "0x4eeb5f"
+      },
+      {
+        "name": "?IsInCtor@AptCIH@@QBE_NXZ",
+        "ordinal": 279,
+        "rva": "0x4eed08"
+      },
+      {
+        "name": "?IsLastItem@AptActionQueueC@@QAE_NPAUAptActionPool@1@@Z",
+        "ordinal": 280,
+        "rva": "0x4ef776"
+      },
+      {
+        "name": "?IsLastItemOrBeyond@AptActionQueueC@@QAE_NPAUAptActionPool@1@@Z",
+        "ordinal": 281,
+        "rva": "0x4ef791"
+      },
+      {
+        "name": "?IsLevelInst@AptCIH@@QBE_NXZ",
+        "ordinal": 282,
+        "rva": "0x4f1cfd"
+      },
+      {
+        "name": "?IsMask@AptCIH@@QBE_NXZ",
+        "ordinal": 283,
+        "rva": "0x4f1e52"
+      },
+      {
+        "name": "?IsMorphInst@AptCIH@@QBE_NXZ",
+        "ordinal": 284,
+        "rva": "0x4f1cbd"
+      },
+      {
+        "name": "?IsNone@AptCIH@@QBE_NXZ",
+        "ordinal": 285,
+        "rva": "0x4f1d1d"
+      },
+      {
+        "name": "?IsReleaseAtEnd@AptValue@@QBE_NXZ",
+        "ordinal": 286,
+        "rva": "0x4ee1ab"
+      },
+      {
+        "name": "?IsRenderableForThisTick@AptRenderItem@@QAE_NH@Z",
+        "ordinal": 287,
+        "rva": "0x4eeb52"
+      },
+      {
+        "name": "?IsShapeInst@AptCIH@@QBE_NXZ",
+        "ordinal": 288,
+        "rva": "0x4f1c60"
+      },
+      {
+        "name": "?IsSpriteInst@AptCIH@@QBE_NXZ",
+        "ordinal": 289,
+        "rva": "0x4f1ba0"
+      },
+      {
+        "name": "?IsSpriteInstBase@AptCIH@@QBE_NXZ",
+        "ordinal": 290,
+        "rva": "0x4f1bf0"
+      },
+      {
+        "name": "?IsStaticTextInst@AptCIH@@QBE_NXZ",
+        "ordinal": 291,
+        "rva": "0x4f1c9d"
+      },
+      {
+        "name": "?IsValid@EAStringC@@QBE_NXZ",
+        "ordinal": 292,
+        "rva": "0x4f0e29"
+      },
+      {
+        "name": "?IsVectorFull@AptValueVector@@QBEHXZ",
+        "ordinal": 293,
+        "rva": "0x4f06b7"
+      },
+      {
+        "name": "?IsWritableForThisTick@AptRenderItem@@QBE_NH@Z",
+        "ordinal": 294,
+        "rva": "0x4eeb52"
+      },
+      {
+        "name": "?ItemFirstChildChanged@AptCharacterInst@@SAXPAVAptCIH@@@Z",
+        "ordinal": 295,
+        "rva": "0x4f12bd"
+      },
+      {
+        "name": "?ItemInserted@AptCharacterInst@@SAXPAVAptCIH@@@Z",
+        "ordinal": 296,
+        "rva": "0x4f12e6"
+      },
+      {
+        "name": "?ItemMoved@AptCharacterInst@@SAXPAVAptCIH@@@Z",
+        "ordinal": 297,
+        "rva": "0x4f123f"
+      },
+      {
+        "name": "?ItemNextSiblingChanged@AptCharacterInst@@SAXPAVAptCIH@@@Z",
+        "ordinal": 298,
+        "rva": "0x4f1268"
+      },
+      {
+        "name": "?Lookup@AptFrameStack@@QAEPAVAptValue@@QBVEAStringC@@@Z",
+        "ordinal": 299,
+        "rva": "0x4ef1d9"
+      },
+      {
+        "name": "?Lookup@AptGlobal@@QBEPAVAptValue@@QBVEAStringC@@@Z",
+        "ordinal": 300,
+        "rva": "0x4ef1d9"
+      },
+      {
+        "name": "?Lookup@AptGlobalExtensionObject@@QAEPAVAptValue@@QBVEAStringC@@@Z",
+        "ordinal": 301,
+        "rva": "0x4ef1d9"
+      },
+      {
+        "name": "?Lookup@AptValueWithHash@@QBEPAVAptValue@@QBVEAStringC@@@Z",
+        "ordinal": 302,
+        "rva": "0x4ef1d9"
+      },
+      {
+        "name": "?Manager_GetCreatedOnTick@AptRenderItem@@QBEHXZ",
+        "ordinal": 303,
+        "rva": "0x4f1112"
+      },
+      {
+        "name": "?Manager_GetMask@AptRenderItem@@QAEPAV1@XZ",
+        "ordinal": 304,
+        "rva": "0x4eead0"
+      },
+      {
+        "name": "?Manager_IsDeletionMark@AptRenderItem@@QBE_NXZ",
+        "ordinal": 305,
+        "rva": "0x4eeb3d"
+      },
+      {
+        "name": "?MemInitialize@EAStringC@@SAXQAUAptUserFunctions@@@Z",
+        "ordinal": 306,
+        "rva": "0x4f0dbf"
+      },
+      {
+        "name": "?MemUninitialize@EAStringC@@SAXXZ",
+        "ordinal": 307,
+        "rva": "0x4f0dcc"
+      },
+      {
+        "name": "?PopValue@AptValueVector@@QAEPAVAptValue@@XZ",
+        "ordinal": 308,
+        "rva": "0x4f0677"
+      },
+      {
+        "name": "?PostStaticInit@Debug@@CAXXZ",
+        "ordinal": 309,
+        "rva": "0x97be"
+      },
+      {
+        "name": "?PreStaticInit@Debug@@CAPAV1@XZ",
+        "ordinal": 310,
+        "rva": "0x84e1"
+      },
+      {
+        "name": "?PtrIsInThisPool@_DOGMA_MemPool@@QBE_NPBX@Z",
+        "ordinal": 311,
+        "rva": "0x4edfd7"
+      },
+      {
+        "name": "?RemoveAt@AptValueVector@@QAEXH@Z",
+        "ordinal": 312,
+        "rva": "0x4efb83"
+      },
+      {
+        "name": "?RemoveClipAction@AptCharacterSpriteInstBase@@QAEXH@Z",
+        "ordinal": 313,
+        "rva": "0x4eec5e"
+      },
+      {
+        "name": "?RemoveEventHandler@AptCIH@@QAEXH@Z",
+        "ordinal": 314,
+        "rva": "0x4f1dc4"
+      },
+      {
+        "name": "?RemoveEventHandler@AptNativeHash@@QAEXH@Z",
+        "ordinal": 315,
+        "rva": "0x4ef07f"
+      },
+      {
+        "name": "?Reserve@EAStringC@@QAEXH@Z",
+        "ordinal": 316,
+        "rva": "0x4f0da9"
+      },
+      {
+        "name": "?Set@AptFrameStack@@QAEXQBVEAStringC@@QAVAptValue@@@Z",
+        "ordinal": 317,
+        "rva": "0x4ef225"
+      },
+      {
+        "name": "?Set@AptGlobal@@QAEXQBVEAStringC@@QAVAptValue@@@Z",
+        "ordinal": 318,
+        "rva": "0x4ef225"
+      },
+      {
+        "name": "?Set@AptGlobalExtensionObject@@QAEXQBVEAStringC@@QAVAptValue@@@Z",
+        "ordinal": 319,
+        "rva": "0x4ef225"
+      },
+      {
+        "name": "?Set@AptValueWithHash@@QAEXQBVEAStringC@@QAVAptValue@@@Z",
+        "ordinal": 320,
+        "rva": "0x4ef225"
+      },
+      {
+        "name": "?SetASChanged@AptCIH@@QAEXH@Z",
+        "ordinal": 321,
+        "rva": "0x4eecc8"
+      },
+      {
+        "name": "?SetAlignment@AptCharacterTextInst@@QAEXW4AptStringAlignment@@@Z",
+        "ordinal": 322,
+        "rva": "0x4f17fd"
+      },
+      {
+        "name": "?SetAt@AptValueVector@@QAEXHPAVAptValue@@@Z",
+        "ordinal": 323,
+        "rva": "0x4efb5d"
+      },
+      {
+        "name": "?SetBackgroundColor@AptCharacterTextInst@@QAEXI@Z",
+        "ordinal": 324,
+        "rva": "0x4f1702"
+      },
+      {
+        "name": "?SetBorderColor@AptCharacterTextInst@@QAEXI@Z",
+        "ordinal": 325,
+        "rva": "0x4f1758"
+      },
+      {
+        "name": "?SetBounds@AptCharacterTextInst@@QAEXABUAptRect@@@Z",
+        "ordinal": 326,
+        "rva": "0x4f18da"
+      },
+      {
+        "name": "?SetBoxAlignment@AptCharacterTextInst@@QAEXW4AptStringAlignment@@@Z",
+        "ordinal": 327,
+        "rva": "0x4f17aa"
+      },
+      {
+        "name": "?SetCIHState@AptCIH@@QAEXW4AptCIHState@1@@Z",
+        "ordinal": 328,
+        "rva": "0x4eed42"
+      },
+      {
+        "name": "?SetCharacter@AptCharacterInst@@QAEXPAUAptCharacter@@@Z",
+        "ordinal": 329,
+        "rva": "0x4f143b"
+      },
+      {
+        "name": "?SetClipAction@AptCharacterSpriteInstBase@@QAEXH@Z",
+        "ordinal": 330,
+        "rva": "0x4eec2b"
+      },
+      {
+        "name": "?SetClipDepth@AptCharacterInst@@QAEXH@Z",
+        "ordinal": 331,
+        "rva": "0x4f121d"
+      },
+      {
+        "name": "?SetClipDepth@AptRenderItem@@QAEXH@Z",
+        "ordinal": 332,
+        "rva": "0x4eeb27"
+      },
+      {
+        "name": "?SetCreatedDynamic@AptCharacterTextInst@@QAEX_N@Z",
+        "ordinal": 333,
+        "rva": "0x4f1a56"
+      },
+      {
+        "name": "?SetCreatedOnFrame@AptCIH@@QAEXH@Z",
+        "ordinal": 334,
+        "rva": "0x4eee14"
+      },
+      {
+        "name": "?SetCurItem@AptActionQueueC@@QAEXPAUAptActionPool@1@@Z",
+        "ordinal": 335,
+        "rva": "0x4ef7f0"
+      },
+      {
+        "name": "?SetCustomPropertiesStr@AptRenderItemCustomControl@@QAEXABVEAStringC@@@Z",
+        "ordinal": 336,
+        "rva": "0x4eeb79"
+      },
+      {
+        "name": "?SetDepth@AptCIH@@QAEXI@Z",
+        "ordinal": 337,
+        "rva": "0x4f1f06"
+      },
+      {
+        "name": "?SetDepth@AptCharacterInst@@QAEXH@Z",
+        "ordinal": 338,
+        "rva": "0x4f1419"
+      },
+      {
+        "name": "?SetDepth@AptRenderItem@@QAEXH@Z",
+        "ordinal": 339,
+        "rva": "0x4eeb11"
+      },
+      {
+        "name": "?SetDisplayListNext@AptCIH@@QAEXPAV1@@Z",
+        "ordinal": 340,
+        "rva": "0x545522"
+      },
+      {
+        "name": "?SetDisplayListParent@AptCIH@@QAEXPAV1@@Z",
+        "ordinal": 341,
+        "rva": "0x4f1f32"
+      },
+      {
+        "name": "?SetDisplayListPrevious@AptCIH@@QAEXPAV1@@Z",
+        "ordinal": 342,
+        "rva": "0x5454ff"
+      },
+      {
+        "name": "?SetDragMC@AptAnimationTarget@@QAEXPAVAptValue@@@Z",
+        "ordinal": 343,
+        "rva": "0x4ef9d8"
+      },
+      {
+        "name": "?SetDrawsBackground@AptCharacterTextInst@@QAEX_N@Z",
+        "ordinal": 344,
+        "rva": "0x4f1b01"
+      },
+      {
+        "name": "?SetDrawsBorder@AptCharacterTextInst@@QAEX_N@Z",
+        "ordinal": 345,
+        "rva": "0x4f1aad"
+      },
+      {
+        "name": "?SetEventHandler@AptCIH@@QAEXH@Z",
+        "ordinal": 346,
+        "rva": "0x4f1d84"
+      },
+      {
+        "name": "?SetEventHandler@AptNativeHash@@QAEXH@Z",
+        "ordinal": 347,
+        "rva": "0x4ef065"
+      },
+      {
+        "name": "?SetFocusButton@AptAnimationTarget@@QAEXPAVAptCIH@@@Z",
+        "ordinal": 348,
+        "rva": "0x4efa89"
+      },
+      {
+        "name": "?SetFontSize@AptCharacterTextInst@@QAEXM@Z",
+        "ordinal": 349,
+        "rva": "0x4f1926"
+      },
+      {
+        "name": "?SetHasMask@AptCIH@@QAEX_NPAVAptRenderItem@@@Z",
+        "ordinal": 350,
+        "rva": "0x4f1ebf"
+      },
+      {
+        "name": "?SetHasMask@AptCharacterInst@@QAEX_NPAVAptRenderItem@@@Z",
+        "ordinal": 351,
+        "rva": "0x4f1478"
+      },
+      {
+        "name": "?SetInCtor@AptCIH@@QAEXI@Z",
+        "ordinal": 352,
+        "rva": "0x4eed1d"
+      },
+      {
+        "name": "?SetInLocalScope@AptFrameStack@@QAEXPAVEAStringC@@PAVAptValue@@@Z",
+        "ordinal": 353,
+        "rva": "0x4ef225"
+      },
+      {
+        "name": "?SetInLocalScope@AptScriptFunctionBase@@QAEXPAVEAStringC@@PAVAptValue@@@Z",
+        "ordinal": 354,
+        "rva": "0x4ef452"
+      },
+      {
+        "name": "?SetInRemList@AptCIH@@QAEX_N@Z",
+        "ordinal": 355,
+        "rva": "0x4eedc4"
+      },
+      {
+        "name": "?SetInstanceName@AptCIH@@QAEXABVEAStringC@@@Z",
+        "ordinal": 356,
+        "rva": "0x4eecaf"
+      },
+      {
+        "name": "?SetInternalMaxSize@EAStringC@@AAEXI@Z",
+        "ordinal": 357,
+        "rva": "0x4f083f"
+      },
+      {
+        "name": "?SetInternalRefCount@EAStringC@@AAEXI@Z",
+        "ordinal": 358,
+        "rva": "0x4f0868"
+      },
+      {
+        "name": "?SetInternalSize@EAStringC@@AAEXI@Z",
+        "ordinal": 359,
+        "rva": "0x4f0815"
+      },
+      {
+        "name": "?SetIntervalTimersSize@AptAnimationTarget@@QAEXH@Z",
+        "ordinal": 360,
+        "rva": "0x4f1144"
+      },
+      {
+        "name": "?SetIsInserted@AptCIH@@QAEXXZ",
+        "ordinal": 361,
+        "rva": "0x4f1e1c"
+      },
+      {
+        "name": "?SetIsMask@AptCIH@@QAEX_NPAUAptMatrix@@@Z",
+        "ordinal": 362,
+        "rva": "0x4f1e95"
+      },
+      {
+        "name": "?SetIsMask@AptCharacterInst@@QAEX_NPAUAptMatrix@@@Z",
+        "ordinal": 363,
+        "rva": "0x4f1458"
+      },
+      {
+        "name": "?SetIsVisible@AptCharacterInst@@QAEX_N@Z",
+        "ordinal": 364,
+        "rva": "0x4f1498"
+      },
+      {
+        "name": "?SetLength@AptCharacterTextInst@@QAEXM@Z",
+        "ordinal": 365,
+        "rva": "0x4f188e"
+      },
+      {
+        "name": "?SetMaskedItem@AptCharacterInst@@SAXPAVAptCIH@@_N@Z",
+        "ordinal": 366,
+        "rva": "0x4f1291"
+      },
+      {
+        "name": "?SetMaxRefCountHit@AptValue@@QAEX_N@Z",
+        "ordinal": 367,
+        "rva": "0x4ee17c"
+      },
+      {
+        "name": "?SetMaxScroll@AptCharacterTextInst@@QAEXI@Z",
+        "ordinal": 368,
+        "rva": "0x4f168b"
+      },
+      {
+        "name": "?SetMouseWheelEnabled@AptCharacterTextInst@@QAEX_N@Z",
+        "ordinal": 369,
+        "rva": "0x4f1b55"
+      },
+      {
+        "name": "?SetNext@AptTarget@@QAEXPAV1@@Z",
+        "ordinal": 370,
+        "rva": "0x4f1130"
+      },
+      {
+        "name": "?SetOnPressObject@AptAnimationTarget@@QAEXPAVAptValue@@@Z",
+        "ordinal": 371,
+        "rva": "0x4efa0a"
+      },
+      {
+        "name": "?SetOnRollOverObject@AptAnimationTarget@@QAEXPAVAptValue@@@Z",
+        "ordinal": 372,
+        "rva": "0x4efa1e"
+      },
+      {
+        "name": "?SetPrevious@AptTarget@@QAEXPAV1@@Z",
+        "ordinal": 373,
+        "rva": "0x4f1144"
+      },
+      {
+        "name": "?SetPrototype@AptObject@@QAEXQAVAptValue@@@Z",
+        "ordinal": 374,
+        "rva": "0x4f07bb"
+      },
+      {
+        "name": "?SetQueuedInputsSize@AptAnimationTarget@@QAEXH@Z",
+        "ordinal": 375,
+        "rva": "0x4ef9c4"
+      },
+      {
+        "name": "?SetRootItem@AptCharacterInst@@SAXPAVAptCIH@@@Z",
+        "ordinal": 376,
+        "rva": "0x4f133b"
+      },
+      {
+        "name": "?SetScroll@AptCharacterTextInst@@QAEXI@Z",
+        "ordinal": 377,
+        "rva": "0x4f16bf"
+      },
+      {
+        "name": "?SetStateFlags@AptCharacterTextInst@@QAEXI@Z",
+        "ordinal": 378,
+        "rva": "0x4f19f1"
+      },
+      {
+        "name": "?SetTargetStr@AptRenderItemCustomControl@@QAEXABVEAStringC@@@Z",
+        "ordinal": 379,
+        "rva": "0x4eebba"
+      },
+      {
+        "name": "?SetTextColor@AptCharacterTextInst@@QAEXI@Z",
+        "ordinal": 380,
+        "rva": "0x4f165c"
+      },
+      {
+        "name": "?SetTextFormat@AptCharacterTextInst@@QAEXPAUTextFormat@@@Z",
+        "ordinal": 381,
+        "rva": "0x4f19ac"
+      },
+      {
+        "name": "?SetTextHeight@AptCharacterTextInst@@QAEXM@Z",
+        "ordinal": 382,
+        "rva": "0x4f1867"
+      },
+      {
+        "name": "?SetTextValue@AptCharacterTextInst@@QAEXABVEAStringC@@@Z",
+        "ordinal": 383,
+        "rva": "0x4f1581"
+      },
+      {
+        "name": "?SetTextWidth@AptCharacterTextInst@@QAEXM@Z",
+        "ordinal": 384,
+        "rva": "0x4f1840"
+      },
+      {
+        "name": "?SetTypeStr@AptRenderItemCustomControl@@QAEXABVEAStringC@@@Z",
+        "ordinal": 385,
+        "rva": "0x4eeb92"
+      },
+      {
+        "name": "?SetVarValue@AptCharacterTextInst@@QAEXABVEAStringC@@@Z",
+        "ordinal": 386,
+        "rva": "0x4f15da"
+      },
+      {
+        "name": "?SetVariable@AptExtObject@@KA_NPAVAptValue@@QBVEAStringC@@QAV2@@Z",
+        "ordinal": 387,
+        "rva": "0x4f10e3"
+      },
+      {
+        "name": "?SetWhereExistsInScopeChain@AptScriptFunctionBase@@QAE_NPAVEAStringC@@PAVAptValue@@@Z",
+        "ordinal": 388,
+        "rva": "0x4ef488"
+      },
+      {
+        "name": "?SetZID@AptCharacterTextInst@@QAEXPAX@Z",
+        "ordinal": 389,
+        "rva": "0x4f161f"
+      },
+      {
+        "name": "?SetZId@AptRenderItemCustomControl@@QAEXPAX@Z",
+        "ordinal": 390,
+        "rva": "0x4eebe2"
+      },
+      {
+        "name": "?Set__Proto__@AptObject@@QAEXQAVAptValue@@@Z",
+        "ordinal": 391,
+        "rva": "0x4f07a2"
+      },
+      {
+        "name": "?SetupPool@_DOGMA_MemPool@@QAEXPAU1@I@Z",
+        "ordinal": 392,
+        "rva": "0x4edf52"
+      },
+      {
+        "name": "?Size@EAStringC@@QBEHXZ",
+        "ordinal": 393,
+        "rva": "0x4f0803"
+      },
+      {
+        "name": "?UTF8_IsValid@EAStringC@@SA_NH@Z",
+        "ordinal": 394,
+        "rva": "0x4f0eb6"
+      },
+      {
+        "name": "?UnSet@AptGlobalExtensionObject@@QAEXQBVEAStringC@@@Z",
+        "ordinal": 395,
+        "rva": "0x4f07d4"
+      },
+      {
+        "name": "?UpdateHashValue@EAStringC@@QBEGXZ",
+        "ordinal": 396,
+        "rva": "0x4f0e66"
+      },
+      {
+        "name": "?Validate@EAStringC@@QAEXABV1@@Z",
+        "ordinal": 397,
+        "rva": "0x4f0e0c"
+      },
+      {
+        "name": "?Validate@EAStringC@@QAEXXZ",
+        "ordinal": 398,
+        "rva": "0x4f0df2"
+      },
+      {
+        "name": "?_Allocate@MemoryPool@@YAPAXIW4AllocType@1@@Z",
+        "ordinal": 399,
+        "rva": "0x2c71"
+      },
+      {
+        "name": "?_AllocateAligned@MemoryPool@@YAPAXIIW4AllocType@1@@Z",
+        "ordinal": 400,
+        "rva": "0x2c98"
+      },
+      {
+        "name": "?_DumpFragmentation@MemoryPool@@YAXPAU_iobuf@@_NPBD@Z",
+        "ordinal": 401,
+        "rva": "0x2b08"
+      },
+      {
+        "name": "?_Exit@MemoryPool@@YAXXZ",
+        "ordinal": 402,
+        "rva": "0x2ac8"
+      },
+      {
+        "name": "?_Free@MemoryPool@@YAXPAXW4AllocType@1@@Z",
+        "ordinal": 403,
+        "rva": "0x2ce5"
+      },
+      {
+        "name": "?_GetBlockSize@MemoryPool@@YAIPAX@Z",
+        "ordinal": 404,
+        "rva": "0x2d1c"
+      },
+      {
+        "name": "?_Init@MemoryPool@@YAXXZ",
+        "ordinal": 405,
+        "rva": "0x29f0"
+      },
+      {
+        "name": "?_IsValidBlock@MemoryPool@@YA_NPAX@Z",
+        "ordinal": 406,
+        "rva": "0x2d05"
+      },
+      {
+        "name": "?_Reallocate@MemoryPool@@YAPAXPAXIW4AllocType@1@@Z",
+        "ordinal": 407,
+        "rva": "0x2ccf"
+      },
+      {
+        "name": "?_VerifyIntegrity@MemoryPool@@YAXXZ",
+        "ordinal": 408,
+        "rva": "0x2d36"
+      },
+      {
+        "name": "?c_array@AptValue@@QBEPAVAptArray@@XZ",
+        "ordinal": 409,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_boolean@AptValue@@QBEPAVAptBoolean@@XZ",
+        "ordinal": 410,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_cih@AptValue@@QBEPAVAptCIH@@_N@Z",
+        "ordinal": 411,
+        "rva": "0x4f0542"
+      },
+      {
+        "name": "?c_date@AptValue@@QBEPAVAptDate@@XZ",
+        "ordinal": 412,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_float@AptValue@@QBEPAVAptFloat@@XZ",
+        "ordinal": 413,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_global@AptValue@@QBEPAVAptGlobal@@XZ",
+        "ordinal": 414,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_integer@AptValue@@QBEPAVAptInteger@@XZ",
+        "ordinal": 415,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_key@AptValue@@QBEPAVAptKey@@XZ",
+        "ordinal": 416,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_loadvars@AptValue@@QBEPAVAptLoadVars@@XZ",
+        "ordinal": 417,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_lookup@AptValue@@QBEPAVAptLookup@@XZ",
+        "ordinal": 418,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_math@AptValue@@QBEPAVAptMathObj@@XZ",
+        "ordinal": 419,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_mouse@AptValue@@QBEPAVAptMouse@@XZ",
+        "ordinal": 420,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_movieClip@AptValue@@QBEPAVAptMovieClip@@XZ",
+        "ordinal": 421,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_nativefunction@AptValue@@QBEPAVAptNativeFunction@@XZ",
+        "ordinal": 422,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_object@AptValue@@QBEPAVAptObject@@XZ",
+        "ordinal": 423,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_prototype@AptValue@@QBEPAVAptPrototype@@XZ",
+        "ordinal": 424,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_register@AptValue@@QBEPAVAptRegister@@XZ",
+        "ordinal": 425,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_scriptcolour@AptValue@@QBEPAVAptScriptColour@@XZ",
+        "ordinal": 426,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_scriptfunction@AptValue@@QBEPAVAptScriptFunctionBase@@XZ",
+        "ordinal": 427,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_sound@AptValue@@QBEPAVAptSound@@XZ",
+        "ordinal": 428,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_stage@AptValue@@QBEPAVAptStage@@XZ",
+        "ordinal": 429,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_str@EAStringC@@QBEPBDXZ",
+        "ordinal": 430,
+        "rva": "0x4f0898"
+      },
+      {
+        "name": "?c_textformat@AptValue@@QBEPAVAptTextFormat@@XZ",
+        "ordinal": 431,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_xml@AptValue@@QBEPAVAptXml@@XZ",
+        "ordinal": 432,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_xmlattributes@AptValue@@QBEPAVAptXmlAttributes@@XZ",
+        "ordinal": 433,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?c_xmlnode@AptValue@@QBEPAVAptXmlNode@@XZ",
+        "ordinal": 434,
+        "rva": "0x4f0536"
+      },
+      {
+        "name": "?cat@AptString@@QAEXPBD@Z",
+        "ordinal": 435,
+        "rva": "0x4f0728"
+      },
+      {
+        "name": "?cat@AptString@@QAEXPBVEAStringC@@@Z",
+        "ordinal": 436,
+        "rva": "0x4f070f"
+      },
+      {
+        "name": "?clearThrownValue@AptActionInterpreter@@QAEXXZ",
+        "ordinal": 437,
+        "rva": "0x4ef3d3"
+      },
+      {
+        "name": "?cpy@AptString@@QAEXPBD@Z",
+        "ordinal": 438,
+        "rva": "0x4f06e0"
+      },
+      {
+        "name": "?cpy@AptString@@QAEXPBVEAStringC@@@Z",
+        "ordinal": 439,
+        "rva": "0x4eecaf"
+      },
+      {
+        "name": "?doUnwindStack@AptActionInterpreter@@QBE_NXZ",
+        "ordinal": 440,
+        "rva": "0x4ef38f"
+      },
+      {
+        "name": "?getCatchBlockBase@AptAction_TryCatchFinallyBlock@@QBEPAEXZ",
+        "ordinal": 441,
+        "rva": "0x4ef35f"
+      },
+      {
+        "name": "?getDF2Flag@AptAction_DefineFunction2@@QBEHW4AptDefinefunction2FlagsType@@@Z",
+        "ordinal": 442,
+        "rva": "0x4ef2e9"
+      },
+      {
+        "name": "?getFinallyBlockBase@AptAction_TryCatchFinallyBlock@@QBEPAEXZ",
+        "ordinal": 443,
+        "rva": "0x4ef374"
+      },
+      {
+        "name": "?getGCMark@AptValue@@QBE_NXZ",
+        "ordinal": 444,
+        "rva": "0x4ee138"
+      },
+      {
+        "name": "?getGCRoot@AptValue@@QBEIXZ",
+        "ordinal": 445,
+        "rva": "0x4ee152"
+      },
+      {
+        "name": "?getIsDefined@AptValue@@QBE_NXZ",
+        "ordinal": 446,
+        "rva": "0x4ee11d"
+      },
+      {
+        "name": "?getRefCount@AptValue@@QBEIXZ",
+        "ordinal": 447,
+        "rva": "0x4ee0f1"
+      },
+      {
+        "name": "?getThrownValue@AptActionInterpreter@@QBEPAVAptValue@@XZ",
+        "ordinal": 448,
+        "rva": "0x4ef3a6"
+      },
+      {
+        "name": "?getTryBlockBase@AptAction_TryCatchFinallyBlock@@QBEPAEXZ",
+        "ordinal": 449,
+        "rva": "0x4ef350"
+      },
+      {
+        "name": "?getVtblIndex@AptValue@@QBE?AW4AptVirtualFunctionTable_Indices@@XZ",
+        "ordinal": 450,
+        "rva": "0x4ee108"
+      },
+      {
+        "name": "?hasCatchBlock@AptAction_TryCatchFinallyBlock@@QBE_NXZ",
+        "ordinal": 451,
+        "rva": "0x4ef305"
+      },
+      {
+        "name": "?hasFinallyBlock@AptAction_TryCatchFinallyBlock@@QBE_NXZ",
+        "ordinal": 452,
+        "rva": "0x4ef31e"
+      },
+      {
+        "name": "?hasThrownValue@AptActionInterpreter@@QBE_NXZ",
+        "ordinal": 453,
+        "rva": "0x4ef38f"
+      },
+      {
+        "name": "?isArray@AptValue@@QBE_NXZ",
+        "ordinal": 454,
+        "rva": "0x4ee588"
+      },
+      {
+        "name": "?isBoolean@AptValue@@QBE_NXZ",
+        "ordinal": 455,
+        "rva": "0x4ee31d"
+      },
+      {
+        "name": "?isCIH@AptValue@@QBE_N_N@Z",
+        "ordinal": 456,
+        "rva": "0x4ee750"
+      },
+      {
+        "name": "?isDate@AptValue@@QBE_NXZ",
+        "ordinal": 457,
+        "rva": "0x4ee849"
+      },
+      {
+        "name": "?isExtern@AptValue@@QBE_NXZ",
+        "ordinal": 458,
+        "rva": "0x4ee4f0"
+      },
+      {
+        "name": "?isFloat@AptValue@@QBE_NXZ",
+        "ordinal": 459,
+        "rva": "0x4ee401"
+      },
+      {
+        "name": "?isFrameStack@AptValue@@QBE_NXZ",
+        "ordinal": 460,
+        "rva": "0x4ee53c"
+      },
+      {
+        "name": "?isInteger@AptValue@@QBE_NXZ",
+        "ordinal": 461,
+        "rva": "0x4ee369"
+      },
+      {
+        "name": "?isKey@AptValue@@QBE_NXZ",
+        "ordinal": 462,
+        "rva": "0x4ee620"
+      },
+      {
+        "name": "?isLoadVars@AptValue@@QBE_NXZ",
+        "ordinal": 463,
+        "rva": "0x4ee21d"
+      },
+      {
+        "name": "?isLookup@AptValue@@QBE_NXZ",
+        "ordinal": 464,
+        "rva": "0x4ee27a"
+      },
+      {
+        "name": "?isMath@AptValue@@QBE_NXZ",
+        "ordinal": 465,
+        "rva": "0x4ee6b8"
+      },
+      {
+        "name": "?isMouse@AptValue@@QBE_NXZ",
+        "ordinal": 466,
+        "rva": "0x4ee66c"
+      },
+      {
+        "name": "?isMovieClip@AptValue@@QBE_NXZ",
+        "ordinal": 467,
+        "rva": "0x4ee8e1"
+      },
+      {
+        "name": "?isNativeFunction@AptValue@@QBE_NXZ",
+        "ordinal": 468,
+        "rva": "0x4ee44d"
+      },
+      {
+        "name": "?isNone@AptValue@@QBE_NXZ",
+        "ordinal": 469,
+        "rva": "0x4ee23a"
+      },
+      {
+        "name": "?isObject@AptValue@@QBE_NXZ",
+        "ordinal": 470,
+        "rva": "0x4ee7b1"
+      },
+      {
+        "name": "?isPrototype@AptValue@@QBE_NXZ",
+        "ordinal": 471,
+        "rva": "0x4ee7fd"
+      },
+      {
+        "name": "?isRegister@AptValue@@QBE_NXZ",
+        "ordinal": 472,
+        "rva": "0x4ee3b5"
+      },
+      {
+        "name": "?isScriptColour@AptValue@@QBE_NXZ",
+        "ordinal": 473,
+        "rva": "0x4ee704"
+      },
+      {
+        "name": "?isScriptFunction@AptValue@@QBE_NXZ",
+        "ordinal": 474,
+        "rva": "0x4ee499"
+      },
+      {
+        "name": "?isSound@AptValue@@QBE_NXZ",
+        "ordinal": 475,
+        "rva": "0x4ee5d4"
+      },
+      {
+        "name": "?isStage@AptValue@@QBE_NXZ",
+        "ordinal": 476,
+        "rva": "0x4ee92d"
+      },
+      {
+        "name": "?isString@AptValue@@QBE_NXZ",
+        "ordinal": 477,
+        "rva": "0x4ee2c6"
+      },
+      {
+        "name": "?isTextFormat@AptValue@@QBE_NXZ",
+        "ordinal": 478,
+        "rva": "0x4ee895"
+      },
+      {
+        "name": "?isUndefined@AptValue@@QBE_NXZ",
+        "ordinal": 479,
+        "rva": "0x4ee257"
+      },
+      {
+        "name": "?isXml@AptValue@@QBE_NXZ",
+        "ordinal": 480,
+        "rva": "0x4ee1e3"
+      },
+      {
+        "name": "?isXmlAttributes@AptValue@@QBE_NXZ",
+        "ordinal": 481,
+        "rva": "0x4ee200"
+      },
+      {
+        "name": "?isXmlNode@AptValue@@QBE_NXZ",
+        "ordinal": 482,
+        "rva": "0x4ee1c6"
+      },
+      {
+        "name": "?length@AptArray@@QAEHXZ",
+        "ordinal": 483,
+        "rva": "0x4ef0d2"
+      },
+      {
+        "name": "?putCaughtObjectInRegister@AptAction_TryCatchFinallyBlock@@QBE_NXZ",
+        "ordinal": 484,
+        "rva": "0x4ef337"
+      },
+      {
+        "name": "?stackAt@AptActionInterpreter@@QBEPAVAptValue@@H@Z",
+        "ordinal": 485,
+        "rva": "0x4f0550"
+      },
+      {
+        "name": "?stackGetPop@AptActionInterpreter@@QAEPAVAptValue@@XZ",
+        "ordinal": 486,
+        "rva": "0x4f0574"
+      },
+      {
+        "name": "?stackPop@AptActionInterpreter@@QAEXH@Z",
+        "ordinal": 487,
+        "rva": "0x4f0647"
+      },
+      {
+        "name": "?stackPop@AptActionInterpreter@@QAEXXZ",
+        "ordinal": 488,
+        "rva": "0x4f0635"
+      },
+      {
+        "name": "?stackPopAndPush@AptActionInterpreter@@QAEXHQAVAptValue@@@Z",
+        "ordinal": 489,
+        "rva": "0x4f061a"
+      },
+      {
+        "name": "?stackPopNoDec@AptActionInterpreter@@QAEXXZ",
+        "ordinal": 490,
+        "rva": "0x4f05fc"
+      },
+      {
+        "name": "?stackPush@AptActionInterpreter@@QAEXQAVAptValue@@@Z",
+        "ordinal": 491,
+        "rva": "0x4f059d"
+      },
+      {
+        "name": "?stackPushNoInc@AptActionInterpreter@@QAEXQAVAptValue@@@Z",
+        "ordinal": 492,
+        "rva": "0x4f05d5"
+      },
+      {
+        "name": "?stackSafePop@AptActionInterpreter@@QAEXH@Z",
+        "ordinal": 493,
+        "rva": "0x4f065f"
+      },
+      {
+        "name": "?throwValue@AptActionInterpreter@@QAEXPAVAptValue@@@Z",
+        "ordinal": 494,
+        "rva": "0x4ef3b5"
+      }
+    ],
+    "imports": {
+      "GDI32.dll": [
+        "TextOutA",
+        "CreateFontIndirectA",
+        "CreateDIBSection",
+        "CreateCompatibleDC",
+        "SetBkMode",
+        "DeleteDC",
+        "SelectObject",
+        "BitBlt",
+        "DeleteObject",
+        "ExtTextOutW",
+        "SetBkColor",
+        "SetTextColor",
+        "GetGlyphIndicesW",
+        "CreateFontA",
+        "GetTextMetricsA",
+        "CreateDIBitmap",
+        "SetDeviceGammaRamp",
+        "GetTextExtentPoint32W",
+        "GetCharABCWidthsI",
+        "GetTextExtentPointI",
+        "GetStockObject",
+        "SetMapMode"
+      ],
+      "USER32.dll": [
+        "PostQuitMessage",
+        "SetForegroundWindow",
+        "LoadIconA",
+        "GetWindowRect",
+        "GetClientRect",
+        "SetFocus",
+        "RegisterWindowMessageA",
+        "GetKeyboardLayout",
+        "GetKeyboardLayoutList",
+        "SetWindowTextW",
+        "EnableMenuItem",
+        "MessageBoxW",
+        "wsprintfW",
+        "IsIconic",
+        "DispatchMessageA",
+        "TranslateMessage",
+        "GetMessageA",
+        "PeekMessageA",
+        "GetKeyState",
+        "ScreenToClient",
+        "GetCursorPos",
+        "SetCursorPos",
+        "ClientToScreen",
+        "SetCursor",
+        "KillTimer",
+        "SetTimer",
+        "GetAsyncKeyState",
+        "FindWindowW",
+        "MessageBoxA",
+        "wsprintfA",
+        "GetWindowLongA",
+        "EnumThreadWindows",
+        "CloseClipboard",
+        "SetClipboardData",
+        "EmptyClipboard",
+        "OpenClipboard",
+        "DrawMenuBar",
+        "DeleteMenu",
+        "GetSystemMenu",
+        "FindWindowA",
+        "SendDlgItemMessageA",
+        "SetWindowTextA",
+        "GetDlgItem",
+        "EndDialog",
+        "DialogBoxIndirectParamA",
+        "DefWindowProcW",
+        "AdjustWindowRect",
+        "UpdateWindow",
+        "GetSystemMetrics",
+        "RegisterClassW",
+        "CreateWindowExW",
+        "ClipCursor",
+        "ShowWindow",
+        "SetWindowPos",
+        "DefWindowProcA",
+        "IsWindowUnicode",
+        "GetDoubleClickTime",
+        "GetForegroundWindow",
+        "GetDesktopWindow",
+        "LoadCursorFromFileA",
+        "GetDC",
+        "ReleaseDC",
+        "LoadCursorA"
+      ],
+      "KERNEL32.dll": [
+        "TlsAlloc",
+        "HeapAlloc",
+        "HeapCreate",
+        "GetCommandLineA",
+        "GetModuleHandleExA",
+        "TerminateProcess",
+        "GlobalFree",
+        "FreeConsole",
+        "WriteConsoleOutputA",
+        "GetTickCount",
+        "GetConsoleScreenBufferInfo",
+        "ReadConsoleInputA",
+        "GetNumberOfConsoleInputEvents",
+        "GetStdHandle",
+        "WriteFile",
+        "SetConsoleScreenBufferSize",
+        "SetConsoleWindowInfo",
+        "CreateFileA",
+        "GetComputerNameA",
+        "GetLocalTime",
+        "GetModuleFileNameA",
+        "ReadFile",
+        "SetNamedPipeHandleState",
+        "OutputDebugStringA",
+        "EnterCriticalSection",
+        "InterlockedIncrement",
+        "ReleaseMutex",
+        "InterlockedDecrement",
+        "LeaveCriticalSection",
+        "GetCurrentThreadId",
+        "GlobalUnlock",
+        "GlobalLock",
+        "GlobalAlloc",
+        "TlsSetValue",
+        "ResumeThread",
+        "Thread32First",
+        "Sleep",
+        "IsBadCodePtr",
+        "ReadProcessMemory",
+        "GetCurrentThread",
+        "GlobalSize",
+        "GlobalReAlloc",
+        "SetConsoleTitleA",
+        "GetConsoleTitleA",
+        "SetConsoleCtrlHandler",
+        "SetConsoleCursorInfo",
+        "SetConsoleMode",
+        "AllocConsole",
+        "CopyFileA",
+        "DeleteCriticalSection",
+        "SetFilePointer",
+        "ExitProcess",
+        "GetExitCodeThread",
+        "WaitForSingleObject",
+        "CreateThread",
+        "SuspendThread",
+        "VirtualQuery",
+        "DeleteFileA",
+        "SetUnhandledExceptionFilter",
+        "CreateMutexA",
+        "GetTimeFormatA",
+        "RaiseException",
+        "InitializeCriticalSection",
+        "GetACP",
+        "GetLocaleInfoA",
+        "GetThreadLocale",
+        "GetVersionExA",
+        "GetCurrentProcessId",
+        "CreateToolhelp32Snapshot",
+        "GetModuleHandleA",
+        "IsBadReadPtr",
+        "GetCurrentProcess",
+        "CloseHandle",
+        "Thread32Next",
+        "VirtualFree",
+        "VirtualAlloc",
+        "InterlockedExchangeAdd",
+        "TryEnterCriticalSection",
+        "QueueUserAPC",
+        "SetThreadIdealProcessor",
+        "DuplicateHandle",
+        "TlsGetValue",
+        "GetThreadPriority",
+        "SleepEx",
+        "GetLogicalDrives",
+        "SetEndOfFile",
+        "GetFileSizeEx",
+        "GetDiskFreeSpaceA",
+        "SetThreadPriority",
+        "CreateEventA",
+        "ReleaseSemaphore",
+        "CreateSemaphoreA",
+        "CreateFileW",
+        "DosDateTimeToFileTime",
+        "SetFileTime",
+        "GetFileInformationByHandle",
+        "FileTimeToDosDateTime",
+        "GetFileSize",
+        "GlobalMemoryStatusEx",
+        "CreateProcessW",
+        "GetExitCodeProcess",
+        "GetCurrentDirectoryA",
+        "GetLocaleInfoW",
+        "LocalAlloc",
+        "LocalFree",
+        "SetErrorMode",
+        "MoveFileW",
+        "TerminateThread",
+        "FindNextFileW",
+        "RemoveDirectoryW",
+        "lstrcpyW",
+        "GetDiskFreeSpaceExW",
+        "GetTimeFormatW",
+        "GetDateFormatW",
+        "QueryPerformanceFrequency",
+        "InterlockedCompareExchange",
+        "GetStartupInfoA",
+        "QueryPerformanceCounter",
+        "GetSystemTimeAsFileTime",
+        "UnhandledExceptionFilter",
+        "IsDebuggerPresent",
+        "CreateDirectoryW",
+        "GetEnvironmentStrings",
+        "CreateProcessA",
+        "GetDateFormatA",
+        "FindFirstFileA",
+        "FindNextFileA",
+        "RemoveDirectoryA",
+        "GetTempPathA",
+        "CreateDirectoryA",
+        "GetTempFileNameA",
+        "GetPriorityClass",
+        "SetPriorityClass",
+        "GetSystemInfo",
+        "GetProcessAffinityMask",
+        "SetProcessAffinityMask",
+        "GetTimeZoneInformation",
+        "DeleteFileW",
+        "GetCommandLineW",
+        "CreateMutexW",
+        "SetCurrentDirectoryW",
+        "OpenEventA",
+        "LoadLibraryA",
+        "FindClose",
+        "GetProcAddress",
+        "GetLastError",
+        "FindFirstFileW",
+        "FreeLibrary",
+        "SetEvent",
+        "WideCharToMultiByte",
+        "GetModuleFileNameW",
+        "GetEnvironmentVariableA",
+        "MultiByteToWideChar",
+        "InterlockedExchange"
+      ],
+      "SHELL32.dll": [
+        "SHGetSpecialFolderPathW",
+        "ShellExecuteW",
+        "ShellExecuteA",
+        "SHGetSpecialFolderPathA"
+      ],
+      "MSVCR80.dll": [
+        "_except_handler3",
+        "strtod",
+        "_setjmp3",
+        "longjmp",
+        "freopen",
+        "memchr",
+        "isalpha",
+        "iscntrl",
+        "islower",
+        "ispunct",
+        "_localtime32",
+        "_time32",
+        "_gmtime32",
+        "_mktime32",
+        "_difftime32",
+        "isupper",
+        "ldexp",
+        "frexp",
+        "setlocale",
+        "_strupr",
+        "_wcsicmp",
+        "isprint",
+        "fputc",
+        "printf",
+        "tmpnam",
+        "system",
+        "ungetc",
+        "__iob_func",
+        "_CItan",
+        "_CIlog",
+        "_CIatan",
+        "_endthreadex",
+        "_CIatan2",
+        "_CIlog10",
+        "_CIsqrt",
+        "_CIcos",
+        "_CIsin",
+        "_aligned_free",
+        "_beginthreadex",
+        "_fileno",
+        "_fstat64i32",
+        "fscanf",
+        "fgetc",
+        "rewind",
+        "_atoi64",
+        "strncat",
+        "ferror",
+        "feof",
+        "_aligned_malloc",
+        "srand",
+        "_wcsdup",
+        "clock",
+        "_mktime64",
+        "_gmtime64",
+        "isxdigit",
+        "qsort",
+        "_errno",
+        "rename",
+        "strcspn",
+        "strspn",
+        "_mbscmp",
+        "realloc",
+        "_mbsicmp",
+        "_mbslen",
+        "_stat64i32",
+        "strncat_s",
+        "strtok_s",
+        "_CIasin",
+        "_fpreset",
+        "_statusfp",
+        "_vsnwprintf",
+        "towupper",
+        "_finite",
+        "_CIexp",
+        "strncpy_s",
+        "_controlfp",
+        "remove",
+        "?_open@@YAHPBDHH@Z",
+        "_close",
+        "_strnicmp",
+        "iswspace",
+        "wcschr",
+        "_isnan",
+        "mbstowcs",
+        "_snwprintf",
+        "vsprintf",
+        "tolower",
+        "ftell",
+        "_crt_debugger_hook",
+        "_controlfp_s",
+        "_invoke_watson",
+        "?_type_info_dtor_internal_method@type_info@@QAEXXZ",
+        "_except_handler4_common",
+        "__set_app_type",
+        "__p__fmode",
+        "__p__commode",
+        "_adjust_fdiv",
+        "__setusermatherr",
+        "_configthreadlocale",
+        "_initterm_e",
+        "_initterm",
+        "_acmdln",
+        "_ismbblead",
+        "_XcptFilter",
+        "_cexit",
+        "__getmainargs",
+        "_amsg_exit",
+        "_decode_pointer",
+        "_onexit",
+        "_lock",
+        "__dllonexit",
+        "_encode_pointer",
+        "_unlock",
+        "?terminate@@YAXXZ",
+        "_strlwr",
+        "_stricmp",
+        "_ui64toa",
+        "_i64toa",
+        "_itoa",
+        "_exit",
+        "_CxxThrowException",
+        "exit",
+        "_control87",
+        "memmove",
+        "vsprintf_s",
+        "sprintf",
+        "_ultoa",
+        "_snprintf",
+        "_vsnprintf",
+        "strncpy",
+        "atoi",
+        "memcpy",
+        "strrchr",
+        "strchr",
+        "fprintf",
+        "strstr",
+        "memset",
+        "strpbrk",
+        "strtoul",
+        "atol",
+        "malloc",
+        "calloc",
+        "free",
+        "_CIfmod",
+        "_set_SSE2_enable",
+        "getenv",
+        "_fullpath",
+        "fgets",
+        "_wstat64i32",
+        "asctime",
+        "strftime",
+        "strcat_s",
+        "strcpy_s",
+        "iswascii",
+        "fseek",
+        "fread",
+        "toupper",
+        "_localtime64",
+        "fwrite",
+        "isalnum",
+        "_unlink",
+        "strcoll",
+        "fopen",
+        "fputs",
+        "fflush",
+        "_CIpow",
+        "_CIacos",
+        "wcsncpy_s",
+        "iswalpha",
+        "_wfopen",
+        "fclose",
+        "wcstok",
+        "_wtof",
+        "rand",
+        "wcsstr",
+        "wcsrchr",
+        "iswgraph",
+        "swprintf_s",
+        "wcsncpy",
+        "_itow",
+        "_wtoi",
+        "isdigit",
+        "_wsplitpath",
+        "iswdigit",
+        "iswalnum",
+        "strtok",
+        "strncmp",
+        "isspace",
+        "atof",
+        "strtol",
+        "_time64",
+        "towlower",
+        "_memicmp",
+        "puts",
+        "ceil",
+        "__CxxFrameHandler3",
+        "sscanf",
+        "floor",
+        "abort"
+      ],
+      "ADVAPI32.dll": [
+        "RegCreateKeyExA",
+        "AdjustTokenPrivileges",
+        "LookupPrivilegeValueA",
+        "RegSetValueExA",
+        "RegOpenKeyExA",
+        "RegQueryValueExA",
+        "RegOpenKeyExW",
+        "RegQueryValueExW",
+        "RegCloseKey",
+        "OpenProcessToken",
+        "OpenThreadToken",
+        "GetUserNameA"
+      ],
+      "DINPUT8.dll": [
+        "DirectInput8Create"
+      ],
+      "d3dx9_29.dll": [
+        "D3DXVec3CatmullRom",
+        "D3DXMatrixRotationAxis",
+        "D3DXMatrixRotationY",
+        "D3DXMatrixRotationX",
+        "D3DXMatrixRotationZ",
+        "D3DXVec4Transform",
+        "D3DXFilterTexture",
+        "D3DXMatrixTranspose",
+        "D3DXMatrixInverse",
+        "D3DXLoadSurfaceFromMemory",
+        "D3DXGetFVFVertexSize",
+        "D3DXCreateTexture",
+        "D3DXCreateTextureFromFileInMemoryEx",
+        "D3DXCreateVolumeTextureFromFileInMemoryEx",
+        "D3DXCreateEffect",
+        "D3DXCreateCubeTextureFromFileInMemoryEx",
+        "D3DXGetImageInfoFromFileInMemory",
+        "D3DXLoadSurfaceFromSurface",
+        "D3DXCreateEffectFromFileA"
+      ],
+      "DSOUND.dll": [
+        "ord#1",
+        "ord#3",
+        "ord#8",
+        "ord#6",
+        "ord#9"
+      ],
+      "WINMM.dll": [
+        "timeBeginPeriod",
+        "timeEndPeriod",
+        "timeGetTime"
+      ],
+      "IMM32.dll": [
+        "ImmAssociateContext",
+        "ImmNotifyIME",
+        "ImmGetCompositionStringW",
+        "ImmGetProperty",
+        "ImmGetContext",
+        "ImmCreateContext",
+        "ImmGetCandidateListW",
+        "ImmGetCandidateListCountW",
+        "ImmDestroyContext",
+        "ImmReleaseContext",
+        "ImmGetIMEFileNameA",
+        "ImmSetOpenStatus"
+      ],
+      "WININET.dll": [
+        "InternetCrackUrlA"
+      ],
+      "WS2_32.dll": [
+        "WSAStartup",
+        "htons",
+        "htonl",
+        "ntohs",
+        "ntohl",
+        "closesocket",
+        "connect",
+        "socket",
+        "inet_addr",
+        "send",
+        "gethostname",
+        "gethostbyname",
+        "shutdown",
+        "setsockopt",
+        "ioctlsocket",
+        "getsockname",
+        "sendto",
+        "recv",
+        "listen",
+        "accept",
+        "__WSAFDIsSet",
+        "inet_ntoa",
+        "getsockopt",
+        "WSACreateEvent",
+        "WSACloseEvent",
+        "WSACleanup",
+        "select",
+        "recvfrom",
+        "bind",
+        "WSASetEvent",
+        "WSARecv",
+        "WSARecvFrom",
+        "WSAResetEvent",
+        "WSAWaitForMultipleEvents",
+        "WSAGetOverlappedResult",
+        "getpeername",
+        "WSAIoctl",
+        "WSAGetLastError"
+      ],
+      "NETAPI32.dll": [
+        "Netbios"
+      ],
+      "SHLWAPI.dll": [
+        "PathFindFileNameA",
+        "PathRemoveExtensionA"
+      ],
+      "ole32.dll": [
+        "CoInitialize",
+        "CoUninitialize",
+        "StringFromGUID2",
+        "CoTaskMemFree",
+        "CoCreateInstance",
+        "OleRun",
+        "CoGetObject"
+      ],
+      "OLEAUT32.dll": [
+        "SysFreeString",
+        "SysAllocString"
+      ]
+    }
+  },
+  "dbghelp.dll": {
+    "exports": [
+      {
+        "name": "DbgHelpCreateUserDump",
+        "ordinal": 5,
+        "rva": "0x4bc30"
+      },
+      {
+        "name": "DbgHelpCreateUserDumpW",
+        "ordinal": 6,
+        "rva": "0x4bd20"
+      },
+      {
+        "name": "EnumDirTree",
+        "ordinal": 7,
+        "rva": "0x3e040"
+      },
+      {
+        "name": "EnumDirTreeW",
+        "ordinal": 8,
+        "rva": "0x3e120"
+      },
+      {
+        "name": "EnumerateLoadedModules",
+        "ordinal": 10,
+        "rva": "0x37af0"
+      },
+      {
+        "name": "EnumerateLoadedModules64",
+        "ordinal": 9,
+        "rva": "0x37bd0"
+      },
+      {
+        "name": "EnumerateLoadedModulesEx",
+        "ordinal": 11,
+        "rva": "0x37d90"
+      },
+      {
+        "name": "EnumerateLoadedModulesExW",
+        "ordinal": 12,
+        "rva": "0x37e70"
+      },
+      {
+        "name": "EnumerateLoadedModulesW64",
+        "ordinal": 13,
+        "rva": "0x37cb0"
+      },
+      {
+        "name": "ExtensionApiVersion",
+        "ordinal": 14,
+        "rva": "0x242a0"
+      },
+      {
+        "name": "FindDebugInfoFile",
+        "ordinal": 15,
+        "rva": "0x3c9f0"
+      },
+      {
+        "name": "FindDebugInfoFileEx",
+        "ordinal": 16,
+        "rva": "0x3d930"
+      },
+      {
+        "name": "FindDebugInfoFileExW",
+        "ordinal": 17,
+        "rva": "0x3d8f0"
+      },
+      {
+        "name": "FindExecutableImage",
+        "ordinal": 18,
+        "rva": "0x3baf0"
+      },
+      {
+        "name": "FindExecutableImageEx",
+        "ordinal": 19,
+        "rva": "0x3c730"
+      },
+      {
+        "name": "FindExecutableImageExW",
+        "ordinal": 20,
+        "rva": "0x3c850"
+      },
+      {
+        "name": "FindFileInPath",
+        "ordinal": 21,
+        "rva": "0x3b9f0"
+      },
+      {
+        "name": "FindFileInSearchPath",
+        "ordinal": 22,
+        "rva": "0x3ba30"
+      },
+      {
+        "name": "GetTimestampForLoadedLibrary",
+        "ordinal": 23,
+        "rva": "0x2b790"
+      },
+      {
+        "name": "ImageDirectoryEntryToData",
+        "ordinal": 24,
+        "rva": "0x2b210"
+      },
+      {
+        "name": "ImageDirectoryEntryToDataEx",
+        "ordinal": 25,
+        "rva": "0x2b0f0"
+      },
+      {
+        "name": "ImageNtHeader",
+        "ordinal": 26,
+        "rva": "0x2ada0"
+      },
+      {
+        "name": "ImageRvaToSection",
+        "ordinal": 27,
+        "rva": "0x2b240"
+      },
+      {
+        "name": "ImageRvaToVa",
+        "ordinal": 28,
+        "rva": "0x2b2c0"
+      },
+      {
+        "name": "ImagehlpApiVersion",
+        "ordinal": 29,
+        "rva": "0x3e550"
+      },
+      {
+        "name": "ImagehlpApiVersionEx",
+        "ordinal": 30,
+        "rva": "0x3e570"
+      },
+      {
+        "name": "MakeSureDirectoryPathExists",
+        "ordinal": 31,
+        "rva": "0x3e350"
+      },
+      {
+        "name": "MapDebugInformation",
+        "ordinal": 32,
+        "rva": "0x3ab80"
+      },
+      {
+        "name": "MiniDumpReadDumpStream",
+        "ordinal": 33,
+        "rva": "0x5aac0"
+      },
+      {
+        "name": "MiniDumpWriteDump",
+        "ordinal": 34,
+        "rva": "0x5a880"
+      },
+      {
+        "name": "SearchTreeForFile",
+        "ordinal": 35,
+        "rva": "0x3e170"
+      },
+      {
+        "name": "SearchTreeForFileW",
+        "ordinal": 36,
+        "rva": "0x3e1a0"
+      },
+      {
+        "name": "StackWalk",
+        "ordinal": 38,
+        "rva": "0x53e00"
+      },
+      {
+        "name": "StackWalk64",
+        "ordinal": 37,
+        "rva": "0x545a0"
+      },
+      {
+        "name": "SymAddSourceStream",
+        "ordinal": 1,
+        "rva": "0x34a80"
+      },
+      {
+        "name": "SymAddSourceStreamA",
+        "ordinal": 2,
+        "rva": "0x34a30"
+      },
+      {
+        "name": "SymAddSourceStreamW",
+        "ordinal": 3,
+        "rva": "0x348b0"
+      },
+      {
+        "name": "SymAddSymbol",
+        "ordinal": 39,
+        "rva": "0x389d0"
+      },
+      {
+        "name": "SymAddSymbolW",
+        "ordinal": 40,
+        "rva": "0x38860"
+      },
+      {
+        "name": "SymCleanup",
+        "ordinal": 41,
+        "rva": "0x326d0"
+      },
+      {
+        "name": "SymDeleteSymbol",
+        "ordinal": 42,
+        "rva": "0x38bb0"
+      },
+      {
+        "name": "SymDeleteSymbolW",
+        "ordinal": 43,
+        "rva": "0x38a30"
+      },
+      {
+        "name": "SymEnumLines",
+        "ordinal": 44,
+        "rva": "0x35050"
+      },
+      {
+        "name": "SymEnumLinesW",
+        "ordinal": 45,
+        "rva": "0x350f0"
+      },
+      {
+        "name": "SymEnumProcesses",
+        "ordinal": 46,
+        "rva": "0x33440"
+      },
+      {
+        "name": "SymEnumSourceFileTokens",
+        "ordinal": 47,
+        "rva": "0x34cc0"
+      },
+      {
+        "name": "SymEnumSourceFiles",
+        "ordinal": 48,
+        "rva": "0x3a4a0"
+      },
+      {
+        "name": "SymEnumSourceFilesW",
+        "ordinal": 49,
+        "rva": "0x3a510"
+      },
+      {
+        "name": "SymEnumSourceLines",
+        "ordinal": 50,
+        "rva": "0x35150"
+      },
+      {
+        "name": "SymEnumSourceLinesW",
+        "ordinal": 51,
+        "rva": "0x351f0"
+      },
+      {
+        "name": "SymEnumSym",
+        "ordinal": 52,
+        "rva": "0x39c90"
+      },
+      {
+        "name": "SymEnumSymbols",
+        "ordinal": 53,
+        "rva": "0x39120"
+      },
+      {
+        "name": "SymEnumSymbolsForAddr",
+        "ordinal": 54,
+        "rva": "0x39990"
+      },
+      {
+        "name": "SymEnumSymbolsForAddrW",
+        "ordinal": 55,
+        "rva": "0x39b10"
+      },
+      {
+        "name": "SymEnumSymbolsW",
+        "ordinal": 56,
+        "rva": "0x39190"
+      },
+      {
+        "name": "SymEnumTypes",
+        "ordinal": 57,
+        "rva": "0x39ea0"
+      },
+      {
+        "name": "SymEnumTypesByName",
+        "ordinal": 58,
+        "rva": "0x39f60"
+      },
+      {
+        "name": "SymEnumTypesByNameW",
+        "ordinal": 59,
+        "rva": "0x3a000"
+      },
+      {
+        "name": "SymEnumTypesW",
+        "ordinal": 60,
+        "rva": "0x39f00"
+      },
+      {
+        "name": "SymEnumerateModules",
+        "ordinal": 62,
+        "rva": "0x33690"
+      },
+      {
+        "name": "SymEnumerateModules64",
+        "ordinal": 61,
+        "rva": "0x336d0"
+      },
+      {
+        "name": "SymEnumerateModulesW64",
+        "ordinal": 63,
+        "rva": "0x33710"
+      },
+      {
+        "name": "SymEnumerateSymbols",
+        "ordinal": 65,
+        "rva": "0x33930"
+      },
+      {
+        "name": "SymEnumerateSymbols64",
+        "ordinal": 64,
+        "rva": "0x339f0"
+      },
+      {
+        "name": "SymEnumerateSymbolsW",
+        "ordinal": 67,
+        "rva": "0x33990"
+      },
+      {
+        "name": "SymEnumerateSymbolsW64",
+        "ordinal": 66,
+        "rva": "0x33a50"
+      },
+      {
+        "name": "SymFindDebugInfoFile",
+        "ordinal": 68,
+        "rva": "0x3d9f0"
+      },
+      {
+        "name": "SymFindDebugInfoFileW",
+        "ordinal": 69,
+        "rva": "0x3dad0"
+      },
+      {
+        "name": "SymFindExecutableImage",
+        "ordinal": 70,
+        "rva": "0x3c890"
+      },
+      {
+        "name": "SymFindExecutableImageW",
+        "ordinal": 71,
+        "rva": "0x3c990"
+      },
+      {
+        "name": "SymFindFileInPath",
+        "ordinal": 72,
+        "rva": "0x3b8a0"
+      },
+      {
+        "name": "SymFindFileInPathW",
+        "ordinal": 73,
+        "rva": "0x3b9a0"
+      },
+      {
+        "name": "SymFromAddr",
+        "ordinal": 74,
+        "rva": "0x38c00"
+      },
+      {
+        "name": "SymFromAddrW",
+        "ordinal": 75,
+        "rva": "0x38c60"
+      },
+      {
+        "name": "SymFromIndex",
+        "ordinal": 76,
+        "rva": "0x396c0"
+      },
+      {
+        "name": "SymFromIndexW",
+        "ordinal": 77,
+        "rva": "0x39740"
+      },
+      {
+        "name": "SymFromName",
+        "ordinal": 78,
+        "rva": "0x38ef0"
+      },
+      {
+        "name": "SymFromNameW",
+        "ordinal": 79,
+        "rva": "0x38f70"
+      },
+      {
+        "name": "SymFromToken",
+        "ordinal": 80,
+        "rva": "0x38cc0"
+      },
+      {
+        "name": "SymFromTokenW",
+        "ordinal": 81,
+        "rva": "0x38d80"
+      },
+      {
+        "name": "SymFunctionTableAccess",
+        "ordinal": 83,
+        "rva": "0x36620"
+      },
+      {
+        "name": "SymFunctionTableAccess64",
+        "ordinal": 82,
+        "rva": "0x36640"
+      },
+      {
+        "name": "SymGetFileLineOffsets64",
+        "ordinal": 84,
+        "rva": "0x2cda0"
+      },
+      {
+        "name": "SymGetHomeDirectory",
+        "ordinal": 85,
+        "rva": "0x32eb0"
+      },
+      {
+        "name": "SymGetHomeDirectoryW",
+        "ordinal": 86,
+        "rva": "0x32de0"
+      },
+      {
+        "name": "SymGetLineFromAddr",
+        "ordinal": 88,
+        "rva": "0x354e0"
+      },
+      {
+        "name": "SymGetLineFromAddr64",
+        "ordinal": 87,
+        "rva": "0x35250"
+      },
+      {
+        "name": "SymGetLineFromAddrW64",
+        "ordinal": 89,
+        "rva": "0x352e0"
+      },
+      {
+        "name": "SymGetLineFromName",
+        "ordinal": 91,
+        "rva": "0x35cb0"
+      },
+      {
+        "name": "SymGetLineFromName64",
+        "ordinal": 90,
+        "rva": "0x35c10"
+      },
+      {
+        "name": "SymGetLineFromNameW64",
+        "ordinal": 92,
+        "rva": "0x35530"
+      },
+      {
+        "name": "SymGetLineNext",
+        "ordinal": 94,
+        "rva": "0x36020"
+      },
+      {
+        "name": "SymGetLineNext64",
+        "ordinal": 93,
+        "rva": "0x35fa0"
+      },
+      {
+        "name": "SymGetLineNextW64",
+        "ordinal": 95,
+        "rva": "0x36000"
+      },
+      {
+        "name": "SymGetLinePrev",
+        "ordinal": 97,
+        "rva": "0x36100"
+      },
+      {
+        "name": "SymGetLinePrev64",
+        "ordinal": 96,
+        "rva": "0x36080"
+      },
+      {
+        "name": "SymGetLinePrevW64",
+        "ordinal": 98,
+        "rva": "0x360e0"
+      },
+      {
+        "name": "SymGetModuleBase",
+        "ordinal": 100,
+        "rva": "0x36fb0"
+      },
+      {
+        "name": "SymGetModuleBase64",
+        "ordinal": 99,
+        "rva": "0x36e90"
+      },
+      {
+        "name": "SymGetModuleInfo",
+        "ordinal": 102,
+        "rva": "0x36df0"
+      },
+      {
+        "name": "SymGetModuleInfo64",
+        "ordinal": 101,
+        "rva": "0x36860"
+      },
+      {
+        "name": "SymGetModuleInfoW",
+        "ordinal": 104,
+        "rva": "0x36d50"
+      },
+      {
+        "name": "SymGetModuleInfoW64",
+        "ordinal": 103,
+        "rva": "0x368f0"
+      },
+      {
+        "name": "SymGetOmapBlockBase",
+        "ordinal": 4,
+        "rva": "0x39090"
+      },
+      {
+        "name": "SymGetOmaps",
+        "ordinal": 105,
+        "rva": "0x38fb0"
+      },
+      {
+        "name": "SymGetOptions",
+        "ordinal": 106,
+        "rva": "0x33110"
+      },
+      {
+        "name": "SymGetScope",
+        "ordinal": 107,
+        "rva": "0x39490"
+      },
+      {
+        "name": "SymGetScopeW",
+        "ordinal": 108,
+        "rva": "0x39510"
+      },
+      {
+        "name": "SymGetSearchPath",
+        "ordinal": 109,
+        "rva": "0x37600"
+      },
+      {
+        "name": "SymGetSearchPathW",
+        "ordinal": 110,
+        "rva": "0x37670"
+      },
+      {
+        "name": "SymGetSourceFile",
+        "ordinal": 111,
+        "rva": "0x346d0"
+      },
+      {
+        "name": "SymGetSourceFileFromToken",
+        "ordinal": 112,
+        "rva": "0x34ab0"
+      },
+      {
+        "name": "SymGetSourceFileFromTokenW",
+        "ordinal": 113,
+        "rva": "0x34b40"
+      },
+      {
+        "name": "SymGetSourceFileToken",
+        "ordinal": 114,
+        "rva": "0x347b0"
+      },
+      {
+        "name": "SymGetSourceFileTokenW",
+        "ordinal": 115,
+        "rva": "0x34800"
+      },
+      {
+        "name": "SymGetSourceFileW",
+        "ordinal": 116,
+        "rva": "0x34740"
+      },
+      {
+        "name": "SymGetSourceVarFromToken",
+        "ordinal": 117,
+        "rva": "0x34ba0"
+      },
+      {
+        "name": "SymGetSourceVarFromTokenW",
+        "ordinal": 118,
+        "rva": "0x34c40"
+      },
+      {
+        "name": "SymGetSymFromAddr",
+        "ordinal": 120,
+        "rva": "0x33c60"
+      },
+      {
+        "name": "SymGetSymFromAddr64",
+        "ordinal": 119,
+        "rva": "0x33c10"
+      },
+      {
+        "name": "SymGetSymFromName",
+        "ordinal": 122,
+        "rva": "0x34040"
+      },
+      {
+        "name": "SymGetSymFromName64",
+        "ordinal": 121,
+        "rva": "0x33fd0"
+      },
+      {
+        "name": "SymGetSymNext",
+        "ordinal": 124,
+        "rva": "0x341f0"
+      },
+      {
+        "name": "SymGetSymNext64",
+        "ordinal": 123,
+        "rva": "0x34310"
+      },
+      {
+        "name": "SymGetSymPrev",
+        "ordinal": 126,
+        "rva": "0x34330"
+      },
+      {
+        "name": "SymGetSymPrev64",
+        "ordinal": 125,
+        "rva": "0x343b0"
+      },
+      {
+        "name": "SymGetSymbolFile",
+        "ordinal": 127,
+        "rva": "0x4b640"
+      },
+      {
+        "name": "SymGetSymbolFileW",
+        "ordinal": 128,
+        "rva": "0x4b180"
+      },
+      {
+        "name": "SymGetTypeFromName",
+        "ordinal": 129,
+        "rva": "0x3a060"
+      },
+      {
+        "name": "SymGetTypeFromNameW",
+        "ordinal": 130,
+        "rva": "0x3a110"
+      },
+      {
+        "name": "SymGetTypeInfo",
+        "ordinal": 131,
+        "rva": "0x3a8f0"
+      },
+      {
+        "name": "SymGetTypeInfoEx",
+        "ordinal": 132,
+        "rva": "0x3a940"
+      },
+      {
+        "name": "SymInitialize",
+        "ordinal": 133,
+        "rva": "0x324d0"
+      },
+      {
+        "name": "SymInitializeW",
+        "ordinal": 134,
+        "rva": "0x32100"
+      },
+      {
+        "name": "SymLoadModule",
+        "ordinal": 136,
+        "rva": "0x373b0"
+      },
+      {
+        "name": "SymLoadModule64",
+        "ordinal": 135,
+        "rva": "0x37370"
+      },
+      {
+        "name": "SymLoadModuleEx",
+        "ordinal": 137,
+        "rva": "0x371a0"
+      },
+      {
+        "name": "SymLoadModuleExW",
+        "ordinal": 138,
+        "rva": "0x37290"
+      },
+      {
+        "name": "SymMatchFileName",
+        "ordinal": 139,
+        "rva": "0x36160"
+      },
+      {
+        "name": "SymMatchFileNameW",
+        "ordinal": 140,
+        "rva": "0x362b0"
+      },
+      {
+        "name": "SymMatchString",
+        "ordinal": 141,
+        "rva": "0x3a2b0"
+      },
+      {
+        "name": "SymMatchStringA",
+        "ordinal": 142,
+        "rva": "0x3a2f0"
+      },
+      {
+        "name": "SymMatchStringW",
+        "ordinal": 143,
+        "rva": "0x3a310"
+      },
+      {
+        "name": "SymNext",
+        "ordinal": 144,
+        "rva": "0x340b0"
+      },
+      {
+        "name": "SymNextW",
+        "ordinal": 145,
+        "rva": "0x34130"
+      },
+      {
+        "name": "SymPrev",
+        "ordinal": 146,
+        "rva": "0x34150"
+      },
+      {
+        "name": "SymPrevW",
+        "ordinal": 147,
+        "rva": "0x341d0"
+      },
+      {
+        "name": "SymRefreshModuleList",
+        "ordinal": 148,
+        "rva": "0x32020"
+      },
+      {
+        "name": "SymRegisterCallback",
+        "ordinal": 150,
+        "rva": "0x37f50"
+      },
+      {
+        "name": "SymRegisterCallback64",
+        "ordinal": 149,
+        "rva": "0x38060"
+      },
+      {
+        "name": "SymRegisterCallbackW64",
+        "ordinal": 151,
+        "rva": "0x38170"
+      },
+      {
+        "name": "SymRegisterFunctionEntryCallback",
+        "ordinal": 153,
+        "rva": "0x36400"
+      },
+      {
+        "name": "SymRegisterFunctionEntryCallback64",
+        "ordinal": 152,
+        "rva": "0x36510"
+      },
+      {
+        "name": "SymSearch",
+        "ordinal": 154,
+        "rva": "0x393c0"
+      },
+      {
+        "name": "SymSearchW",
+        "ordinal": 155,
+        "rva": "0x39430"
+      },
+      {
+        "name": "SymSetContext",
+        "ordinal": 156,
+        "rva": "0x33130"
+      },
+      {
+        "name": "SymSetHomeDirectory",
+        "ordinal": 157,
+        "rva": "0x32d50"
+      },
+      {
+        "name": "SymSetHomeDirectoryW",
+        "ordinal": 158,
+        "rva": "0x32cb0"
+      },
+      {
+        "name": "SymSetOptions",
+        "ordinal": 159,
+        "rva": "0x32f20"
+      },
+      {
+        "name": "SymSetParentWindow",
+        "ordinal": 160,
+        "rva": "0x32760"
+      },
+      {
+        "name": "SymSetScopeFromAddr",
+        "ordinal": 161,
+        "rva": "0x331a0"
+      },
+      {
+        "name": "SymSetScopeFromIndex",
+        "ordinal": 162,
+        "rva": "0x33250"
+      },
+      {
+        "name": "SymSetSearchPath",
+        "ordinal": 163,
+        "rva": "0x37750"
+      },
+      {
+        "name": "SymSetSearchPathW",
+        "ordinal": 164,
+        "rva": "0x37790"
+      },
+      {
+        "name": "SymSrvDeltaName",
+        "ordinal": 165,
+        "rva": "0x4a590"
+      },
+      {
+        "name": "SymSrvDeltaNameW",
+        "ordinal": 166,
+        "rva": "0x4a390"
+      },
+      {
+        "name": "SymSrvGetFileIndexInfo",
+        "ordinal": 167,
+        "rva": "0x4b850"
+      },
+      {
+        "name": "SymSrvGetFileIndexInfoW",
+        "ordinal": 168,
+        "rva": "0x4b900"
+      },
+      {
+        "name": "SymSrvGetFileIndexString",
+        "ordinal": 169,
+        "rva": "0x4ab90"
+      },
+      {
+        "name": "SymSrvGetFileIndexStringW",
+        "ordinal": 170,
+        "rva": "0x4aae0"
+      },
+      {
+        "name": "SymSrvGetFileIndexes",
+        "ordinal": 171,
+        "rva": "0x4aa90"
+      },
+      {
+        "name": "SymSrvGetFileIndexesW",
+        "ordinal": 172,
+        "rva": "0x4a9e0"
+      },
+      {
+        "name": "SymSrvGetSupplement",
+        "ordinal": 173,
+        "rva": "0x4a790"
+      },
+      {
+        "name": "SymSrvGetSupplementW",
+        "ordinal": 174,
+        "rva": "0x4a640"
+      },
+      {
+        "name": "SymSrvIsStore",
+        "ordinal": 175,
+        "rva": "0x4a350"
+      },
+      {
+        "name": "SymSrvIsStoreW",
+        "ordinal": 176,
+        "rva": "0x4a270"
+      },
+      {
+        "name": "SymSrvStoreFile",
+        "ordinal": 177,
+        "rva": "0x4ace0"
+      },
+      {
+        "name": "SymSrvStoreFileW",
+        "ordinal": 178,
+        "rva": "0x4ac30"
+      },
+      {
+        "name": "SymSrvStoreSupplement",
+        "ordinal": 179,
+        "rva": "0x4a940"
+      },
+      {
+        "name": "SymSrvStoreSupplementW",
+        "ordinal": 180,
+        "rva": "0x4a830"
+      },
+      {
+        "name": "SymUnDName",
+        "ordinal": 182,
+        "rva": "0x373e0"
+      },
+      {
+        "name": "SymUnDName64",
+        "ordinal": 181,
+        "rva": "0x374f0"
+      },
+      {
+        "name": "SymUnloadModule",
+        "ordinal": 184,
+        "rva": "0x37180"
+      },
+      {
+        "name": "SymUnloadModule64",
+        "ordinal": 183,
+        "rva": "0x36fd0"
+      },
+      {
+        "name": "UnDecorateSymbolName",
+        "ordinal": 185,
+        "rva": "0x3a9c0"
+      },
+      {
+        "name": "UnDecorateSymbolNameW",
+        "ordinal": 186,
+        "rva": "0x3aad0"
+      },
+      {
+        "name": "UnmapDebugInformation",
+        "ordinal": 187,
+        "rva": "0x3ae40"
+      },
+      {
+        "name": "WinDbgExtensionDllInit",
+        "ordinal": 188,
+        "rva": "0x242c0"
+      },
+      {
+        "name": "block",
+        "ordinal": 189,
+        "rva": "0x26370"
+      },
+      {
+        "name": "chksym",
+        "ordinal": 190,
+        "rva": "0x261e0"
+      },
+      {
+        "name": "dbghelp",
+        "ordinal": 191,
+        "rva": "0x33350"
+      },
+      {
+        "name": "dh",
+        "ordinal": 192,
+        "rva": "0x27ee0"
+      },
+      {
+        "name": "fptr",
+        "ordinal": 193,
+        "rva": "0x244c0"
+      },
+      {
+        "name": "homedir",
+        "ordinal": 194,
+        "rva": "0x267b0"
+      },
+      {
+        "name": "itoldyouso",
+        "ordinal": 195,
+        "rva": "0x26050"
+      },
+      {
+        "name": "lmi",
+        "ordinal": 196,
+        "rva": "0x25190"
+      },
+      {
+        "name": "lminfo",
+        "ordinal": 197,
+        "rva": "0x24f00"
+      },
+      {
+        "name": "omap",
+        "ordinal": 198,
+        "rva": "0x26540"
+      },
+      {
+        "name": "srcfiles",
+        "ordinal": 199,
+        "rva": "0x26980"
+      },
+      {
+        "name": "stack_force_ebp",
+        "ordinal": 200,
+        "rva": "0x24a40"
+      },
+      {
+        "name": "stackdbg",
+        "ordinal": 201,
+        "rva": "0x24590"
+      },
+      {
+        "name": "sym",
+        "ordinal": 202,
+        "rva": "0x24c50"
+      },
+      {
+        "name": "symsrv",
+        "ordinal": 203,
+        "rva": "0x24db0"
+      },
+      {
+        "name": "vc7fpo",
+        "ordinal": 204,
+        "rva": "0x24540"
+      }
+    ],
+    "imports": {
+      "msvcrt.dll": [
+        "_write",
+        "_lseeki64",
+        "_fileno",
+        "_read",
+        "__pioinfo",
+        "__badioinfo",
+        "wctomb",
+        "_snprintf",
+        "isleadbyte",
+        "mbtowc",
+        "isdigit",
+        "_onexit",
+        "_lock",
+        "__dllonexit",
+        "_unlock",
+        "_ismbblead",
+        "_adjust_fdiv",
+        "_amsg_exit",
+        "_initterm",
+        "_XcptFilter",
+        "iswprint",
+        "_vsnwprintf",
+        "memmove",
+        "_iob",
+        "__mb_cur_max",
+        "_errno",
+        "__CxxFrameHandler",
+        "iswspace",
+        "calloc",
+        "??3@YAXPAX@Z",
+        "_itoa",
+        "towlower",
+        "tolower",
+        "_wcslwr",
+        "atol",
+        "fclose",
+        "__unDName",
+        "_CxxThrowException",
+        "bsearch",
+        "fread",
+        "fseek",
+        "_wfsopen",
+        "_fsopen",
+        "wcstol",
+        "strchr",
+        "wcsrchr",
+        "_fullpath",
+        "_wfullpath",
+        "_wcsdup",
+        "_wgetenv",
+        "_get_osfhandle",
+        "_chsize",
+        "_close",
+        "_open_osfhandle",
+        "ftell",
+        "_memicmp",
+        "_mbscmp",
+        "??1type_info@@UAE@XZ",
+        "?terminate@@YAXXZ",
+        "time",
+        "_wctime",
+        "strncmp",
+        "_ltoa",
+        "_wcsnicmp",
+        "_purecall",
+        "ctime",
+        "malloc",
+        "isspace",
+        "_stricmp",
+        "_strlwr",
+        "free",
+        "strstr",
+        "memcpy",
+        "_wcsicmp",
+        "qsort",
+        "wcschr",
+        "wcsstr",
+        "wcsncmp",
+        "_isatty",
+        "iswxdigit",
+        "memset",
+        "??2@YAPAXI@Z",
+        "_wsopen",
+        "_sopen"
+      ],
+      "KERNEL32.dll": [
+        "InterlockedDecrement",
+        "LocalFree",
+        "GetVersion",
+        "LCMapStringA",
+        "SetFileAttributesA",
+        "CopyFileA",
+        "DeleteFileA",
+        "DeviceIoControl",
+        "GetFileType",
+        "InitializeCriticalSectionAndSpinCount",
+        "ExpandEnvironmentStringsA",
+        "MapViewOfFileEx",
+        "FlushViewOfFile",
+        "InterlockedIncrement",
+        "RtlUnwind",
+        "InterlockedCompareExchange",
+        "InterlockedExchange",
+        "GetThreadSelectorEntry",
+        "CreateThread",
+        "TerminateThread",
+        "VirtualQueryEx",
+        "GetPriorityClass",
+        "GetThreadPriority",
+        "GetThreadTimes",
+        "GetThreadContext",
+        "ResumeThread",
+        "SuspendThread",
+        "GetSystemInfo",
+        "LoadLibraryA",
+        "Sleep",
+        "SetUnhandledExceptionFilter",
+        "UnhandledExceptionFilter",
+        "TerminateProcess",
+        "GetSystemTimeAsFileTime",
+        "GetCurrentThreadId",
+        "GetTickCount",
+        "QueryPerformanceCounter",
+        "ReadProcessMemory",
+        "GetProcessHeap",
+        "GetFileAttributesA",
+        "SetErrorMode",
+        "WriteFile",
+        "OutputDebugStringA",
+        "VirtualFree",
+        "GetCurrentProcessId",
+        "OpenProcess",
+        "CreateFileMappingA",
+        "MapViewOfFile",
+        "FindClose",
+        "LocalAlloc",
+        "SetLastError",
+        "LeaveCriticalSection",
+        "EnterCriticalSection",
+        "CloseHandle",
+        "ReadFile",
+        "GetFileSize",
+        "CreateFileA",
+        "GetLastError",
+        "TlsSetValue",
+        "TlsGetValue",
+        "TlsAlloc",
+        "TlsFree",
+        "DeleteCriticalSection",
+        "HeapDestroy",
+        "FreeLibrary",
+        "HeapCreate",
+        "InitializeCriticalSection",
+        "GetVersionExA",
+        "HeapReAlloc",
+        "HeapAlloc",
+        "HeapFree",
+        "IsDBCSLeadByte",
+        "SetFilePointer",
+        "GetCurrentProcess",
+        "UnmapViewOfFile",
+        "CreateDirectoryA",
+        "VirtualProtect",
+        "VirtualAlloc",
+        "DuplicateHandle",
+        "GetModuleHandleA"
+      ],
+      "ADVAPI32.dll": [
+        "CryptAcquireContextA",
+        "CryptGenRandom",
+        "CryptReleaseContext",
+        "RegQueryValueExA",
+        "RegOpenKeyExA",
+        "RegCloseKey"
+      ],
+      "RPCRT4.dll": [
+        "UuidCreate"
+      ]
+    }
+  }
+}

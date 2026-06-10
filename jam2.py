@@ -76,14 +76,14 @@ ASCII_ART_BANNER = "🎵 🎧 JAM2 🎸 🎹"
 
 # Icon rules inferred from rich color tags in log messages
 ICON_RULES = [
-    ("[bold red]", "🚑"),
+    ("[bold red]", "🚑🪱"),
     ("[red]", "❌"),
-    ("[bold yellow]", "🪱"),
+    ("[bold yellow]", "🦍"),
     ("[yellow]", "✂️"),
     ("[bold green]", "✅"),
     ("[green]", "🐩"),
     ("[cyan]", "🪶"),
-    ("[magenta]", "🐀"),
+    ("[magenta]", "🐩🐀"),
 ]
 
 
